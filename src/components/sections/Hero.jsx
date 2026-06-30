@@ -1,246 +1,351 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
-const DURATION = 6500;
+/* ----------------------------------------------------------------------------
+ * Icons used as floating "ingredient" orbs around the central anchor.
+ * -------------------------------------------------------------------------- */
+const Shield = (p) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" {...p}>
+    <path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
+    <path d="M9 12l2 2 4-4" />
+  </svg>
+);
+const Heart = (p) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" {...p}>
+    <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z" />
+  </svg>
+);
+const Infinity = (p) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" {...p}>
+    <path d="M7 9a3 3 0 1 0 0 6c2 0 3-2 5-3s3-3 5-3a3 3 0 1 1 0 6c-2 0-3-2-5-3S9 9 7 9z" />
+  </svg>
+);
+const Droplet = (p) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" {...p}>
+    <path d="M12 3s6 6.5 6 11a6 6 0 1 1-12 0c0-4.5 6-11 6-11z" />
+  </svg>
+);
+const Sparkle = (p) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" {...p}>
+    <path d="M12 3v6M12 15v6M3 12h6M15 12h6" />
+  </svg>
+);
+const Leaf = (p) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" {...p}>
+    <path d="M5 19c0-8 6-14 14-14 0 8-6 14-14 14z" />
+    <path d="M5 19c4-4 7-6 10-7" />
+  </svg>
+);
+
+/* Three fixed anchor spots around the central image; icon/colour vary by slide. */
+const FLOAT_SPOTS = [
+  { top: "24%", left: "31%", from: { x: -70, y: -50 }, dur: 4.2 },
+  { top: "33%", left: "64%", from: { x: 80, y: -36 }, dur: 5.1 },
+  { top: "62%", left: "57%", from: { x: 64, y: 70 }, dur: 4.6 },
+];
 
 const SLIDES = [
   {
-    title: "Experience Control Within",
-    asterisk: true,
-    sub: "Long-acting, reversible contraceptives. With one simple step, you get years of protection and control over your menstrual cycle.",
-    cta: { label: "Find a doctor near you", href: "#consult", icon: "→" },
+    bg: "#f7efe7",
+    accent: "#08979d",
+    bgText: "CONTROL",
+    heading: "Experience Control Within",
+    paragraph:
+      "Long-acting, reversible contraceptives. One simple step for years of protection and control over your cycle.",
+    image:
+      "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1200&auto=format&fit=crop",
+    label: "Control Within",
+    sublabel: "Long-term & reversible",
+    cta: { label: "Find a doctor", href: "#consult" },
+    floats: [Shield, Heart, Infinity],
   },
   {
-    eyebrow: "Contraceptive Implant",
-    title: "A contraceptive that fits your terms & conditions.",
-    sub: "Imagine not having to think about a pill daily, worrying about your partner carrying a condom, or committing to a permanent and often regrettable decision. The Contraceptive Implant solves all these problems.",
-    tags: [
-      "3 years — no daily effort",
-      "Over 99% effective",
-      "Discreet",
-      "Reversible",
-      "No recurring costs",
-    ],
-    cta: { label: "Watch a video on implants", href: "#videos", icon: "▶" },
+    bg: "#e9e2f4",
+    accent: "#604c91",
+    bgText: "IMPLANT",
+    heading: "A contraceptive that fits your terms & conditions",
+    paragraph:
+      "A tiny rod under the skin of your upper arm. Set it once and forget about contraception for years — discreet, reversible, no daily effort.",
+    image:
+      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop",
+    label: "Contraceptive Implant",
+    sublabel: "Up to 3 years of cover",
+    cta: { label: "Explore the implant", href: "#methods" },
+    floats: [Shield, Droplet, Sparkle],
   },
   {
-    eyebrow: "Hormonal IUS",
-    title: "Do heavy, painful periods ruin your plans? Now you have the upper hand.",
-    sub: "Regain control over your body and cycle with the Hormonal IUS — a small T-shaped device placed in the uterus to help alleviate period pains, heavy menstrual bleeding, and more.",
-    tags: [
-      "Heavy bleeding & endometriosis",
-      "Reduces blood loss",
-      "Manages period pains",
-      "Also a contraceptive",
-      "Fertility returns within weeks",
-    ],
-    cta: { label: "Watch a video on hIUS", href: "#videos", icon: "▶" },
+    bg: "#d8edec",
+    accent: "#055b5c",
+    bgText: "RELIEF",
+    heading: "Heavy, painful periods? Now you have the upper hand",
+    paragraph:
+      "The Hormonal IUS — a small T-shaped device placed in the uterus that lightens periods, calms cramps, and protects, all at once.",
+    image:
+      "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1200&auto=format&fit=crop",
+    label: "Hormonal IUS",
+    sublabel: "Lighter, calmer periods",
+    cta: { label: "Explore the hIUS", href: "#methods" },
+    floats: [Droplet, Heart, Leaf],
   },
   {
-    title: "Be it periods or contraception, you should have the control you deserve.",
-    sub: "Explore long-term hormonal contraceptive solutions that work quietly while you live your life.",
-    cta: { label: "Know more", href: "#methods", icon: "→" },
+    bg: "#e5ede0",
+    accent: "#4f6b47",
+    bgText: "CHOICE",
+    heading: "The control you deserve — for periods or contraception",
+    paragraph:
+      "Explore long-term hormonal solutions that work quietly in the background while you live your life. A gynaecologist helps you choose.",
+    image:
+      "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200&auto=format&fit=crop",
+    label: "Implant or hIUS",
+    sublabel: "Your choice, your control",
+    cta: { label: "Know more", href: "#methods" },
+    floats: [Infinity, Sparkle, Leaf],
   },
 ];
 
-const IMAGES = [
-  "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1400&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1400&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1400&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1400&auto=format&fit=crop",
-];
+const EASE = [0.22, 1, 0.36, 1];
 
-const GRADIENT =
-  "linear-gradient(160deg,rgba(96,76,145,0.10),rgba(8,151,157,0.06))";
+/* Text/content blocks: leave by sliding down + fading, enter by rising + fading. */
+const contentVariants = {
+  initial: { y: 36, opacity: 0 },
+  animate: { y: 0, opacity: 1, transition: { duration: 0.5, ease: EASE } },
+  exit: { y: 36, opacity: 0, transition: { duration: 0.35, ease: "easeIn" } },
+};
+
+/* Massive background word: enters from below, exits upward; rests faint. */
+const bgTextVariants = {
+  initial: { y: 120, opacity: 0 },
+  animate: { y: 0, opacity: 0.08, transition: { duration: 0.7, ease: EASE } },
+  exit: { y: -120, opacity: 0, transition: { duration: 0.5, ease: "easeIn" } },
+};
+
+function FloatingOrb({ Icon, spot, accent, reduce }) {
+  return (
+    <motion.div
+      className="absolute"
+      style={{ top: spot.top, left: spot.left }}
+      initial={{ x: spot.from.x, y: spot.from.y, scale: 0.4, opacity: 0 }}
+      animate={{ x: 0, y: 0, scale: 1, opacity: 1 }}
+      exit={{ x: spot.from.x, y: spot.from.y, scale: 0.3, opacity: 0 }}
+      transition={{ duration: 0.6, ease: EASE }}
+    >
+      <motion.div
+        animate={reduce ? {} : { y: [0, -10, 0] }}
+        transition={{ duration: spot.dur, repeat: Infinity, ease: "easeInOut" }}
+        className="flex h-14 w-14 items-center justify-center rounded-full border border-white/60 bg-white/70 shadow-soft backdrop-blur-sm"
+        style={{ color: accent }}
+      >
+        <Icon className="h-6 w-6" />
+      </motion.div>
+    </motion.div>
+  );
+}
 
 export default function Hero() {
-  const [index, setIndex] = useState(0);
+  const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [reduce, setReduce] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const touchX = useRef(null);
+  const reduce = useReducedMotion();
+  const slide = SLIDES[active];
+  const n = SLIDES.length;
 
-  const count = SLIDES.length;
-  const go = useCallback((i) => setIndex(((i % count) + count) % count), [count]);
-  const next = useCallback(() => go(index + 1), [go, index]);
-  const prev = useCallback(() => go(index - 1), [go, index]);
-
+  // Gentle autoplay; thumbnails are the primary control.
   useEffect(() => {
-    setReduce(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-  }, []);
-
-  // Drive both the progress bar and autoplay advance from one rAF loop.
-  useEffect(() => {
-    setProgress(0);
     if (paused || reduce) return;
+    const t = setTimeout(() => setActive((a) => (a + 1) % n), 7000);
+    return () => clearTimeout(t);
+  }, [active, paused, reduce, n]);
 
-    let raf;
-    let start = null;
-    const tick = (t) => {
-      if (start === null) start = t;
-      const p = Math.min((t - start) / DURATION, 1);
-      setProgress(p);
-      if (p >= 1) {
-        setIndex((i) => (i + 1) % count);
-      } else {
-        raf = requestAnimationFrame(tick);
-      }
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [index, paused, reduce, count]);
-
-  const onTouchStart = (e) => {
-    touchX.current = e.touches[0].clientX;
-  };
-  const onTouchEnd = (e) => {
-    if (touchX.current === null) return;
-    const dx = e.changedTouches[0].clientX - touchX.current;
-    if (Math.abs(dx) > 40) (dx < 0 ? next : prev)();
-    touchX.current = null;
-  };
-
-  const active = SLIDES[index];
+  const Cta = ({ className = "" }) => (
+    <a
+      href={slide.cta.href}
+      className={`inline-flex items-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5 ${className}`}
+      style={{ backgroundColor: slide.accent }}
+    >
+      {slide.cta.label}
+      <span aria-hidden="true">→</span>
+    </a>
+  );
 
   return (
-    <section
+    <motion.section
       id="hero"
       aria-roledescription="carousel"
       aria-label="Hero"
-      className="relative overflow-hidden bg-bg"
+      initial={{ backgroundColor: SLIDES[0].bg }}
+      animate={{ backgroundColor: slide.bg }}
+      transition={{ duration: 0.8, ease: EASE }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      onTouchStart={onTouchStart}
-      onTouchEnd={onTouchEnd}
+      className="relative min-h-[100svh] overflow-hidden"
     >
-      <div className="mx-auto grid max-w-310 grid-cols-1 items-center gap-10 px-[5%] py-12 lg:min-h-[calc(100vh-110px)] lg:grid-cols-2 lg:py-16">
-        {/* LEFT — slide content */}
-        <div className="order-2 lg:order-1">
-          <div key={index} className="animate-[fadeUp_0.6s_ease-out]">
-            {active.eyebrow && (
-              <span className="mb-4 inline-block rounded-full bg-accent-light-2/60 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-                {active.eyebrow}
-              </span>
-            )}
-            <h1 className="font-clash text-4xl font-semibold leading-[1.08] tracking-tight text-dark md:text-6xl">
-              {active.title}
-              {active.asterisk && <span className="text-accent">*</span>}
-            </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-              {active.sub}
-            </p>
+      {/* ---- CENTER LAYER: bg word + anchor image + floating orbs (behind UI) ---- */}
+      <div
+        className="pointer-events-none absolute inset-0 flex items-center justify-center"
+        style={{ perspective: 1200 }}
+      >
+        {/* Massive background typography */}
+        <AnimatePresence mode="popLayout">
+          <motion.span
+            key={`txt-${active}`}
+            variants={bgTextVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className="absolute select-none whitespace-nowrap font-clash text-[24vw] font-bold leading-none tracking-tight md:text-[20vw]"
+            style={{ color: slide.accent }}
+          >
+            {slide.bgText}
+          </motion.span>
+        </AnimatePresence>
 
-            {active.tags && (
-              <div className="mt-6 flex flex-wrap gap-2">
-                {active.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-dark/10 bg-surface px-3.5 py-1.5 text-xs font-medium text-text/80"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
+        {/* Soft platform under the anchor */}
+        <div className="absolute h-40 w-72 translate-y-28 rounded-[50%] bg-white/30 blur-2xl sm:w-96" />
 
-            <a
-              href={active.cta.href}
-              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-accent py-2 pl-2 pr-6 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-accent-hover"
+        {/* Floating orbs */}
+        <AnimatePresence>
+          {slide.floats.map((Icon, i) => (
+            <FloatingOrb
+              key={`orb-${active}-${i}`}
+              Icon={Icon}
+              spot={FLOAT_SPOTS[i]}
+              accent={slide.accent}
+              reduce={reduce}
+            />
+          ))}
+        </AnimatePresence>
+
+        {/* Central anchor image — flips in 3D on change */}
+        <AnimatePresence mode="popLayout">
+          <motion.div
+            key={`img-${active}`}
+            initial={{ rotateY: -90, opacity: 0, scale: 0.9 }}
+            animate={{ rotateY: 0, opacity: 1, scale: 1 }}
+            exit={{ rotateY: 90, opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.7, ease: EASE }}
+            className="relative h-[340px] w-[260px] overflow-hidden rounded-[2.5rem] shadow-hover sm:h-[420px] sm:w-[320px]"
+          >
+            <img
+              src={slide.image}
+              alt=""
+              className="h-full w-full object-cover"
+              draggable={false}
+            />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* ---- FOREGROUND UI ---- */}
+      <div className="relative z-10 flex min-h-[100svh] flex-col px-[5%] pb-7 pt-24 md:pt-28">
+        {/* Top: heading + trust avatars */}
+        <header className="flex items-start justify-between gap-6">
+          <AnimatePresence mode="wait">
+            <motion.h1
+              key={`h-${active}`}
+              variants={contentVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className="max-w-xl font-author text-4xl font-medium leading-[1.05] sm:text-5xl lg:text-6xl"
+              style={{ color: slide.accent }}
             >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-base transition-transform group-hover:translate-x-0.5">
-                {active.cta.icon}
-              </span>
-              {active.cta.label}
-            </a>
-          </div>
+              {slide.heading}
+            </motion.h1>
+          </AnimatePresence>
 
-          {/* Nav: dots + count + progress */}
-          <div className="mt-10 flex items-center gap-5">
-            <div className="flex items-center gap-2" role="tablist" aria-label="Choose slide">
-              {SLIDES.map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => go(i)}
-                  aria-label={`Slide ${i + 1}`}
-                  aria-selected={i === index}
-                  role="tab"
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    i === index
-                      ? "w-7 bg-accent"
-                      : "w-2 bg-dark/20 hover:bg-dark/40"
-                  }`}
-                />
+          <div className="hidden shrink-0 items-center gap-3 sm:flex">
+            <div className="flex -space-x-2">
+              {[
+                "linear-gradient(135deg,#9b89c4,#604c91)",
+                "linear-gradient(135deg,#6ec6ca,#08979d)",
+                "linear-gradient(135deg,#d7ceeb,#9b89c4)",
+                "linear-gradient(135deg,#b9d8b1,#6b8c63)",
+              ].map((bg, i) => (
+                <span key={i} className="h-9 w-9 rounded-full border-2 border-white" style={{ background: bg }} />
               ))}
+              <span className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-white/70 text-sm text-dark">
+                +
+              </span>
             </div>
-            <span className="text-sm font-medium text-muted">
-              <b className="text-dark">{String(index + 1).padStart(2, "0")}</b> / {String(count).padStart(2, "0")}
+            <span className="max-w-[9rem] text-xs font-medium text-dark/70">
+              Trusted by 5,000+ women
             </span>
           </div>
-          <div className="mt-4 h-0.5 w-full max-w-xs overflow-hidden rounded-full bg-dark/10">
-            <i
-              className="block h-full rounded-full bg-accent"
-              style={{ width: `${progress * 100}%` }}
-            />
+        </header>
+
+        {/* Middle: left paragraph card + right CTA/label (desktop) */}
+        <div className="flex flex-1 items-center">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`p-${active}`}
+              variants={contentVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className="hidden max-w-xs rounded-3xl bg-white/45 p-6 backdrop-blur-sm md:block"
+            >
+              <p className="text-sm leading-relaxed text-dark/75">{slide.paragraph}</p>
+              <a
+                href="#methods"
+                className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide"
+                style={{ color: slide.accent }}
+              >
+                Learn more <span aria-hidden="true">→</span>
+              </a>
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="flex-1" />
+
+          <div className="hidden flex-col items-end gap-7 md:flex">
+            <Cta />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`l-${active}`}
+                variants={contentVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="text-right"
+              >
+                <div className="font-author text-3xl font-medium" style={{ color: slide.accent }}>
+                  {slide.label}
+                </div>
+                <div className="mt-1 text-sm text-dark/60">{slide.sublabel}</div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
 
-        {/* RIGHT — crossfading image stack */}
-        <div className="relative order-1 lg:order-2">
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-hover sm:aspect-[5/4] lg:aspect-[4/5]">
-            {IMAGES.map((src, i) => (
-              <div
-                key={src}
-                aria-hidden={i !== index}
-                className={`absolute inset-0 bg-cover bg-center transition-opacity duration-700 ${
-                  i === index ? "opacity-100" : "opacity-0"
+        {/* Bottom: thumbnails + mobile CTA */}
+        <footer className="flex items-end justify-between gap-4">
+          <div className="flex gap-2 sm:gap-3" role="tablist" aria-label="Choose slide">
+            {SLIDES.map((s, i) => (
+              <button
+                key={i}
+                type="button"
+                role="tab"
+                aria-selected={i === active}
+                aria-label={s.label}
+                onClick={() => setActive(i)}
+                className={`relative h-16 w-14 overflow-hidden rounded-2xl transition-all duration-300 sm:h-20 sm:w-16 ${
+                  i === active ? "scale-105" : "opacity-60 hover:opacity-100"
                 }`}
-                style={{ backgroundImage: `${GRADIENT},url('${src}')` }}
-              />
+                style={
+                  i === active
+                    ? { boxShadow: `0 0 0 2px white, 0 0 0 4px ${s.accent}` }
+                    : undefined
+                }
+              >
+                <img src={s.image} alt="" className="h-full w-full object-cover" draggable={false} />
+              </button>
             ))}
-
-            {/* Arrows */}
-            <button
-              type="button"
-              onClick={prev}
-              aria-label="Previous slide"
-              className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-surface/85 text-dark shadow-soft backdrop-blur transition-colors hover:bg-surface"
-            >
-              ←
-            </button>
-            <button
-              type="button"
-              onClick={next}
-              aria-label="Next slide"
-              className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-surface/85 text-dark shadow-soft backdrop-blur transition-colors hover:bg-surface"
-            >
-              →
-            </button>
-
-            {/* Trust badge */}
-            <div className="absolute bottom-4 left-4 flex items-center gap-3 rounded-2xl bg-surface/90 px-4 py-3 shadow-soft backdrop-blur">
-              <div className="flex -space-x-2">
-                <i
-                  className="h-7 w-7 rounded-full border-2 border-surface"
-                  style={{ background: "linear-gradient(135deg,#9b89c4,#604c91)" }}
-                />
-                <i
-                  className="h-7 w-7 rounded-full border-2 border-surface"
-                  style={{ background: "linear-gradient(135deg,#6ec6ca,#08979d)" }}
-                />
-                <i
-                  className="h-7 w-7 rounded-full border-2 border-surface"
-                  style={{ background: "linear-gradient(135deg,#d7ceeb,#9b89c4)" }}
-                />
-              </div>
-              <span className="text-xs font-semibold text-dark">
-                Trained gynaecologists.
-              </span>
-            </div>
           </div>
-        </div>
+
+          <Cta className="md:hidden" />
+        </footer>
       </div>
-    </section>
+    </motion.section>
   );
 }

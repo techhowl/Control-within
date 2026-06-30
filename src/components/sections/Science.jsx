@@ -1,124 +1,122 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import Reveal from "@/components/ui/Reveal";
+import { motion, AnimatePresence } from "framer-motion";
 
-/* Header + step icons (minimalist line style). */
-const Shield = (p) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...p}>
-    <path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
-    <path d="M9 12l2 2 4-4" />
-  </svg>
-);
-const Droplet = (p) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...p}>
-    <path d="M12 3s6 6.5 6 11a6 6 0 1 1-12 0c0-4.5 6-11 6-11z" />
-  </svg>
-);
-const Ban = (p) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...p}>
-    <circle cx="12" cy="12" r="9" />
-    <path d="M6 6l12 12" />
-  </svg>
-);
-const Layers = (p) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...p}>
-    <path d="M12 4l8 4-8 4-8-4 8-4z" />
-    <path d="M4 12l8 4 8-4M4 16l8 4 8-4" />
-  </svg>
-);
-const Refresh = (p) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...p}>
-    <path d="M4 12a8 8 0 0 1 13.5-5.8L20 8M20 4v4h-4" />
-    <path d="M20 12a8 8 0 0 1-13.5 5.8L4 16M4 20v-4h4" />
-  </svg>
-);
-
+// High-end, lifestyle-focused placeholder data matching the design reference
 const PANELS = [
   {
     side: "left",
-    Icon: Shield,
-    title: "How the Implant works",
-    tagline: "Set it. Forget it.",
-    lead: "The implant releases a low, steady dose of progestin.",
-    bg: "#ece3f7",
-    accent: "#614c91",
+    title: "we are kind.",
+    brand: "west elm",
+    bg: "#614C91", // brand purple (primary)
+    textColor: "#FFFFFF",
     steps: [
-      { n: 1, Icon: Ban, text: "Ovulation stops and cervical mucus thickens — sperm cannot reach the egg." },
-      { n: 2, Icon: Layers, text: "The uterine lining thins — a fertilised egg cannot attach." },
-      { n: 3, Icon: Refresh, text: "Once removed, fertility returns quickly." },
+      {
+        n: 1,
+        text: "Choose your case, it comes in five eye-popping colours.",
+        img: "https://images.unsplash.com/photo-1615397323136-1e0e8549e31d?q=80&w=600&auto=format&fit=crop",
+      },
+      {
+        n: 2,
+        text: "Choose from five refined scents that you'll want to sniff on repeat.",
+        img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=600&auto=format&fit=crop",
+      },
+      {
+        n: 3,
+        text: "Choose from a flexible subscription plan or make a one-off purchase.",
+        img: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=600&auto=format&fit=crop",
+      },
     ],
   },
   {
     side: "right",
-    Icon: Droplet,
-    title: "How the hIUS works",
-    tagline: "Lighter. Calmer.",
-    lead: "The hIUS releases a small amount of hormone locally inside the uterus.",
-    bg: "#dcefec",
-    accent: "#085b5c",
+    title: "we are optimistic.",
+    brand: "west elm",
+    bg: "#085B5C", // brand deep teal
+    textColor: "#FFFFFF",
     steps: [
-      { n: 1, Icon: Layers, text: "The uterine lining thins, significantly reducing bleeding and pain." },
-      { n: 2, Icon: Ban, text: "Sperm is prevented from reaching the egg." },
-      { n: 3, Icon: Refresh, text: "Fully reversible — fertility returns within weeks of removal." },
+      {
+        n: 1,
+        text: "Sustainably sourced materials designed for a lifetime of use.",
+        img: "https://images.unsplash.com/photo-1615397323136-1e0e8549e31d?q=80&w=600&auto=format&fit=crop",
+      },
+      {
+        n: 2,
+        text: "Zero-waste packaging delivered straight to your doorstep.",
+        img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=600&auto=format&fit=crop",
+      },
+      {
+        n: 3,
+        text: "Carbon-neutral shipping on every single refill order.",
+        img: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=600&auto=format&fit=crop",
+      },
     ],
   },
 ];
 
-const PANEL_SPRING = { type: "spring", stiffness: 90, damping: 20 };
-const stagger = {
-  hidden: {},
-  show: { transition: { delayChildren: 0.15, staggerChildren: 0.1 } },
-};
-const stepV = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 120, damping: 18 } },
+// Refined physics for a premium, weighty slide
+const SPRING_CONFIG = { type: "spring", stiffness: 60, damping: 15, mass: 0.8 };
+
+// Staggered reveal for the inner content
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { delayChildren: 0.2, staggerChildren: 0.1 },
+  },
+  exit: { opacity: 0, transition: { duration: 0.2 } },
 };
 
-function StepTile({ step, accent }) {
+const itemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 80, damping: 20 } },
+};
+
+function StepTile({ step }) {
   return (
-    <div className="flex flex-col">
-      <span
-        className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold text-white"
-        style={{ backgroundColor: accent }}
-      >
-        {step.n}
-      </span>
-      <p className="mt-3 text-sm leading-relaxed text-text">{step.text}</p>
-      <div
-        className="mt-4 flex h-24 items-center justify-center rounded-2xl"
-        style={{ background: `linear-gradient(135deg, ${accent}24, ${accent}0d)` }}
-      >
-        <step.Icon className="h-8 w-8" style={{ color: accent }} />
+    <div className="flex flex-col h-full bg-white rounded-xl overflow-hidden shadow-sm">
+      <div className="p-5 flex-grow">
+        <div className="flex items-center gap-3 mb-3">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-black text-xs font-bold text-white">
+            {step.n}
+          </span>
+        </div>
+        <p className="text-sm leading-relaxed text-gray-800 font-medium">{step.text}</p>
+      </div>
+      {/* 
+        Using standard <img> for quick copy-paste capability. 
+        Swap to Next.js <Image /> in production for optimization. 
+      */}
+      <div className="relative w-full h-48 bg-gray-100 overflow-hidden">
+        <img
+          src={step.img}
+          alt={`Step ${step.n}`}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
       </div>
     </div>
   );
 }
 
-function Process({ panel }) {
+function ExpandedProcess({ panel }) {
   return (
     <motion.div
-      variants={stagger}
+      variants={containerVariants}
       initial="hidden"
       animate="show"
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
-      className="absolute inset-0 flex flex-col justify-center p-10"
+      exit="exit"
+      className="absolute inset-0 flex flex-col justify-center px-12 py-8"
     >
-      <motion.div variants={stepV}>
-        <span className="font-author text-xl italic" style={{ color: panel.accent }}>
-          {panel.tagline}
-        </span>
-        <h3 className="mt-1 font-clash text-3xl font-semibold" style={{ color: panel.accent }}>
-          {panel.title}
-        </h3>
-        <p className="mt-2 max-w-md text-sm text-muted">{panel.lead}</p>
+      <motion.div variants={itemVariants} className="flex justify-between items-end mb-8">
+        <span className="text-xl font-medium tracking-tight text-white">How it works:</span>
+        <span className="text-2xl italic font-serif text-white">Refill, Reuse, Repeat</span>
       </motion.div>
 
-      <div className="mt-8 grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-3 gap-6 h-full max-h-[400px]">
         {panel.steps.map((s) => (
-          <motion.div key={s.n} variants={stepV}>
-            <StepTile step={s} accent={panel.accent} />
+          <motion.div key={s.n} variants={itemVariants} className="h-full">
+            <StepTile step={s} />
           </motion.div>
         ))}
       </div>
@@ -135,91 +133,85 @@ function DesktopPanel({ panel, hovered, setHovered }) {
       layout
       onMouseEnter={() => setHovered(panel.side)}
       onMouseLeave={() => setHovered(null)}
-      transition={PANEL_SPRING}
-      style={{ flexGrow: mode === "expanded" ? 3 : 1, backgroundColor: panel.bg }}
-      className="relative h-full overflow-hidden"
+      transition={SPRING_CONFIG}
+      style={{
+        flexGrow: mode === "expanded" ? 3.5 : 1,
+        backgroundColor: panel.bg,
+      }}
+      className="relative h-[650px] overflow-hidden cursor-pointer"
     >
-      <motion.div
-        animate={{ opacity: mode === "expanded" ? 0 : 1 }}
-        transition={{ duration: 0.3 }}
-        className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-4 p-6 text-center"
-      >
-        <panel.Icon className="h-9 w-9" style={{ color: panel.accent }} />
-        <h3
-          className={`font-clash text-2xl font-semibold ${
-            mode === "shrunk" ? "[writing-mode:vertical-rl]" : ""
-          }`}
-          style={{ color: panel.accent }}
-        >
-          {panel.title}
-        </h3>
+      {/* Default State Content (Centered Text) */}
+      <AnimatePresence>
         {mode === "default" && (
-          <span className="font-author text-lg italic text-muted">{panel.tagline}</span>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, transition: { duration: 0.15 } }}
+            className="absolute inset-0 flex flex-col items-center justify-center text-center p-8"
+          >
+            <h3
+              className="text-5xl md:text-6xl font-bold tracking-tight mb-8"
+              style={{ color: panel.textColor }}
+            >
+              {panel.title}
+            </h3>
+            <span
+              className="text-lg font-medium tracking-widest uppercase"
+              style={{ color: panel.textColor }}
+            >
+              {panel.brand}
+            </span>
+          </motion.div>
         )}
-      </motion.div>
+      </AnimatePresence>
 
-      <AnimatePresence>{mode === "expanded" && <Process panel={panel} />}</AnimatePresence>
+      {/* Expanded State Content (The Process) */}
+      <AnimatePresence>
+        {mode === "expanded" && <ExpandedProcess panel={panel} />}
+      </AnimatePresence>
     </motion.div>
   );
 }
 
-function MobileCard({ panel }) {
-  return (
-    <div className="rounded-3xl p-7" style={{ backgroundColor: panel.bg }}>
-      <panel.Icon className="h-8 w-8" style={{ color: panel.accent }} />
-      <span className="mt-4 block font-author text-lg italic text-muted">{panel.tagline}</span>
-      <h3 className="mt-1 font-clash text-2xl font-semibold" style={{ color: panel.accent }}>
-        {panel.title}
-      </h3>
-      <p className="mt-2 text-sm text-muted">{panel.lead}</p>
-      <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-3">
-        {panel.steps.map((s) => (
-          <StepTile key={s.n} step={s} accent={panel.accent} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-export default function Science() {
+export default function SplitProcessScreen() {
   const [hovered, setHovered] = useState(null);
-  const reduce = useReducedMotion();
 
   return (
-    <section className="bg-surface py-20 md:py-28">
-      <div className="mx-auto max-w-310 px-[5%]">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-            The Science
-          </span>
-          <h2 className="mt-3 font-clash text-3xl font-semibold text-dark md:text-5xl">
-            Behind The Scenes.
-          </h2>
-          <p className="mt-4 text-base text-muted">
-            Hover a side to see exactly how each method works.
-          </p>
-        </Reveal>
-
-        {/* Desktop split-screen accordion */}
-        {!reduce && (
-          <div className="mt-12 hidden h-[600px] overflow-hidden rounded-3xl shadow-soft lg:flex">
-            {PANELS.map((panel) => (
-              <DesktopPanel
-                key={panel.side}
-                panel={panel}
-                hovered={hovered}
-                setHovered={setHovered}
-              />
-            ))}
-          </div>
-        )}
-
-        {/* Mobile (and reduced-motion) stacked cards */}
-        <div className={`mt-12 grid grid-cols-1 gap-5 ${reduce ? "" : "lg:hidden"}`}>
+    <section className="w-full bg-bg py-16">
+      <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
+        
+        {/* Desktop interactive split-screen */}
+        <div className="hidden md:flex w-full rounded-2xl overflow-hidden shadow-2xl">
           {PANELS.map((panel) => (
-            <MobileCard key={panel.side} panel={panel} />
+            <DesktopPanel
+              key={panel.side}
+              panel={panel}
+              hovered={hovered}
+              setHovered={setHovered}
+            />
           ))}
         </div>
+
+        {/* Mobile Fallback: Stacked layout */}
+        <div className="flex flex-col md:hidden gap-8">
+          {PANELS.map((panel) => (
+            <div
+              key={panel.side}
+              className="rounded-2xl p-6"
+              style={{ backgroundColor: panel.bg }}
+            >
+              <h3 className="text-4xl font-bold text-center mb-8 text-white">
+                {panel.title}
+              </h3>
+              <div className="flex flex-col gap-6">
+                {panel.steps.map((s) => (
+                  <StepTile key={s.n} step={s} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

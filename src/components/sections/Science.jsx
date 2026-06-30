@@ -10,8 +10,8 @@ const PANELS = [
     title: "Hormonal Implant",
     brand: "Control Within",
     lead: "The implant releases a low, steady dose of progestin.",
-    bg: "#9B8AC4", // light brand purple
-    textColor: "#3B3630",
+    bg: "#D7CFEB", // light brand lavender
+    textColor: "#FFFFFF",
     steps: [
       {
         n: 1,
@@ -36,7 +36,7 @@ const PANELS = [
     brand: "Control Within",
     lead: "The hIUS releases a small amount of hormone locally inside the uterus.",
     bg: "#4AA3AC", // light brand teal
-    textColor: "#3B3630",
+    textColor: "#FFFFFF",
     steps: [
       {
         n: 1,
@@ -189,8 +189,11 @@ export default function SplitProcessScreen() {
 
         {/* Section headline */}
         <div className="text-center mb-12">
-          <h2 className="font-clash text-3xl md:text-5xl font-semibold text-dark">
-            Behind The Scenes.
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+            The Process
+          </span>
+          <h2 className="mt-3 font-clash text-3xl font-semibold text-dark md:text-5xl">
+           Behind The Scenes
           </h2>
         </div>
 
@@ -214,7 +217,7 @@ export default function SplitProcessScreen() {
               className="rounded-2xl p-6"
               style={{ backgroundColor: panel.bg }}
             >
-              <h3 className="text-4xl font-bold text-center mb-8 text-dark">
+              <h3 className="text-4xl font-bold text-center mb-8 text-white">
                 {panel.title}
               </h3>
               <div className="flex flex-col gap-6">

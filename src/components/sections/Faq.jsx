@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Reveal from "@/components/ui/Reveal";
+import { motion, AnimatePresence } from "framer-motion";
 
 const FAQS = [
   { q: "Is it permanent?", a: "No. Both methods are fully reversible. You choose when to have them removed." },
@@ -18,60 +18,95 @@ const FAQS = [
   { q: "How do I find a trained doctor near me?", a: "We will connect you to a trained gynaecologist in your city via WhatsApp." },
 ];
 
+function Chevron() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2">
+      <path d="M6 9l6 6 6-6" />
+    </svg>
+  );
+}
+
+function FAQItem({ item, isOpen, onToggle }) {
+  return (
+    <div className="rounded-2xl border border-dark/5 bg-[#f6f4fb]">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+      >
+        <span className="text-base font-medium text-dark">{item.q}</span>
+        <motion.span
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+          className={`flex h-8 w-8 flex-none items-center justify-center rounded-full transition-colors ${
+            isOpen ? "bg-accent text-white" : "bg-accent-light-2 text-accent"
+          }`}
+        >
+          <Chevron />
+        </motion.span>
+      </button>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="content"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+            className="overflow-hidden"
+          >
+            <p className="px-5 pb-5 text-sm leading-relaxed text-muted">{item.a}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export default function Faq() {
-  const [open, setOpen] = useState(null);
+  const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section className="bg-bg py-20 md:py-28">
-      <div className="mx-auto max-w-3xl px-[5%]">
-        <Reveal className="text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-            Your Questions
+    <section className="bg-surface py-20 md:py-28">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-[5%] lg:grid-cols-2 lg:gap-16">
+        {/* Left column — text */}
+        <div className="lg:sticky lg:top-32 lg:self-start">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-light-2 px-3 py-1 text-xs font-semibold text-accent">
+            <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.7M12 17h.01" />
+            </svg>
+            Frequently asked questions
           </span>
-          <h2 className="mt-3 font-clash text-3xl font-semibold text-dark md:text-5xl">
-            Still Thinking It Over?
+          <h2 className="mt-5 font-clash text-4xl font-semibold leading-tight text-dark md:text-5xl">
+            Frequently asked <span className="text-accent">questions</span>
           </h2>
-        </Reveal>
+          <p className="mt-4 max-w-md text-base leading-relaxed text-muted">
+            Everything worth knowing before you talk to a doctor — clear and
+            judgement-free. Still unsure? We’ll connect you to a gynaecologist on
+            WhatsApp.
+          </p>
+          <a
+            href="#consult"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-accent-hover"
+          >
+            Chat with a doctor <span aria-hidden="true">→</span>
+          </a>
+        </div>
 
-        <Reveal delay={80} className="mt-10 space-y-3">
-          {FAQS.map((item, i) => {
-            const isOpen = open === i;
-            return (
-              <div
-                key={i}
-                className="overflow-hidden rounded-2xl border border-dark/8 bg-surface"
-              >
-                <button
-                  type="button"
-                  aria-expanded={isOpen}
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-base font-medium text-dark"
-                >
-                  {item.q}
-                  <span
-                    aria-hidden="true"
-                    className={`flex h-7 w-7 flex-none items-center justify-center rounded-full bg-accent-light-2/60 text-accent transition-transform duration-300 ${
-                      isOpen ? "rotate-45" : ""
-                    }`}
-                  >
-                    +
-                  </span>
-                </button>
-                <div
-                  className={`grid transition-all duration-300 ease-out ${
-                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                  }`}
-                >
-                  <div className="overflow-hidden">
-                    <p className="px-5 pb-5 text-sm leading-relaxed text-muted">
-                      {item.a}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </Reveal>
+        {/* Right column — accordion */}
+        <div className="flex flex-col gap-3">
+          {FAQS.map((item, i) => (
+            <FAQItem
+              key={i}
+              item={item}
+              isOpen={openIndex === i}
+              onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

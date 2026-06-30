@@ -3,53 +3,50 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// High-end, lifestyle-focused placeholder data matching the design reference
+// Campaign content for the two methods
 const PANELS = [
   {
     side: "left",
-    title: "we are kind.",
-    brand: "west elm",
-    bg: "#614C91", // brand purple (primary)
-    textColor: "#FFFFFF",
+    title: "Hormonal Implant",
+    brand: "Control Within",
+    lead: "The implant releases a low, steady dose of progestin.",
+    bg: "#9B8AC4", // light brand purple
+    textColor: "#3B3630",
     steps: [
       {
         n: 1,
-        text: "Choose your case, it comes in five eye-popping colours.",
+        text: "Ovulation stops, cervical mucus thickens — sperm cannot reach the egg.",
         img: "https://images.unsplash.com/photo-1615397323136-1e0e8549e31d?q=80&w=600&auto=format&fit=crop",
       },
       {
         n: 2,
-        text: "Choose from five refined scents that you'll want to sniff on repeat.",
+        text: "Thins the uterine lining — a fertilised egg cannot attach.",
         img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=600&auto=format&fit=crop",
       },
       {
         n: 3,
-        text: "Choose from a flexible subscription plan or make a one-off purchase.",
+        text: "Once removed, fertility returns quickly.",
         img: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=600&auto=format&fit=crop",
       },
     ],
   },
   {
     side: "right",
-    title: "we are optimistic.",
-    brand: "west elm",
-    bg: "#085B5C", // brand deep teal
-    textColor: "#FFFFFF",
+    title: "Hormonal IUS",
+    brand: "Control Within",
+    lead: "The hIUS releases a small amount of hormone locally inside the uterus.",
+    bg: "#4AA3AC", // light brand teal
+    textColor: "#3B3630",
     steps: [
       {
         n: 1,
-        text: "Sustainably sourced materials designed for a lifetime of use.",
+        text: "Uterine lining thins, significantly reducing bleeding and pain.",
         img: "https://images.unsplash.com/photo-1615397323136-1e0e8549e31d?q=80&w=600&auto=format&fit=crop",
       },
       {
         n: 2,
-        text: "Zero-waste packaging delivered straight to your doorstep.",
+        text: "Sperm is prevented from reaching the egg.",
         img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=600&auto=format&fit=crop",
-      },
-      {
-        n: 3,
-        text: "Carbon-neutral shipping on every single refill order.",
-        img: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=600&auto=format&fit=crop",
       },
     ],
   },
@@ -108,9 +105,19 @@ function ExpandedProcess({ panel }) {
       exit="exit"
       className="absolute inset-0 flex flex-col justify-center px-12 py-8"
     >
-      <motion.div variants={itemVariants} className="flex justify-between items-end mb-8">
-        <span className="text-xl font-medium tracking-tight text-white">How it works:</span>
-        <span className="text-2xl italic font-serif text-white">Refill, Reuse, Repeat</span>
+      <motion.div variants={itemVariants} className="mb-8">
+        <span
+          className="text-sm font-semibold uppercase tracking-widest"
+          style={{ color: panel.textColor }}
+        >
+          How it works
+        </span>
+        <p
+          className="mt-2 max-w-2xl text-2xl md:text-3xl font-medium"
+          style={{ color: panel.textColor }}
+        >
+          {panel.lead}
+        </p>
       </motion.div>
 
       <div className="grid grid-cols-3 gap-6 h-full max-h-[400px]">
@@ -179,7 +186,14 @@ export default function SplitProcessScreen() {
   return (
     <section className="w-full bg-bg py-16">
       <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
-        
+
+        {/* Section headline */}
+        <div className="text-center mb-12">
+          <h2 className="font-clash text-3xl md:text-5xl font-semibold text-dark">
+            Behind The Scenes.
+          </h2>
+        </div>
+
         {/* Desktop interactive split-screen */}
         <div className="hidden md:flex w-full rounded-2xl overflow-hidden shadow-2xl">
           {PANELS.map((panel) => (
@@ -200,7 +214,7 @@ export default function SplitProcessScreen() {
               className="rounded-2xl p-6"
               style={{ backgroundColor: panel.bg }}
             >
-              <h3 className="text-4xl font-bold text-center mb-8 text-white">
+              <h3 className="text-4xl font-bold text-center mb-8 text-dark">
                 {panel.title}
               </h3>
               <div className="flex flex-col gap-6">

@@ -48,8 +48,8 @@ const FLOAT_SPOTS = [
 
 const SLIDES = [
   {
-    bg: "#f7efe7",
-    accent: "#08979d",
+    bg: "#ede6d9",
+    accent: "#614c91",
     bgText: "CONTROL",
     heading: "Experience Control Within",
     paragraph:
@@ -62,8 +62,8 @@ const SLIDES = [
     floats: [Shield, Heart, Infinity],
   },
   {
-    bg: "#e9e2f4",
-    accent: "#604c91",
+    bg: "#d7cfeb",
+    accent: "#614c91",
     bgText: "IMPLANT",
     heading: "A contraceptive that fits your terms & conditions",
     paragraph:
@@ -76,8 +76,8 @@ const SLIDES = [
     floats: [Shield, Droplet, Sparkle],
   },
   {
-    bg: "#d8edec",
-    accent: "#055b5c",
+    bg: "#faf8f5",
+    accent: "#085b5c",
     bgText: "RELIEF",
     heading: "Heavy, painful periods? Now you have the upper hand",
     paragraph:
@@ -90,8 +90,8 @@ const SLIDES = [
     floats: [Droplet, Heart, Leaf],
   },
   {
-    bg: "#e5ede0",
-    accent: "#4f6b47",
+    bg: "#ede6d9",
+    accent: "#4aa3ac",
     bgText: "CHOICE",
     heading: "The control you deserve — for periods or contraception",
     paragraph:
@@ -254,24 +254,6 @@ export default function Hero() {
             </motion.h1>
           </AnimatePresence>
 
-          <div className="hidden shrink-0 items-center gap-3 sm:flex">
-            <div className="flex -space-x-2">
-              {[
-                "linear-gradient(135deg,#9b89c4,#604c91)",
-                "linear-gradient(135deg,#6ec6ca,#08979d)",
-                "linear-gradient(135deg,#d7ceeb,#9b89c4)",
-                "linear-gradient(135deg,#b9d8b1,#6b8c63)",
-              ].map((bg, i) => (
-                <span key={i} className="h-9 w-9 rounded-full border-2 border-white" style={{ background: bg }} />
-              ))}
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-white/70 text-sm text-dark">
-                +
-              </span>
-            </div>
-            <span className="max-w-[9rem] text-xs font-medium text-dark/70">
-              Trusted by 5,000+ women
-            </span>
-          </div>
         </header>
 
         {/* Middle: left paragraph card + right CTA/label (desktop) */}

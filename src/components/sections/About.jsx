@@ -3,101 +3,114 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-const container = {
+// Staggered animation for the About section content
+const containerVariants = {
   hidden: {},
-  show: { transition: { delayChildren: 0.1, staggerChildren: 0.12 } },
-};
-const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 90, damping: 18 } },
+  show: { transition: { delayChildren: 0.1, staggerChildren: 0.15 } },
 };
 
-export default function About() {
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 70, damping: 20 } },
+};
+
+export default function ControlWithinHero() {
   const ref = useRef(null);
+  
+  // Track scroll progress within this specific section
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.55]);
+
+  // Parallax effects for the Hero image: scales down and fades out slightly as you scroll down
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
 
   return (
-    <section id="about" ref={ref} className="relative">
-      {/* FOLD 1 — sticky hero */}
-      <div className="sticky top-0 h-svh overflow-hidden">
+    <section ref={ref} className="relative w-full bg-[#111111]">
+      
+      {/* =========================================
+          FOLD 1 — STICKY HERO
+      ========================================= */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden">
+        {/* Parallax Background */}
         <motion.div style={{ scale, opacity }} className="absolute inset-0">
-          <img src="/wecare.jpg" alt="" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-dark/45" />
+          <img
+            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop"
+            alt="Woman looking peaceful and confident"
+            className="h-full w-full object-cover object-top"
+          />
+          {/* Subtle gradient overlay to ensure text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-black/70" />
         </motion.div>
 
-        <div className="relative z-10 flex h-full flex-col justify-between px-[5%] pb-8 pt-28">
-          <div className="flex items-start justify-between gap-4">
-            <p className="max-w-xs text-sm font-medium uppercase tracking-[0.18em] text-white/85">
-              Your body. Your timeline.
-            </p>
-            <a
-              href="#consult"
-              className="shrink-0 rounded-full bg-white/15 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/25"
-            >
-              Find a doctor
-            </a>
+        {/* Hero Content Overlay */}
+        <div className="relative z-10 flex h-full flex-col justify-between px-6 pb-12 pt-10 md:px-12 md:pt-12">
+          
+          {/* Top Header Area */}
+          <div className="flex items-start justify-between">
+            <span className="text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-[#F9F6F0]">
+              Control Within
+            </span>
           </div>
 
-          <h2 className="font-clash text-[15vw] font-bold uppercase leading-[0.85] tracking-tight text-white">
-            Own{" "}
-            <span className="font-author text-[11vw] font-medium italic text-accent-light-2">
-              your
-            </span>{" "}
-            control.
-          </h2>
+          {/* Bottom Area: Massive Pull Quote */}
+          <div className="flex flex-col w-full max-w-7xl">
+            <h2 className="text-[10vw] font-bold uppercase leading-[0.9] tracking-tighter text-[#F9F6F0] mb-4">
+              Your Body. <br />
+              <span className="font-serif lowercase italic font-light text-white/80 tracking-normal pr-4">your</span>Timeline. <br />
+              Your Control.
+            </h2>
+          </div>
+
         </div>
       </div>
 
-      {/* FOLD 2 — about reveal rising over the hero */}
+      {/* =========================================
+          FOLD 2 — ABOUT REVEAL (Overlaps Hero)
+      ========================================= */}
       <motion.div
-        variants={container}
+        variants={containerVariants}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        className="relative z-10 rounded-t-[3rem] bg-accent-light-2/60 px-[5%] py-20 md:py-28"
+        className="relative z-10 w-full rounded-t-[2.5rem] md:rounded-t-[4rem] bg-[#F9F6F0] px-6 py-24 md:py-32 shadow-[0_-20px_50px_rgba(0,0,0,0.3)]"
       >
-        <div className="mx-auto max-w-4xl text-center">
+        <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+          
+          <motion.div variants={itemVariants} className="mb-6">
+            <span className="rounded-full border border-[#2B3A36]/20 px-5 py-2 text-xs font-bold uppercase tracking-[0.15em] text-[#2B3A36]">
+              Why We're Here
+            </span>
+          </motion.div>
+
           <motion.h3
-            variants={item}
-            className="font-clash text-3xl font-bold uppercase leading-tight tracking-tight text-dark sm:text-4xl md:text-5xl"
+            variants={itemVariants}
+            className="text-3xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-5xl md:text-6xl mb-10"
           >
-            Control Within was built{" "}
-            <span className="font-author lowercase italic text-accent">for</span> women
-            who want <span className="text-accent">peace of mind.</span>
+            Women don't lack options. <br/> 
+            <span className="font-serif italic font-medium text-[#4A5D58]">They lack peace of mind.</span>
           </motion.h3>
 
-          <motion.p
-            variants={item}
-            className="mt-6 font-medium text-muted"
-          >
-            Long-term. Reversible. Completely private.
-          </motion.p>
-
-          <motion.p
-            variants={item}
-            className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-dark/70"
-          >
-            Most contraception puts the effort on you — daily pills, pharmacy runs,
-            hoping your partner cooperates. Control Within is about long-term,
-            reversible, doctor-placed methods that work quietly in the background.
-            No daily reminders. No dependence. No permanent decisions.
-          </motion.p>
-
-          <motion.div variants={item} className="mt-8">
-            <a
-              href="#consult"
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-accent-hover"
-            >
-              Chat with a doctor <span aria-hidden="true">→</span>
-            </a>
+          <motion.div variants={itemVariants} className="flex flex-col gap-6 text-lg md:text-xl leading-relaxed text-[#444444] max-w-3xl">
+            <p>
+              Most contraception puts the effort on you. Remember the pill. Buy condoms. Hope your partner cooperates. Additionally, for many women, every month comes with days lost to heavy bleeding, debilitating cramps, and fatigue that gets dismissed as normal. 
+            </p>
+            <p>
+              Control Within exists to solve these problems. To bring awareness about two long-term, reversible, doctor-placed contraceptives that work quietly in the background. No daily reminders, no dependence on anyone else, no permanent decisions.
+            </p>
           </motion.div>
+
+          <motion.div variants={itemVariants} className="mt-14">
+            <button className="rounded-full bg-[#2B3A36] px-12 py-4 text-sm font-bold uppercase tracking-[0.15em] text-white shadow-xl transition-all hover:bg-[#1A2421] hover:scale-105">
+              Know More
+            </button>
+          </motion.div>
+          
         </div>
       </motion.div>
+      
     </section>
   );
 }

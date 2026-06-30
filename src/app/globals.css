@@ -1,26 +1,60 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
+/* @import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=clash-grotesk@400,500,600&f[]=author@400,500,600&display=swap"); */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-bg: #faf8f5;
+  --color-cream: #ede6d9;
+  --color-surface: #ffffff;
+  --color-dark: #3b3630;
+  --color-accent: #604c91;
+  --color-accent-light-1: #9b89c4;
+  --color-accent-light-2: #d7ceeb;
+  --color-accent-hover: #4a3a70;
+  --color-teal: #6ec6ca;
+  --color-teal-deep: #08979d;
+  --color-teal-hover: #055b5c;
+  --color-green: #6b8c63;
+  --color-text: #3b3630;
+  --color-muted: #6f675c;
+
+  --font-satoshi: "Satoshi", sans-serif;
+  --font-clash: "Clash Grotesk", sans-serif;
+  --font-author: "Author", serif;
+
+  --shadow-soft: 0 4px 24px rgba(59, 54, 48, 0.07);
+  --shadow-hover: 0 16px 48px rgba(59, 54, 48, 0.13);
+
+  --animate-marquee: marquee 30s linear infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-satoshi);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
+  section[id],
+  div[id] { scroll-margin-top: 96px; }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .preserve-3d { transform-style: preserve-3d; }
+  .backface-hidden {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .rotate-y-180 { transform: rotateY(180deg); }
 }

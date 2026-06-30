@@ -47,13 +47,6 @@ export default function ControlWithinHero() {
 
         {/* Hero Content Overlay */}
         <div className="relative z-10 flex h-full flex-col justify-between px-6 pb-12 pt-10 md:px-12 md:pt-12">
-          
-          {/* Top Header Area */}
-          <div className="flex items-start justify-between">
-            <span className="text-sm md:text-base font-semibold uppercase tracking-[0.2em] text-[#F9F6F0]">
-              Control Within
-            </span>
-          </div>
 
           {/* Bottom Area: Massive Pull Quote */}
           <div className="flex flex-col w-full max-w-7xl">

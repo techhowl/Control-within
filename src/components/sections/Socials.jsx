@@ -47,12 +47,12 @@ export default function Socials() {
 
       <div className="relative mx-auto max-w-3xl px-[5%] text-center">
         <h2 className="font-author text-3xl font-medium leading-tight text-teal-deep md:text-5xl">
-          Real conversations about your body, your cycle, your choices.
+          Stay Within Reach Of Our Socials
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted">
-          Follow <strong className="text-dark">@controlwithin</strong> for honest,
-          judgement-free talk about contraception, menstrual health, and what
-          control actually looks like.
+          Follow us <strong className="text-dark">@[handle]</strong> for real
+          conversations about contraception, menstrual health, and what control
+          actually looks like.
         </p>
 
         <a

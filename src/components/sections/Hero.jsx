@@ -178,7 +178,7 @@ export default function Hero() {
       transition={{ duration: 0.8, ease: EASE }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      className="relative min-h-[100svh] overflow-hidden"
+      className="relative h-svh overflow-hidden"
     >
       {/* ---- CENTER LAYER: bg word + anchor image + floating orbs (behind UI) ---- */}
       <div
@@ -237,7 +237,7 @@ export default function Hero() {
       </div>
 
       {/* ---- FOREGROUND UI ---- */}
-      <div className="relative z-10 flex min-h-[100svh] flex-col px-[5%] pb-7 pt-24 md:pt-28">
+      <div className="relative z-10 flex h-full flex-col px-[5%] pb-7 pt-28">
         {/* Top: heading + trust avatars */}
         <header className="flex items-start justify-between gap-6">
           <AnimatePresence mode="wait">

@@ -31,7 +31,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`transition-all duration-300 ${
         scrolled
           ? "bg-bg/85 shadow-soft backdrop-blur-md"
           : "bg-transparent"
@@ -100,7 +100,7 @@ export default function Navbar() {
 
       {/* Mobile menu panel */}
       <div
-        className={`fixed inset-x-0 top-18 z-40 origin-top px-[5%] transition-all duration-300 md:hidden ${
+        className={`fixed inset-x-0 top-26 z-40 origin-top px-[5%] transition-all duration-300 md:hidden ${
           menuOpen
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-2 opacity-0"

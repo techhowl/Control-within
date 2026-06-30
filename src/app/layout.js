@@ -28,8 +28,12 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <Ticker items={TOP_TICKER} variant="top" />
-        <Navbar />
+        {/* Fixed chrome overlays page content (takes no vertical space) so the
+            Hero can be a true full-screen section, matching the design. */}
+        <div className="fixed inset-x-0 top-0 z-50">
+          <Ticker items={TOP_TICKER} variant="top" />
+          <Navbar />
+        </div>
         {children}
         <Footer />
         <BackToTop />

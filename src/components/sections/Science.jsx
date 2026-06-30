@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Reveal from "@/components/ui/Reveal";
 
+/* Header + step icons (minimalist line style). */
 const Shield = (p) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...p}>
     <path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
@@ -15,6 +16,24 @@ const Droplet = (p) => (
     <path d="M12 3s6 6.5 6 11a6 6 0 1 1-12 0c0-4.5 6-11 6-11z" />
   </svg>
 );
+const Ban = (p) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...p}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M6 6l12 12" />
+  </svg>
+);
+const Layers = (p) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...p}>
+    <path d="M12 4l8 4-8 4-8-4 8-4z" />
+    <path d="M4 12l8 4 8-4M4 16l8 4 8-4" />
+  </svg>
+);
+const Refresh = (p) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" {...p}>
+    <path d="M4 12a8 8 0 0 1 13.5-5.8L20 8M20 4v4h-4" />
+    <path d="M20 12a8 8 0 0 1-13.5 5.8L4 16M4 20v-4h4" />
+  </svg>
+);
 
 const PANELS = [
   {
@@ -23,23 +42,12 @@ const PANELS = [
     title: "How the Implant works",
     tagline: "Set it. Forget it.",
     lead: "The implant releases a low, steady dose of progestin.",
-    bg: "bg-accent",
+    bg: "#ece3f7",
+    accent: "#614c91",
     steps: [
-      {
-        n: 1,
-        text: "Ovulation stops and cervical mucus thickens — sperm cannot reach the egg.",
-        img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=600&auto=format&fit=crop",
-      },
-      {
-        n: 2,
-        text: "The uterine lining thins — a fertilised egg cannot attach.",
-        img: "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=600&auto=format&fit=crop",
-      },
-      {
-        n: 3,
-        text: "Once removed, fertility returns quickly.",
-        img: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=600&auto=format&fit=crop",
-      },
+      { n: 1, Icon: Ban, text: "Ovulation stops and cervical mucus thickens — sperm cannot reach the egg." },
+      { n: 2, Icon: Layers, text: "The uterine lining thins — a fertilised egg cannot attach." },
+      { n: 3, Icon: Refresh, text: "Once removed, fertility returns quickly." },
     ],
   },
   {
@@ -48,23 +56,12 @@ const PANELS = [
     title: "How the hIUS works",
     tagline: "Lighter. Calmer.",
     lead: "The hIUS releases a small amount of hormone locally inside the uterus.",
-    bg: "bg-teal-deep",
+    bg: "#dcefec",
+    accent: "#085b5c",
     steps: [
-      {
-        n: 1,
-        text: "The uterine lining thins, significantly reducing bleeding and pain.",
-        img: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=600&auto=format&fit=crop",
-      },
-      {
-        n: 2,
-        text: "Sperm is prevented from reaching the egg.",
-        img: "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=600&auto=format&fit=crop",
-      },
-      {
-        n: 3,
-        text: "Fully reversible — fertility returns within weeks of removal.",
-        img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=600&auto=format&fit=crop",
-      },
+      { n: 1, Icon: Layers, text: "The uterine lining thins, significantly reducing bleeding and pain." },
+      { n: 2, Icon: Ban, text: "Sperm is prevented from reaching the egg." },
+      { n: 3, Icon: Refresh, text: "Fully reversible — fertility returns within weeks of removal." },
     ],
   },
 ];
@@ -79,6 +76,26 @@ const stepV = {
   show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 120, damping: 18 } },
 };
 
+function StepTile({ step, accent }) {
+  return (
+    <div className="flex flex-col">
+      <span
+        className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold text-white"
+        style={{ backgroundColor: accent }}
+      >
+        {step.n}
+      </span>
+      <p className="mt-3 text-sm leading-relaxed text-text">{step.text}</p>
+      <div
+        className="mt-4 flex h-24 items-center justify-center rounded-2xl"
+        style={{ background: `linear-gradient(135deg, ${accent}24, ${accent}0d)` }}
+      >
+        <step.Icon className="h-8 w-8" style={{ color: accent }} />
+      </div>
+    </div>
+  );
+}
+
 function Process({ panel }) {
   return (
     <motion.div
@@ -86,24 +103,22 @@ function Process({ panel }) {
       initial="hidden"
       animate="show"
       exit={{ opacity: 0, transition: { duration: 0.2 } }}
-      className="absolute inset-0 flex flex-col justify-center p-10 text-white"
+      className="absolute inset-0 flex flex-col justify-center p-10"
     >
       <motion.div variants={stepV}>
-        <span className="font-author text-xl italic text-white/80">{panel.tagline}</span>
-        <h3 className="mt-1 font-clash text-3xl font-semibold">{panel.title}</h3>
-        <p className="mt-2 max-w-md text-sm text-white/75">{panel.lead}</p>
+        <span className="font-author text-xl italic" style={{ color: panel.accent }}>
+          {panel.tagline}
+        </span>
+        <h3 className="mt-1 font-clash text-3xl font-semibold" style={{ color: panel.accent }}>
+          {panel.title}
+        </h3>
+        <p className="mt-2 max-w-md text-sm text-muted">{panel.lead}</p>
       </motion.div>
 
       <div className="mt-8 grid grid-cols-3 gap-5">
         {panel.steps.map((s) => (
-          <motion.div key={s.n} variants={stepV} className="flex flex-col">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-sm font-semibold">
-              {s.n}
-            </span>
-            <p className="mt-3 text-sm leading-relaxed text-white/90">{s.text}</p>
-            <div className="mt-4 h-24 overflow-hidden rounded-2xl">
-              <img src={s.img} alt="" className="h-full w-full object-cover" draggable={false} />
-            </div>
+          <motion.div key={s.n} variants={stepV}>
+            <StepTile step={s} accent={panel.accent} />
           </motion.div>
         ))}
       </div>
@@ -121,29 +136,28 @@ function DesktopPanel({ panel, hovered, setHovered }) {
       onMouseEnter={() => setHovered(panel.side)}
       onMouseLeave={() => setHovered(null)}
       transition={PANEL_SPRING}
-      style={{ flexGrow: mode === "expanded" ? 3 : 1 }}
-      className={`relative h-full overflow-hidden ${panel.bg}`}
+      style={{ flexGrow: mode === "expanded" ? 3 : 1, backgroundColor: panel.bg }}
+      className="relative h-full overflow-hidden"
     >
-      {/* Collapsed / shrunk header */}
       <motion.div
         animate={{ opacity: mode === "expanded" ? 0 : 1 }}
         transition={{ duration: 0.3 }}
-        className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-4 p-6 text-center text-white"
+        className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-4 p-6 text-center"
       >
-        <panel.Icon className="h-9 w-9" />
+        <panel.Icon className="h-9 w-9" style={{ color: panel.accent }} />
         <h3
           className={`font-clash text-2xl font-semibold ${
             mode === "shrunk" ? "[writing-mode:vertical-rl]" : ""
           }`}
+          style={{ color: panel.accent }}
         >
           {panel.title}
         </h3>
         {mode === "default" && (
-          <span className="font-author text-lg italic text-white/80">{panel.tagline}</span>
+          <span className="font-author text-lg italic text-muted">{panel.tagline}</span>
         )}
       </motion.div>
 
-      {/* Expanded process */}
       <AnimatePresence>{mode === "expanded" && <Process panel={panel} />}</AnimatePresence>
     </motion.div>
   );
@@ -151,22 +165,16 @@ function DesktopPanel({ panel, hovered, setHovered }) {
 
 function MobileCard({ panel }) {
   return (
-    <div className={`rounded-3xl p-7 text-white ${panel.bg}`}>
-      <panel.Icon className="h-8 w-8" />
-      <span className="mt-4 block font-author text-lg italic text-white/80">{panel.tagline}</span>
-      <h3 className="mt-1 font-clash text-2xl font-semibold">{panel.title}</h3>
-      <p className="mt-2 text-sm text-white/75">{panel.lead}</p>
+    <div className="rounded-3xl p-7" style={{ backgroundColor: panel.bg }}>
+      <panel.Icon className="h-8 w-8" style={{ color: panel.accent }} />
+      <span className="mt-4 block font-author text-lg italic text-muted">{panel.tagline}</span>
+      <h3 className="mt-1 font-clash text-2xl font-semibold" style={{ color: panel.accent }}>
+        {panel.title}
+      </h3>
+      <p className="mt-2 text-sm text-muted">{panel.lead}</p>
       <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-3">
         {panel.steps.map((s) => (
-          <div key={s.n} className="flex flex-col">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-sm font-semibold">
-              {s.n}
-            </span>
-            <p className="mt-3 text-sm leading-relaxed text-white/90">{s.text}</p>
-            <div className="mt-4 h-28 overflow-hidden rounded-2xl">
-              <img src={s.img} alt="" className="h-full w-full object-cover" draggable={false} />
-            </div>
-          </div>
+          <StepTile key={s.n} step={s} accent={panel.accent} />
         ))}
       </div>
     </div>

@@ -3,49 +3,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
-/* ----------------------------------------------------------------------------
- * Icons used as floating "ingredient" orbs around the central anchor.
- * -------------------------------------------------------------------------- */
-const Shield = (p) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" {...p}>
-    <path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
-    <path d="M9 12l2 2 4-4" />
-  </svg>
-);
-const Heart = (p) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" {...p}>
-    <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z" />
-  </svg>
-);
-const Infinity = (p) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" {...p}>
-    <path d="M7 9a3 3 0 1 0 0 6c2 0 3-2 5-3s3-3 5-3a3 3 0 1 1 0 6c-2 0-3-2-5-3S9 9 7 9z" />
-  </svg>
-);
-const Droplet = (p) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" {...p}>
-    <path d="M12 3s6 6.5 6 11a6 6 0 1 1-12 0c0-4.5 6-11 6-11z" />
-  </svg>
-);
-const Sparkle = (p) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" {...p}>
-    <path d="M12 3v6M12 15v6M3 12h6M15 12h6" />
-  </svg>
-);
-const Leaf = (p) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" {...p}>
-    <path d="M5 19c0-8 6-14 14-14 0 8-6 14-14 14z" />
-    <path d="M5 19c4-4 7-6 10-7" />
-  </svg>
-);
-
-/* Three fixed anchor spots around the central image; icon/colour vary by slide. */
-const FLOAT_SPOTS = [
-  { top: "24%", left: "31%", from: { x: -70, y: -50 }, dur: 4.2 },
-  { top: "33%", left: "64%", from: { x: 80, y: -36 }, dur: 5.1 },
-  { top: "62%", left: "57%", from: { x: 64, y: 70 }, dur: 4.6 },
-];
-
 const SLIDES = [
   {
     bg: "#ede6d9",
@@ -58,7 +15,6 @@ const SLIDES = [
     label: "Control Within",
     sublabel: "Long-term & reversible",
     cta: { label: "Find A Doctor Near You", href: "#consult" },
-    floats: [Shield, Heart, Infinity],
   },
   {
     bg: "#d7cfeb",
@@ -79,7 +35,6 @@ const SLIDES = [
       "No recurring costs",
     ],
     cta: { label: "Watch A Video On Contraceptive Implants", href: "#videos" },
-    floats: [Shield, Droplet, Sparkle],
   },
   {
     bg: "#faf8f5",
@@ -101,7 +56,6 @@ const SLIDES = [
       "Fertility returns within weeks, after removal",
     ],
     cta: { label: "Watch A Video On Hormonal IUS", href: "#videos" },
-    floats: [Droplet, Heart, Leaf],
   },
   {
     bg: "#ede6d9",
@@ -116,7 +70,6 @@ const SLIDES = [
     label: "Implant or hIUS",
     sublabel: "Your choice, your control",
     cta: { label: "Know More", href: "#methods" },
-    floats: [Infinity, Sparkle, Leaf],
   },
 ];
 
@@ -255,7 +208,6 @@ export default function Hero() {
               {slide.heading}
             </motion.h1>
           </AnimatePresence>
-
         </header>
 
         {/* Middle: left paragraph card + right CTA/label (desktop) */}
@@ -283,13 +235,17 @@ export default function Hero() {
                   ))}
                 </ul>
               )}
-              <a
-                href="#methods"
-                className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide"
-                style={{ color: slide.accent }}
-              >
-                Learn more <span aria-hidden="true">→</span>
-              </a>
+              
+              {/* Only show Learn More link on the 2nd and 3rd slides (index 1 and 2) */}
+              {(active === 1 || active === 2) && (
+                <a
+                  href="#methods"
+                  className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide"
+                  style={{ color: slide.accent }}
+                >
+                  Learn more <span aria-hidden="true">→</span>
+                </a>
+              )}
             </motion.div>
           </AnimatePresence>
 

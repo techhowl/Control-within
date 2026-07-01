@@ -87,12 +87,12 @@ export default function IsThisForYou() {
             Both methods are reversible, doctor-placed, and require no daily
             action. A gynaecologist can help you decide which fits your life.
           </p>
-          <a
+          {/* <a
             href="#consult"
             className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-accent-hover"
           >
             Chat Now <span aria-hidden="true">→</span>
-          </a>
+          </a> */}
         </Reveal>
       </div>
     </section>

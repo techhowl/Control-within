@@ -90,12 +90,12 @@ export default function ControlWithinHero() {
           </motion.p>
 
           <motion.div variants={itemVariants} className="mt-10">
-            <a
+            {/* <a
               href="#methods"
               className="inline-block rounded-full bg-[#2B3A36] px-12 py-4 text-sm font-bold uppercase tracking-[0.15em] text-white shadow-xl transition-all hover:bg-[#1A2421] hover:scale-105"
             >
               Know More
-            </a>
+            </a> */}
           </motion.div>
           
         </div>

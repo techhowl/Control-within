@@ -66,17 +66,6 @@ export default function Socials() {
             <Arrow dir="right" />
           </span>
         </a>
-
-        <div className="mt-8 flex items-center justify-center gap-3">
-          <div className="flex -space-x-2">
-            {AVATARS.map((bg, i) => (
-              <span key={i} className="h-8 w-8 rounded-full border-2 border-bg" style={{ background: bg }} />
-            ))}
-          </div>
-          <span className="text-sm font-medium text-muted">
-            <strong className="text-dark">5,000+</strong> women in our community.
-          </span>
-        </div>
       </div>
 
       {/* Cover-flow carousel */}

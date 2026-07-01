@@ -116,7 +116,7 @@ export default function FeatureProduct() {
               <div className="absolute -inset-6 rounded-[6rem] bg-accent-light-2/30 blur-2xl" aria-hidden="true" />
               <div className="relative mx-auto h-[380px] w-[210px] overflow-hidden rounded-[7rem] shadow-hover sm:h-[460px] sm:w-[250px]">
                 <img
-                  src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=900&auto=format&fit=crop"
+                  src="/2ndfold.png"
                   alt="Living confidently with long-term contraception"
                   className="h-full w-full object-cover"
                   draggable={false}

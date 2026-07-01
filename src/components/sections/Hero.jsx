@@ -219,19 +219,6 @@ export default function Hero() {
         {/* Soft platform under the anchor */}
         <div className="absolute h-40 w-72 translate-y-28 rounded-[50%] bg-white/30 blur-2xl sm:w-96" />
 
-        {/* Floating orbs */}
-        <AnimatePresence>
-          {slide.floats.map((Icon, i) => (
-            <FloatingOrb
-              key={`orb-${active}-${i}`}
-              Icon={Icon}
-              spot={FLOAT_SPOTS[i]}
-              accent={slide.accent}
-              reduce={reduce}
-            />
-          ))}
-        </AnimatePresence>
-
         {/* Central anchor image — flips in 3D on change */}
         <AnimatePresence mode="popLayout">
           <motion.div
@@ -263,7 +250,7 @@ export default function Hero() {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="max-w-xl font-author text-3xl font-medium leading-[1.05] sm:text-5xl lg:text-6xl"
+              className="max-w-xl font-author text-3xl font-medium leading-[1.05] sm:text-4xl lg:text-5xl"
               style={{ color: slide.accent }}
             >
               {slide.heading}
@@ -281,9 +268,9 @@ export default function Hero() {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="hidden max-w-xs rounded-3xl bg-white/45 p-6 backdrop-blur-sm md:block"
+              className="hidden max-w-sm rounded-3xl bg-white/45 p-8 backdrop-blur-sm md:block"
             >
-              <p className="text-sm leading-relaxed text-dark/75">{slide.paragraph}</p>
+              <p className="text-base leading-relaxed text-dark/75">{slide.paragraph}</p>
               {slide.tags && (
                 <ul className="mt-4 flex flex-col gap-1.5">
                   {slide.tags.map((t) => (

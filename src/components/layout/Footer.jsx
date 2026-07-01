@@ -46,11 +46,7 @@ export default function Footer() {
       <div className="mx-auto max-w-310 px-[5%] py-16">
         <div className="flex flex-col gap-10 border-b border-white/10 pb-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-md">
-            <div className="flex items-center gap-1.5 font-clash text-xl font-semibold">
-              Control
-              <span className="mb-0.5 inline-block h-1.5 w-1.5 rounded-full bg-accent-light-1" />
-              Within
-            </div>
+            <img src="/cw-logo.png" alt="Control Within" className="h-9 w-auto" />
             <p className="mt-4 text-sm leading-relaxed text-bg/65">
               Long-term, reversible, doctor-placed contraception — working
               quietly in the background.

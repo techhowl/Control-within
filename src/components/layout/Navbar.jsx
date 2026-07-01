@@ -43,12 +43,10 @@ export default function Navbar() {
         <a
           href="#hero"
           onClick={closeMenu}
-          className="flex items-center gap-1.5 font-clash text-lg font-semibold tracking-tight text-dark"
+          className="flex items-center"
           aria-label="Control Within home"
         >
-          Control
-          <span className="mb-0.5 inline-block h-1.5 w-1.5 rounded-full bg-accent" />
-          Within
+          <img src="/cw-logo.png" alt="Control Within" className="h-9 w-auto" />
         </a>
 
         {/* Desktop links */}

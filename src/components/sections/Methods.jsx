@@ -170,8 +170,7 @@ export default function Methods() {
             Make The Choice That Fits Your Life
           </h2>
           <p className="mt-4 text-base text-muted">
-            Two long-term, reversible, doctor-placed options. Hover a card to see
-            how each one works.
+            Two long-term, reversible, doctor-placed options.
           </p>
         </Reveal>
 

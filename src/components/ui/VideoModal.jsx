@@ -43,9 +43,7 @@ export default function VideoModal({ open, title, lang = "en", onClose }) {
             </svg>
           </span>
           <p className="px-6 font-clash text-lg font-semibold text-dark">{title}</p>
-          <p className="text-sm text-muted">
-            {lang === "hi" ? "हिंदी" : "English"} · Video coming soon.
-          </p>
+          <p className="text-sm text-muted">{lang === "hi" ? "हिंदी" : "English"}</p>
         </div>
       </div>
     </div>

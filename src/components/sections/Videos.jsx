@@ -9,12 +9,14 @@ const VIDEOS = [
     theme: "purple",
     title: "What is a Contraceptive Implant",
     available: true,
+    img: "/video_cover_implant.jpg",
     // sources: { en: "<embed url>", hi: "<embed url>" }  // drop real URLs in later
   },
   {
     theme: "teal",
     title: "What is an hIUS",
     available: false,
+    img: "/video_cover_IUS.jpg",
   },
 ];
 
@@ -71,7 +73,14 @@ export default function Videos() {
                   <div
                     className={`relative flex aspect-video w-full flex-col justify-end overflow-hidden rounded-[1.75rem] bg-linear-to-br p-7 text-left ${grad}`}
                   >
-                    <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/15 px-5 py-2 text-sm font-semibold uppercase tracking-[0.12em] text-white">
+                    <img
+                      src={video.img}
+                      alt=""
+                      className="absolute inset-0 h-full w-full object-cover"
+                      draggable={false}
+                    />
+                    <div className="absolute inset-0 bg-dark/45" />
+                    <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/15 px-5 py-2 text-sm font-semibold uppercase tracking-[0.12em] text-white backdrop-blur-sm">
                       Coming soon
                     </span>
                     <h3 className="relative font-clash text-xl font-semibold text-white/90">
@@ -90,6 +99,13 @@ export default function Videos() {
                   aria-label={`Play: ${video.title}`}
                   className={`group relative flex aspect-video w-full flex-col justify-end overflow-hidden rounded-[1.75rem] bg-linear-to-br p-7 text-left ${grad}`}
                 >
+                  <img
+                    src={video.img}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover"
+                    draggable={false}
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-dark/70 via-transparent to-transparent" />
                   <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-dark shadow-hover transition-transform group-hover:scale-110">
                     <Play />
                   </span>

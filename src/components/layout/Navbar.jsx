@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 const LINKS = [
   { href: "#methods", label: "Implants" },
   { href: "#methods", label: "hIUS" },
-  { href: "#about", label: "About" },
 ];
 
 export default function Navbar() {

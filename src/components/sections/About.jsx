@@ -48,12 +48,13 @@ export default function ControlWithinHero() {
         {/* Hero Content Overlay */}
         <div className="relative z-10 flex h-full flex-col justify-between px-6 pb-12 pt-10 md:px-12 md:pt-12">
 
-          {/* Bottom Area: Massive Pull Quote */}
-          <div className="flex flex-col w-full max-w-7xl">
-            <h2 className="text-[10vw] font-bold uppercase leading-[0.9] tracking-tighter text-[#F9F6F0] mb-4">
-              Your Body. <br />
-              <span className="font-serif lowercase italic font-light text-white/80 tracking-normal pr-4">your</span>Timeline. <br />
-              Your Control.
+          {/* Bottom Area: Tag + headline on the image */}
+          <div className="flex w-full max-w-4xl flex-col">
+            <span className="mb-4 text-sm md:text-base font-bold uppercase tracking-[0.2em] text-[#F9F6F0]">
+              Why We're Here
+            </span>
+            <h2 className="font-author text-4xl font-bold leading-[1.15] text-[#F9F6F0] sm:text-5xl md:text-6xl">
+              Women Don't Lack Options. They Lack Peace Of Mind.
             </h2>
           </div>
 
@@ -72,20 +73,6 @@ export default function ControlWithinHero() {
       >
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           
-          <motion.div variants={itemVariants} className="mb-6">
-            <span className="rounded-full border border-[#2B3A36]/20 px-5 py-2 text-xs font-bold uppercase tracking-[0.15em] text-[#2B3A36]">
-              Why We're Here
-            </span>
-          </motion.div>
-
-          <motion.h3
-            variants={itemVariants}
-            className="text-3xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-5xl md:text-6xl mb-10"
-          >
-            Women don't lack options. <br/> 
-            <span className="font-serif italic font-medium text-[#4A5D58]">They lack peace of mind.</span>
-          </motion.h3>
-
           <motion.div variants={itemVariants} className="flex flex-col gap-6 text-lg md:text-xl leading-relaxed text-[#444444] max-w-3xl">
             <p>
               Most contraception puts the effort on you. Remember the pill. Buy condoms. Hope your partner cooperates. Additionally, for many women, every month comes with days lost to heavy bleeding, debilitating cramps, and fatigue that gets dismissed as normal. 
@@ -95,10 +82,20 @@ export default function ControlWithinHero() {
             </p>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="mt-14">
-            <button className="rounded-full bg-[#2B3A36] px-12 py-4 text-sm font-bold uppercase tracking-[0.15em] text-white shadow-xl transition-all hover:bg-[#1A2421] hover:scale-105">
+          <motion.p
+            variants={itemVariants}
+            className="mt-10 font-author text-2xl italic text-[#4A5D58]"
+          >
+            Your body. Your timeline. Your control.
+          </motion.p>
+
+          <motion.div variants={itemVariants} className="mt-10">
+            <a
+              href="#methods"
+              className="inline-block rounded-full bg-[#2B3A36] px-12 py-4 text-sm font-bold uppercase tracking-[0.15em] text-white shadow-xl transition-all hover:bg-[#1A2421] hover:scale-105"
+            >
               Know More
-            </button>
+            </a>
           </motion.div>
           
         </div>

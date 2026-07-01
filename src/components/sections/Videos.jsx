@@ -8,29 +8,64 @@ const VIDEOS = [
   {
     theme: "purple",
     title: "What is a Contraceptive Implant",
-    desc: "A short walkthrough of how the implant works and what to expect.",
+    available: true,
+    // sources: { en: "<embed url>", hi: "<embed url>" }  // drop real URLs in later
   },
   {
     theme: "teal",
     title: "What is an hIUS",
-    desc: "Understand how the hormonal IUS protects and eases your periods.",
+    available: false,
   },
 ];
 
+const LANGS = [
+  ["en", "English"],
+  ["hi", "हिंदी"],
+];
+
+const Play = () => (
+  <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor">
+    <path d="M8 5v14l11-7z" />
+  </svg>
+);
+const Clock = () => (
+  <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.6">
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 7v5l3 2" />
+  </svg>
+);
+
 export default function Videos() {
+  const [lang, setLang] = useState("en");
   const [active, setActive] = useState(null);
 
   return (
     <section id="videos" className="bg-dark py-20 md:py-28">
       <div className="mx-auto max-w-310 px-[5%]">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-teal">
-            Watch &amp; Learn
-          </span>
-          <h2 className="mt-3 font-clash text-3xl font-semibold text-white md:text-5xl">
-            Different Processes. Different Purposes. One Goal: Control.
-          </h2>
-        </Reveal>
+        {/* Header: headline + language toggle (top-right) */}
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+          <Reveal className="max-w-2xl">
+            <h2 className="font-clash text-3xl font-semibold text-white md:text-5xl">
+              Different Processes. Different Purposes. One Goal: Control.
+            </h2>
+          </Reveal>
+
+          <div className="inline-flex shrink-0 rounded-full bg-white/10 p-1" role="group" aria-label="Video language">
+            {LANGS.map(([code, label]) => (
+              <button
+                key={code}
+                type="button"
+                onClick={() => setLang(code)}
+                aria-pressed={lang === code}
+                className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                  lang === code ? "bg-white text-dark" : "text-white/70 hover:text-white"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
 
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
           {VIDEOS.map((video, i) => {
@@ -38,25 +73,45 @@ export default function Videos() {
               video.theme === "purple"
                 ? "from-accent/40 to-accent/10"
                 : "from-teal-deep/40 to-teal-deep/10";
+
+            if (!video.available) {
+              return (
+                <Reveal key={video.title} delay={(i + 1) * 80}>
+                  <div
+                    className={`relative flex aspect-video w-full flex-col justify-end overflow-hidden rounded-[1.75rem] bg-linear-to-br p-7 text-left ${grad}`}
+                  >
+                    <span className="absolute right-5 top-5 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white/90">
+                      Coming soon
+                    </span>
+                    <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white">
+                      <Clock />
+                    </span>
+                    <h3 className="relative font-clash text-xl font-semibold text-white/90">
+                      {video.title}
+                    </h3>
+                    <p className="relative mt-1.5 text-sm text-white/60">Video coming soon.</p>
+                  </div>
+                </Reveal>
+              );
+            }
+
             return (
               <Reveal key={video.title} delay={(i + 1) * 80}>
                 <button
                   type="button"
                   onClick={() => setActive(video.title)}
                   aria-label={`Play: ${video.title}`}
-                  className={`group relative flex aspect-video w-full flex-col justify-end overflow-hidden rounded-[1.75rem] bg-gradient-to-br p-7 text-left ${grad}`}
+                  className={`group relative flex aspect-video w-full flex-col justify-end overflow-hidden rounded-[1.75rem] bg-linear-to-br p-7 text-left ${grad}`}
                 >
                   <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-dark shadow-hover transition-transform group-hover:scale-110">
-                    <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
+                    <Play />
                   </span>
-                  <div className="relative">
-                    <h3 className="font-clash text-xl font-semibold text-white">
-                      {video.title}
-                    </h3>
-                    <p className="mt-1.5 text-sm text-white/80">{video.desc}</p>
-                  </div>
+                  <h3 className="relative font-clash text-xl font-semibold text-white">
+                    {video.title}
+                  </h3>
+                  <p className="relative mt-1.5 text-sm text-white/80">
+                    {lang === "hi" ? "हिंदी" : "English"}
+                  </p>
                 </button>
               </Reveal>
             );
@@ -64,7 +119,12 @@ export default function Videos() {
         </div>
       </div>
 
-      <VideoModal open={active !== null} title={active} onClose={() => setActive(null)} />
+      <VideoModal
+        open={active !== null}
+        title={active}
+        lang={lang}
+        onClose={() => setActive(null)}
+      />
     </section>
   );
 }

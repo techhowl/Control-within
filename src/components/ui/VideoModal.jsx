@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-export default function VideoModal({ open, title, onClose }) {
+export default function VideoModal({ open, title, lang = "en", onClose }) {
   useEffect(() => {
     if (!open) return;
     const onKey = (e) => e.key === "Escape" && onClose();
@@ -43,7 +43,9 @@ export default function VideoModal({ open, title, onClose }) {
             </svg>
           </span>
           <p className="px-6 font-clash text-lg font-semibold text-dark">{title}</p>
-          <p className="text-sm text-muted">Video coming soon.</p>
+          <p className="text-sm text-muted">
+            {lang === "hi" ? "हिंदी" : "English"} · Video coming soon.
+          </p>
         </div>
       </div>
     </div>

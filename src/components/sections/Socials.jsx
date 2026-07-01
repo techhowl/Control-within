@@ -7,8 +7,6 @@ const CARDS = [
   { label: "Myth vs fact: the implant", img: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=900&auto=format&fit=crop" },
   { label: "What to expect at placement", img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=900&auto=format&fit=crop" },
   { label: "Heavy periods? You’re not alone", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=900&auto=format&fit=crop" },
-  { label: "Your questions, answered", img: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=900&auto=format&fit=crop" },
-  { label: "Reversible, always", img: "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=900&auto=format&fit=crop" },
 ];
 
 const CARD_W = 280;
@@ -29,7 +27,7 @@ const Arrow = ({ dir }) => (
 );
 
 export default function Socials() {
-  const [active, setActive] = useState(2);
+  const [active, setActive] = useState(1);
   const n = CARDS.length;
   const go = (i) => setActive(Math.max(0, Math.min(n - 1, i)));
 
@@ -61,7 +59,7 @@ export default function Socials() {
           rel="noopener noreferrer"
           className="mt-7 inline-flex items-center gap-2 rounded-full bg-teal-deep py-2 pl-6 pr-2 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-teal-hover"
         >
-          Follow @controlwithin
+          Follow @[handle]
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20">
             <Arrow dir="right" />
           </span>
@@ -95,7 +93,7 @@ export default function Socials() {
               <img src={card.img} alt="" className="h-full w-full object-cover" draggable={false} />
               <div className="absolute inset-0 bg-linear-to-t from-dark/70 via-transparent to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-5 text-left">
-                <span className="text-xs font-medium text-white/70">@controlwithin</span>
+                <span className="text-xs font-medium text-white/70">@[handle]</span>
                 <p className="mt-1 font-clash text-lg font-semibold text-white">{card.label}</p>
               </div>
             </motion.button>

@@ -9,24 +9,29 @@ const PANELS = [
     side: "left",
     title: "Hormonal Implant",
     brand: "Control Within",
-    lead: "The implant releases a low, steady dose of progestin.",
+    lead: "", // Left blank since the previous lead is now Step 1
     bg: "#D7CFEB", // light brand lavender
     textColor: "#FFFFFF",
     steps: [
       {
         n: 1,
-        text: "Ovulation stops, cervical mucus thickens — sperm cannot reach the egg.",
-        img: "https://images.unsplash.com/photo-1615397323136-1e0e8549e31d?q=80&w=600&auto=format&fit=crop",
+        text: "The implant releases a low, steady dose of progestin.",
+        img: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=600&auto=format&fit=crop",
       },
       {
         n: 2,
-        text: "Thins the uterine lining — a fertilised egg cannot attach.",
-        img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=600&auto=format&fit=crop",
+        text: "Ovulation stops, cervical mucus thickens - sperm cannot reach the egg.",
+        img: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600&auto=format&fit=crop",
       },
       {
         n: 3,
+        text: "Thins uterine lining - fertilized egg cannot attach.",
+        img: "https://images.unsplash.com/photo-1557672172-298e090bd0f1?q=80&w=600&auto=format&fit=crop",
+      },
+      {
+        n: 4,
         text: "Once removed, fertility returns quickly.",
-        img: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=600&auto=format&fit=crop",
+        img: "https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?q=80&w=600&auto=format&fit=crop",
       },
     ],
   },
@@ -34,19 +39,24 @@ const PANELS = [
     side: "right",
     title: "Hormonal IUS",
     brand: "Control Within",
-    lead: "The hIUS releases a small amount of hormone locally inside the uterus.",
+    lead: "", // Left blank since the previous lead is now Step 1
     bg: "#4AA3AC", // light brand teal
     textColor: "#FFFFFF",
     steps: [
       {
         n: 1,
-        text: "Uterine lining thins, significantly reducing bleeding and pain.",
-        img: "https://images.unsplash.com/photo-1615397323136-1e0e8549e31d?q=80&w=600&auto=format&fit=crop",
+        text: "The hIUS releases a small amount of hormone locally inside the uterus.",
+        img: "https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=600&auto=format&fit=crop",
       },
       {
         n: 2,
+        text: "Uterine lining thins, significantly reducing bleeding and pain.",
+        img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600&auto=format&fit=crop",
+      },
+      {
+        n: 3,
         text: "Sperm is prevented from reaching the egg.",
-        img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=600&auto=format&fit=crop",
+        img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop",
       },
     ],
   },
@@ -73,19 +83,19 @@ const itemVariants = {
 function StepTile({ step }) {
   return (
     <div className="flex flex-col h-full bg-white rounded-xl overflow-hidden shadow-sm">
-      <div className="p-5 flex-grow">
+      <div className="p-4 md:p-5 flex-grow">
         <div className="flex items-center gap-3 mb-3">
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-black text-xs font-bold text-white">
             {step.n}
           </span>
         </div>
-        <p className="text-sm leading-relaxed text-gray-800 font-medium">{step.text}</p>
+        <p className="text-xs md:text-sm leading-relaxed text-gray-800 font-medium">{step.text}</p>
       </div>
       {/* 
         Using standard <img> for quick copy-paste capability. 
         Swap to Next.js <Image /> in production for optimization. 
       */}
-      <div className="relative w-full h-48 bg-gray-100 overflow-hidden">
+      <div className="relative w-full h-40 md:h-48 bg-gray-100 overflow-hidden shrink-0">
         <img
           src={step.img}
           alt={`Step ${step.n}`}
@@ -105,22 +115,25 @@ function ExpandedProcess({ panel }) {
       exit="exit"
       className="absolute inset-0 flex flex-col justify-center px-12 py-8"
     >
-      <motion.div variants={itemVariants} className="mb-8">
+      <motion.div variants={itemVariants} className="mb-6">
         <span
           className="text-sm font-semibold uppercase tracking-widest"
           style={{ color: panel.textColor }}
         >
           How it works
         </span>
-        <p
-          className="mt-2 max-w-2xl text-2xl md:text-3xl font-medium"
-          style={{ color: panel.textColor }}
-        >
-          {panel.lead}
-        </p>
+        {panel.lead && (
+          <p
+            className="mt-2 max-w-2xl text-2xl md:text-3xl font-medium"
+            style={{ color: panel.textColor }}
+          >
+            {panel.lead}
+          </p>
+        )}
       </motion.div>
 
-      <div className="grid grid-cols-3 gap-6 h-full max-h-[400px]">
+      {/* Dynamic grid to support both 3 and 4 steps properly without wrapping */}
+      <div className={`grid gap-4 md:gap-6 h-full max-h-[400px] ${panel.steps.length === 4 ? 'grid-cols-4' : 'grid-cols-3'}`}>
         {panel.steps.map((s) => (
           <motion.div key={s.n} variants={itemVariants} className="h-full">
             <StepTile step={s} />
@@ -193,7 +206,7 @@ export default function SplitProcessScreen() {
             The Process
           </span>
           <h2 className="mt-3 font-clash text-3xl font-semibold text-dark md:text-5xl">
-           Behind The Scenes
+            Behind The Scenes.
           </h2>
         </div>
 

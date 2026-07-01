@@ -9,7 +9,6 @@ import About from "@/components/sections/About";
 import Socials from "@/components/sections/Socials";
 import Trust from "@/components/sections/Trust";
 import Safety from "@/components/sections/Safety";
-import CTA from "@/components/sections/CTA";
 
 export default function Home() {
   return (
@@ -25,7 +24,6 @@ export default function Home() {
       <Socials />
       <Trust />
       <Safety />
-      <CTA />
     </>
   );
 }

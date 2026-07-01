@@ -29,12 +29,12 @@ const Refresh = (p) => (
 );
 
 const LEFT = [
-  { Icon: Clock, text: "Up to 5 years of protection from a single placement." },
-  { Icon: ShieldCheck, text: "Over 99% effective — among the most reliable methods available." },
+  { Icon: Clock, text: "One step. Years of peace." },
+  { Icon: ShieldCheck, text: "Reversible. Reliable. Yours." },
 ];
 const RIGHT = [
-  { Icon: BellOff, text: "No daily pills, no pharmacy runs, no reminders." },
-  { Icon: Refresh, text: "Fully reversible — fertility returns quickly after removal." },
+  { Icon: BellOff, text: "No daily reminders. No partner dependence." },
+  { Icon: Refresh, text: "Control that stays with you." },
 ];
 
 const SPRING = { type: "spring", stiffness: 120, damping: 18 };

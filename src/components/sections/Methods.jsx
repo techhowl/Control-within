@@ -22,36 +22,43 @@ const Shield = () => (
 
 const METHODS = [
   {
-    title: "Contraceptive Implant",
-    badge: "Doctor-placed",
-    meta: "Reversible • In-clinic placement",
+    headline: "Control Over Contraception",
+    productLabel: "Contraceptive Implant",
+    productName: "Implant",
     duration: "3 years",
-    description:
-      "A tiny rod placed under the skin of your upper arm — set it once and forget about contraception for years.",
-    feats: [
-      "Discreet & fully reversible",
-      "No daily effort or pharmacy runs",
+    details: [
+      "Inserted under the skin of the upper arm",
+      "Works up to 3 years",
+      "Under 10 minutes to insert or remove",
+      "No daily action required",
       "Fertility returns quickly after removal",
+      "Discreet. Fully invisible once placed",
+      "No recurring pharmacy costs",
+      "Helps reduce risk of iron-deficiency anaemia",
     ],
-    tags: ["Reversible", "Discreet"],
+    cta: "Know More About Implants",
     image:
       "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1400&auto=format&fit=crop",
     accent: "#614c91",
     href: "#consult",
   },
   {
-    title: "Hormonal IUS",
-    badge: "Doctor-placed",
-    meta: "Reversible • In-clinic placement",
+    headline: "Control Over Heavy Menstrual Bleeding And Endometriosis",
+    productLabel: "Hormonal IUS",
+    productName: "hIUS",
     duration: "5 years",
-    description:
-      "A small T-shaped device placed in the uterus that lightens periods, calms cramps, and protects — all at once.",
-    feats: [
-      "Reduces heavy bleeding & cramps",
-      "Eases endometriosis symptoms",
-      "Fully reversible within weeks",
+    details: [
+      "Small T-shaped device placed in the uterus",
+      "Works up to 5 years",
+      "Reduces Heavy Menstrual Bleeding",
+      "Effectively manages endometriosis symptoms",
+      "Relieves severe cramps and pelvic pain, during periods",
+      "Helps protect against iron-deficiency anaemia",
+      "Fully reversible. Fertility returns within weeks after removal",
+      "No daily action required",
+      "Lower hormone exposure than a daily pill",
     ],
-    tags: ["Reversible", "Eases periods"],
+    cta: "Know More About hIUS",
     image:
       "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1400&auto=format&fit=crop",
     accent: "#085b5c",
@@ -60,7 +67,6 @@ const METHODS = [
 ];
 
 const SPRING = { type: "spring", stiffness: 260, damping: 26 };
-
 const imageV = { hide: { opacity: 1, scale: 1 }, show: { opacity: 0.12, scale: 1.08 } };
 const minimalV = { hide: { opacity: 1 }, show: { opacity: 0 } };
 const panelV = { hide: { y: 44, opacity: 0 }, show: { y: 0, opacity: 1 } };
@@ -74,23 +80,18 @@ function MethodCard({ m }) {
   return (
     <motion.article
       tabIndex={0}
-      aria-label={m.title}
+      aria-label={m.productLabel}
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       onFocus={() => setOpen(true)}
       onBlur={() => setOpen(false)}
       onClick={() => setOpen((o) => !o)}
-      className="relative h-[460px] w-full cursor-pointer overflow-hidden rounded-3xl shadow-soft outline-none transition-shadow hover:shadow-hover focus-visible:ring-2 focus-visible:ring-accent"
+      className="relative h-[560px] w-full cursor-pointer overflow-hidden rounded-3xl shadow-soft outline-none transition-shadow hover:shadow-hover focus-visible:ring-2 focus-visible:ring-accent"
     >
       {/* Background image */}
-      <motion.div
-        variants={imageV}
-        animate={state}
-        transition={transition}
-        className="absolute inset-0"
-      >
+      <motion.div variants={imageV} animate={state} transition={transition} className="absolute inset-0">
         <img src={m.image} alt="" className="h-full w-full object-cover" draggable={false} />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-transparent to-dark/30" />
+        <div className="absolute inset-0 bg-linear-to-t from-dark/70 via-transparent to-dark/30" />
       </motion.div>
 
       {/* Minimal details (default state) */}
@@ -100,22 +101,17 @@ function MethodCard({ m }) {
         transition={{ duration: 0.3 }}
         className="pointer-events-none absolute inset-0 flex flex-col justify-between p-5"
       >
-        <div className="flex items-start justify-between gap-2">
-          <div className="flex flex-wrap gap-2">
-            {m.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full bg-white/20 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+        <div className="flex justify-end">
           <span className="flex items-center gap-1 rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
             <Shield /> {m.duration}
           </span>
         </div>
-        <h3 className="font-clash text-2xl font-semibold text-white drop-shadow">{m.title}</h3>
+        <div>
+          <span className="text-xs font-medium uppercase tracking-wide text-white/80">
+            {m.productLabel}
+          </span>
+          <h3 className="font-clash text-2xl font-semibold text-white drop-shadow">{m.headline}</h3>
+        </div>
       </motion.div>
 
       {/* Revealed white content block */}
@@ -126,42 +122,32 @@ function MethodCard({ m }) {
         style={{ pointerEvents: open ? "auto" : "none" }}
         className="absolute inset-0 flex flex-col bg-surface p-7"
       >
-        <div className="flex items-start justify-between gap-3">
-          <h3 className="font-clash text-2xl font-semibold text-dark">{m.title}</h3>
-          <span className="shrink-0 rounded-full border border-dark/15 px-3 py-1 text-xs font-medium text-muted">
-            {m.badge}
-          </span>
-        </div>
-        <p className="mt-1.5 text-sm text-muted">{m.meta}</p>
-        <p className="mt-4 text-[0.95rem] leading-relaxed text-text">{m.description}</p>
+        <span className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: m.accent }}>
+          {m.productLabel} · {m.productName}
+        </span>
+        <h3 className="mt-2 font-clash text-xl font-semibold leading-tight text-dark">{m.headline}</h3>
 
-        <ul className="mt-5 space-y-2.5">
-          {m.feats.map((f) => (
-            <li key={f} className="flex items-start gap-2.5 text-sm text-text">
+        <ul className="mt-5 space-y-2">
+          {m.details.map((d) => (
+            <li key={d} className="flex items-start gap-2.5 text-[0.85rem] leading-snug text-text">
               <span
                 className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full text-white"
                 style={{ backgroundColor: m.accent }}
               >
                 <Check />
               </span>
-              {f}
+              {d}
             </li>
           ))}
         </ul>
 
-        <div className="mt-auto flex items-end justify-between gap-4 pt-6">
-          <div>
-            <span className="font-clash text-3xl font-semibold" style={{ color: m.accent }}>
-              99%+
-            </span>
-            <span className="ml-1 text-sm text-muted">effective</span>
-          </div>
+        <div className="mt-auto flex justify-end pt-5">
           <a
             href={m.href}
             onClick={(e) => e.stopPropagation()}
             className="inline-flex items-center gap-2 rounded-full bg-dark py-2 pl-5 pr-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
           >
-            Know more
+            {m.cta}
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-dark">
               <Arrow />
             </span>
@@ -191,7 +177,7 @@ export default function Methods() {
 
         <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2">
           {METHODS.map((m) => (
-            <Reveal key={m.title} delay={80}>
+            <Reveal key={m.productName} delay={80}>
               <MethodCard m={m} />
             </Reveal>
           ))}

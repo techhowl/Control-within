@@ -11,10 +11,12 @@ export const metadata = {
 };
 
 const TOP_TICKER = [
-  "Long-acting, reversible contraception",
-  "Doctor-placed. Private. Reversible.",
-  "Free first consultation on WhatsApp",
-  "Your body. Your timeline. Your control.",
+  "Long-term control. Simplified.",
+  "Safe. Reversible. Doctor-guided.",
+  "No daily pills. No daily stress.",
+  "No heavy periods. No painful periods.",
+  "Control that stays with you.",
+  "One procedure. Years of protection.",
 ];
 
 export default function RootLayout({ children }) {

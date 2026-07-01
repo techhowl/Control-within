@@ -53,54 +53,70 @@ const SLIDES = [
     bgText: "CONTROL",
     heading: "Experience Control Within",
     paragraph:
-      "Long-acting, reversible contraceptives. One simple step for years of protection and control over your cycle.",
+      "Long acting reversible contraceptives. With one simple step, you get years of protection and control over your menstrual cycle.",
     image:
       "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1200&auto=format&fit=crop",
     label: "Control Within",
     sublabel: "Long-term & reversible",
-    cta: { label: "Find a doctor", href: "#consult" },
+    cta: { label: "Find A Doctor Near You", href: "#consult" },
     floats: [Shield, Heart, Infinity],
   },
   {
     bg: "#d7cfeb",
     accent: "#614c91",
     bgText: "IMPLANT",
-    heading: "A contraceptive that fits your terms & conditions",
+    heading: "A Contraceptive That Fits Your Terms And Conditions.",
     paragraph:
-      "A tiny rod under the skin of your upper arm. Set it once and forget about contraception for years — discreet, reversible, no daily effort.",
+      "Imagine not having to think about a pill daily, worrying about your partner carrying a condom, or having to commit to a permanent and often regrettable decision. The Contraceptive Implant solves all these problems.",
     image:
       "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop",
     label: "Contraceptive Implant",
     sublabel: "Up to 3 years of cover",
-    cta: { label: "Explore the implant", href: "#methods" },
+    tags: [
+      "Works for 3 years once inserted — no daily or monthly effort",
+      "Over 99% effective",
+      "Discreet",
+      "Reversible — return to fertility is quick once removed",
+      "No recurring costs",
+    ],
+    cta: { label: "Watch A Video On Contraceptive Implants", href: "#videos" },
     floats: [Shield, Droplet, Sparkle],
   },
   {
     bg: "#faf8f5",
     accent: "#085b5c",
     bgText: "RELIEF",
-    heading: "Heavy, painful periods? Now you have the upper hand",
+    heading:
+      "Do Heavy and Painful Periods Ruin All Your Plans? Now, You Have The Upper Hand.",
     paragraph:
-      "The Hormonal IUS — a small T-shaped device placed in the uterus that lightens periods, calms cramps, and protects, all at once.",
+      "Regain control over your body and cycle with the Hormonal IUS — a small T-shaped device placed in the uterus to help alleviate period pains, heavy menstrual bleeding, and more.",
     image:
       "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1200&auto=format&fit=crop",
     label: "Hormonal IUS",
     sublabel: "Lighter, calmer periods",
-    cta: { label: "Explore the hIUS", href: "#methods" },
+    tags: [
+      "Helps with heavy menstrual bleeding and endometriosis",
+      "Reduces menstrual blood loss significantly",
+      "Effectively manages period pains",
+      "Dual functionality as a contraceptive",
+      "Fertility returns within weeks, after removal",
+    ],
+    cta: { label: "Watch A Video On Hormonal IUS", href: "#videos" },
     floats: [Droplet, Heart, Leaf],
   },
   {
     bg: "#ede6d9",
     accent: "#4aa3ac",
     bgText: "CHOICE",
-    heading: "The control you deserve — for periods or contraception",
+    heading:
+      "Be It Periods Or Contraception, You Should Have The Control You Deserve.",
     paragraph:
-      "Explore long-term hormonal solutions that work quietly in the background while you live your life. A gynaecologist helps you choose.",
+      "Explore long-term hormonal contraceptive solutions that work quietly while you live your life.",
     image:
       "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200&auto=format&fit=crop",
     label: "Implant or hIUS",
     sublabel: "Your choice, your control",
-    cta: { label: "Know more", href: "#methods" },
+    cta: { label: "Know More", href: "#methods" },
     floats: [Infinity, Sparkle, Leaf],
   },
 ];
@@ -268,6 +284,19 @@ export default function Hero() {
               className="hidden max-w-xs rounded-3xl bg-white/45 p-6 backdrop-blur-sm md:block"
             >
               <p className="text-sm leading-relaxed text-dark/75">{slide.paragraph}</p>
+              {slide.tags && (
+                <ul className="mt-4 flex flex-col gap-1.5">
+                  {slide.tags.map((t) => (
+                    <li key={t} className="flex items-start gap-2 text-xs leading-snug text-dark/70">
+                      <span
+                        className="mt-1.5 h-1 w-1 flex-none rounded-full"
+                        style={{ backgroundColor: slide.accent }}
+                      />
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              )}
               <a
                 href="#methods"
                 className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide"

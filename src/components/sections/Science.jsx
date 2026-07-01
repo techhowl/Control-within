@@ -8,7 +8,6 @@ const PANELS = [
   {
     side: "left",
     title: "Hormonal Implant",
-    brand: "Control Within",
     lead: "", // Left blank since the previous lead is now Step 1
     bg: "#D7CFEB", // light brand lavender
     textColor: "#FFFFFF",
@@ -16,29 +15,28 @@ const PANELS = [
       {
         n: 1,
         text: "The implant releases a low, steady dose of progestin.",
-        img: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=600&auto=format&fit=crop",
+        img: "/implant_process_1.png",
       },
       {
         n: 2,
         text: "Ovulation stops, cervical mucus thickens - sperm cannot reach the egg.",
-        img: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600&auto=format&fit=crop",
+        img: "/implant_process_2.png",
       },
       {
         n: 3,
         text: "Thins uterine lining - fertilized egg cannot attach.",
-        img: "https://images.unsplash.com/photo-1557672172-298e090bd0f1?q=80&w=600&auto=format&fit=crop",
+        img: "/implant_process_3.png",
       },
       {
         n: 4,
         text: "Once removed, fertility returns quickly.",
-        img: "https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?q=80&w=600&auto=format&fit=crop",
+        img: "/implant_process_4.png",
       },
     ],
   },
   {
     side: "right",
     title: "Hormonal IUS",
-    brand: "Control Within",
     lead: "", // Left blank since the previous lead is now Step 1
     bg: "#4AA3AC", // light brand teal
     textColor: "#FFFFFF",
@@ -46,17 +44,17 @@ const PANELS = [
       {
         n: 1,
         text: "The hIUS releases a small amount of hormone locally inside the uterus.",
-        img: "https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=600&auto=format&fit=crop",
+        img: "IUS_process.png",
       },
       {
         n: 2,
         text: "Uterine lining thins, significantly reducing bleeding and pain.",
-        img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600&auto=format&fit=crop",
+        img: "implant_process_3.png",
       },
       {
         n: 3,
         text: "Sperm is prevented from reaching the egg.",
-        img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop",
+        img: "implant_process_2.png",
       },
     ],
   },

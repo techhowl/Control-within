@@ -54,8 +54,7 @@ const SLIDES = [
     heading: "Experience Control Within",
     paragraph:
       "Long acting reversible contraceptives. With one simple step, you get years of protection and control over your menstrual cycle.",
-    image:
-      "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1200&auto=format&fit=crop",
+    image:"hero_1.png",
     label: "Control Within",
     sublabel: "Long-term & reversible",
     cta: { label: "Find A Doctor Near You", href: "#consult" },
@@ -69,7 +68,7 @@ const SLIDES = [
     paragraph:
       "Imagine not having to think about a pill daily, worrying about your partner carrying a condom, or having to commit to a permanent and often regrettable decision. The Contraceptive Implant solves all these problems.",
     image:
-      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1200&auto=format&fit=crop",
+      "hero_2.png",
     label: "Contraceptive Implant",
     sublabel: "Up to 3 years of cover",
     tags: [
@@ -91,7 +90,7 @@ const SLIDES = [
     paragraph:
       "Regain control over your body and cycle with the Hormonal IUS — a small T-shaped device placed in the uterus to help alleviate period pains, heavy menstrual bleeding, and more.",
     image:
-      "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1200&auto=format&fit=crop",
+      "hero_3.png",
     label: "Hormonal IUS",
     sublabel: "Lighter, calmer periods",
     tags: [
@@ -113,7 +112,7 @@ const SLIDES = [
     paragraph:
       "Explore long-term hormonal contraceptive solutions that work quietly while you live your life.",
     image:
-      "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1200&auto=format&fit=crop",
+      "hero_4.png",
     label: "Implant or hIUS",
     sublabel: "Your choice, your control",
     cta: { label: "Know More", href: "#methods" },
@@ -307,10 +306,10 @@ export default function Hero() {
                 exit="exit"
                 className="text-right"
               >
-                <div className="font-author text-3xl font-medium" style={{ color: slide.accent }}>
+                <div className="font-author text-4xl font-medium" style={{ color: slide.accent }}>
                   {slide.label}
                 </div>
-                <div className="mt-1 text-sm text-dark/60">{slide.sublabel}</div>
+                <div className="mt-1 text-base text-dark/60">{slide.sublabel}</div>
               </motion.div>
             </AnimatePresence>
           </div>

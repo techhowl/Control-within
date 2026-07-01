@@ -31,14 +31,18 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`transition-all duration-300 ${
+      className={`w-full transition-all duration-300 ${
         scrolled
           ? "bg-bg/85 shadow-soft backdrop-blur-md"
           : "bg-transparent"
       }`}
       aria-label="Main navigation"
     >
-      <div className="mx-auto flex max-w-310 items-center justify-between px-[5%] py-4">
+      {/* 
+        Changed container to span full width (w-full) with responsive padding 
+        (px-6 for mobile, md:px-12 lg:px-16 for larger screens) to push the logo extreme left. 
+      */}
+      <div className="mx-auto flex w-full max-w-[1600px] items-center justify-between px-6 py-4 md:px-12 lg:px-16">
         {/* Logo */}
         <a
           href="#hero"
@@ -46,17 +50,21 @@ export default function Navbar() {
           className="flex items-center"
           aria-label="Control Within home"
         >
-          <img src="/cw-logo.png" alt="Control Within" className="h-9 w-auto" />
+          <img 
+            src="/cw-logo.png" 
+            alt="Control Within" 
+            className="h-12 w-auto object-contain md:h-16" 
+          />
         </a>
 
         {/* Desktop links */}
-        <div className="hidden items-center gap-2 md:flex">
-          <div className="flex items-center gap-1 rounded-full border border-dark/10 bg-surface/60 p-1 backdrop-blur">
+        <div className="hidden items-center gap-3 md:flex">
+          <div className="flex items-center gap-1 rounded-full border border-dark/10 bg-surface/60 p-1.5 backdrop-blur">
             {LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="rounded-full px-4 py-1.5 text-sm font-medium text-text/80 transition-colors hover:bg-accent-light-2/60 hover:text-accent"
+                className="rounded-full px-5 py-2 text-sm font-medium text-text/80 transition-colors hover:bg-accent-light-2/60 hover:text-accent"
               >
                 {link.label}
               </a>
@@ -64,7 +72,7 @@ export default function Navbar() {
           </div>
           <a
             href="#consult"
-            className="rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-accent-hover"
+            className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-accent-hover"
           >
             Chat Now
           </a>
@@ -98,7 +106,7 @@ export default function Navbar() {
 
       {/* Mobile menu panel */}
       <div
-        className={`fixed inset-x-0 top-26 z-40 origin-top px-[5%] transition-all duration-300 md:hidden ${
+        className={`fixed inset-x-0 top-20 z-40 origin-top px-6 transition-all duration-300 md:hidden ${
           menuOpen
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-2 opacity-0"

@@ -28,25 +28,19 @@ const Play = () => (
     <path d="M8 5v14l11-7z" />
   </svg>
 );
-const Clock = () => (
-  <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.6">
-    <circle cx="12" cy="12" r="9" />
-    <path d="M12 7v5l3 2" />
-  </svg>
-);
 
 export default function Videos() {
   const [lang, setLang] = useState("en");
   const [active, setActive] = useState(null);
 
   return (
-    <section id="videos" className="bg-dark py-20 md:py-28">
+    <section id="videos" className="bg-accent py-20 md:py-28">
       <div className="mx-auto max-w-310 px-[5%]">
         {/* Header: headline + language toggle (top-right) */}
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
           <Reveal className="max-w-2xl">
             <h2 className="font-clash text-3xl font-semibold text-white md:text-5xl">
-              Different Processes. Different Purposes. One Goal: Control.
+              Different Processes. Different Purposes.<br /> One Goal: Control.
             </h2>
           </Reveal>
 
@@ -69,10 +63,7 @@ export default function Videos() {
 
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
           {VIDEOS.map((video, i) => {
-            const grad =
-              video.theme === "purple"
-                ? "from-accent/40 to-accent/10"
-                : "from-teal-deep/40 to-teal-deep/10";
+            const grad = "from-teal-deep/40 to-teal-deep/10";
 
             if (!video.available) {
               return (
@@ -80,16 +71,12 @@ export default function Videos() {
                   <div
                     className={`relative flex aspect-video w-full flex-col justify-end overflow-hidden rounded-[1.75rem] bg-linear-to-br p-7 text-left ${grad}`}
                   >
-                    <span className="absolute right-5 top-5 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white/90">
+                    <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/15 px-5 py-2 text-sm font-semibold uppercase tracking-[0.12em] text-white">
                       Coming soon
-                    </span>
-                    <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white">
-                      <Clock />
                     </span>
                     <h3 className="relative font-clash text-xl font-semibold text-white/90">
                       {video.title}
                     </h3>
-                    <p className="relative mt-1.5 text-sm text-white/60">Video coming soon.</p>
                   </div>
                 </Reveal>
               );

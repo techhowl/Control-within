@@ -37,8 +37,7 @@ const METHODS = [
       "Helps reduce risk of iron-deficiency anaemia",
     ],
     cta: "Know More About Implants",
-    image:
-      "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1400&auto=format&fit=crop",
+    image:"/implant.png",
     accent: "#614c91",
     href: "#consult",
   },
@@ -59,8 +58,7 @@ const METHODS = [
       "Lower hormone exposure than a daily pill",
     ],
     cta: "Know More About hIUS",
-    image:
-      "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1400&auto=format&fit=crop",
+    image:"/IUS.png",
     accent: "#085b5c",
     href: "#consult",
   },

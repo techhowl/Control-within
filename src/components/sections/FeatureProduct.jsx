@@ -43,7 +43,9 @@ const VIEWPORT = { once: true, amount: 0.3 };
 function FeatureItem({ Icon, text, side, reduce }) {
   const offset = reduce ? 0 : side === "left" ? -20 : 20;
   const alignment =
-    side === "left" ? "items-end text-right" : "items-start text-left";
+    side === "left"
+      ? "items-center text-center lg:items-end lg:text-right"
+      : "items-center text-center lg:items-start lg:text-left";
   return (
     <motion.div
       variants={{

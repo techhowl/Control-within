@@ -140,7 +140,7 @@ const bgTextVariants = {
 function FloatingOrb({ Icon, spot, accent, reduce }) {
   return (
     <motion.div
-      className="absolute"
+      className="absolute max-md:hidden"
       style={{ top: spot.top, left: spot.left }}
       initial={{ x: spot.from.x, y: spot.from.y, scale: 0.4, opacity: 0 }}
       animate={{ x: 0, y: 0, scale: 1, opacity: 1 }}
@@ -198,7 +198,7 @@ export default function Hero() {
     >
       {/* ---- CENTER LAYER: bg word + anchor image + floating orbs (behind UI) ---- */}
       <div
-        className="pointer-events-none absolute inset-0 flex items-center justify-center"
+        className="pointer-events-none absolute inset-0 flex items-center justify-center max-md:items-end max-md:pb-28"
         style={{ perspective: 1200 }}
       >
         {/* Massive background typography */}
@@ -240,7 +240,7 @@ export default function Hero() {
             animate={{ rotateY: 0, opacity: 1, scale: 1 }}
             exit={{ rotateY: 90, opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.7, ease: EASE }}
-            className="relative h-[340px] w-[260px] overflow-hidden rounded-[2.5rem] shadow-hover sm:h-[420px] sm:w-[320px]"
+            className="relative h-[280px] w-[210px] overflow-hidden rounded-[2.5rem] shadow-hover sm:h-[420px] sm:w-[320px]"
           >
             <img
               src={slide.image}
@@ -263,7 +263,7 @@ export default function Hero() {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="max-w-xl font-author text-4xl font-medium leading-[1.05] sm:text-5xl lg:text-6xl"
+              className="max-w-xl font-author text-3xl font-medium leading-[1.05] sm:text-5xl lg:text-6xl"
               style={{ color: slide.accent }}
             >
               {slide.heading}
@@ -330,7 +330,7 @@ export default function Hero() {
         </div>
 
         {/* Bottom: thumbnails + mobile CTA */}
-        <footer className="flex items-end justify-between gap-4">
+        <footer className="flex items-end justify-between gap-4 max-md:flex-col max-md:items-center max-md:gap-6">
           <div className="flex gap-2 sm:gap-3" role="tablist" aria-label="Choose slide">
             {SLIDES.map((s, i) => (
               <button

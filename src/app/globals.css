@@ -17,9 +17,13 @@
   --color-text: #3b3630;
   --color-muted: #6f675c;
 
-  --font-satoshi: "Satoshi", sans-serif;
-  --font-clash: "Clash Grotesk", sans-serif;
-  --font-author: "Author", serif;
+  /* Entire site uses Lexend. All font tokens point to it so every
+     utility (font-clash, font-author, font-serif, font-sans) resolves to Lexend. */
+  --font-sans: "Lexend", sans-serif;
+  --font-serif: "Lexend", sans-serif;
+  --font-satoshi: "Lexend", sans-serif;
+  --font-clash: "Lexend", sans-serif;
+  --font-author: "Lexend", sans-serif;
 
   --shadow-soft: 0 4px 24px rgba(59, 54, 48, 0.07);
   --shadow-hover: 0 16px 48px rgba(59, 54, 48, 0.13);

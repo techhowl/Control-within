@@ -7,14 +7,19 @@ import { motion, AnimatePresence } from "framer-motion";
 const PANELS = [
   {
     side: "left",
-    title: "Hormonal Implant",
+    // Added a break tag here to split the title into two lines
+    title: (
+      <>
+        Contraceptive <br /> Implants
+      </>
+    ),
     lead: "", // Left blank since the previous lead is now Step 1
     bg: "#D7CFEB", // light brand lavender
     textColor: "#FFFFFF",
     steps: [
       {
         n: 1,
-        text: "The implant releases a low, steady dose of progestin.",
+        text: "The implant releases a low, steady dose of etonogestrel.",
         img: "/implant_process_1.png",
       },
       {
@@ -36,7 +41,12 @@ const PANELS = [
   },
   {
     side: "right",
-    title: "Hormonal IUS",
+    // Added a break tag here to split the title into two lines
+    title: (
+      <>
+        Contraceptive <br /> IUS
+      </>
+    ),
     lead: "", // Left blank since the previous lead is now Step 1
     bg: "#4AA3AC", // light brand teal
     textColor: "#FFFFFF",

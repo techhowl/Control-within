@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const CARDS = [
   { label: "Myth vs fact: the implant", img: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=900&auto=format&fit=crop" },
-  { label: "What to expect at placement", img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=900&auto=format&fit=crop" },
+  { label: "What to expect at placement", img: "/hero_4.png" },
   { label: "Heavy periods? You’re not alone", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=900&auto=format&fit=crop" },
 ];
 
@@ -48,18 +48,18 @@ export default function Socials() {
           Stay Within Reach Of Our Socials
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted">
-          Follow us <strong className="text-dark">@[handle]</strong> for real
+          Follow us <strong className="text-dark">@Control_within_Official</strong> for real
           conversations about contraception, menstrual health, and what control
           actually looks like.
         </p>
 
         <a
-          href="https://instagram.com"
+          href="https://www.instagram.com/control_within_official/"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-7 inline-flex items-center gap-2 rounded-full bg-teal-deep py-2 pl-6 pr-2 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-teal-hover"
         >
-          Follow @[handle]
+          Follow @Control_within_Official
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20">
             <Arrow dir="right" />
           </span>
@@ -93,7 +93,7 @@ export default function Socials() {
               <img src={card.img} alt="" className="h-full w-full object-cover" draggable={false} />
               <div className="absolute inset-0 bg-linear-to-t from-dark/70 via-transparent to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-5 text-left">
-                <span className="text-xs font-medium text-white/70">@[handle]</span>
+                <span className="text-xs font-medium text-white/70">@Control_within_Official</span>
                 <p className="mt-1 font-clash text-lg font-semibold text-white">{card.label}</p>
               </div>
             </motion.button>

@@ -37,7 +37,7 @@ export default function ControlWithinHero() {
         {/* Parallax Background */}
         <motion.div style={{ scale, opacity }} className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop"
+            src="/about.avif"
             alt="Woman looking peaceful and confident"
             className="h-full w-full object-cover object-top"
           />

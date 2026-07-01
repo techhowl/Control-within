@@ -9,7 +9,7 @@ const NAV_LINKS = [
 
 const SOCIALS = [
   { 
-    href: "https://instagram.com", 
+    href: "https://www.instagram.com/control_within_official/", 
     label: "Instagram",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -29,7 +29,7 @@ const SOCIALS = [
     )
   },
   { 
-    href: "https://youtube.com", 
+    href: "https://www.youtube.com/@Control-within", 
     label: "YouTube",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

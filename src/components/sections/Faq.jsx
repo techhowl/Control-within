@@ -80,10 +80,10 @@ export default function Faq() {
       <div className="mx-auto max-w-6xl px-[5%]">
         {/* Heading on top */}
         <div className="text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+          <span className="text-xm font-semibold uppercase tracking-[0.18em] text-accent">
             Your Questions
           </span>
-          <h2 className="mt-3 font-clash text-3xl font-semibold text-dark md:text-5xl">
+          <h2 className="mt-3 font-clash text-3xl font-semibold text-dark md:text-4xl">
             Still Thinking It Over?
           </h2>
         </div>

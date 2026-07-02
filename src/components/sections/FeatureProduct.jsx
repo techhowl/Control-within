@@ -58,7 +58,7 @@ function FeatureItem({ Icon, text, side, reduce }) {
         <Icon className="h-6 w-6" />
       </span>
       <span className="h-px w-12 bg-dark/15" />
-      <p className="max-w-[13rem] text-sm leading-relaxed text-muted">{text}</p>
+      <p className="max-w-[13rem] text-[0.85rem] leading-relaxed text-muted">{text}</p>
     </motion.div>
   );
 }
@@ -71,7 +71,7 @@ export default function FeatureProduct() {
   };
 
   return (
-    <section className="bg-surface py-20 md:py-28">
+    <section className="bg-surface py-10 md:py-15">
       <div className="mx-auto max-w-310 px-[5%]">
         {/* Header */}
         <motion.div
@@ -81,10 +81,10 @@ export default function FeatureProduct() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto max-w-2xl text-center"
         >
-          <span className="text-xs font-semibold uppercase tracking-[0.22em] text-muted">
+          <span className="text-xm font-semibold uppercase tracking-[0.22em] text-accent">
             Why It Works
           </span>
-          <h2 className="mt-3 font-clash text-3xl font-semibold text-dark md:text-5xl">
+          <h2 className="mt-3 font-clash text-3xl font-semibold text-dark md:text-4xl">
             Designed around your life
           </h2>
         </motion.div>

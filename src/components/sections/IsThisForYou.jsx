@@ -42,7 +42,7 @@ export default function IsThisForYou() {
           <span className="inline-flex items-center gap-1.5 rounded-full bg-surface/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-accent">
             <span aria-hidden="true">✱</span> Is This For You?
           </span>
-          <h2 className="mt-4 font-clash text-3xl font-semibold text-dark md:text-5xl">
+          <h2 className="mt-4 font-clash text-3xl font-semibold text-dark md:text-4xl">
             If Any Of This Sounds Like You, Keep Reading.
           </h2>
         </Reveal>

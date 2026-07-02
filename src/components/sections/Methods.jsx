@@ -161,10 +161,10 @@ export default function Methods() {
     <section id="methods" className="bg-bg py-20 md:py-28">
       <div className="mx-auto max-w-310 px-[5%]">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+          <span className="text-xm font-semibold uppercase tracking-[0.18em] text-accent">
             The Methods
           </span>
-          <h2 className="mt-3 font-clash text-3xl font-semibold text-dark md:text-5xl">
+          <h2 className="mt-3 font-clash text-3xl font-semibold text-dark md:text-4xl">
             Make The Choice That Fits Your Life
           </h2>
           <p className="mt-4 text-base text-muted">

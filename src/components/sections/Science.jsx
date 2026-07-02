@@ -210,10 +210,10 @@ export default function SplitProcessScreen() {
 
         {/* Section headline */}
         <div className="text-center mb-12">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+          <span className="text-xm font-semibold uppercase tracking-[0.18em] text-accent">
             The Process
           </span>
-          <h2 className="mt-3 font-clash text-3xl font-semibold text-dark md:text-5xl">
+          <h2 className="mt-3 font-clash text-3xl font-semibold text-dark md:text-4xl">
             Behind The Scenes.
           </h2>
         </div>

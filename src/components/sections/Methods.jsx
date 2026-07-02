@@ -86,7 +86,7 @@ function MethodCard({ m }) {
       onFocus={() => setOpen(true)}
       onBlur={() => setOpen(false)}
       onClick={() => setOpen((o) => !o)}
-      // 👇 CHANGED HERE: Added aspect-[351/197] for mobile, kept h-[560px] for desktop 👇
+      // 👇 Restored the original md:h-[560px] so the box stays large 👇
       className="relative aspect-[351/240] md:aspect-auto md:h-[560px] w-full cursor-pointer overflow-hidden rounded-3xl shadow-soft outline-none transition-shadow hover:shadow-hover focus-visible:ring-2 focus-visible:ring-accent"
     >
       {/* Background container holding the image */}
@@ -97,15 +97,15 @@ function MethodCard({ m }) {
         className="absolute inset-0"
         style={{ backgroundColor: `${m.accent}50` }}
       >
-        {/* DESKTOP IMAGE: Hidden on mobile, visible on medium screens and up */}
+        {/* 👇 CHANGED HERE: Added object-contain and padding to shrink the image inside the box on desktop 👇 */}
         <img 
           src={m.image} 
           alt="" 
-          className="hidden h-full w-full object-cover md:block" 
+          className="hidden h-full w-full object-contain p-10 pb-36 md:block" 
           draggable={false} 
         />
         
-        {/* MOBILE IMAGE: Visible on mobile, hidden on medium screens and up */}
+        {/* MOBILE IMAGE: Untouched */}
         <img 
           src={m.imageMobile} 
           alt="" 
@@ -119,7 +119,6 @@ function MethodCard({ m }) {
         variants={minimalV}
         animate={state}
         transition={{ duration: 0.3 }}
-        // Adjusted padding slightly on mobile to fit the tighter horizontal space
         className="pointer-events-none absolute inset-0 flex flex-col justify-between p-4 md:p-5"
       >
         <div className="flex justify-end">
@@ -141,7 +140,6 @@ function MethodCard({ m }) {
         animate={state}
         transition={transition}
         style={{ pointerEvents: open ? "auto" : "none" }}
-        // 👇 CHANGED HERE: Added overflow-y-auto so users can scroll the text on mobile 👇
         className="absolute inset-0 flex flex-col overflow-y-auto bg-surface p-5 md:p-7"
       >
         <span className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: m.accent }}>
@@ -163,7 +161,6 @@ function MethodCard({ m }) {
           ))}
         </ul>
 
-        {/* Added pb-2 so the button has some breathing room when scrolling to the bottom on mobile */}
         <div className="mt-auto flex justify-end pt-5 pb-2 md:pb-0">
           <a
             href={m.href}

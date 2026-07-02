@@ -48,9 +48,9 @@ export default function Footer() {
           <div className="max-w-md">
             {/* Increased logo size and added object-contain */}
             <img 
-              src="/cw_logo_footer.png" 
+              src="/cw-logo-footer.png" 
               alt="Control Within" 
-              className="h-26 md:h-36 w-auto object-contain" 
+              className="h-16 md:h-20 w-auto object-contain" 
             />
             <p className="mt-4 text-sm leading-relaxed text-bg/65">
               Long-term, reversible, doctor-placed contraception — working

@@ -211,7 +211,7 @@ export default function Hero() {
       </div>
 
       {/* ---- FOREGROUND UI ---- */}
-      <div className="relative z-10 flex h-full flex-col px-[5%] pb-7 pt-35 max-md:pb-10 md:pb-14">
+      <div className="relative z-10 flex h-full flex-col px-[5%] pb-7 pt-35 max-md:pb-16 md:pb-20">
         {/* Top: heading + trust avatars */}
         <header className="flex items-start justify-between gap-6">
           <AnimatePresence mode="wait">

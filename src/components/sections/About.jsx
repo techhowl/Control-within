@@ -20,11 +20,10 @@ export default function ControlWithinHero() {
   // Track scroll progress within this specific section
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"],
+    offset: ["start 80px", "end start"],
   });
 
-  // Parallax effects for the Hero image: scales down and fades out slightly as you scroll down
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
+  // 👇 CHANGED: Removed the 'scale' transform so the image doesn't shrink and cause black side borders
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
 
   return (
@@ -33,28 +32,30 @@ export default function ControlWithinHero() {
       {/* =========================================
           FOLD 1 — STICKY HERO
       ========================================= */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+      <div className="sticky top-[80px] h-[calc(100vh-80px)] w-full overflow-hidden">
+        
         {/* Parallax Background */}
-        <motion.div style={{ scale, opacity }} className="absolute inset-0">
+        {/* 👇 CHANGED: Removed 'scale' from the style prop here 👇 */}
+        <motion.div style={{ opacity }} className="absolute inset-0">
           <img
             src="/about.avif"
             alt="Woman looking peaceful and confident"
             className="h-full w-full object-cover object-top"
           />
           {/* Subtle gradient overlay to ensure text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/10 to-transparent" />
         </motion.div>
 
         {/* Hero Content Overlay */}
-        <div className="relative z-10 flex h-full flex-col justify-between px-6 pb-12 pt-10 md:px-12 md:pt-12">
+        <div className="relative z-10 flex h-full flex-col justify-start px-6 pt-16 md:px-12 md:pt-24 lg:pt-32">
 
-          {/* Bottom Area: Tag + headline on the image */}
+          {/* Top Area: Tag + headline on the image */}
           <div className="flex w-full max-w-4xl flex-col">
             <span className="mb-4 text-sm md:text-base font-bold uppercase tracking-[0.2em] text-[#F9F6F0]">
               Why We're Here
             </span>
-            <h2 className="font-author text-4xl font-bold leading-[1.15] text-[#F9F6F0] sm:text-5xl md:text-6xl">
-              Women Don't Lack Options. They Lack Peace Of Mind.
+            <h2 className="font-author text-4xl font-bold leading-[1.15] text-[#F9F6F0] sm:text-5xl md:text-6xl lg:text-[4.5rem]">
+              Women Don't Lack Options.<br className="hidden md:block" /> They Lack Peace Of Mind.
             </h2>
           </div>
 
@@ -68,9 +69,8 @@ export default function ControlWithinHero() {
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
-        // 👇 Gradient is now reversed: from-bg to-accent-light-2 👇
-        className="relative z-10 w-full rounded-t-[2.5rem] md:rounded-t-[4rem] bg-gradient-to-b from-bg to-accent-light-2 px-6 py-24 md:py-32 shadow-[0_-20px_50px_rgba(0,0,0,0.3)]"
+        viewport={{ once: true, amount: 0.1 }}
+        className="relative z-10 w-full rounded-t-[2.5rem] md:rounded-t-[4rem] bg-gradient-to-b from-bg to-accent-light-2 px-6 py-15 -mt-12 md:-mt-24 shadow-[0_-20px_50px_rgba(0,0,0,0.3)]"
       >
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           
@@ -89,15 +89,6 @@ export default function ControlWithinHero() {
           >
             Your body. Your timeline. Your control.
           </motion.p>
-
-          <motion.div variants={itemVariants} className="mt-10">
-            {/* <a
-              href="#methods"
-              className="inline-block rounded-full bg-[#2B3A36] px-12 py-4 text-sm font-bold uppercase tracking-[0.15em] text-white shadow-xl transition-all hover:bg-[#1A2421] hover:scale-105"
-            >
-              Know More
-            </a> */}
-          </motion.div>
           
         </div>
       </motion.div>

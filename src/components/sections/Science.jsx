@@ -44,7 +44,7 @@ const PANELS = [
     // Added a break tag here to split the title into two lines
     title: (
       <>
-        hormonal <br /> IUS
+        Hormonal <br /> IUS
       </>
     ),
     lead: "", // Left blank since the previous lead is now Step 1

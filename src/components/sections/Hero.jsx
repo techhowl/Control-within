@@ -221,7 +221,7 @@ export default function Hero() {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="max-w-xl font-author text-3xl font-medium leading-[1.05] sm:text-4xl lg:text-5xl"
+              className="max-w-xl font-author text-2xl font-medium leading-[1.05] sm:text-4xl lg:text-5xl"
               style={{ color: slide.accent }}
             >
               {slide.heading}
@@ -247,11 +247,11 @@ export default function Hero() {
                 </div>
                 <div className="mt-0.5 text-sm text-dark/60">{slide.sublabel}</div>
               </div>
-              <p className="text-base leading-relaxed text-dark/75">{slide.paragraph}</p>
+              <p className="text-sm leading-relaxed text-dark/75 sm:text-base">{slide.paragraph}</p>
               {slide.tags && (
                 <ul className="mt-4 flex flex-col gap-1.5">
                   {slide.tags.map((t) => (
-                    <li key={t} className="flex items-start gap-2 text-xs leading-snug text-dark/70">
+                    <li key={t} className="flex items-start gap-2 text-sm leading-snug text-dark/70 sm:text-xs">
                       <span
                         className="mt-1.5 h-1 w-1 flex-none rounded-full"
                         style={{ backgroundColor: slide.accent }}

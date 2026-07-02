@@ -41,7 +41,7 @@ export default function Navbar() {
         Changed container to span full width (w-full) with responsive padding 
         (px-6 for mobile, md:px-12 lg:px-16 for larger screens) to push the logo extreme left. 
       */}
-      <div className="mx-auto flex w-full max-w-[1600px] items-center justify-between px-6 py-4 md:px-12 lg:px-16">
+      <div className="mx-auto flex w-full max-w-[1600px] items-center justify-between px-6 py-2 md:px-12 lg:px-20">
         {/* Logo */}
         <a
           href="#hero"

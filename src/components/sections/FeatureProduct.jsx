@@ -29,7 +29,7 @@ const Refresh = (p) => (
 );
 
 const LEFT = [
-  { id: "left-1", Icon: Clock, text: "One step. Years of peace." },
+  { id: "left-1", Icon: Clock, text: <>One step. <br className="md:hidden" /> Years of peace.</> 
   { 
     id: "left-2", 
     Icon: ShieldCheck, 

@@ -31,7 +31,7 @@ export default function ControlWithinHero() {
       {/* =========================================
           FOLD 1 — STICKY HERO
       ========================================= */}
-      {/* 👇 CHANGED: h-[65vh] on mobile so the bottom fold peeks into view, restoring desktop height with md:h-[calc(100vh-80px)] */}
+      {/* 👇 RESTORED: Back to h-[65vh] so the image displacement and cropping remains exactly as it originally was */}
       <div className="sticky top-[80px] h-[65vh] md:h-[calc(100vh-80px)] w-full overflow-hidden">
         
         {/* Parallax Background */}
@@ -49,12 +49,10 @@ export default function ControlWithinHero() {
         <div className="relative z-10 flex h-full flex-col justify-start px-6 pt-16 md:px-12 md:pt-24 lg:pt-32">
 
           {/* Top Area: Tag + headline on the image */}
-          {/* 👇 CHANGED: Removed max-w-4xl to allow the text to stretch to its natural width on desktop */}
           <div className="flex w-full flex-col">
             <span className="mb-4 text-sm md:text-base font-bold uppercase tracking-[0.2em] text-[#F9F6F0]">
               Why We're Here
             </span>
-            {/* 👇 CHANGED: Added md:whitespace-nowrap to guarantee it stays strictly on one line before the <br/> break */}
             <h2 className="font-author text-4xl font-bold leading-[1.15] text-[#F9F6F0] sm:text-5xl md:text-6xl lg:text-[4.5rem] md:whitespace-nowrap">
               Women Don't Lack Options.<br /> They Lack Peace Of Mind.
             </h2>
@@ -66,12 +64,13 @@ export default function ControlWithinHero() {
       {/* =========================================
           FOLD 2 — ABOUT REVEAL (Overlaps Hero)
       ========================================= */}
+      {/* 👇 CHANGED: Increased the negative top margin aggressively (e.g., -mt-36) on mobile to pull this section way up over the unchanged image. */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.1 }}
-        className="relative z-10 w-full rounded-t-[2.5rem] md:rounded-t-[4rem] bg-gradient-to-b from-bg to-accent-light-2 px-6 py-15 -mt-12 md:-mt-24 shadow-[0_-20px_50px_rgba(0,0,0,0.3)]"
+        className="relative z-10 w-full rounded-t-[2.5rem] md:rounded-t-[4rem] bg-gradient-to-b from-bg to-accent-light-2 px-6 py-15 -mt-36 md:-mt-24 shadow-[0_-20px_50px_rgba(0,0,0,0.3)]"
       >
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           

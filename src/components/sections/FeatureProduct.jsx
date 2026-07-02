@@ -29,12 +29,20 @@ const Refresh = (p) => (
 );
 
 const LEFT = [
-  { Icon: Clock, text: "One step. Years of peace." },
-  { Icon: ShieldCheck, text: "Reversible. Reliable. Yours." },
+  { id: "left-1", Icon: Clock, text: "One step. Years of peace." },
+  { 
+    id: "left-2", 
+    Icon: ShieldCheck, 
+    text: <>Reversible. <br className="md:hidden" /> Reliable. Yours.</> 
+  },
 ];
 const RIGHT = [
-  { Icon: BellOff, text: "No daily reminders. No partner dependence." },
-  { Icon: Refresh, text: "Control that stays with you." },
+  { id: "right-1", Icon: BellOff, text: "No daily reminders. No partner dependence." },
+  { 
+    id: "right-2", 
+    Icon: Refresh, 
+    text: <>Control that stays <br className="md:hidden" /> with you.</> 
+  },
 ];
 
 const SPRING = { type: "spring", stiffness: 120, damping: 18 };
@@ -100,7 +108,7 @@ export default function FeatureProduct() {
             className="order-2 grid grid-cols-2 gap-4 lg:order-1 lg:flex lg:flex-col lg:items-end lg:gap-12"
           >
             {LEFT.map((f) => (
-              <FeatureItem key={f.text} {...f} side="left" reduce={reduce} />
+              <FeatureItem key={f.id} {...f} side="left" reduce={reduce} />
             ))}
           </motion.div>
 
@@ -114,7 +122,6 @@ export default function FeatureProduct() {
           >
             <div className="relative">
               <div className="absolute -inset-6 rounded-[6rem] bg-accent-light-2/30 blur-2xl" aria-hidden="true" />
-              {/* Updated mobile height and width for a horizontal capsule, md: size remains vertical */}
               <div className="relative mx-auto h-[120px] w-[260px] overflow-hidden rounded-[7rem] shadow-hover md:h-[460px] md:w-[250px]">
                 <img
                   src="/2ndfold.png"
@@ -135,7 +142,7 @@ export default function FeatureProduct() {
             className="order-3 grid grid-cols-2 gap-4 lg:flex lg:flex-col lg:items-start lg:gap-12"
           >
             {RIGHT.map((f) => (
-              <FeatureItem key={f.text} {...f} side="right" reduce={reduce} />
+              <FeatureItem key={f.id} {...f} side="right" reduce={reduce} />
             ))}
           </motion.div>
         </div>

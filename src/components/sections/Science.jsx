@@ -240,9 +240,9 @@ function MobilePanel({ panel }) {
             
             {/* Small close icon at the bottom of the fold */}
             <div className="mt-4 flex justify-center">
-              <svg viewBox="0 0 24 24" className="h-7 w-7 text-black/40 transition-transform hover:scale-110" fill="none" stroke="currentColor" strokeWidth="2.5">
+              {/* <svg viewBox="0 0 24 24" className="h-7 w-7 text-black/40 transition-transform hover:scale-110" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              </svg> */}
             </div>
           </motion.div>
         )}

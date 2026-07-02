@@ -82,7 +82,7 @@ export default function FeatureProduct() {
           className="mx-auto max-w-2xl text-center"
         >
           <span className="text-xm font-semibold uppercase tracking-[0.22em] text-accent">
-            Why It Works
+            Long-Acting Reversible Contraception
           </span>
           <h2 className="mt-3 font-clash text-3xl font-semibold text-dark md:text-4xl">
             Designed around your life
@@ -91,7 +91,7 @@ export default function FeatureProduct() {
 
         {/* Grid */}
         <div className="mt-14 grid grid-cols-1 items-center gap-12 lg:grid-cols-3 lg:gap-8">
-          {/* Left features - Updated for 2-column mobile layout */}
+          {/* Left features */}
           <motion.div
             variants={group}
             initial="hidden"
@@ -114,8 +114,8 @@ export default function FeatureProduct() {
           >
             <div className="relative">
               <div className="absolute -inset-6 rounded-[6rem] bg-accent-light-2/30 blur-2xl" aria-hidden="true" />
-              {/* Reduced default (mobile) height and width, kept md: variables identical */}
-              <div className="relative mx-auto h-[220px] w-[120px] overflow-hidden rounded-[7rem] shadow-hover md:h-[460px] md:w-[250px]">
+              {/* Updated mobile height and width for a horizontal capsule, md: size remains vertical */}
+              <div className="relative mx-auto h-[120px] w-[260px] overflow-hidden rounded-[7rem] shadow-hover md:h-[460px] md:w-[250px]">
                 <img
                   src="/2ndfold.png"
                   alt="Living confidently with long-term contraception"
@@ -126,7 +126,7 @@ export default function FeatureProduct() {
             </div>
           </motion.div>
 
-          {/* Right features - Updated for 2-column mobile layout */}
+          {/* Right features */}
           <motion.div
             variants={group}
             initial="hidden"

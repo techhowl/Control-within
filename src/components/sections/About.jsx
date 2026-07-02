@@ -38,7 +38,7 @@ export default function ControlWithinHero() {
         {/* 👇 CHANGED: Removed 'scale' from the style prop here 👇 */}
         <motion.div style={{ opacity }} className="absolute inset-0">
           <img
-            src="/about.avif"
+            src="/about-1.png"
             alt="Woman looking peaceful and confident"
             className="h-full w-full object-cover object-top"
           />

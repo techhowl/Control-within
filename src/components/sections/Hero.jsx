@@ -146,7 +146,8 @@ export default function Hero() {
       transition={{ duration: 0.8, ease: EASE }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      className="relative min-h-svh overflow-hidden md:h-svh"
+      // 👇 Removed md:h-svh and added flex flex-col to allow safe expansion on small desktops 👇
+      className="relative min-h-svh overflow-hidden flex flex-col"
     >
       {/* ---- MOBILE ONLY: active slide image as a faint full-bleed background ---- */}
       <AnimatePresence mode="popLayout">
@@ -198,7 +199,8 @@ export default function Hero() {
             animate={{ rotateY: 0, opacity: 1, scale: 1 }}
             exit={{ rotateY: 90, opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.7, ease: EASE }}
-            className="relative h-[280px] w-[210px] overflow-hidden rounded-[2.5rem] shadow-hover max-md:hidden sm:h-[420px] sm:w-[320px]"
+            // 👇 Scaled down image on 'md' screens to save space, original size restored on 'lg' 👇
+            className="relative overflow-hidden rounded-[2.5rem] shadow-hover max-md:hidden md:h-[280px] md:w-[210px] lg:h-[420px] lg:w-[320px]"
           >
             <img
               src={slide.image}
@@ -211,7 +213,9 @@ export default function Hero() {
       </div>
 
       {/* ---- FOREGROUND UI ---- */}
-      <div className="relative z-10 flex h-full flex-col px-[5%] pb-7 pt-35 max-md:pb-16 md:pb-20">
+      {/* 👇 Adjusted desktop top padding (pt) so it doesn't push down too far on small laptops 👇 */}
+      <div className="relative z-10 flex h-full flex-1 flex-col px-[5%] pb-7 pt-35 max-md:pb-16 md:pt-24 lg:pt-35 md:pb-16 lg:pb-30">
+        
         {/* Top: heading + trust avatars */}
         <header className="flex items-start justify-between gap-6">
           <AnimatePresence mode="wait">
@@ -230,9 +234,8 @@ export default function Hero() {
         </header>
 
         {/* Middle: left paragraph card + right CTA/label (desktop) */}
-        {/* On desktop, top-align left copy with the right bullet card (tagged folds only). */}
         <div
-          className={`flex flex-1 items-center max-md:items-start ${
+          className={`flex flex-1 items-center max-md:items-start my-6 lg:my-0 ${
             slide.tags ? "md:items-start" : ""
           }`}
         >
@@ -243,9 +246,10 @@ export default function Hero() {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="max-w-sm rounded-3xl bg-white/55 p-6 backdrop-blur-sm max-md:mt-8 max-md:w-full md:mt-12 md:block md:self-start md:bg-white/45 md:p-8"
+              // 👇 Reduced paddings and margins for 'md', restored to original for 'lg' 👇
+              className="max-w-sm rounded-3xl bg-white/55 p-6 backdrop-blur-sm max-md:mt-8 max-md:w-full md:mt-6 lg:mt-12 md:block md:self-start md:bg-white/45 lg:p-8"
             >
-              {/* Mobile-only: product label above the copy (hidden on desktop where it lives on the right) */}
+              {/* Mobile-only: product label above the copy */}
               <div className="mb-3 md:hidden">
                 <div className="font-author text-2xl font-medium" style={{ color: slide.accent }}>
                   {slide.label}
@@ -253,7 +257,8 @@ export default function Hero() {
                 <div className="mt-0.5 text-sm text-dark/60">{slide.sublabel}</div>
               </div>
               <p className="text-sm leading-relaxed text-dark/75 sm:text-base">{slide.paragraph}</p>
-              {/* Mobile: tags stay in the left card. On desktop they move to the right (see below). */}
+              
+              {/* Mobile: tags stay in the left card */}
               {slide.tags && (
                 <ul className="mt-4 flex flex-col gap-1.5 md:hidden">
                   {slide.tags.map((t) => (
@@ -268,7 +273,7 @@ export default function Hero() {
                 </ul>
               )}
               
-              {/* Only show Learn More link on the 2nd and 3rd slides (index 1 and 2) */}
+              {/* Only show Learn More link on the 2nd and 3rd slides */}
               {(active === 1 || active === 2) && (
                 <a
                   href="#methods"
@@ -283,8 +288,8 @@ export default function Hero() {
 
           <div className="flex-1" />
 
-          <div className="hidden flex-col items-end gap-7 md:flex">
-            {/* Desktop: bullet points on the right (folds with tags only) */}
+          <div className="hidden flex-col items-end gap-5 lg:gap-7 md:flex">
+            {/* Desktop: bullet points on the right */}
             {slide.tags && (
               <AnimatePresence mode="wait">
                 <motion.ul
@@ -293,7 +298,8 @@ export default function Hero() {
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  className="flex max-w-sm flex-col gap-2.5 text-[0.85rem] rounded-3xl bg-white/55 p-8 text-left backdrop-blur-sm md:mt-12"
+                  // 👇 Reduced padding and spacing for 'md' to prevent vertical cutting off 👇
+                  className="flex max-w-sm flex-col gap-2 lg:gap-2.5 text-[0.85rem] rounded-3xl bg-white/55 p-5 lg:p-8 text-left backdrop-blur-sm md:mt-6 lg:mt-12"
                 >
                   {slide.tags.map((t) => (
                     <li
@@ -320,10 +326,10 @@ export default function Hero() {
                 exit="exit"
                 className="text-right"
               >
-                <div className="font-author text-4xl font-medium" style={{ color: slide.accent }}>
+                <div className="font-author text-3xl lg:text-4xl font-medium" style={{ color: slide.accent }}>
                   {slide.label}
                 </div>
-                <div className="mt-1 text-base text-dark/60">{slide.sublabel}</div>
+                <div className="mt-1 text-sm lg:text-base text-dark/60">{slide.sublabel}</div>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -340,7 +346,8 @@ export default function Hero() {
                 aria-selected={i === active}
                 aria-label={s.label}
                 onClick={() => setActive(i)}
-                className={`relative h-16 w-14 overflow-hidden rounded-2xl transition-all duration-300 sm:h-30 sm:w-26 ${
+                // 👇 Smaller thumbnails on 'md' screens 👇
+                className={`relative overflow-hidden rounded-xl lg:rounded-2xl transition-all duration-300 md:h-20 md:w-16 lg:h-30 lg:w-26 ${
                   i === active ? "scale-105" : "opacity-60 hover:opacity-100"
                 }`}
                 style={
@@ -356,7 +363,7 @@ export default function Hero() {
 
           <Cta className="md:hidden" />
 
-          {/* Mobile-only carousel dots — signal that the hero is a carousel */}
+          {/* Mobile-only carousel dots */}
           <div
             className="flex items-center gap-2 md:hidden"
             role="tablist"

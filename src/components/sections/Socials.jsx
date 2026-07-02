@@ -1,12 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const CARDS = [
-  { label: "Myth vs fact: the implant", img: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=900&auto=format&fit=crop" },
-  { label: "What to expect at placement", img: "/hero_4.png" },
-  { label: "Heavy periods? You’re not alone", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=900&auto=format&fit=crop" },
+const IG_PROFILE = "https://www.instagram.com/control_within_official/";
+
+// Shown until the live Instagram posts load (or if the API isn't configured yet).
+const FALLBACK_CARDS = [
+  { label: "Myth vs fact: the implant", img: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=900&auto=format&fit=crop", href: IG_PROFILE },
+  { label: "What to expect at placement", img: "/hero_4.png", href: IG_PROFILE },
+  { label: "Heavy periods? You’re not alone", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=900&auto=format&fit=crop", href: IG_PROFILE },
 ];
 
 const CARD_W = 280;
@@ -27,9 +30,26 @@ const Arrow = ({ dir }) => (
 );
 
 export default function Socials() {
+  const [cards, setCards] = useState(FALLBACK_CARDS);
   const [active, setActive] = useState(1);
-  const n = CARDS.length;
+  const n = cards.length;
   const go = (i) => setActive(Math.max(0, Math.min(n - 1, i)));
+
+  // Pull the latest posts from our Instagram feed (served securely by /api/instagram).
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/instagram")
+      .then((r) => r.json())
+      .then((data) => {
+        if (cancelled || !data?.posts?.length) return;
+        setCards(data.posts);
+        setActive(Math.min(1, data.posts.length - 1));
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <section className="relative overflow-hidden bg-bg py-20 md:py-28">
@@ -68,7 +88,7 @@ export default function Socials() {
 
       {/* Cover-flow carousel */}
       <div className="relative mx-auto mt-14 flex h-100 max-w-5xl items-center justify-center sm:h-110">
-        {CARDS.map((card, i) => {
+        {cards.map((card, i) => {
           const offset = i - active;
           const abs = Math.abs(offset);
           const scale = abs === 0 ? 1 : abs === 1 ? 0.84 : abs === 2 ? 0.68 : 0.6;
@@ -77,9 +97,14 @@ export default function Socials() {
 
           return (
             <motion.button
-              key={i}
+              key={card.id ?? i}
               type="button"
-              onClick={() => go(i)}
+              // Click a side card to center it; click the centered card to open the post.
+              onClick={() =>
+                i === active && card.href
+                  ? window.open(card.href, "_blank", "noopener,noreferrer")
+                  : go(i)
+              }
               aria-label={card.label}
               animate={{ x: offset * SPACING, scale, opacity, zIndex }}
               transition={SPRING}

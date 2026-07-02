@@ -230,7 +230,12 @@ export default function Hero() {
         </header>
 
         {/* Middle: left paragraph card + right CTA/label (desktop) */}
-        <div className="flex flex-1 items-center max-md:items-start">
+        {/* On desktop, top-align left copy with the right bullet card (tagged folds only). */}
+        <div
+          className={`flex flex-1 items-center max-md:items-start ${
+            slide.tags ? "md:items-start" : ""
+          }`}
+        >
           <AnimatePresence mode="wait">
             <motion.div
               key={`p-${active}`}
@@ -238,7 +243,7 @@ export default function Hero() {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="max-w-sm rounded-3xl bg-white/55 p-6 backdrop-blur-sm max-md:mt-8 max-md:w-full md:block md:bg-white/45 md:p-8"
+              className="max-w-sm rounded-3xl bg-white/55 p-6 backdrop-blur-sm max-md:mt-8 max-md:w-full md:mt-12 md:block md:self-start md:bg-white/45 md:p-8"
             >
               {/* Mobile-only: product label above the copy (hidden on desktop where it lives on the right) */}
               <div className="mb-3 md:hidden">
@@ -248,8 +253,9 @@ export default function Hero() {
                 <div className="mt-0.5 text-sm text-dark/60">{slide.sublabel}</div>
               </div>
               <p className="text-sm leading-relaxed text-dark/75 sm:text-base">{slide.paragraph}</p>
+              {/* Mobile: tags stay in the left card. On desktop they move to the right (see below). */}
               {slide.tags && (
-                <ul className="mt-4 flex flex-col gap-1.5">
+                <ul className="mt-4 flex flex-col gap-1.5 md:hidden">
                   {slide.tags.map((t) => (
                     <li key={t} className="flex items-start gap-2 text-sm leading-snug text-dark/70 sm:text-xs">
                       <span
@@ -278,6 +284,32 @@ export default function Hero() {
           <div className="flex-1" />
 
           <div className="hidden flex-col items-end gap-7 md:flex">
+            {/* Desktop: bullet points on the right (folds with tags only) */}
+            {slide.tags && (
+              <AnimatePresence mode="wait">
+                <motion.ul
+                  key={`tags-${active}`}
+                  variants={contentVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  className="flex max-w-sm flex-col gap-2.5 rounded-3xl bg-white/55 p-8 text-left backdrop-blur-sm md:mt-12"
+                >
+                  {slide.tags.map((t) => (
+                    <li
+                      key={t}
+                      className="flex items-start gap-2.5 text-sm leading-snug text-dark/75"
+                    >
+                      <span
+                        className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full"
+                        style={{ backgroundColor: slide.accent }}
+                      />
+                      {t}
+                    </li>
+                  ))}
+                </motion.ul>
+              </AnimatePresence>
+            )}
             <Cta />
             <AnimatePresence mode="wait">
               <motion.div

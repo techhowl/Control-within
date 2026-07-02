@@ -69,7 +69,8 @@ export default function ControlWithinHero() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        className="relative z-10 w-full rounded-t-[2.5rem] md:rounded-t-[4rem] bg-[#F9F6F0] px-6 py-24 md:py-32 shadow-[0_-20px_50px_rgba(0,0,0,0.3)]"
+        // 👇 Gradient is now reversed: from-bg to-accent-light-2 👇
+        className="relative z-10 w-full rounded-t-[2.5rem] md:rounded-t-[4rem] bg-gradient-to-b from-bg to-accent-light-2 px-6 py-24 md:py-32 shadow-[0_-20px_50px_rgba(0,0,0,0.3)]"
       >
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           

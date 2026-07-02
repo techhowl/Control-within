@@ -37,7 +37,8 @@ const METHODS = [
       "Helps reduce risk of iron-deficiency anaemia",
     ],
     cta: "Know More About Implants",
-    image:"/implant.png",
+    image: "/implant_1.png",
+    imageMobile: "/implant_mobile.png", 
     accent: "#614c91",
     href: "#consult",
   },
@@ -58,7 +59,8 @@ const METHODS = [
       "Lower hormone exposure than a daily pill",
     ],
     cta: "Know More About hIUS",
-    image:"/IUS.png",
+    image: "/IUS_1.png",
+    imageMobile: "/IUS_mobile.png", 
     accent: "#085b5c",
     href: "#consult",
   },
@@ -84,12 +86,32 @@ function MethodCard({ m }) {
       onFocus={() => setOpen(true)}
       onBlur={() => setOpen(false)}
       onClick={() => setOpen((o) => !o)}
-      className="relative h-[560px] w-full cursor-pointer overflow-hidden rounded-3xl shadow-soft outline-none transition-shadow hover:shadow-hover focus-visible:ring-2 focus-visible:ring-accent"
+      // 👇 CHANGED HERE: Added aspect-[351/197] for mobile, kept h-[560px] for desktop 👇
+      className="relative aspect-[351/240] md:aspect-auto md:h-[560px] w-full cursor-pointer overflow-hidden rounded-3xl shadow-soft outline-none transition-shadow hover:shadow-hover focus-visible:ring-2 focus-visible:ring-accent"
     >
-      {/* Background image */}
-      <motion.div variants={imageV} animate={state} transition={transition} className="absolute inset-0">
-        <img src={m.image} alt="" className="h-full w-full object-cover" draggable={false} />
-        <div className="absolute inset-0 bg-linear-to-t from-dark/70 via-transparent to-dark/30" />
+      {/* Background container holding the image */}
+      <motion.div 
+        variants={imageV} 
+        animate={state} 
+        transition={transition} 
+        className="absolute inset-0"
+        style={{ backgroundColor: `${m.accent}20` }}
+      >
+        {/* DESKTOP IMAGE: Hidden on mobile, visible on medium screens and up */}
+        <img 
+          src={m.image} 
+          alt="" 
+          className="hidden h-full w-full object-cover md:block" 
+          draggable={false} 
+        />
+        
+        {/* MOBILE IMAGE: Visible on mobile, hidden on medium screens and up */}
+        <img 
+          src={m.imageMobile} 
+          alt="" 
+          className="block h-full w-full object-cover md:hidden" 
+          draggable={false} 
+        />
       </motion.div>
 
       {/* Minimal details (default state) */}
@@ -97,10 +119,11 @@ function MethodCard({ m }) {
         variants={minimalV}
         animate={state}
         transition={{ duration: 0.3 }}
-        className="pointer-events-none absolute inset-0 flex flex-col justify-between p-5"
+        // Adjusted padding slightly on mobile to fit the tighter horizontal space
+        className="pointer-events-none absolute inset-0 flex flex-col justify-between p-4 md:p-5"
       >
         <div className="flex justify-end">
-          <span className="flex items-center gap-1 rounded-full bg-white/20 px-3 py-1 text-xm font-semibold text-dark backdrop-blur-sm">
+          <span className="flex items-center gap-1 rounded-full bg-dark/10 px-3 py-1 text-xm font-semibold text-white backdrop-blur-sm">
             <Shield /> {m.duration}
           </span>
         </div>
@@ -108,7 +131,7 @@ function MethodCard({ m }) {
           <span className="text-xs font-medium uppercase tracking-wide text-white/80">
             {m.productLabel}
           </span>
-          <h3 className="font-clash text-2xl font-semibold text-white drop-shadow">{m.headline}</h3>
+          <h3 className="font-clash text-xl md:text-2xl font-semibold text-white">{m.headline}</h3>
         </div>
       </motion.div>
 
@@ -118,7 +141,8 @@ function MethodCard({ m }) {
         animate={state}
         transition={transition}
         style={{ pointerEvents: open ? "auto" : "none" }}
-        className="absolute inset-0 flex flex-col bg-surface p-7"
+        // 👇 CHANGED HERE: Added overflow-y-auto so users can scroll the text on mobile 👇
+        className="absolute inset-0 flex flex-col overflow-y-auto bg-surface p-5 md:p-7"
       >
         <span className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: m.accent }}>
           {m.productLabel} · {m.productName}
@@ -139,7 +163,8 @@ function MethodCard({ m }) {
           ))}
         </ul>
 
-        <div className="mt-auto flex justify-end pt-5">
+        {/* Added pb-2 so the button has some breathing room when scrolling to the bottom on mobile */}
+        <div className="mt-auto flex justify-end pt-5 pb-2 md:pb-0">
           <a
             href={m.href}
             onClick={(e) => e.stopPropagation()}

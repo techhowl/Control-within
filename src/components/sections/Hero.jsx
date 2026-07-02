@@ -340,7 +340,7 @@ export default function Hero() {
                 aria-selected={i === active}
                 aria-label={s.label}
                 onClick={() => setActive(i)}
-                className={`relative h-16 w-14 overflow-hidden rounded-2xl transition-all duration-300 sm:h-20 sm:w-16 ${
+                className={`relative h-16 w-14 overflow-hidden rounded-2xl transition-all duration-300 sm:h-30 sm:w-26 ${
                   i === active ? "scale-105" : "opacity-60 hover:opacity-100"
                 }`}
                 style={

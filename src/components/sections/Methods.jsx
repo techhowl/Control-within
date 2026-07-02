@@ -183,7 +183,7 @@ function MethodCard({ m }) {
 
 export default function Methods() {
   return (
-    <section id="methods" className="bg-bg py-20 md:py-28">
+    <section id="methods" className="bg-bg py-10 md:py-15">
       <div className="mx-auto max-w-310 px-[5%]">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="text-xm font-semibold uppercase tracking-[0.18em] text-accent">

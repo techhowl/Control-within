@@ -76,7 +76,7 @@ export default function Faq() {
   ];
 
   return (
-    <section className="bg-surface py-20 md:py-28">
+    <section className="bg-surface py-10 md:py-15">
       <div className="mx-auto max-w-6xl px-[5%]">
         {/* Heading on top */}
         <div className="text-center">

@@ -26,7 +26,7 @@ const SLIDES = [
     image:
       "hero_2.png",
     label: "Contraceptive Implant",
-    sublabel: "Up to 3 years of cover",
+    sublabel: "Up to 3 years of protection",
     tags: [
       "Works for 3 years once inserted — no daily or monthly effort",
       "Over 99% effective",
@@ -146,8 +146,27 @@ export default function Hero() {
       transition={{ duration: 0.8, ease: EASE }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      className="relative h-svh overflow-hidden"
+      className="relative min-h-svh overflow-hidden md:h-svh"
     >
+      {/* ---- MOBILE ONLY: active slide image as a faint full-bleed background ---- */}
+      <AnimatePresence mode="popLayout">
+        <motion.div
+          key={`mbg-${active}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.22 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.7, ease: EASE }}
+          className="pointer-events-none absolute inset-0 md:hidden"
+        >
+          <img
+            src={slide.image}
+            alt=""
+            className="h-full w-full object-cover"
+            draggable={false}
+          />
+        </motion.div>
+      </AnimatePresence>
+
       {/* ---- CENTER LAYER: bg word + anchor image + floating orbs (behind UI) ---- */}
       <div
         className="pointer-events-none absolute inset-0 flex items-center justify-center max-md:items-end max-md:pb-28"
@@ -169,7 +188,7 @@ export default function Hero() {
         </AnimatePresence>
 
         {/* Soft platform under the anchor */}
-        <div className="absolute h-40 w-72 translate-y-28 rounded-[50%] bg-white/30 blur-2xl sm:w-96" />
+        <div className="absolute h-40 w-72 translate-y-28 rounded-[50%] bg-white/30 blur-2xl max-md:hidden sm:w-96" />
 
         {/* Central anchor image — flips in 3D on change */}
         <AnimatePresence mode="popLayout">
@@ -179,7 +198,7 @@ export default function Hero() {
             animate={{ rotateY: 0, opacity: 1, scale: 1 }}
             exit={{ rotateY: 90, opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.7, ease: EASE }}
-            className="relative h-[280px] w-[210px] overflow-hidden rounded-[2.5rem] shadow-hover sm:h-[420px] sm:w-[320px]"
+            className="relative h-[280px] w-[210px] overflow-hidden rounded-[2.5rem] shadow-hover max-md:hidden sm:h-[420px] sm:w-[320px]"
           >
             <img
               src={slide.image}
@@ -192,7 +211,7 @@ export default function Hero() {
       </div>
 
       {/* ---- FOREGROUND UI ---- */}
-      <div className="relative z-10 flex h-full flex-col px-[5%] pb-7 pt-28">
+      <div className="relative z-10 flex h-full flex-col px-[5%] pb-7 pt-28 max-md:pb-10">
         {/* Top: heading + trust avatars */}
         <header className="flex items-start justify-between gap-6">
           <AnimatePresence mode="wait">
@@ -211,7 +230,7 @@ export default function Hero() {
         </header>
 
         {/* Middle: left paragraph card + right CTA/label (desktop) */}
-        <div className="flex flex-1 items-center">
+        <div className="flex flex-1 items-center max-md:items-start">
           <AnimatePresence mode="wait">
             <motion.div
               key={`p-${active}`}
@@ -219,8 +238,15 @@ export default function Hero() {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="hidden max-w-sm rounded-3xl bg-white/45 p-8 backdrop-blur-sm md:block"
+              className="max-w-sm rounded-3xl bg-white/55 p-6 backdrop-blur-sm max-md:mt-8 max-md:w-full md:block md:bg-white/45 md:p-8"
             >
+              {/* Mobile-only: product label above the copy (hidden on desktop where it lives on the right) */}
+              <div className="mb-3 md:hidden">
+                <div className="font-author text-2xl font-medium" style={{ color: slide.accent }}>
+                  {slide.label}
+                </div>
+                <div className="mt-0.5 text-sm text-dark/60">{slide.sublabel}</div>
+              </div>
               <p className="text-base leading-relaxed text-dark/75">{slide.paragraph}</p>
               {slide.tags && (
                 <ul className="mt-4 flex flex-col gap-1.5">
@@ -272,8 +298,8 @@ export default function Hero() {
         </div>
 
         {/* Bottom: thumbnails + mobile CTA */}
-        <footer className="flex items-end justify-between gap-4 max-md:flex-col max-md:items-center max-md:gap-6">
-          <div className="flex gap-2 sm:gap-3" role="tablist" aria-label="Choose slide">
+        <footer className="flex items-end justify-between gap-4 max-md:mt-10 max-md:flex-col max-md:items-center max-md:gap-7">
+          <div className="flex gap-3 sm:gap-3" role="tablist" aria-label="Choose slide">
             {SLIDES.map((s, i) => (
               <button
                 key={i}

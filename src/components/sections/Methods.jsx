@@ -100,7 +100,7 @@ function MethodCard({ m }) {
         className="pointer-events-none absolute inset-0 flex flex-col justify-between p-5"
       >
         <div className="flex justify-end">
-          <span className="flex items-center gap-1 rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+          <span className="flex items-center gap-1 rounded-full bg-white/20 px-3 py-1 text-xm font-semibold text-dark backdrop-blur-sm">
             <Shield /> {m.duration}
           </span>
         </div>

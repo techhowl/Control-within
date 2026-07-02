@@ -16,7 +16,7 @@ const TOP_TICKER = [
   "No daily pills. No daily stress.",
   "No heavy periods. No painful periods.",
   "Control that stays with you.",
-  "One procedure. Years of protection.",
+  "One step. Years of protection.",
 ];
 
 export default function RootLayout({ children }) {

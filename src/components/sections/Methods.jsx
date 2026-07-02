@@ -39,7 +39,7 @@ const METHODS = [
     image: "/implant_1.png",
     imageMobile: "/implant_mobile.png",
     accent: "#614c91",
-    href: "#consult",
+    href: "https://wa.me/918452926740",
   },
   {
     headline: "Control Over Heavy Menstrual Bleeding And Endometriosis",
@@ -61,7 +61,7 @@ const METHODS = [
     image: "/IUS_1.png",
     imageMobile: "/IUS_mobile.png",
     accent: "#085b5c",
-    href: "#consult",
+    href: "https://wa.me/918452926740",
   },
 ];
 
@@ -172,6 +172,8 @@ function MethodCard({ m }) {
         <div className="mt-auto flex justify-end pt-5 pb-2 md:pb-0">
           <a
             href={m.href}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
             className="inline-flex items-center gap-2 rounded-full bg-dark py-2 pl-5 pr-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
           >

@@ -70,7 +70,9 @@ export default function Navbar() {
             ))}
           </div>
           <a
-            href="#consult"
+            href="https://wa.me/918452926740"
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-accent-hover"
           >
             Chat Now
@@ -123,7 +125,9 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#consult"
+            href="https://wa.me/918452926740"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={closeMenu}
             className="mt-1 rounded-2xl bg-accent px-4 py-3 text-center text-base font-semibold text-white transition-colors hover:bg-accent-hover"
           >

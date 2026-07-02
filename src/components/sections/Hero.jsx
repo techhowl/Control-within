@@ -14,7 +14,7 @@ const SLIDES = [
     image:"hero_1.png",
     label: "Control Within",
     sublabel: "Long-term & reversible",
-    cta: { label: "Find A Doctor Near You", href: "#consult" },
+    cta: { label: "Find A Doctor Near You", href: "https://wa.me/918452926740" },
   },
   {
     bg: "#d7cfeb",
@@ -124,16 +124,20 @@ export default function Hero() {
     }
   };
 
-  const Cta = ({ className = "" }) => (
+  const Cta = ({ className = "" }) => {
+    const isExternal = slide.cta.href.startsWith("http");
+    return (
     <a
       href={slide.cta.href}
+      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className={`inline-flex items-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5 ${className}`}
       style={{ backgroundColor: slide.accent }}
     >
       {slide.cta.label}
       <span aria-hidden="true">→</span>
     </a>
-  );
+    );
+  };
 
   // Layout Logic Checkers for Folds 2 & 3
   const isContentHeavy = active === 1 || active === 2;

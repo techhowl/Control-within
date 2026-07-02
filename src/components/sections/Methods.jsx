@@ -90,7 +90,6 @@ function MethodCard({ m }) {
       } md:aspect-auto md:h-[560px] w-full cursor-pointer overflow-hidden rounded-3xl shadow-soft outline-none transition-shadow hover:shadow-hover focus-visible:ring-2 focus-visible:ring-accent`}
     >
       {/* Background container holding the image */}
-      {/* FIX: Added conditional 'hidden md:block' to completely hide the image on mobile when opened */}
       <motion.div
         variants={imageV}
         animate={state}
@@ -124,11 +123,22 @@ function MethodCard({ m }) {
             <Shield /> {m.duration}
           </span>
         </div>
-        <div>
-          <span className="text-xs font-medium uppercase tracking-wide text-white/80">
-            {m.productLabel}
-          </span>
-          <h3 className="font-clash text-xl md:text-2xl font-semibold text-white">{m.headline}</h3>
+        
+        <div className="flex w-full flex-col">
+          <div>
+            <span className="text-xs font-medium uppercase tracking-wide text-white/80">
+              {m.productLabel}
+            </span>
+            <h3 className="font-clash text-xl md:text-2xl font-semibold text-white">
+              {m.headline}
+              {/* Mobile simple arrow indicator appended strictly inline */}
+              <span className="inline-block md:hidden align-middle ml-2">
+                <svg viewBox="0 0 24 24" className="h-5 w-5 text-white/90" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </span>
+            </h3>
+          </div>
         </div>
       </motion.div>
 

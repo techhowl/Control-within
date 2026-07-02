@@ -293,7 +293,7 @@ export default function Hero() {
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  className="flex max-w-sm flex-col gap-2.5 rounded-3xl bg-white/55 p-8 text-left backdrop-blur-sm md:mt-12"
+                  className="flex max-w-sm flex-col gap-2.5 text-[0.85rem] rounded-3xl bg-white/55 p-8 text-left backdrop-blur-sm md:mt-12"
                 >
                   {slide.tags.map((t) => (
                     <li

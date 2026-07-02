@@ -95,7 +95,7 @@ function MethodCard({ m }) {
         animate={state} 
         transition={transition} 
         className="absolute inset-0"
-        style={{ backgroundColor: `${m.accent}20` }}
+        style={{ backgroundColor: `${m.accent}50` }}
       >
         {/* DESKTOP IMAGE: Hidden on mobile, visible on medium screens and up */}
         <img 

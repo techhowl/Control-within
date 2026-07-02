@@ -69,7 +69,7 @@ export default function IsThisForYou() {
                 </div>
                 <ul className="mt-5 space-y-3">
                   {card.items.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-text">
+                    <li key={item} className="flex items-start gap-3 text-[0.85rem] leading-relaxed text-text">
                       <span className={`mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full text-white ${accent}`}>
                         <Check />
                       </span>

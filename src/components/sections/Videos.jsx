@@ -8,15 +8,14 @@ const VIDEOS = [
   {
     theme: "purple",
     title: "What is a Contraceptive Implant",
-    available: true,
     img: "/video_cover_implant.jpg",
-    // sources: { en: "<embed url>", hi: "<embed url>" }  // drop real URLs in later
+    sources: { en: "https://www.youtube.com/embed/chLNL-Gtre4" }
   },
   {
     theme: "teal",
     title: "What is an hIUS",
-    available: false,
     img: "/video_cover_IUS.jpg",
+    sources: {}
   },
 ];
 
@@ -66,8 +65,11 @@ export default function Videos() {
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
           {VIDEOS.map((video, i) => {
             const grad = "from-teal-deep/40 to-teal-deep/10";
+            
+            // DYNAMIC CHECK: Check if a URL exists for the current language
+            const isAvailable = !!video.sources?.[lang];
 
-            if (!video.available) {
+            if (!isAvailable) {
               return (
                 <Reveal key={video.title} delay={(i + 1) * 80}>
                   <div
@@ -126,6 +128,7 @@ export default function Videos() {
         open={active !== null}
         title={active}
         lang={lang}
+        videoUrl={active ? VIDEOS.find(v => v.title === active)?.sources?.[lang] : null}
         onClose={() => setActive(null)}
       />
     </section>

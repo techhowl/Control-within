@@ -56,6 +56,7 @@ fbq('track', 'PageView');`,
           href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
           rel="stylesheet"
         />
+        
       </head>
       <body>
         {/* Google Tag Manager (noscript) */}

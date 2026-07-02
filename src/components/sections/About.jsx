@@ -23,7 +23,6 @@ export default function ControlWithinHero() {
     offset: ["start 80px", "end start"],
   });
 
-  // 👇 CHANGED: Removed the 'scale' transform so the image doesn't shrink and cause black side borders
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
 
   return (
@@ -32,10 +31,10 @@ export default function ControlWithinHero() {
       {/* =========================================
           FOLD 1 — STICKY HERO
       ========================================= */}
-      <div className="sticky top-[80px] h-[calc(100vh-80px)] w-full overflow-hidden">
+      {/* 👇 CHANGED: h-[65vh] on mobile so the bottom fold peeks into view, restoring desktop height with md:h-[calc(100vh-80px)] */}
+      <div className="sticky top-[80px] h-[65vh] md:h-[calc(100vh-80px)] w-full overflow-hidden">
         
         {/* Parallax Background */}
-        {/* 👇 CHANGED: Removed 'scale' from the style prop here 👇 */}
         <motion.div style={{ opacity }} className="absolute inset-0">
           <img
             src="/about-1.png"
@@ -50,12 +49,14 @@ export default function ControlWithinHero() {
         <div className="relative z-10 flex h-full flex-col justify-start px-6 pt-16 md:px-12 md:pt-24 lg:pt-32">
 
           {/* Top Area: Tag + headline on the image */}
-          <div className="flex w-full max-w-4xl flex-col">
+          {/* 👇 CHANGED: Removed max-w-4xl to allow the text to stretch to its natural width on desktop */}
+          <div className="flex w-full flex-col">
             <span className="mb-4 text-sm md:text-base font-bold uppercase tracking-[0.2em] text-[#F9F6F0]">
               Why We're Here
             </span>
-            <h2 className="font-author text-4xl font-bold leading-[1.15] text-[#F9F6F0] sm:text-5xl md:text-6xl lg:text-[4.5rem]">
-              Women Don't Lack Options.<br className="hidden md:block" /> They Lack Peace Of Mind.
+            {/* 👇 CHANGED: Added md:whitespace-nowrap to guarantee it stays strictly on one line before the <br/> break */}
+            <h2 className="font-author text-4xl font-bold leading-[1.15] text-[#F9F6F0] sm:text-5xl md:text-6xl lg:text-[4.5rem] md:whitespace-nowrap">
+              Women Don't Lack Options.<br /> They Lack Peace Of Mind.
             </h2>
           </div>
 

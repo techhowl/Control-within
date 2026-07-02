@@ -7,14 +7,13 @@ import { motion, AnimatePresence } from "framer-motion";
 const PANELS = [
   {
     side: "left",
-    // Added a break tag here to split the title into two lines
     title: (
       <>
         Contraceptive <br /> Implants
       </>
     ),
-    lead: "", // Left blank since the previous lead is now Step 1
-    bg: "#D7CFEB", // light brand lavender
+    lead: "",
+    bg: "#D7CFEB",
     textColor: "#FFFFFF",
     steps: [
       {
@@ -41,14 +40,13 @@ const PANELS = [
   },
   {
     side: "right",
-    // Added a break tag here to split the title into two lines
     title: (
       <>
         Hormonal <br /> IUS
       </>
     ),
-    lead: "", // Left blank since the previous lead is now Step 1
-    bg: "#4AA3AC", // light brand teal
+    lead: "",
+    bg: "#4AA3AC",
     textColor: "#FFFFFF",
     steps: [
       {
@@ -99,10 +97,6 @@ function StepTile({ step }) {
         </div>
         <p className="text-xs md:text-sm leading-relaxed text-gray-800 font-medium">{step.text}</p>
       </div>
-      {/* 
-        Using standard <img> for quick copy-paste capability. 
-        Swap to Next.js <Image /> in production for optimization. 
-      */}
       <div className="relative w-full h-40 md:h-48 bg-gray-100 overflow-hidden shrink-0">
         <img
           src={step.img}
@@ -140,7 +134,6 @@ function ExpandedProcess({ panel }) {
         )}
       </motion.div>
 
-      {/* Dynamic grid to support both 3 and 4 steps properly without wrapping */}
       <div className={`grid gap-4 md:gap-6 h-full max-h-[400px] ${panel.steps.length === 4 ? 'grid-cols-4' : 'grid-cols-3'}`}>
         {panel.steps.map((s) => (
           <motion.div key={s.n} variants={itemVariants} className="h-full">
@@ -168,7 +161,6 @@ function DesktopPanel({ panel, hovered, setHovered }) {
       }}
       className="relative h-[650px] overflow-hidden cursor-pointer"
     >
-      {/* Default State Content (Centered Text) */}
       <AnimatePresence>
         {mode === "default" && (
           <motion.div
@@ -193,9 +185,67 @@ function DesktopPanel({ panel, hovered, setHovered }) {
         )}
       </AnimatePresence>
 
-      {/* Expanded State Content (The Process) */}
       <AnimatePresence>
         {mode === "expanded" && <ExpandedProcess panel={panel} />}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
+// Mobile Panel Component
+function MobilePanel({ panel }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <motion.div
+      layout
+      onClick={() => setOpen(!open)}
+      className="relative rounded-2xl cursor-pointer overflow-hidden shadow-sm"
+      style={{ backgroundColor: panel.bg }}
+    >
+      {/* Header Area */}
+      <div className="p-8 pb-10 text-center flex flex-col items-center relative z-10">
+        <h3 className={`text-4xl font-bold text-white leading-tight transition-all duration-300 ${open ? "mb-0" : "mb-2"}`}>
+          {panel.title}
+        </h3>
+      </div>
+
+      {/* Bottom Right CTA Text & Circular Arrow (Hidden when open) */}
+      {!open && (
+        <div className="absolute bottom-5 right-5 flex items-center gap-1.5">
+          <span className="text-[13px] font-semibold tracking-wide text-white/95">
+            Click to read more
+          </span>
+          <svg viewBox="0 0 24 24" className="h-4 w-4 text-white" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </div>
+      )}
+
+      {/* Expandable Process Steps */}
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="px-6 pb-6"
+          >
+            <div className="flex flex-col gap-6 pt-2">
+              {panel.steps.map((s) => (
+                <StepTile key={s.n} step={s} />
+              ))}
+            </div>
+            
+            {/* Small close icon at the bottom of the fold */}
+            <div className="mt-4 flex justify-center">
+              <svg viewBox="0 0 24 24" className="h-7 w-7 text-black/40 transition-transform hover:scale-110" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </div>
+          </motion.div>
+        )}
       </AnimatePresence>
     </motion.div>
   );
@@ -230,23 +280,10 @@ export default function SplitProcessScreen() {
           ))}
         </div>
 
-        {/* Mobile Fallback: Stacked layout */}
-        <div className="flex flex-col md:hidden gap-8">
+        {/* Mobile Fallback: Interactive stacked layout */}
+        <div className="flex flex-col md:hidden gap-6">
           {PANELS.map((panel) => (
-            <div
-              key={panel.side}
-              className="rounded-2xl p-6"
-              style={{ backgroundColor: panel.bg }}
-            >
-              <h3 className="text-4xl font-bold text-center mb-8 text-white">
-                {panel.title}
-              </h3>
-              <div className="flex flex-col gap-6">
-                {panel.steps.map((s) => (
-                  <StepTile key={s.n} step={s} />
-                ))}
-              </div>
-            </div>
+            <MobilePanel key={panel.side} panel={panel} />
           ))}
         </div>
 

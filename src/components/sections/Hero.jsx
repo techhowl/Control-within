@@ -23,8 +23,7 @@ const SLIDES = [
     heading: "A Contraceptive That Fits Your Terms And Conditions.",
     paragraph:
       "Imagine not having to think about a pill daily, worrying about your partner carrying a condom, or having to commit to a permanent and often regrettable decision. The Contraceptive Implant solves all these problems.",
-    image:
-      "hero_2.png",
+    image: "hero_2.png",
     label: "Contraceptive Implant",
     sublabel: "Up to 3 years of protection",
     tags: [
@@ -44,8 +43,7 @@ const SLIDES = [
       "Do Heavy and Painful Periods Ruin All Your Plans? Now, You Have The Upper Hand.",
     paragraph:
       "Regain control over your body and cycle with the Hormonal IUS — a small T-shaped device placed in the uterus to help alleviate period pains, heavy menstrual bleeding, and more.",
-    image:
-      "hero_3.png",
+    image: "hero_3.png",
     label: "Hormonal IUS",
     sublabel: "Lighter, calmer periods",
     tags: [
@@ -65,8 +63,7 @@ const SLIDES = [
       "Be It Periods Or Contraception, You Should Have The Control You Deserve.",
     paragraph:
       "Explore long-term hormonal contraceptive solutions that work quietly while you live your life.",
-    image:
-      "hero_4.png",
+    image: "hero_4.png",
     label: "Implant or hIUS",
     sublabel: "Your choice, your control",
     cta: { label: "Know More", href: "#methods" },
@@ -75,55 +72,57 @@ const SLIDES = [
 
 const EASE = [0.22, 1, 0.36, 1];
 
-/* Text/content blocks: leave by sliding down + fading, enter by rising + fading. */
 const contentVariants = {
   initial: { y: 36, opacity: 0 },
   animate: { y: 0, opacity: 1, transition: { duration: 0.5, ease: EASE } },
   exit: { y: 36, opacity: 0, transition: { duration: 0.35, ease: "easeIn" } },
 };
 
-/* Massive background word: enters from below, exits upward; rests faint. */
 const bgTextVariants = {
   initial: { y: 120, opacity: 0 },
   animate: { y: 0, opacity: 0.08, transition: { duration: 0.7, ease: EASE } },
   exit: { y: -120, opacity: 0, transition: { duration: 0.5, ease: "easeIn" } },
 };
 
-function FloatingOrb({ Icon, spot, accent, reduce }) {
-  return (
-    <motion.div
-      className="absolute max-md:hidden"
-      style={{ top: spot.top, left: spot.left }}
-      initial={{ x: spot.from.x, y: spot.from.y, scale: 0.4, opacity: 0 }}
-      animate={{ x: 0, y: 0, scale: 1, opacity: 1 }}
-      exit={{ x: spot.from.x, y: spot.from.y, scale: 0.3, opacity: 0 }}
-      transition={{ duration: 0.6, ease: EASE }}
-    >
-      <motion.div
-        animate={reduce ? {} : { y: [0, -10, 0] }}
-        transition={{ duration: spot.dur, repeat: Infinity, ease: "easeInOut" }}
-        className="flex h-14 w-14 items-center justify-center rounded-full border border-white/60 bg-white/70 shadow-soft backdrop-blur-sm"
-        style={{ color: accent }}
-      >
-        <Icon className="h-6 w-6" />
-      </motion.div>
-    </motion.div>
-  );
-}
-
 export default function Hero() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  
+  // Swipe State
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
   const reduce = useReducedMotion();
   const slide = SLIDES[active];
   const n = SLIDES.length;
 
-  // Gentle autoplay; thumbnails are the primary control.
   useEffect(() => {
     if (paused || reduce) return;
     const t = setTimeout(() => setActive((a) => (a + 1) % n), 7000);
     return () => clearTimeout(t);
   }, [active, paused, reduce, n]);
+
+  // Swipe Handlers
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      setActive((a) => (a + 1) % n);
+    }
+    if (isRightSwipe) {
+      setActive((a) => (a === 0 ? n - 1 : a - 1));
+    }
+  };
 
   const Cta = ({ className = "" }) => (
     <a
@@ -136,6 +135,11 @@ export default function Hero() {
     </a>
   );
 
+  // Layout Logic Checkers for Folds 2 & 3
+  const isContentHeavy = active === 1 || active === 2;
+  const mobileHeadingSize = isContentHeavy ? "max-md:text-xl" : "max-md:text-4xl";
+  const mobileCardMargin = isContentHeavy ? "max-md:mt-3" : "max-md:mt-8";
+
   return (
     <motion.section
       id="hero"
@@ -146,10 +150,11 @@ export default function Hero() {
       transition={{ duration: 0.8, ease: EASE }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      // 👇 Removed md:h-svh and added flex flex-col to allow safe expansion on small desktops 👇
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
       className="relative min-h-svh overflow-hidden flex flex-col"
     >
-      {/* ---- MOBILE ONLY: active slide image as a faint full-bleed background ---- */}
       <AnimatePresence mode="popLayout">
         <motion.div
           key={`mbg-${active}`}
@@ -168,12 +173,10 @@ export default function Hero() {
         </motion.div>
       </AnimatePresence>
 
-      {/* ---- CENTER LAYER: bg word + anchor image + floating orbs (behind UI) ---- */}
       <div
         className="pointer-events-none absolute inset-0 flex items-center justify-center max-md:items-end max-md:pb-28"
         style={{ perspective: 1200 }}
       >
-        {/* Massive background typography */}
         <AnimatePresence mode="popLayout">
           <motion.span
             key={`txt-${active}`}
@@ -188,10 +191,8 @@ export default function Hero() {
           </motion.span>
         </AnimatePresence>
 
-        {/* Soft platform under the anchor */}
         <div className="absolute h-40 w-72 translate-y-28 rounded-[50%] bg-white/30 blur-2xl max-md:hidden sm:w-96" />
 
-        {/* Central anchor image — flips in 3D on change */}
         <AnimatePresence mode="popLayout">
           <motion.div
             key={`img-${active}`}
@@ -199,7 +200,6 @@ export default function Hero() {
             animate={{ rotateY: 0, opacity: 1, scale: 1 }}
             exit={{ rotateY: 90, opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.7, ease: EASE }}
-            // 👇 Scaled down image on 'md' screens to save space, original size restored on 'lg' 👇
             className="relative overflow-hidden rounded-[2.5rem] shadow-hover max-md:hidden md:h-[280px] md:w-[210px] lg:h-[420px] lg:w-[320px]"
           >
             <img
@@ -212,11 +212,8 @@ export default function Hero() {
         </AnimatePresence>
       </div>
 
-      {/* ---- FOREGROUND UI ---- */}
-      {/* 👇 Adjusted desktop top padding (pt) so it doesn't push down too far on small laptops 👇 */}
-      <div className="relative z-10 flex h-full flex-1 flex-col px-[5%] pb-7 pt-35 max-md:pb-16 md:pt-24 lg:pt-35 md:pb-16 lg:pb-30">
+      <div className="relative z-10 flex h-full flex-1 flex-col px-[5%] pb-7 pt-24 max-md:pb-16 md:pt-24 lg:pt-35 md:pb-16 lg:pb-30">
         
-        {/* Top: heading + trust avatars */}
         <header className="flex items-start justify-between gap-6">
           <AnimatePresence mode="wait">
             <motion.h1
@@ -225,7 +222,7 @@ export default function Hero() {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="max-w-xl font-author text-2xl font-medium leading-[1.05] sm:text-4xl lg:text-5xl"
+              className={`max-w-xl font-author font-medium leading-[1.05] sm:text-4xl lg:text-5xl ${mobileHeadingSize}`}
               style={{ color: slide.accent }}
             >
               {slide.heading}
@@ -233,12 +230,7 @@ export default function Hero() {
           </AnimatePresence>
         </header>
 
-        {/* Middle: left paragraph card + right CTA/label (desktop) */}
-        <div
-          className={`flex flex-1 items-center max-md:items-start my-6 lg:my-0 ${
-            slide.tags ? "md:items-start" : ""
-          }`}
-        >
+        <div className={`flex flex-1 items-center max-md:items-start my-6 lg:my-0 ${slide.tags ? "md:items-start" : ""}`}>
           <AnimatePresence mode="wait">
             <motion.div
               key={`p-${active}`}
@@ -246,19 +238,18 @@ export default function Hero() {
               initial="initial"
               animate="animate"
               exit="exit"
-              // 👇 Reduced paddings and margins for 'md', restored to original for 'lg' 👇
-              className="max-w-sm rounded-3xl bg-white/55 p-6 backdrop-blur-sm max-md:mt-8 max-md:w-full md:mt-6 lg:mt-12 md:block md:self-start md:bg-white/45 lg:p-8"
+              className={`max-w-sm rounded-3xl bg-white/55 p-6 backdrop-blur-sm max-md:w-full md:mt-6 lg:mt-12 md:block md:self-start md:bg-white/45 lg:p-8 ${mobileCardMargin}`}
             >
-              {/* Mobile-only: product label above the copy */}
               <div className="mb-3 md:hidden">
-                <div className="font-author text-2xl font-medium" style={{ color: slide.accent }}>
+                {/* 👇 Changed from text-2xl to text-xl here 👇 */}
+                <div className="font-author text-xl font-medium" style={{ color: slide.accent }}>
                   {slide.label}
                 </div>
                 <div className="mt-0.5 text-sm text-dark/60">{slide.sublabel}</div>
               </div>
+              
               <p className="text-sm leading-relaxed text-dark/75 sm:text-base">{slide.paragraph}</p>
               
-              {/* Mobile: tags stay in the left card */}
               {slide.tags && (
                 <ul className="mt-4 flex flex-col gap-1.5 md:hidden">
                   {slide.tags.map((t) => (
@@ -273,7 +264,6 @@ export default function Hero() {
                 </ul>
               )}
               
-              {/* Only show Learn More link on the 2nd and 3rd slides */}
               {(active === 1 || active === 2) && (
                 <a
                   href="#methods"
@@ -289,7 +279,6 @@ export default function Hero() {
           <div className="flex-1" />
 
           <div className="hidden flex-col items-end gap-5 lg:gap-7 md:flex">
-            {/* Desktop: bullet points on the right */}
             {slide.tags && (
               <AnimatePresence mode="wait">
                 <motion.ul
@@ -298,14 +287,10 @@ export default function Hero() {
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  // 👇 Reduced padding and spacing for 'md' to prevent vertical cutting off 👇
                   className="flex max-w-sm flex-col gap-2 lg:gap-2.5 text-[0.85rem] rounded-3xl bg-white/55 p-5 lg:p-8 text-left backdrop-blur-sm md:mt-6 lg:mt-12"
                 >
                   {slide.tags.map((t) => (
-                    <li
-                      key={t}
-                      className="flex items-start gap-2.5 text-sm leading-snug text-dark/75"
-                    >
+                    <li key={t} className="flex items-start gap-2.5 text-sm leading-snug text-dark/75">
                       <span
                         className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full"
                         style={{ backgroundColor: slide.accent }}
@@ -335,8 +320,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Bottom: thumbnails + mobile CTA */}
-        <footer className="flex items-end justify-between gap-4 max-md:mt-10 max-md:flex-col max-md:items-center max-md:gap-7">
+        <footer className="flex items-end justify-between gap-4 max-md:mt-10 max-md:flex-col max-md:items-center max-md:gap-7 z-10">
           <div className="flex gap-3 sm:gap-3 max-md:hidden" role="tablist" aria-label="Choose slide">
             {SLIDES.map((s, i) => (
               <button
@@ -346,7 +330,6 @@ export default function Hero() {
                 aria-selected={i === active}
                 aria-label={s.label}
                 onClick={() => setActive(i)}
-                // 👇 Smaller thumbnails on 'md' screens 👇
                 className={`relative overflow-hidden rounded-xl lg:rounded-2xl transition-all duration-300 md:h-20 md:w-16 lg:h-30 lg:w-26 ${
                   i === active ? "scale-105" : "opacity-60 hover:opacity-100"
                 }`}
@@ -363,12 +346,7 @@ export default function Hero() {
 
           <Cta className="md:hidden" />
 
-          {/* Mobile-only carousel dots */}
-          <div
-            className="flex items-center gap-2 md:hidden"
-            role="tablist"
-            aria-label="Choose slide"
-          >
+          <div className="flex items-center gap-2 md:hidden" role="tablist" aria-label="Choose slide">
             {SLIDES.map((s, i) => (
               <button
                 key={i}

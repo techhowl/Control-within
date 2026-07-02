@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import Reveal from "@/components/ui/Reveal";
 import VideoModal from "@/components/ui/VideoModal";
@@ -44,8 +43,7 @@ export default function Videos() {
               Different Processes. Different Purposes.<br /> One Goal: Control.
             </h2>
           </Reveal>
-
-          <div className="inline-flex shrink-0 rounded-full bg-white/10 p-1" role="group" aria-label="Video language">
+          <div className="self-start inline-flex shrink-0 rounded-full bg-white/10 p-1" role="group" aria-label="Video language">
             {LANGS.map(([code, label]) => (
               <button
                 key={code}
@@ -61,14 +59,12 @@ export default function Videos() {
             ))}
           </div>
         </div>
-
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
           {VIDEOS.map((video, i) => {
             const grad = "from-teal-deep/40 to-teal-deep/10";
-            
+
             // DYNAMIC CHECK: Check if a URL exists for the current language
             const isAvailable = !!video.sources?.[lang];
-
             if (!isAvailable) {
               return (
                 <Reveal key={video.title} delay={(i + 1) * 80}>
@@ -92,7 +88,6 @@ export default function Videos() {
                 </Reveal>
               );
             }
-
             return (
               <Reveal key={video.title} delay={(i + 1) * 80}>
                 <button
@@ -123,7 +118,6 @@ export default function Videos() {
           })}
         </div>
       </div>
-
       <VideoModal
         open={active !== null}
         title={active}

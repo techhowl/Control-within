@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import Reveal from "@/components/ui/Reveal";
@@ -38,7 +37,7 @@ const METHODS = [
     ],
     cta: "Know More About Implants",
     image: "/implant_1.png",
-    imageMobile: "/implant_mobile.png", 
+    imageMobile: "/implant_mobile.png",
     accent: "#614c91",
     href: "#consult",
   },
@@ -60,7 +59,7 @@ const METHODS = [
     ],
     cta: "Know More About hIUS",
     image: "/IUS_1.png",
-    imageMobile: "/IUS_mobile.png", 
+    imageMobile: "/IUS_mobile.png",
     accent: "#085b5c",
     href: "#consult",
   },
@@ -86,31 +85,30 @@ function MethodCard({ m }) {
       onFocus={() => setOpen(true)}
       onBlur={() => setOpen(false)}
       onClick={() => setOpen((o) => !o)}
-      // 👇 Restored the original md:h-[560px] so the box stays large 👇
-      className="relative aspect-[351/240] md:aspect-auto md:h-[560px] w-full cursor-pointer overflow-hidden rounded-3xl shadow-soft outline-none transition-shadow hover:shadow-hover focus-visible:ring-2 focus-visible:ring-accent"
+      className={`relative ${
+        open ? "h-auto" : "aspect-[351/240]"
+      } md:aspect-auto md:h-[560px] w-full cursor-pointer overflow-hidden rounded-3xl shadow-soft outline-none transition-shadow hover:shadow-hover focus-visible:ring-2 focus-visible:ring-accent`}
     >
       {/* Background container holding the image */}
-      <motion.div 
-        variants={imageV} 
-        animate={state} 
-        transition={transition} 
-        className="absolute inset-0"
+      {/* FIX: Added conditional 'hidden md:block' to completely hide the image on mobile when opened */}
+      <motion.div
+        variants={imageV}
+        animate={state}
+        transition={transition}
+        className={`absolute inset-0 ${open ? "hidden md:block" : "block"}`}
         style={{ backgroundColor: `${m.accent}50` }}
       >
-        {/* 👇 CHANGED HERE: Added object-contain and padding to shrink the image inside the box on desktop 👇 */}
-        <img 
-          src={m.image} 
-          alt="" 
-          className="hidden h-full w-full object-contain p-10 pb-36 md:block" 
-          draggable={false} 
+        <img
+          src={m.image}
+          alt=""
+          className="hidden h-full w-full object-contain p-10 pb-36 md:block"
+          draggable={false}
         />
-        
-        {/* MOBILE IMAGE: Untouched */}
-        <img 
-          src={m.imageMobile} 
-          alt="" 
-          className="block h-full w-full object-cover md:hidden" 
-          draggable={false} 
+        <img
+          src={m.imageMobile}
+          alt=""
+          className="block h-full w-full object-cover md:hidden"
+          draggable={false}
         />
       </motion.div>
 
@@ -140,13 +138,14 @@ function MethodCard({ m }) {
         animate={state}
         transition={transition}
         style={{ pointerEvents: open ? "auto" : "none" }}
-        className="absolute inset-0 flex flex-col overflow-y-auto bg-surface p-5 md:p-7"
+        className={`${
+          open ? "static overflow-visible" : "absolute inset-0 overflow-hidden"
+        } flex flex-col bg-surface p-5 md:absolute md:inset-0 md:overflow-y-auto md:p-7`}
       >
         <span className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: m.accent }}>
           {m.productLabel} · {m.productName}
         </span>
         <h3 className="mt-2 font-clash text-xl font-semibold leading-tight text-dark">{m.headline}</h3>
-
         <ul className="mt-5 space-y-2">
           {m.details.map((d) => (
             <li key={d} className="flex items-start gap-2.5 text-[0.85rem] leading-snug text-text">
@@ -160,7 +159,6 @@ function MethodCard({ m }) {
             </li>
           ))}
         </ul>
-
         <div className="mt-auto flex justify-end pt-5 pb-2 md:pb-0">
           <a
             href={m.href}
@@ -193,7 +191,6 @@ export default function Methods() {
             Two long-term, reversible, doctor-placed options.
           </p>
         </Reveal>
-
         <div className="mx-auto mt-12 grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-2">
           {METHODS.map((m) => (
             <Reveal key={m.productName} delay={80}>

@@ -105,7 +105,7 @@ export default function Socials() {
                   ? window.open(card.href, "_blank", "noopener,noreferrer")
                   : go(i)
               }
-              aria-label={card.label}
+              aria-label={card.label} // Keep this for screen readers/accessibility
               animate={{ x: offset * SPACING, scale, opacity, zIndex }}
               transition={SPRING}
               style={{
@@ -116,11 +116,7 @@ export default function Socials() {
               className="aspect-3/4 overflow-hidden rounded-3xl shadow-hover"
             >
               <img src={card.img} alt="" className="h-full w-full object-cover" draggable={false} />
-              <div className="absolute inset-0 bg-linear-to-t from-dark/70 via-transparent to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-5 text-left">
-                <span className="text-xs font-medium text-white/70">@Control_within_Official</span>
-                <p className="mt-1 font-clash text-lg font-semibold text-white">{card.label}</p>
-              </div>
+              {/* Captions and dark gradient overlay removed */}
             </motion.button>
           );
         })}

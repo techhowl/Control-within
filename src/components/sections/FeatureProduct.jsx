@@ -91,13 +91,13 @@ export default function FeatureProduct() {
 
         {/* Grid */}
         <div className="mt-14 grid grid-cols-1 items-center gap-12 lg:grid-cols-3 lg:gap-8">
-          {/* Left features */}
+          {/* Left features - Updated for 2-column mobile layout */}
           <motion.div
             variants={group}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
-            className="order-2 flex flex-col gap-12 lg:order-1 lg:items-end"
+            className="order-2 grid grid-cols-2 gap-4 lg:order-1 lg:flex lg:flex-col lg:items-end lg:gap-12"
           >
             {LEFT.map((f) => (
               <FeatureItem key={f.text} {...f} side="left" reduce={reduce} />
@@ -114,7 +114,8 @@ export default function FeatureProduct() {
           >
             <div className="relative">
               <div className="absolute -inset-6 rounded-[6rem] bg-accent-light-2/30 blur-2xl" aria-hidden="true" />
-              <div className="relative mx-auto h-[380px] w-[210px] overflow-hidden rounded-[7rem] shadow-hover sm:h-[460px] sm:w-[250px]">
+              {/* Reduced default (mobile) height and width, kept md: variables identical */}
+              <div className="relative mx-auto h-[220px] w-[120px] overflow-hidden rounded-[7rem] shadow-hover md:h-[460px] md:w-[250px]">
                 <img
                   src="/2ndfold.png"
                   alt="Living confidently with long-term contraception"
@@ -125,13 +126,13 @@ export default function FeatureProduct() {
             </div>
           </motion.div>
 
-          {/* Right features */}
+          {/* Right features - Updated for 2-column mobile layout */}
           <motion.div
             variants={group}
             initial="hidden"
             whileInView="show"
             viewport={VIEWPORT}
-            className="order-3 flex flex-col gap-12 lg:items-start"
+            className="order-3 grid grid-cols-2 gap-4 lg:flex lg:flex-col lg:items-start lg:gap-12"
           >
             {RIGHT.map((f) => (
               <FeatureItem key={f.text} {...f} side="right" reduce={reduce} />

@@ -331,7 +331,7 @@ export default function Hero() {
 
         {/* Bottom: thumbnails + mobile CTA */}
         <footer className="flex items-end justify-between gap-4 max-md:mt-10 max-md:flex-col max-md:items-center max-md:gap-7">
-          <div className="flex gap-3 sm:gap-3" role="tablist" aria-label="Choose slide">
+          <div className="flex gap-3 sm:gap-3 max-md:hidden" role="tablist" aria-label="Choose slide">
             {SLIDES.map((s, i) => (
               <button
                 key={i}
@@ -355,6 +355,28 @@ export default function Hero() {
           </div>
 
           <Cta className="md:hidden" />
+
+          {/* Mobile-only carousel dots — signal that the hero is a carousel */}
+          <div
+            className="flex items-center gap-2 md:hidden"
+            role="tablist"
+            aria-label="Choose slide"
+          >
+            {SLIDES.map((s, i) => (
+              <button
+                key={i}
+                type="button"
+                role="tab"
+                aria-selected={i === active}
+                aria-label={s.label}
+                onClick={() => setActive(i)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === active ? "w-6" : "w-2 opacity-40"
+                }`}
+                style={{ backgroundColor: slide.accent }}
+              />
+            ))}
+          </div>
         </footer>
       </div>
     </motion.section>

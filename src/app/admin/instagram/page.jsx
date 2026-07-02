@@ -7,7 +7,7 @@ export default function AdminInstagramAuth() {
         href={authUrl} 
         className="rounded-full bg-teal-800 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-700"
       >
-        Authenticate Instagram API
+        Authenticate Instagram API.
       </a>
     </div>
   );

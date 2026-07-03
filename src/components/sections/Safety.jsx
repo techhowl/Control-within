@@ -39,9 +39,9 @@ export default function Safety() {
               decision.
               <br />
               <br />
-              <a href="#about" className="font-semibold text-accent">
+              {/* <a href="#about" className="font-semibold text-accent">
                 Read Full Safety Information →
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

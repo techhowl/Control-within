@@ -6,9 +6,9 @@ const NAV_LINKS = [
   // The href here doesn't matter much anymore since WhatsAppButton handles the click,
   // but we keep it for structure.
   { href: "#", label: "Chat Now" },
-  { href: "#about", label: "About" },
-  { href: "#about", label: "Terms & Conditions" },
-  { href: "#about", label: "Privacy" },
+  // { href: "#about", label: "About" },
+  // { href: "#about", label: "Terms & Conditions" },
+  // { href: "#about", label: "Privacy" },
 ];
 
 const SOCIALS = [

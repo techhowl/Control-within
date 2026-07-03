@@ -437,7 +437,7 @@ export default function Hero() {
       <button
         onClick={(e) => { e.stopPropagation(); prevSlide(); }}
         aria-label="Previous slide"
-        className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/60 shadow-sm backdrop-blur-md opacity-0 group-hover:opacity-80 transition-all duration-300 hover:scale-105 hover:bg-white/60"
+        className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/60 shadow-sm backdrop-blur-md opacity-70 group-hover:opacity-90 transition-all duration-300 hover:scale-105 hover:opacity-100 hover:bg-white/60"
         style={{ color: slide.accent }}
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -449,7 +449,7 @@ export default function Hero() {
       <button
         onClick={(e) => { e.stopPropagation(); nextSlide(); }}
         aria-label="Next slide"
-        className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/60 shadow-sm backdrop-blur-md opacity-0 group-hover:opacity-80 transition-all duration-300 hover:scale-105 hover:bg-white/60"
+        className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/60 shadow-sm backdrop-blur-md opacity-70 group-hover:opacity-90 transition-all duration-300 hover:scale-105 hover:opacity-100 hover:bg-white/60"
         style={{ color: slide.accent }}
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

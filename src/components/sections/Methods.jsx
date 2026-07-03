@@ -106,7 +106,7 @@ function MethodCard({ m }) {
         <img
           src={m.imageMobile}
           alt=""
-          className="block h-full w-full object-cover md:hidden"
+          className="block h-full w-full object-contain p-12 md:hidden"
           draggable={false}
         />
       </motion.div>

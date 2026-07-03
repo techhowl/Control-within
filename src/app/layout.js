@@ -23,6 +23,23 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        {/* Google Analytics (gtag.js) */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-5QDWKHPRGY"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-5QDWKHPRGY');
+            `,
+          }}
+        />
+        {/* End Google Analytics */}
+        
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
@@ -34,6 +51,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
         {/* End Google Tag Manager */}
+        
         {/* Meta Pixel Code */}
         <script
           dangerouslySetInnerHTML={{
@@ -50,13 +68,13 @@ fbq('track', 'PageView');`,
           }}
         />
         {/* End Meta Pixel Code */}
+        
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
           rel="stylesheet"
         />
-        
       </head>
       <body>
         {/* Google Tag Manager (noscript) */}
@@ -69,6 +87,7 @@ fbq('track', 'PageView');`,
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
+        
         {/* Meta Pixel Code (noscript) */}
         <noscript>
           <img
@@ -80,6 +99,7 @@ fbq('track', 'PageView');`,
           />
         </noscript>
         {/* End Meta Pixel Code (noscript) */}
+        
         {/* Fixed chrome overlays page content (takes no vertical space) so the
             Hero can be a true full-screen section, matching the design. */}
         <div className="fixed inset-x-0 top-0 z-50">

@@ -1,7 +1,11 @@
 import React from "react";
+// FIX: Updated the import path to match where WhatsAppButton actually lives!
+import WhatsAppButton from "@/components/ui/WhatsAppButton"; 
 
 const NAV_LINKS = [
-  { href: "#consult", label: "Chat Now" },
+  // The href here doesn't matter much anymore since WhatsAppButton handles the click,
+  // but we keep it for structure.
+  { href: "#", label: "Chat Now" },
   { href: "#about", label: "About" },
   { href: "#about", label: "Terms & Conditions" },
   { href: "#about", label: "Privacy" },
@@ -53,15 +57,30 @@ export default function Footer() {
             className="flex flex-wrap gap-x-8 gap-y-3"
             aria-label="Footer navigation"
           >
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-sm font-medium text-bg/70 transition-colors hover:text-white"
-              >
-                {link.label}
-              </a>
-            ))}
+            {NAV_LINKS.map((link) => {
+              // Check if the link is "Chat Now" to render the special button
+              if (link.label === "Chat Now") {
+                return (
+                  <WhatsAppButton
+                    key={link.label}
+                    className="text-sm font-medium text-bg/70 transition-colors hover:text-white"
+                  >
+                    {link.label}
+                  </WhatsAppButton>
+                );
+              }
+
+              // Render standard links for everything else
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-sm font-medium text-bg/70 transition-colors hover:text-white"
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </nav>
         </div>
 

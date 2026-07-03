@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import Reveal from "@/components/ui/Reveal";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 const Arrow = () => (
   <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2.2">
@@ -170,18 +171,30 @@ function MethodCard({ m }) {
           ))}
         </ul>
         <div className="mt-auto flex justify-end pt-5 pb-2 md:pb-0">
-          <a
-            href={m.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="inline-flex items-center gap-2 rounded-full bg-dark py-2 pl-5 pr-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
-          >
-            {m.cta}
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-dark">
-              <Arrow />
-            </span>
-          </a>
+          {m.href.includes("wa.me") ? (
+            <WhatsAppButton
+              onClick={(e) => e.stopPropagation()} // Prevents the card from closing when clicked
+              className="inline-flex items-center gap-2 rounded-full bg-dark py-2 pl-5 pr-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+            >
+              {m.cta}
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-dark">
+                <Arrow />
+              </span>
+            </WhatsAppButton>
+          ) : (
+            <a
+              href={m.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-2 rounded-full bg-dark py-2 pl-5 pr-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+            >
+              {m.cta}
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-dark">
+                <Arrow />
+              </span>
+            </a>
+          )}
         </div>
       </motion.div>
     </motion.article>

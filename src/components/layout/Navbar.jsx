@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+// Import the new button component
+import WhatsAppButton from "@/components/ui/WhatsAppButton"; 
 
 const LINKS = [
   { href: "#methods", label: "Implants" },
@@ -18,7 +20,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll while the mobile menu is open.
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -37,10 +38,6 @@ export default function Navbar() {
       }`}
       aria-label="Main navigation"
     >
-      {/* 
-        Changed container to span full width (w-full) with responsive padding 
-        (px-6 for mobile, md:px-12 lg:px-16 for larger screens) to push the logo extreme left. 
-      */}
       <div className="mx-auto flex w-full max-w-[1600px] items-center justify-between px-6 py-2 md:px-12 lg:px-16">
         {/* Logo */}
         <a
@@ -69,14 +66,11 @@ export default function Navbar() {
               </a>
             ))}
           </div>
-          <a
-            href="https://wa.me/918452926740"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-accent-hover"
-          >
+          
+          {/* DESKTOP REPLACEMENT */}
+          <WhatsAppButton className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-accent-hover">
             Chat Now
-          </a>
+          </WhatsAppButton>
         </div>
 
         {/* Mobile hamburger */}
@@ -124,15 +118,14 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
-          <a
-            href="https://wa.me/918452926740"
-            target="_blank"
-            rel="noopener noreferrer"
+          
+          {/* MOBILE REPLACEMENT */}
+          <WhatsAppButton 
             onClick={closeMenu}
-            className="mt-1 rounded-2xl bg-accent px-4 py-3 text-center text-base font-semibold text-white transition-colors hover:bg-accent-hover"
+            className="mt-1 w-full rounded-2xl bg-accent px-4 py-3 text-center text-base font-semibold text-white transition-colors hover:bg-accent-hover"
           >
             Chat Now
-          </a>
+          </WhatsAppButton>
         </div>
       </div>
     </nav>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 const SLIDES = [
   {
@@ -43,7 +44,7 @@ const SLIDES = [
       "Do Heavy and Painful Periods Ruin All Your Plans? Now, You Have The Upper Hand.",
     paragraph:
       "Regain control over your body and cycle with the Hormonal IUS — a small T-shaped device placed in the uterus to help alleviate period pains, heavy menstrual bleeding, and more.",
-    image: "hero_3.png",
+    image: "hero-3.png",
     label: "Hormonal IUS",
     sublabel: "Lighter, calmer periods",
     tags: [
@@ -156,11 +157,33 @@ export default function Hero() {
 
   const Cta = ({ className = "" }) => {
     const isExternal = slide.cta.href.startsWith("http");
+    const isWhatsApp = slide.cta.href.includes("wa.me");
+
+    // If it's a WhatsApp link, render the special popup button
+    if (isWhatsApp) {
+      return (
+        <div 
+          style={{ backgroundColor: slide.accent }} 
+          className={`inline-block rounded-full ${className}`}
+        >
+          <WhatsAppButton 
+            className="relative z-50 flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5 w-full h-full"
+          >
+            {slide.cta.label}
+            <span aria-hidden="true">→</span>
+          </WhatsAppButton>
+        </div>
+      );
+    }
+
+    // For all other regular links (videos, learn more, etc.)
     return (
       <a
         href={slide.cta.href}
+        onClick={(e) => e.stopPropagation()}
+        onTouchStart={(e) => e.stopPropagation()}
         {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-        className={`inline-flex items-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5 ${className}`}
+        className={`relative z-50 inline-flex items-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5 ${className}`}
         style={{ backgroundColor: slide.accent }}
       >
         {slide.cta.label}
@@ -234,7 +257,7 @@ export default function Hero() {
             animate={{ rotateY: 0, opacity: 1, scale: 1 }}
             exit={{ rotateY: 90, opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.7, ease: EASE }}
-            className="relative overflow-hidden rounded-[2.5rem] shadow-hover max-md:hidden md:h-[280px] md:w-[210px] lg:h-[420px] lg:w-[320px]"
+            className="relative overflow-hidden rounded-[2.5rem] shadow-hover max-md:hidden md:h-[clamp(220px,40vh,420px)] md:w-[clamp(165px,30vh,320px)]"
           >
             <img
               src={slide.image}
@@ -246,7 +269,7 @@ export default function Hero() {
         </AnimatePresence>
       </div>
 
-      <div className="relative z-10 flex h-full flex-1 flex-col px-[5%] pb-7 pt-24 max-md:pb-16 md:pt-24 lg:pt-35 md:pb-16 lg:pb-30">
+      <div className="relative z-10 flex h-full flex-1 flex-col px-[5%] pb-7 pt-24 max-md:pb-16 md:pt-[clamp(5.5rem,11vh,8.5rem)] md:pb-[clamp(3.5rem,8vh,7rem)]">
         
         <header className="flex items-start justify-between gap-6">
           <AnimatePresence mode="wait">
@@ -256,7 +279,7 @@ export default function Hero() {
               initial="initial"
               animate="animate"
               exit="exit"
-              className={`max-w-xl font-author font-medium leading-[1.05] sm:text-4xl lg:text-5xl ${mobileHeadingSize}`}
+              className={`max-w-xl font-author font-medium leading-[1.05] sm:text-4xl md:text-[clamp(1.75rem,2.6vw,3rem)] ${mobileHeadingSize}`}
               style={{ color: slide.accent }}
             >
               {slide.heading}
@@ -272,7 +295,7 @@ export default function Hero() {
               initial="initial"
               animate="animate"
               exit="exit"
-              className={`max-w-sm rounded-3xl bg-white/55 p-6 backdrop-blur-sm max-md:w-full md:mt-6 lg:mt-12 md:block md:self-start md:bg-white/45 lg:p-8 ${mobileCardMargin}`}
+              className={`max-w-sm rounded-3xl bg-white/55 p-6 backdrop-blur-sm max-md:w-full md:max-w-[min(24rem,27vw)] md:mt-6 lg:mt-12 md:block md:self-start md:bg-white/45 lg:p-8 ${mobileCardMargin}`}
             >
               <div className="mb-3 md:hidden">
                 <div className="font-author text-xl font-medium" style={{ color: slide.accent }}>
@@ -300,7 +323,9 @@ export default function Hero() {
               {(active === 1 || active === 2) && (
                 <a
                   href="#methods"
-                  className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide"
+                  onClick={(e) => e.stopPropagation()}
+                  onTouchStart={(e) => e.stopPropagation()}
+                  className="relative z-50 mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide"
                   style={{ color: slide.accent }}
                 >
                   Learn more <span aria-hidden="true">→</span>
@@ -320,7 +345,7 @@ export default function Hero() {
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  className="flex max-w-sm flex-col gap-2 lg:gap-2.5 text-[0.85rem] rounded-3xl bg-white/55 p-5 lg:p-8 text-left backdrop-blur-sm md:mt-6 lg:mt-12"
+                  className="flex max-w-sm md:max-w-[min(24rem,27vw)] flex-col gap-2 lg:gap-2.5 text-[0.85rem] rounded-3xl bg-white/55 p-5 lg:p-8 text-left backdrop-blur-sm md:mt-6 lg:mt-12"
                 >
                   {slide.tags.map((t) => (
                     <li key={t} className="flex items-start gap-2.5 text-sm leading-snug text-dark/75">
@@ -397,33 +422,33 @@ export default function Hero() {
               />
             ))}
           </div>
-          
-          {/* Desktop Hover Arrows */}
-          <div className="hidden md:flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 pb-2">
-            <button
-              onClick={prevSlide}
-              aria-label="Previous slide"
-              className="flex h-12 w-12 items-center justify-center rounded-full bg-white/60 shadow-sm backdrop-blur-md transition-all hover:scale-105 hover:bg-white"
-              style={{ color: slide.accent }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
-            <button
-              onClick={nextSlide}
-              aria-label="Next slide"
-              className="flex h-12 w-12 items-center justify-center rounded-full bg-white/60 shadow-sm backdrop-blur-md transition-all hover:scale-105 hover:bg-white"
-              style={{ color: slide.accent }}
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
-          </div>
-          
         </footer>
       </div>
+
+      {/* Desktop Hover Arrows - Left */}
+      <button
+        onClick={(e) => { e.stopPropagation(); prevSlide(); }}
+        aria-label="Previous slide"
+        className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/40 shadow-sm backdrop-blur-md opacity-0 group-hover:opacity-60 transition-all duration-300 hover:scale-105 hover:bg-white/60"
+        style={{ color: slide.accent }}
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M15 18l-6-6 6-6" />
+        </svg>
+      </button>
+
+      {/* Desktop Hover Arrows - Right */}
+      <button
+        onClick={(e) => { e.stopPropagation(); nextSlide(); }}
+        aria-label="Next slide"
+        className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/40 shadow-sm backdrop-blur-md opacity-0 group-hover:opacity-60 transition-all duration-300 hover:scale-105 hover:bg-white/60"
+        style={{ color: slide.accent }}
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M9 18l6-6-6-6" />
+        </svg>
+      </button>
+
     </motion.section>
   );
 }

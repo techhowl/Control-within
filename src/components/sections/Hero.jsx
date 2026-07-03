@@ -163,6 +163,9 @@ export default function Hero() {
     if (isWhatsApp) {
       return (
         <div 
+          onClick={(e) => e.stopPropagation()}
+          onTouchStart={(e) => e.stopPropagation()}
+          onTouchEnd={(e) => e.stopPropagation()}
           style={{ backgroundColor: slide.accent }} 
           className={`inline-block rounded-full ${className}`}
         >
@@ -182,6 +185,7 @@ export default function Hero() {
         href={slide.cta.href}
         onClick={(e) => e.stopPropagation()}
         onTouchStart={(e) => e.stopPropagation()}
+        onTouchEnd={(e) => e.stopPropagation()}
         {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         className={`relative z-50 inline-flex items-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5 ${className}`}
         style={{ backgroundColor: slide.accent }}
@@ -269,7 +273,7 @@ export default function Hero() {
         </AnimatePresence>
       </div>
 
-      <div className="relative z-10 flex h-full flex-1 flex-col px-[5%] pb-7 pt-24 max-md:pb-16 md:pt-[clamp(5.5rem,11vh,8.5rem)] md:pb-[clamp(3.5rem,8vh,7rem)]">
+      <div className="relative z-10 flex h-full flex-1 flex-col px-[5%] pb-7 pt-24 max-md:pb-16 md:pt-[clamp(8.5rem,15vh,11rem)] md:pb-[clamp(3.5rem,8vh,7rem)]">
         
         <header className="flex items-start justify-between gap-6">
           <AnimatePresence mode="wait">
@@ -429,7 +433,7 @@ export default function Hero() {
       <button
         onClick={(e) => { e.stopPropagation(); prevSlide(); }}
         aria-label="Previous slide"
-        className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/40 shadow-sm backdrop-blur-md opacity-0 group-hover:opacity-60 transition-all duration-300 hover:scale-105 hover:bg-white/60"
+        className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/60 shadow-sm backdrop-blur-md opacity-0 group-hover:opacity-80 transition-all duration-300 hover:scale-105 hover:bg-white/60"
         style={{ color: slide.accent }}
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -441,7 +445,7 @@ export default function Hero() {
       <button
         onClick={(e) => { e.stopPropagation(); nextSlide(); }}
         aria-label="Next slide"
-        className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/40 shadow-sm backdrop-blur-md opacity-0 group-hover:opacity-60 transition-all duration-300 hover:scale-105 hover:bg-white/60"
+        className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/60 shadow-sm backdrop-blur-md opacity-0 group-hover:opacity-80 transition-all duration-300 hover:scale-105 hover:bg-white/60"
         style={{ color: slide.accent }}
       >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

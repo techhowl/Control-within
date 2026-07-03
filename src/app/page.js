@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import DoctorLocator from "@/components/DoctorLocator";
 import Hero from "@/components/sections/Hero";
 import FeatureProduct from "@/components/sections/FeatureProduct";
 import Methods from "@/components/sections/Methods";
@@ -24,6 +26,9 @@ export default function Home() {
       <Socials />
       <Trust />
       <Safety />
+      <Suspense fallback={null}>
+        <DoctorLocator />
+      </Suspense>
     </>
   );
 }

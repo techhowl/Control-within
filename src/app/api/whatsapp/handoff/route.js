@@ -27,41 +27,42 @@ export async function GET(request) {
   }
 
   const url = new URL(request.url);
+  const wantsRedirect = url.searchParams.get("redirect") === "1";
   const cookieStore = await cookies();
   const journeyId =
     url.searchParams.get("journey_id") || cookieStore.get(JOURNEY_COOKIE)?.value;
 
-  if (!journeyId) {
-    return Response.json({ error: "no_journey" }, { status: 400 });
+  // Opening WhatsApp is the whole point of the click, so it must always
+  // succeed — exactly like the plain wa.me links elsewhere on the site. The
+  // journey lookup, consent stamp, and cta_click log are best-effort
+  // enrichment layered on top: when a journey resolves we append its short_ref
+  // (so Interakt/Zoho can stitch the chat back) and record consent, but any
+  // failure there falls through to the plain deep link rather than dead-ending
+  // the user on a JSON error page.
+  let shortRef = null;
+  if (journeyId) {
+    try {
+      const journey = await getJourney(journeyId);
+      if (journey && !journey.erased_at) {
+        shortRef = journey.short_ref;
+        if (url.searchParams.get("consent") === "1" && !journey.consent_at) {
+          await getSupabase()
+            .from("journeys")
+            .update({ consent_at: new Date().toISOString() })
+            .eq("journey_id", journeyId);
+        }
+        await logEvent(journeyId, "cta_click", { target: "whatsapp_handoff" });
+      }
+    } catch (err) {
+      console.error("whatsapp_handoff_enrich_failed:", err.message);
+    }
   }
 
-  try {
-    const journey = await getJourney(journeyId);
-    if (!journey || journey.erased_at) {
-      return Response.json({ error: "unknown_journey" }, { status: 404 });
-    }
+  const text = shortRef ? `${DEFAULT_MESSAGE} [${shortRef}]` : DEFAULT_MESSAGE;
+  const waUrl = `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
 
-    // Record explicit consent if the click came from the opt-in CTA.
-    if (url.searchParams.get("consent") === "1" && !journey.consent_at) {
-      await getSupabase()
-        .from("journeys")
-        .update({ consent_at: new Date().toISOString() })
-        .eq("journey_id", journeyId);
-    }
-
-    await logEvent(journeyId, "cta_click", { target: "whatsapp_handoff" });
-
-    const text = `${DEFAULT_MESSAGE} [${journey.short_ref}]`;
-    const waUrl = `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
-
-    if (url.searchParams.get("redirect") === "1") {
-      return Response.redirect(waUrl, 302);
-    }
-    return Response.json({ url: waUrl, short_ref: journey.short_ref });
-  } catch (err) {
-    return Response.json(
-      { error: "handoff_failed", message: err.message },
-      { status: 500 }
-    );
+  if (wantsRedirect) {
+    return Response.redirect(waUrl, 302);
   }
+  return Response.json({ url: waUrl, short_ref: shortRef });
 }

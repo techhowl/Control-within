@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
-export default function WhatsAppButton({ children, className, onClick }) {
+export default function WhatsAppButton({ children, className, onClick, ...rest }) {
   const [showPopup, setShowPopup] = useState(false);
   const [mounted, setMounted] = useState(false); // Used to safely render Portal in Next.js
   
@@ -117,14 +117,16 @@ export default function WhatsAppButton({ children, className, onClick }) {
 
   return (
     <>
-      <button 
+      <button
+        type="button"
         onClick={(e) => {
           setShowPopup(true);
-          if (onClick) onClick(e); 
+          if (onClick) onClick(e);
         }}
         className={className}
+        {...rest}
       >
-        {children || "Chat on WhatsApp"} 
+        {children || "Chat on WhatsApp"}
       </button>
 
       {/* Teleport the modal to document.body so the Navbar can't trap it! */}

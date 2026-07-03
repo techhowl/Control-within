@@ -68,7 +68,7 @@ export default function Socials() {
           Stay Within Reach Of Our Socials
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted">
-          Follow us <strong className="text-dark">@Control_within_Official</strong> for real
+          Follow us <strong className="text-dark">@control_within_official</strong> for real
           conversations about contraception, menstrual health, and what control
           actually looks like.
         </p>
@@ -79,7 +79,7 @@ export default function Socials() {
           rel="noopener noreferrer"
           className="mt-7 inline-flex items-center gap-2 rounded-full bg-teal-deep py-2 pl-6 pr-2 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-teal-hover"
         >
-          Follow @Control_within_Official
+          Follow @control_within_official
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20">
             <Arrow dir="right" />
           </span>

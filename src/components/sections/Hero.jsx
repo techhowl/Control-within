@@ -85,6 +85,51 @@ const bgTextVariants = {
   exit: { y: -120, opacity: 0, transition: { duration: 0.5, ease: "easeIn" } },
 };
 
+// NOTE: Cta is a stable, module-level component. It must NOT be defined inside
+// Hero — a nested component gets a new function identity on every render, which
+// makes React unmount/remount its DOM node. On mobile that remount happened
+// mid-tap and swallowed the first click (the "tap twice" bug).
+function Cta({ slide, className = "" }) {
+  const isExternal = slide.cta.href.startsWith("http");
+  const isWhatsApp = slide.cta.href.includes("wa.me");
+
+  // If it's a WhatsApp link, render the special popup button
+  if (isWhatsApp) {
+    return (
+      <div
+        onClick={(e) => e.stopPropagation()}
+        onTouchStart={(e) => e.stopPropagation()}
+        onTouchEnd={(e) => e.stopPropagation()}
+        style={{ backgroundColor: slide.accent }}
+        className={`inline-block rounded-full ${className}`}
+      >
+        <WhatsAppButton
+          className="relative z-50 flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5 w-full h-full"
+        >
+          {slide.cta.label}
+          <span aria-hidden="true">→</span>
+        </WhatsAppButton>
+      </div>
+    );
+  }
+
+  // For all other regular links (videos, learn more, etc.)
+  return (
+    <a
+      href={slide.cta.href}
+      onClick={(e) => e.stopPropagation()}
+      onTouchStart={(e) => e.stopPropagation()}
+      onTouchEnd={(e) => e.stopPropagation()}
+      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      className={`relative z-50 inline-flex items-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5 ${className}`}
+      style={{ backgroundColor: slide.accent }}
+    >
+      {slide.cta.label}
+      <span aria-hidden="true">→</span>
+    </a>
+  );
+}
+
 export default function Hero() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -155,47 +200,6 @@ export default function Hero() {
     setIsManualOverride(true);
   };
 
-  const Cta = ({ className = "" }) => {
-    const isExternal = slide.cta.href.startsWith("http");
-    const isWhatsApp = slide.cta.href.includes("wa.me");
-
-    // If it's a WhatsApp link, render the special popup button
-    if (isWhatsApp) {
-      return (
-        <div 
-          onClick={(e) => e.stopPropagation()}
-          onTouchStart={(e) => e.stopPropagation()}
-          onTouchEnd={(e) => e.stopPropagation()}
-          style={{ backgroundColor: slide.accent }} 
-          className={`inline-block rounded-full ${className}`}
-        >
-          <WhatsAppButton 
-            className="relative z-50 flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5 w-full h-full"
-          >
-            {slide.cta.label}
-            <span aria-hidden="true">→</span>
-          </WhatsAppButton>
-        </div>
-      );
-    }
-
-    // For all other regular links (videos, learn more, etc.)
-    return (
-      <a
-        href={slide.cta.href}
-        onClick={(e) => e.stopPropagation()}
-        onTouchStart={(e) => e.stopPropagation()}
-        onTouchEnd={(e) => e.stopPropagation()}
-        {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-        className={`relative z-50 inline-flex items-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5 ${className}`}
-        style={{ backgroundColor: slide.accent }}
-      >
-        {slide.cta.label}
-        <span aria-hidden="true">→</span>
-      </a>
-    );
-  };
-
   const isContentHeavy = active === 1 || active === 2;
   const mobileHeadingSize = isContentHeavy ? "max-md:text-xl" : "max-md:text-4xl";
   const mobileCardMargin = isContentHeavy ? "max-md:mt-3" : "max-md:mt-8";
@@ -208,8 +212,8 @@ export default function Hero() {
       initial={{ backgroundColor: SLIDES[0].bg }}
       animate={{ backgroundColor: slide.bg }}
       transition={{ duration: 0.8, ease: EASE }}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      onMouseEnter={() => !isMobile && setPaused(true)}
+      onMouseLeave={() => !isMobile && setPaused(false)}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
@@ -363,7 +367,7 @@ export default function Hero() {
                 </motion.ul>
               </AnimatePresence>
             )}
-            <Cta />
+            <Cta slide={slide} />
             <AnimatePresence mode="wait">
               <motion.div
                 key={`l-${active}`}
@@ -407,7 +411,7 @@ export default function Hero() {
             ))}
           </div>
 
-          <Cta className="md:hidden" />
+          <Cta slide={slide} className="md:hidden" />
 
           {/* Mobile Dot Nav */}
           <div className="flex items-center gap-2 md:hidden" role="tablist" aria-label="Choose slide">

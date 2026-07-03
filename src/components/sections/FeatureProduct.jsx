@@ -98,7 +98,7 @@ export default function FeatureProduct() {
         </motion.div>
 
         {/* Grid */}
-        <div className="mt-14 grid grid-cols-1 items-center gap-12 lg:grid-cols-3 lg:gap-8">
+        <div className="mt-8 md:mt-14 grid grid-cols-1 items-center gap-12 lg:grid-cols-3 lg:gap-8">
           {/* Left features */}
           <motion.div
             variants={group}

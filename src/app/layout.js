@@ -3,6 +3,7 @@ import Ticker from "@/components/layout/Ticker";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/ui/BackToTop";
+import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 
 export const metadata = {
   title: "Control Within | Long-Term, Reversible Contraception",
@@ -109,6 +110,7 @@ fbq('track', 'PageView');`,
         {children}
         <Footer />
         <BackToTop />
+        <WhatsAppFloat />
       </body>
     </html>
   );

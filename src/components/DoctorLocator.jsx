@@ -75,9 +75,10 @@ export default function DoctorLocator() {
         console.error("geolocation_failed:", err.code, err.message, "secureContext:", window.isSecureContext);
         goToVideos();
       },
-      // Coarse location (network, not GPS) is plenty for CRM attribution and
-      // resolves in ~1s; a cached fix up to 5 min old returns instantly.
-      { enableHighAccuracy: false, timeout: 8000, maximumAge: 300000 }
+      // maximumAge:0 forces a live read every time — never silently reuses a
+      // cached fix — so the browser/OS location prompt always fires. Longer
+      // timeout gives the user time to respond to that system dialog.
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }
     );
   }, [submit, goToVideos]);
 

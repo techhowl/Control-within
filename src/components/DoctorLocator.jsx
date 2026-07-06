@@ -21,7 +21,7 @@ export default function DoctorLocator() {
   const isQr = typeof src === "string" && src.startsWith("qr");
 
   const [open, setOpen] = useState(false);
-  // status: "idle" | "locating" | "saving" | "error"
+  // status: "idle" | "locating" | "error"
   const [status, setStatus] = useState("idle");
   const journeyStarted = useRef(false);
 
@@ -38,23 +38,28 @@ export default function DoctorLocator() {
     }).catch(() => {});
   }, [isQr, src]);
 
+  // Close the modal and jump the visitor to the contraceptive-implant videos.
+  const goToVideos = useCallback(() => {
+    setOpen(false);
+    if (typeof document === "undefined") return;
+    document.getElementById("videos")?.scrollIntoView({ behavior: "smooth" });
+  }, []);
+
   const submit = useCallback(
-    async (payload) => {
-      setStatus("saving");
-      try {
-        const res = await fetch("/api/locate", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...payload, src }),
-        });
-        if (!res.ok) throw new Error("failed");
-        // Stored in CRM — close the modal so the visitor sees the home page.
-        setOpen(false);
-      } catch {
-        setStatus("error");
-      }
+    (payload) => {
+      // Fire-and-forget: the CRM write runs in the background so the visitor is
+      // never blocked on Zoho's token refresh + insert. keepalive lets it finish
+      // even though we navigate away immediately. Same-page scroll keeps the tab
+      // alive, so the request completes regardless.
+      fetch("/api/locate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...payload, src }),
+        keepalive: true,
+      }).catch(() => {});
+      goToVideos();
     },
-    [src]
+    [src, goToVideos]
   );
 
   const requestLocation = useCallback(() => {
@@ -66,7 +71,9 @@ export default function DoctorLocator() {
     navigator.geolocation.getCurrentPosition(
       (pos) => submit({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
       () => setStatus("error"),
-      { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+      // Coarse location (network, not GPS) is plenty for CRM attribution and
+      // resolves in ~1s; a cached fix up to 5 min old returns instantly.
+      { enableHighAccuracy: false, timeout: 8000, maximumAge: 300000 }
     );
   }, [submit]);
 
@@ -112,14 +119,6 @@ export default function DoctorLocator() {
               {status === "locating" ? "Getting your location…" : "Share my location"}
               {status !== "locating" && <span aria-hidden="true">→</span>}
             </button>
-          </>
-        )}
-
-        {/* --- Saving --- */}
-        {status === "saving" && (
-          <>
-            <h2 className="mt-3 text-2xl font-semibold text-dark">One moment…</h2>
-            <p className="mt-3 text-sm leading-relaxed text-muted">Saving your location.</p>
           </>
         )}
 

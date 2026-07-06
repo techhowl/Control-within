@@ -102,15 +102,11 @@ export default function DoctorLocator() {
           ×
         </button>
 
-        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-          Find a doctor
-        </span>
-
         <h2 className="mt-3 text-2xl font-semibold text-dark">
-          Find a gynaecologist near you
+          Get to know more about contraceptive implants
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          Share your location and we’ll connect you with the closest trained
+          Share your location and we’ll connect you to the nearest trained
           doctor.
         </p>
         <button

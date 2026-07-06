@@ -106,8 +106,7 @@ export default function DoctorLocator() {
           Get to know more about contraceptive implants
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          Share your location and we’ll connect you to the nearest trained
-          doctor.
+          Start your journey towards experiencing control within
         </p>
         <button
           type="button"

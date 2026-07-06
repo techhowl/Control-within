@@ -6,6 +6,9 @@ import WhatsAppButton from "@/components/ui/WhatsAppButton";
 // confidentiality disclaimer popup + redirect logic is shared. Placed bottom-left
 // so it never collides with the bottom-right BackToTop button.
 export default function WhatsAppFloat() {
+  // Floating WhatsApp launcher is currently hidden site-wide. Remove this early return to re-enable.
+  return null;
+
   return (
     <div className="fixed bottom-6 left-6 z-40 md:hidden">
       <WhatsAppButton

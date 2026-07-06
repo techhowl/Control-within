@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage() {
               https://controlwithin.com/
             </a>{" "}
             and the official WhatsApp number (+91 8452926740) linked from it,
-            operated by [Company Legal Name]
+            operated by Connexi India Supply Chain Services Private Limited
           </p>
         </header>
 
@@ -201,6 +201,7 @@ export default function PrivacyPolicyPage() {
               <dl className="grid gap-2 text-sm">
                 <Row label="Name" value="Abhishek Agarwal" />
                 <Row label="Designation" value="Business Head" />
+                <Row label="Company Legal Name" value="Wulfpak Marketing Services Pvt Ltd" />
                 <Row
                   label="Email"
                   value={
@@ -214,7 +215,7 @@ export default function PrivacyPolicyPage() {
                 />
                 <Row
                   label="Address"
-                  value="101/First Floor, Jaisingh Business Centre, Sahar Rd, Parshiwada, Chakala, Andheri East, Mumbai - 400053"
+                  value="First Floor, Jai Singh Business Centre, Sahar Rd, Parshiwada, Chakala, Andheri East, Mumbai, Maharashtra 400099"
                 />
               </dl>
             </div>
@@ -327,7 +328,7 @@ export default function PrivacyPolicyPage() {
           <Clause number="11" title="Contact">
             <p>
               For any questions about these Terms or our Privacy Policy, reach us
-              at: [support email] | [support phone number]
+              at: <b>+91 8452926740</b>
             </p>
           </Clause>
         </section>

@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 // Import the new button component
-import WhatsAppButton from "@/components/ui/WhatsAppButton"; 
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 const LINKS = [
   { href: "#methods", label: "Implants" },
@@ -40,18 +41,18 @@ export default function Navbar() {
     >
       <div className="mx-auto flex w-full max-w-[1600px] items-center justify-between px-6 py-2 md:px-12 lg:px-16">
         {/* Logo */}
-        <a
-          href="#hero"
+        <Link
+          href="/"
           onClick={closeMenu}
           className="flex items-center"
           aria-label="Control Within home"
         >
-          <img 
-            src="/cw-logo.png" 
-            alt="Control Within" 
-            className="h-12 w-auto object-contain md:h-20" 
+          <img
+            src="/cw-logo.png"
+            alt="Control Within"
+            className="h-12 w-auto object-contain md:h-20"
           />
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <div className="hidden items-center gap-3 md:flex">

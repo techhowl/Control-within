@@ -1,6 +1,7 @@
 import React from "react";
+import Link from "next/link";
 // FIX: Updated the import path to match where WhatsAppButton actually lives!
-import WhatsAppButton from "@/components/ui/WhatsAppButton"; 
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 const NAV_LINKS = [
   // The href here doesn't matter much anymore since WhatsAppButton handles the click,
@@ -42,11 +43,13 @@ export default function Footer() {
         <div className="flex flex-col gap-10 border-b border-white/10 pb-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-md">
             {/* Increased logo size and added object-contain */}
-            <img 
-              src="/cw-logo-footer.png" 
-              alt="Control Within" 
-              className="h-16 md:h-20 w-auto object-contain" 
-            />
+            <Link href="/" aria-label="Control Within home" className="inline-flex">
+              <img
+                src="/cw-logo-footer.png"
+                alt="Control Within"
+                className="h-16 md:h-20 w-auto object-contain"
+              />
+            </Link>
             <p className="mt-4 text-sm leading-relaxed text-bg/65">
               Long-term, reversible, doctor-placed contraception — working
               quietly in the background.

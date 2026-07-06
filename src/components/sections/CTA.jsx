@@ -25,12 +25,6 @@ export default function CTA() {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href="#"
-              className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-accent shadow-soft transition-transform hover:-translate-y-0.5"
-            >
-              Chat on WhatsApp <span aria-hidden="true">→</span>
-            </a>
-            <a
               href="#methods"
               className="inline-flex items-center rounded-full border border-white/40 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
             >

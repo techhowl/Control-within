@@ -71,7 +71,10 @@ export default function DoctorLocator() {
     navigator.geolocation.getCurrentPosition(
       (pos) => submit({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
       // Denied / timed out / any error → still take the visitor to the videos.
-      () => goToVideos(),
+      (err) => {
+        console.error("geolocation_failed:", err.code, err.message, "secureContext:", window.isSecureContext);
+        goToVideos();
+      },
       // Coarse location (network, not GPS) is plenty for CRM attribution and
       // resolves in ~1s; a cached fix up to 5 min old returns instantly.
       { enableHighAccuracy: false, timeout: 8000, maximumAge: 300000 }

@@ -8,7 +8,10 @@ const VIDEOS = [
     theme: "purple",
     title: "What is a Contraceptive Implant",
     img: "/video_cover_implant.jpg",
-    sources: { en: "https://www.youtube.com/embed/chLNL-Gtre4" }
+    sources: {
+      en: "https://www.youtube.com/embed/chLNL-Gtre4",
+      hi: "https://www.youtube.com/embed/G26ELHghoTY"
+    }
   },
   {
     theme: "teal",

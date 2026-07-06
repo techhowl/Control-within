@@ -85,9 +85,17 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col-reverse items-start gap-6 pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-bg/50">
-            © 2026 Control Within. All rights reserved.
-          </p>
+          <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4">
+            <p className="text-xs text-bg/50">
+              © 2026 Control Within. All rights reserved.
+            </p>
+            <a
+              href="/privacy-policy"
+              className="text-xs font-medium text-bg/60 transition-colors hover:text-white"
+            >
+              Privacy Policy &amp; Terms of Use
+            </a>
+          </div>
           <div className="flex gap-3">
             {SOCIALS.map((social) => (
               <a

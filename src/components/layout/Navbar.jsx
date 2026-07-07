@@ -6,7 +6,7 @@ import Link from "next/link";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 const LINKS = [
-  { href: "#methods", label: "Implants" },
+  { href: "/implant", label: "Implants" },
   { href: "#methods", label: "hIUS" },
 ];
 

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const FAQS = [
+const DEFAULT_FAQS = [
   { q: "Is it permanent?", a: "No. Both methods are fully reversible. You choose when to have them removed." },
   { q: "Will my fertility be affected?", a: "No, your fertility returns quickly — most women can get pregnant within a few weeks to months after removal." },
   { q: "Will it change my hormones?", a: "The hormone dose is much lower than a standard daily pill. Changes to your natural hormone levels are small and steady." },
@@ -57,7 +57,11 @@ function FAQItem({ item, isOpen, onToggle }) {
             transition={{ type: "spring", bounce: 0, duration: 0.4 }}
             className="overflow-hidden"
           >
-            <p className="px-5 pb-5 text-sm leading-relaxed text-muted">{item.a}</p>
+            <div className="space-y-3 px-5 pb-5 text-sm leading-relaxed text-muted">
+              {(Array.isArray(item.a) ? item.a : [item.a]).map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -65,14 +69,18 @@ function FAQItem({ item, isOpen, onToggle }) {
   );
 }
 
-export default function Faq() {
+export default function Faq({
+  faqs = DEFAULT_FAQS,
+  eyebrow = "Your Questions",
+  heading = "Still Thinking It Over?",
+}) {
   const [openIndex, setOpenIndex] = useState(null);
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
 
-  const mid = Math.ceil(FAQS.length / 2);
+  const mid = Math.ceil(faqs.length / 2);
   const columns = [
-    FAQS.slice(0, mid).map((item, i) => ({ item, index: i })),
-    FAQS.slice(mid).map((item, i) => ({ item, index: i + mid })),
+    faqs.slice(0, mid).map((item, i) => ({ item, index: i })),
+    faqs.slice(mid).map((item, i) => ({ item, index: i + mid })),
   ];
 
   return (
@@ -81,10 +89,10 @@ export default function Faq() {
         {/* Heading on top */}
         <div className="text-center">
           <span className="text-xm font-semibold uppercase tracking-[0.18em] text-accent">
-            Your Questions
+            {eyebrow}
           </span>
           <h2 className="mt-3 font-clash text-3xl font-semibold text-dark md:text-4xl">
-            Still Thinking It Over?
+            {heading}
           </h2>
         </div>
 

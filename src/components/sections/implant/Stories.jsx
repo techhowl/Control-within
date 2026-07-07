@@ -39,12 +39,13 @@ export default function Stories() {
         </Reveal>
 
         {/* ── Cards ── */}
-        <div className="mt-12 grid items-stretch gap-16 md:grid-cols-3 md:gap-18">
+        {/* Mobile: horizontal snap carousel. Desktop (md+): unchanged 3-col grid. */}
+        <div className="mt-12 flex snap-x snap-mandatory items-stretch gap-5 overflow-x-auto scrollbar-none pb-4 md:grid md:grid-cols-3 md:gap-18 md:overflow-visible md:pb-0">
           {STORIES.map((story, i) => (
             <Reveal
               key={story.who}
               delay={i * 100}
-              className="flex h-full min-h-[28rem] flex-col rounded-[1.75rem] bg-teal p-8 text-white md:min-h-[34rem] md:p-10"
+              className="flex h-full min-h-[28rem] w-[85%] shrink-0 snap-center flex-col rounded-[1.75rem] bg-teal p-8 text-white md:min-h-[34rem] md:w-auto md:shrink md:p-10"
             >
               {/* Quote-mark image */}
               <img

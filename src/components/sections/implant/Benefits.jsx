@@ -66,8 +66,34 @@ export default function Benefits() {
           </span>
         </Reveal>
 
+        {/* Mobile layout — centred visual, points 2-per-row (desktop untouched) */}
+        <div className="mt-12 md:hidden">
+          <Reveal delay={100}>
+            <div className="relative mx-auto w-max">
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 -z-10 scale-110 rounded-full bg-accent-light-2/40 blur-2xl"
+              />
+              <img
+                src="/implant_2ndfold.webp"
+                alt="Illustration of the contraceptive implant placed just under the skin of the upper arm"
+                className="h-56 w-56 rounded-full object-cover"
+                draggable={false}
+              />
+            </div>
+          </Reveal>
+
+          <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10">
+            {[...LEFT, ...RIGHT].map((item, i) => (
+              <Reveal key={item.title} delay={i * 60}>
+                <Feature item={item} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
         {/* Radial layout — features left / centre visual / features right */}
-        <div className="mt-14 grid items-center gap-y-12 md:grid-cols-[1fr_auto_1fr] md:gap-x-10 lg:gap-x-16">
+        <div className="mt-14 hidden items-center gap-y-12 md:grid md:grid-cols-[1fr_auto_1fr] md:gap-x-10 lg:gap-x-16">
           <div className="order-2 flex flex-col gap-12 md:order-1">
             {LEFT.map((item, i) => (
               <Reveal

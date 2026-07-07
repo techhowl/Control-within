@@ -72,9 +72,7 @@ export default function Relate() {
             No problem is too small
           </span>
           <h2 className="mt-4 text-3xl font-bold text-[#333] md:text-4xl lg:text-[2.75rem]">
-            {/* "Tap" on mobile, "Click" on desktop — both flip the card */}
-            <span className="md:hidden">Tap</span>
-            <span className="hidden md:inline">Tap to see how the implant solves for it</span>
+            Tap to see how the implant solves for it
           </h2>
         </div>
 

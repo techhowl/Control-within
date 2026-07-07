@@ -46,13 +46,11 @@ const CARDS = [
   },
 ];
 
-function FlipCard({ card }) {
-  const [flipped, setFlipped] = useState(false);
-
+function FlipCard({ card, flipped, onToggle }) {
   return (
     <div
-      className="group h-120 cursor-pointer perspective-[1600px] md:h-136"
-      onClick={() => setFlipped((f) => !f)}
+      className="group h-56 cursor-pointer perspective-[1600px] md:h-136"
+      onClick={onToggle}
     >
       <div
         className={`preserve-3d relative h-full w-full transition-transform duration-500 group-hover:rotate-y-180 ${
@@ -98,6 +96,8 @@ function FlipCard({ card }) {
 }
 
 export default function Aftercare() {
+  const [flippedIndex, setFlippedIndex] = useState(null);
+
   return (
     <section id="implant-aftercare" className="bg-bg">
       {/* Lavender band — title + flip cards, full width */}
@@ -108,8 +108,15 @@ export default function Aftercare() {
           </h2>
 
           <div className="mt-12 grid gap-5 md:grid-cols-3 md:gap-6">
-            {CARDS.map((card) => (
-              <FlipCard key={card.title} card={card} />
+            {CARDS.map((card, i) => (
+              <FlipCard
+                key={card.title}
+                card={card}
+                flipped={flippedIndex === i}
+                onToggle={() =>
+                  setFlippedIndex((cur) => (cur === i ? null : i))
+                }
+              />
             ))}
           </div>
         </div>

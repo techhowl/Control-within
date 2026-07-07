@@ -3,14 +3,23 @@ import WhatsAppButton from "@/components/ui/WhatsAppButton";
 export default function Hero() {
   return (
     <section id="implant-hero" className="relative overflow-hidden bg-[#FCF8F5]">
-      {/* Decorative ribbon swirl — mix-blend-multiply drops the white matte so
-          only the purple line shows over the background. */}
+      {/* Decorative ribbon swirl — desktop only. mix-blend-multiply drops the
+          white matte so only the purple line shows over the background. */}
       <img
         src="/implant_hero_loop.webp"
         alt=""
         aria-hidden="true"
         draggable={false}
-        className="pointer-events-none absolute -top-4 right-0 z-0 w-[55%] max-w-[720px] select-none mix-blend-multiply md:w-[46%]"
+        className="pointer-events-none absolute -top-4 right-0 z-0 hidden w-[55%] max-w-[720px] select-none mix-blend-multiply md:block md:w-[46%]"
+      />
+
+      {/* Mobile only — hero image as a full-bleed background behind the copy. */}
+      <img
+        src="/implant_hero.webp"
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        className="pointer-events-none absolute inset-0 z-0 h-full w-full select-none object-cover opacity-10 md:hidden"
       />
 
       <div className="relative z-10 mx-auto max-w-[1600px] px-6 pb-16 pt-32 md:px-12 md:pb-24 md:pt-40 lg:px-16 lg:pt-44">
@@ -40,7 +49,7 @@ export default function Hero() {
           {/* Centred visual — the purple card is anchored to it so the two stay
               merged at any width. */}
           <div className="relative mx-auto mt-12 w-[clamp(300px,82vw,480px)] lg:mt-0 lg:w-[clamp(360px,38vw,560px)]">
-            <div className="overflow-hidden rounded-[2rem] shadow-soft md:rounded-[2.5rem]">
+            <div className="hidden overflow-hidden rounded-[2rem] shadow-soft md:block md:rounded-[2.5rem]">
               <img
                 src="/implant_hero.webp"
                 alt="A hand holding the matchstick-sized contraceptive implant rod"

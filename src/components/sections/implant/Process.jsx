@@ -65,7 +65,7 @@ export default function Process() {
     <section id="implant-process" className="bg-surface py-14 md:py-20">
       <div className="mx-auto w-full px-[5%]">
         <div className="text-center">
-          <span className="text-sm font-semibold uppercase tracking-[0.18em] text-accent">
+          <span className="text-xm font-semibold uppercase tracking-[0.18em] text-accent">
             The Process
           </span>
           <h2 className="mx-auto mt-3 max-w-2xl font-clash text-3xl font-semibold text-dark md:text-4xl">

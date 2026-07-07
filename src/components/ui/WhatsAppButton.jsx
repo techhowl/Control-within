@@ -115,9 +115,6 @@ export default function WhatsAppButton({ children, className, onClick, ...rest }
     </div>
   ) : null;
 
-  // WhatsApp CTAs are currently hidden site-wide. Remove this early return to re-enable.
-  return null;
-
   return (
     <>
       <button

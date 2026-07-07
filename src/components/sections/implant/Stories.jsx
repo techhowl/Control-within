@@ -30,7 +30,7 @@ export default function Stories() {
       <div className="mx-auto w-full px-[5%]">
         {/* ── Heading ── */}
         <Reveal className="text-center">
-          <span className="text-sm font-bold uppercase tracking-[0.18em] text-accent">
+          <span className="text-xm font-bold uppercase tracking-[0.18em] text-accent">
             Real Stories
           </span>
           <h2 className="mt-3 font-clash text-3xl font-semibold text-dark md:text-5xl">
@@ -39,14 +39,14 @@ export default function Stories() {
         </Reveal>
 
         {/* ── Cards ── */}
-        <div className="mt-12 grid items-stretch gap-6 md:grid-cols-3 md:gap-8">
+        <div className="mt-12 grid items-stretch gap-16 md:grid-cols-3 md:gap-18">
           {STORIES.map((story, i) => (
             <Reveal
               key={story.who}
               delay={i * 100}
-              className="flex h-full flex-col rounded-[1.75rem] bg-teal p-8 text-white md:p-10"
+              className="flex h-full min-h-[28rem] flex-col rounded-[1.75rem] bg-teal p-8 text-white md:min-h-[34rem] md:p-10"
             >
-              {/* Quote-mark image — matches design sizing */}
+              {/* Quote-mark image */}
               <img
                 src="/%E2%80%9C.png"
                 alt=""
@@ -55,12 +55,13 @@ export default function Stories() {
                 draggable={false}
               />
 
-              <p className="mt-6 flex-1 text-[0.95rem] leading-relaxed text-white md:text-base">
+              {/* Increased top margin to match the design's breathing room */}
+              <p className="mb-8 mt-14 text-[0.95rem] leading-relaxed text-white md:mt-16 md:text-base">
                 {story.quote}
               </p>
 
-              {/* Attribution bar */}
-              <div className="mt-auto flex items-stretch gap-3 pt-10">
+              {/* Attribution bar pushed to the bottom */}
+              <div className="mt-auto flex items-stretch gap-3 pt-6 md:pt-8">
                 <span
                   aria-hidden="true"
                   className="w-[3px] shrink-0 rounded-full bg-white"

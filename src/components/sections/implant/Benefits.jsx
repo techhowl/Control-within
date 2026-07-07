@@ -61,7 +61,7 @@ export default function Benefits() {
           <h2 className="font-clash text-3xl font-semibold text-dark md:text-4xl lg:text-5xl">
             The Difference When You Choose
           </h2>
-          <span className="mt-3 block text-sm font-semibold uppercase tracking-[0.22em] text-accent md:text-base">
+          <span className="mt-3 block text-xm font-semibold uppercase tracking-[0.22em] text-accent md:text-base">
             The Contraceptive Implant
           </span>
         </Reveal>

@@ -62,7 +62,7 @@ export default function Process() {
   const next = () => setIndex((i) => Math.min(maxIndex, i + 1));
 
   return (
-    <section id="implant-process" className="bg-surface py-14 md:py-20">
+    <section id="implant-process" className="bg-surface py-10 md:py-20">
       <div className="mx-auto w-full px-[5%]">
         <div className="text-center">
           <span className="text-xm font-semibold uppercase tracking-[0.18em] text-accent">

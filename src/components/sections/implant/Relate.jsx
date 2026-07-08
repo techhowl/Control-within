@@ -64,7 +64,7 @@ export default function Relate() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   return (
-    <section id="implant-relate" className="bg-surface py-16 md:py-24">
+    <section id="implant-relate" className="bg-surface py-10 md:py-24">
       <div className="mx-auto max-w-[1200px] px-6">
         {/* ── Heading ── */}
         <div className="text-center">

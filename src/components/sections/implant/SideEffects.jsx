@@ -28,7 +28,7 @@ export default function SideEffects() {
   return (
     <section
       id="implant-side-effects"
-      className="relative overflow-hidden bg-surface py-16 md:py-24"
+      className="relative overflow-hidden bg-surface py-10 md:py-24"
     >
       {/* Faint hand watermark — decorative, sits behind the copy. */}
       <img

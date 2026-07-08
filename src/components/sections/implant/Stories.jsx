@@ -7,26 +7,26 @@ const STORIES = [
   {
     quote:
       '"I was on the pill for four years. The mental load of tracking it every single day, the anxiety when I missed one, it was exhausting. The implant changed that completely. 10 minutes in the doctor\'s chair and I haven\'t thought about contraception since."',
-    who: "Young Professional",
+    who: "Sheetal",
     meta: "27 | Mumbai",
   },
   {
     quote:
       '"I had my second baby and knew I needed something reliable but wasn\'t ready for anything permanent. The doctor inserted it while I was still in hospital recovery. I didn\'t even realise how easy it would be."',
-    who: "New Mother",
+    who: "Aaliyah",
     meta: "31 | Pune",
   },
   {
     quote:
-      '"I wasn\'t even sure I could get one because I\'d never been pregnant. Turns out that doesn\'t matter at all. My doctor explained everything clearly and I walked out feeling like I\'d made the most sensible decision of my adult life." — Someone who thought it wasn\'t for her',
-    who: "Graduate Student",
+      '"I wasn\'t even sure I could get one because I\'d never been pregnant. Turns out that doesn\'t matter at all. My doctor explained everything clearly and I walked out feeling like I\'d made the most sensible decision of my adult life."',
+    who: "Ira",
     meta: "24 | Delhi",
   },
 ];
 
 export default function Stories() {
   return (
-    <section id="implant-stories" className="bg-[#FAF6F0] py-14 md:py-20">
+    <section id="implant-stories" className="bg-[#FAF6F0] py-10 md:py-20">
       <div className="mx-auto w-full px-[5%]">
         {/* ── Heading ── */}
         <Reveal className="text-center">

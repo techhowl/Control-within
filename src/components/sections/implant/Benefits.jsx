@@ -55,7 +55,7 @@ function Feature({ item }) {
 
 export default function Benefits() {
   return (
-    <section id="implant-benefits" className="bg-surface py-14 md:py-20">
+    <section id="implant-benefits" className="bg-surface py-10 md:py-20">
       <div className="mx-auto max-w-6xl px-[5%]">
         <Reveal className="text-center">
           <h2 className="font-clash text-3xl font-semibold text-dark md:text-4xl">

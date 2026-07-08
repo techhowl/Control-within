@@ -100,7 +100,7 @@ export default function Aftercare() {
   return (
     <section id="implant-aftercare" className="bg-bg">
       {/* Lavender band — title + flip cards, full width */}
-      <div className="bg-[#EDE9F6] py-14 md:py-20">
+      <div className="bg-[#EDE9F6] py-10 md:py-20">
         <div className="w-full px-[5%]">
           <h2 className="text-center font-clash text-3xl font-semibold text-dark md:text-4xl">
             Placement Done. Now What?

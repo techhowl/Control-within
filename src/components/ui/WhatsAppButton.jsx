@@ -26,7 +26,9 @@ export default function WhatsAppButton({ children, className, onClick, ...rest }
 
   const buildWhatsappUrl = () => {
     const chatId = readChatId();
-    const text = chatId ? `Test ref:[${chatId}]` : "Hi";
+    const text = chatId
+      ? `Hi, I would like to know more information. ref:[${chatId}]`
+      : "Hi, I would like to know more information.";
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
   };
 

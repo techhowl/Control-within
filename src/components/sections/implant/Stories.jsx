@@ -45,7 +45,8 @@ export default function Stories() {
             <Reveal
               key={story.who}
               delay={i * 100}
-              className="flex h-full min-h-[28rem] w-[85%] shrink-0 snap-center flex-col rounded-[1.75rem] bg-teal p-8 text-white md:min-h-[34rem] md:w-auto md:shrink md:p-10"
+              // FIX: Replaced `h-full` with `md:h-full` to allow mobile cards to stretch properly.
+              className="flex min-h-[28rem] w-[80%] shrink-0 snap-start flex-col rounded-[1.75rem] bg-teal p-8 text-white md:h-full md:min-h-[34rem] md:w-auto md:shrink md:p-10"
             >
               {/* Quote-mark image */}
               <img

@@ -2,7 +2,7 @@ import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 export default function Hero() {
   return (
-    <section id="implant-hero" className="relative overflow-hidden bg-[#FCF8F5]">
+    <section id="implant-hero" className="relative overflow-hidden bg-[#FCF8F5] lg:flex lg:min-h-screen lg:flex-col lg:justify-center">
       {/* Decorative ribbon swirl — desktop only. mix-blend-multiply drops the
           white matte so only the purple line shows over the background. */}
       <img
@@ -22,21 +22,26 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0 z-0 h-full w-full select-none object-cover opacity-10 md:hidden"
       />
 
-      <div className="relative z-10 mx-auto max-w-[1600px] px-6 pb-16 pt-32 md:px-12 md:pb-24 md:pt-40 lg:px-16 lg:pt-44">
-        <div className="relative">
-          {/* Heading — in flow on mobile, absolute-left & vertically centred on lg+ */}
-          <div className="lg:absolute lg:left-0 lg:top-1/2 lg:z-20 lg:max-w-[38%] lg:-translate-y-1/2">
-            <h1 className="font-author font-bold leading-[1.05] text-dark text-[clamp(2.2rem,3.5vw,4rem)]">
+      <div className="relative z-10 mx-auto w-full max-w-[1600px] px-6 pb-16 pt-32 md:px-12 md:pb-24 md:pt-40 lg:px-16 lg:pb-20 lg:pt-28">
+        {/* Below lg: the three blocks stack in flow (mobile/tablet — unchanged).
+            lg+: a symmetric 3-column grid — [text · image · card]. The image
+            sits in the auto-width centre column; the two 1fr side columns are
+            always equal, so the layout stays balanced left-to-right and cannot
+            overflow at any desktop width. */}
+        <div className="lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-x-8">
+          {/* Heading */}
+          <div className="lg:justify-self-start lg:max-w-104">
+            <h1 className="font-author font-bold leading-[1.05] text-dark text-[clamp(2.2rem,3vw,3.5rem)]">
               The
               <br />
               Contraceptive
               <br />
               Implant
             </h1>
-            
+
             {/* Teal separator line */}
             <div className="mt-6 h-[5px] w-40 rounded-full bg-teal" />
-            
+
             <p className="mt-6 font-author font-bold leading-[1.15] text-muted text-[clamp(1.2rem,2vw,2rem)]">
               One Decision.
               <br />
@@ -46,9 +51,8 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Centred visual — the purple card is anchored to it so the two stay
-              merged at any width. */}
-          <div className="relative mx-auto mt-12 w-[clamp(300px,82vw,480px)] lg:mt-0 lg:w-[clamp(360px,38vw,560px)]">
+          {/* Centred visual */}
+          <div className="relative mx-auto mt-12 w-[clamp(300px,82vw,480px)] lg:mt-0 lg:w-[clamp(360px,38vw,640px)]">
             <div className="hidden overflow-hidden rounded-[2rem] shadow-soft md:block md:rounded-[2.5rem]">
               <img
                 src="/implant_hero.webp"
@@ -57,21 +61,24 @@ export default function Hero() {
                 draggable={false}
               />
             </div>
+          </div>
 
-            {/* Purple info card — stacks below the visual on mobile, overlaps its
-                right edge, centered vertically from lg up. */}
-            <div className="mt-6 rounded-[1.75rem] bg-accent p-6 text-white shadow-hover lg:absolute lg:left-[90%] lg:right-auto lg:top-1/2 lg:z-20 lg:mt-0 lg:w-[20rem] lg:-translate-y-1/2 lg:p-7 xl:w-[22rem] xl:p-8">
-              <p className="text-[0.95rem] leading-relaxed text-white/95">
-                The Contraceptive Implant is a matchstick-sized rod placed under
-                the skin of your upper arm. A 10-minute procedure and
-                you&rsquo;re protected for up to 3 years. No daily pill. No
-                partner dependency. No mental load.
-              </p>
-              
-              <WhatsAppButton className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-teal px-6 py-2.5 text-[0.8rem] font-semibold uppercase tracking-wider text-white transition-colors hover:bg-teal-hover">
-                CHAT ON WHATSAPP
-              </WhatsAppButton>
-            </div>
+          {/* Purple info card — stacks below the visual on mobile (same width &
+              centring as before). On lg+ its right edge is pinned to the right
+              column (mirroring the heading on the left), while the extra ~4rem
+              of width spills left so the card overlaps the image edge by a few
+              percent — the "merged" look, without ever overflowing the screen. */}
+          <div className="relative z-10 mx-auto mt-6 w-[clamp(300px,82vw,480px)] rounded-[1.75rem] bg-accent p-6 text-white shadow-hover lg:mx-0 lg:mt-0 lg:w-[calc(100%+4rem)] lg:justify-self-end lg:p-7 xl:p-8">
+            <p className="text-[0.95rem] leading-relaxed text-white/95">
+              The Contraceptive Implant is a matchstick-sized rod placed under
+              the skin of your upper arm. A 10-minute procedure and
+              you&rsquo;re protected for up to 3 years. No daily pill. No
+              partner dependency. No mental load.
+            </p>
+
+            <WhatsAppButton className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-teal px-6 py-2.5 text-[0.8rem] font-semibold uppercase tracking-wider text-white transition-colors hover:bg-teal-hover">
+              CHAT ON WHATSAPP
+            </WhatsAppButton>
           </div>
         </div>
       </div>

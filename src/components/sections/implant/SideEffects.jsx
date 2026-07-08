@@ -36,7 +36,7 @@ export default function SideEffects() {
         alt=""
         aria-hidden="true"
         draggable={false}
-        className="pointer-events-none absolute inset-0 z-0 h-full w-full select-none object-contain object-center md:object-cover"
+        className="pointer-events-none absolute inset-0 z-0 h-full w-full select-none object-cover object-center"
       />
 
       <div className="relative z-10 mx-auto max-w-6xl px-[5%]">
@@ -47,7 +47,7 @@ export default function SideEffects() {
         </Reveal>
 
         {/* Three reassurance points */}
-        <div className="mt-16 grid gap-12 sm:grid-cols-3 sm:gap-8 md:mt-24 md:gap-10">
+        <div className="mt-16 grid gap-12 sm:grid-cols-3 sm:gap-8 md:mt-20 md:gap-10">
           {POINTS.map((point, i) => (
             <Reveal
               key={point.title}

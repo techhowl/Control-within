@@ -58,7 +58,7 @@ export default function Benefits() {
     <section id="implant-benefits" className="bg-surface py-14 md:py-20">
       <div className="mx-auto max-w-6xl px-[5%]">
         <Reveal className="text-center">
-          <h2 className="font-clash text-3xl font-semibold text-dark md:text-4xl lg:text-5xl">
+          <h2 className="font-clash text-3xl font-semibold text-dark md:text-4xl">
             The Difference When You Choose
           </h2>
           <span className="mt-3 block text-xm font-semibold uppercase tracking-[0.22em] text-accent md:text-base">

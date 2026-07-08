@@ -33,7 +33,7 @@ export default function Stories() {
           <span className="text-xm font-bold uppercase tracking-[0.18em] text-accent">
             Real Stories
           </span>
-          <h2 className="mt-3 font-clash text-3xl font-semibold text-dark md:text-5xl">
+          <h2 className="mt-3 font-clash text-3xl font-semibold text-dark md:text-4xl">
             From Women Who&rsquo;ve Been There
           </h2>
         </Reveal>

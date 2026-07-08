@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 /**
  * Implant page — Section 5: "Placement Done. Now What?".
@@ -119,24 +118,6 @@ export default function Aftercare() {
               />
             ))}
           </div>
-        </div>
-      </div>
-
-      {/* White band — supporting copy + CTA */}
-      <div className="w-full px-[5%] py-14">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-sm leading-relaxed text-muted md:text-base">
-            Side effects vary significantly between women. Some experience none
-            beyond period changes; others find mood, weight, or bleeding changes
-            reason enough to reconsider. Most side effects settle within 3&ndash;6
-            months. The implant doesn&rsquo;t affect your long-term fertility, bone
-            density, or future pregnancy prospects. Always remember, your doctor
-            is a call or visit away. If you experience any discomfort or
-            apprehensions, reach out to your doctor. Removal is always an option.
-          </p>
-          <WhatsAppButton className="mt-6 inline-flex items-center gap-2 rounded-full bg-teal px-6 py-3 text-xs font-semibold uppercase tracking-wide text-white transition-colors hover:bg-teal-hover">
-            Chat On WhatsApp <span aria-hidden="true">→</span>
-          </WhatsAppButton>
         </div>
       </div>
     </section>

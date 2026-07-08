@@ -5,6 +5,7 @@ import Benefits from "@/components/sections/implant/Benefits";
 import Relate from "@/components/sections/implant/Relate";
 import Process from "@/components/sections/implant/Process";
 import Aftercare from "@/components/sections/implant/Aftercare";
+import SideEffects from "@/components/sections/implant/SideEffects";
 import Stories from "@/components/sections/implant/Stories";
 import Faq from "@/components/sections/Faq";
 import { IMPLANT_FAQS } from "@/components/sections/implant/faqData";
@@ -17,12 +18,13 @@ export const metadata = {
 
 export default function ImplantPage() {
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <Hero />
       <Benefits />
       <Relate />
       <Process />
       <Aftercare />
+      <SideEffects />
       <Stories />
       <Faq faqs={IMPLANT_FAQS} heading="Every Question You've Been Sitting On" />
       <Suspense fallback={null}>

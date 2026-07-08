@@ -9,10 +9,11 @@ import { findByLocation } from "@/lib/doctors";
  * flat (no nested objects) so each key can be mapped directly to an Interakt
  * workflow variable.
  *
- * Body: { "location": "Delhi 110009" }
- *   - location: a free-text string the user typed, containing city name
- *     and/or 6-digit pincode in any order, comma/space separated.
- *     Examples: "Delhi 110009", "110009 Delhi", "Agra, 282001", "110009"
+ * Body: { "City": "Delhi", "Pincode": "110009" }
+ *   - City:    city name (optional if Pincode given)
+ *   - Pincode: 6-digit Indian pincode (optional if City given)
+ *   Either field alone is enough; both together narrows the match. The legacy
+ *   single-string { "location": "Delhi 110009" } shape is still accepted.
  *
  * Returns (200): { success, doctor_name, doctor_phone, doctor_city, ... }
  * Returns (400): { success: false, error, message }
@@ -46,7 +47,15 @@ export async function POST(request) {
     );
   }
 
-  const location = (body?.location ?? "").toString().trim();
+  // Interakt sends { City, Pincode }; drop empties and any unresolved {{n}}
+  // placeholders, then fold into the single string findByLocation expects.
+  const clean = (v) => {
+    const s = (v ?? "").toString().trim();
+    return !s || s.includes("{{") ? "" : s;
+  };
+  const city = clean(body?.City ?? body?.city);
+  const pincode = clean(body?.Pincode ?? body?.pincode);
+  const location = clean(body?.location) || `${city} ${pincode}`.trim();
 
   if (!location) {
     return Response.json(
@@ -54,7 +63,7 @@ export async function POST(request) {
         success: false,
         error: "missing_location",
         message:
-          'Provide a "location" field with city name and/or pincode. Example: {"location": "Delhi 110009"}',
+          'Provide "City" and/or "Pincode". Example: {"City": "Delhi", "Pincode": "110009"}',
       },
       { status: 400, headers: CORS_HEADERS }
     );

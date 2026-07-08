@@ -1,9 +1,11 @@
 import "./globals.css";
+import { Suspense } from "react";
 import Ticker from "@/components/layout/Ticker";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
+import LeadCapture from "@/components/LeadCapture";
 
 export const metadata = {
   title: "Control Within | Long-Term, Reversible Contraception",
@@ -107,6 +109,9 @@ fbq('track', 'PageView');`,
           <Ticker items={TOP_TICKER} variant="top" />
           <Navbar />
         </div>
+        <Suspense fallback={null}>
+          <LeadCapture />
+        </Suspense>
         {children}
         <Footer />
         <BackToTop />

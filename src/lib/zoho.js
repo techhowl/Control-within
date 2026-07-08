@@ -118,3 +118,48 @@ export async function createZohoRecord(moduleApiName, fields) {
   }
   return row.details?.id;
 }
+
+/**
+ * Update a single existing record in a Zoho CRM module.
+ * @param {string} moduleApiName  e.g. "Leads"
+ * @param {string} recordId       the Zoho record id to patch
+ * @param {object} fields         { Field_API_Name: value, ... } (skip null/empty)
+ * @returns {Promise<string>} the updated record id
+ */
+export async function updateZohoRecord(moduleApiName, recordId, fields) {
+  if (!moduleApiName) {
+    throw new Error("updateZohoRecord: moduleApiName is required.");
+  }
+  if (!recordId) {
+    throw new Error("updateZohoRecord: recordId is required.");
+  }
+
+  const clean = Object.fromEntries(
+    Object.entries(fields).filter(([, v]) => v !== null && v !== undefined && v !== "")
+  );
+  const url = `${apiDomain()}/crm/v8/${moduleApiName}/${recordId}`;
+
+  const put = (token) =>
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        Authorization: `Zoho-oauthtoken ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ data: [clean] }),
+    });
+
+  let res = await put(await getZohoAccessToken());
+  if (res.status === 401) {
+    res = await put(await getZohoAccessToken(true));
+  }
+
+  const data = await res.json().catch(() => ({}));
+  const row = data?.data?.[0];
+  if (!res.ok || row?.code !== "SUCCESS") {
+    throw new Error(
+      `Zoho update of ${moduleApiName}/${recordId} failed (${res.status}): ${JSON.stringify(data)}`
+    );
+  }
+  return row.details?.id;
+}

@@ -8,19 +8,31 @@ export default function WhatsAppButton({ children, className, onClick, ...rest }
   const [mounted, setMounted] = useState(false); // Used to safely render Portal in Next.js
   
   const timerRef = useRef(null);
-  
-  const whatsappNumber = "918452926740"; 
-  const prefilledMessage = encodeURIComponent("Hi");
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${prefilledMessage}`;
+
+  const whatsappNumber = "918452926740";
 
   // Ensure component is mounted before trying to attach portal to document.body
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // Read the chatId dropped by /api/lead (client-readable cw_chat cookie) so the
+  // prefilled message carries it in [brackets] for CRM/WhatsApp stitching.
+  const readChatId = () => {
+    if (typeof document === "undefined") return null;
+    const match = document.cookie.match(/(?:^|;\s*)cw_chat=([^;]+)/);
+    return match ? decodeURIComponent(match[1]) : null;
+  };
+
+  const buildWhatsappUrl = () => {
+    const chatId = readChatId();
+    const text = chatId ? `Test ref:[${chatId}]` : "Hi";
+    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+  };
+
   const triggerRedirect = () => {
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-    setShowPopup(false); 
+    window.open(buildWhatsappUrl(), "_blank", "noopener,noreferrer");
+    setShowPopup(false);
   };
 
   const handleClose = (e) => {

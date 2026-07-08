@@ -19,24 +19,44 @@ export default function DoctorLocator() {
   const searchParams = useSearchParams();
   const src = searchParams.get("src");
   const isQr = typeof src === "string" && src.startsWith("qr");
+  // QR links carry the real campaign params (utm_source=clinic|chemist,
+  // utm_medium=scan, utm_campaign=qrcode) — forward them to the Lead.
+  const utmSource = searchParams.get("utm_source");
+  const utmMedium = searchParams.get("utm_medium");
+  const utmCampaign = searchParams.get("utm_campaign");
 
   const [open, setOpen] = useState(false);
   // status: "idle" | "locating" | "error"
   const [status, setStatus] = useState("idle");
   const journeyStarted = useRef(false);
+  // Zoho Lead id returned by the arrival /api/lead call — used to patch the
+  // visitor's coordinates onto the same Lead once geolocation resolves.
+  const leadIdRef = useRef(null);
 
-  // Auto-open on QR arrival, and start a journey so the locator event stitches
-  // to the same visitor.
+  // Auto-open on QR arrival, and create the Lead (mints chatId + starts the
+  // journey) so the locator event and the WhatsApp chatId stitch to the same
+  // visitor: chatId → lead → locate.
   useEffect(() => {
     if (!isQr || journeyStarted.current) return;
     journeyStarted.current = true;
     setOpen(true);
-    fetch("/api/journey/init", {
+    fetch("/api/lead", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ entry_path: "/", utm_source: "qr", utm_creative: src }),
-    }).catch(() => {});
-  }, [isQr, src]);
+      body: JSON.stringify({
+        entry_path: "/",
+        utm_source: utmSource || "qr",
+        utm_medium: utmMedium,
+        utm_campaign: utmCampaign,
+        src,
+      }),
+    })
+      .then((r) => r.json())
+      .then((d) => {
+        leadIdRef.current = d?.leadId ?? null;
+      })
+      .catch(() => {});
+  }, [isQr, src, utmSource, utmMedium, utmCampaign]);
 
   // Close the modal and jump the visitor to the contraceptive-implant videos.
   const goToVideos = useCallback(() => {
@@ -55,6 +75,18 @@ export default function DoctorLocator() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...payload, src }),
+        keepalive: true,
+      }).catch(() => {});
+      // Patch the visitor's coordinates onto their Lead (Address Latitude/
+      // Longitude). resumed:true path in /api/lead runs the Zoho update.
+      fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          lat: payload.lat,
+          lng: payload.lng,
+          leadId: leadIdRef.current,
+        }),
         keepalive: true,
       }).catch(() => {});
       goToVideos();

@@ -84,74 +84,179 @@ export function listCities() {
   return [...seen.values()].sort((a, b) => a.city.localeCompare(b.city));
 }
 
+// --- City canonicalization --------------------------------------------------
+// The dataset stores one spelling per city ("Bengaluru", "Gurgaon", "NOIDA").
+// Visitors type variants and typos ("bangalore", "gurugram", "gaziabad"). We
+// resolve any input to the exact spelling present in the data, so pincode/city
+// matching is reliable and the returned doctor.city is always consistent.
+
+const normalize = (s) =>
+  (s ?? "")
+    .toString()
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ") // punctuation → space
+    .replace(/\s+/g, " ")
+    .trim();
+
+// Distinct city spellings actually present in the data, computed once.
+const CANONICAL_CITIES = [...new Set(doctors.map((d) => d.city).filter(Boolean))];
+
+// Hand-maintained aliases for names too far apart for edit-distance to catch
+// safely (Bengaluru/Bangalore, Gurgaon/Gurugram, …). Keys are normalized;
+// every value must be one of CANONICAL_CITIES.
+const CITY_ALIASES = {
+  bangalore: "Bengaluru",
+  banglore: "Bengaluru",
+  bengalooru: "Bengaluru",
+  bengaluru: "Bengaluru",
+  blr: "Bengaluru",
+  gurugram: "Gurgaon",
+  "new delhi": "Delhi",
+  "greater noida": "NOIDA",
+  gaziabad: "Ghaziabad",
+  hydrabad: "Hyderabad",
+  bhubaneshwar: "Bhubaneswar",
+  bhubneswar: "Bhubaneswar",
+  chd: "Chandigarh",
+};
+
+/** Levenshtein edit distance (small strings, two-row DP). */
+function editDistance(a, b) {
+  const m = a.length;
+  const n = b.length;
+  if (!m) return n;
+  if (!n) return m;
+  let prev = Array.from({ length: n + 1 }, (_, j) => j);
+  let curr = new Array(n + 1);
+  for (let i = 1; i <= m; i++) {
+    curr[0] = i;
+    for (let j = 1; j <= n; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      curr[j] = Math.min(prev[j] + 1, curr[j - 1] + 1, prev[j - 1] + cost);
+    }
+    [prev, curr] = [curr, prev];
+  }
+  return prev[n];
+}
+
+/**
+ * Resolve a free-text city string to the exact spelling used in the data, or
+ * null if it doesn't plausibly name one of our cities.
+ *   1. exact (normalized) match, e.g. "noida" → "NOIDA"
+ *   2. alias table, e.g. "bangalore" → "Bengaluru", "gurugram" → "Gurgaon"
+ *   3. fuzzy: closest canonical city within 2 edits (catches typos like
+ *      "gaziabad" → "Ghaziabad"); a genuinely different city (Mumbai, Pune)
+ *      exceeds the threshold and returns null.
+ */
+export function canonicalCity(input) {
+  const q = normalize(input);
+  if (!q) return null;
+
+  const direct =
+    CANONICAL_CITIES.find((c) => normalize(c) === q) || CITY_ALIASES[q];
+  if (direct) return direct;
+
+  let best = null;
+  let bestD = Infinity;
+  for (const c of CANONICAL_CITIES) {
+    const d = editDistance(q, normalize(c));
+    if (d < bestD) {
+      bestD = d;
+      best = c;
+    }
+  }
+  // Short names get a stricter budget so unrelated short cities ("Goa", "Pune")
+  // don't collapse onto a similar-looking one; longer names tolerate 2 typos.
+  const maxDist = q.length <= 4 ? 1 : 2;
+  return bestD <= maxDist ? best : null;
+}
+
+/** Length of the shared leading-digit run of two pincode strings. */
+const sharedPrefixLen = (a, b) => {
+  let i = 0;
+  while (i < a.length && i < b.length && a[i] === b[i]) i++;
+  return i;
+};
+
+/**
+ * Nearest doctors by pincode when there's no exact hit: those whose pincode
+ * shares the longest leading-digit run with `pincode`. Requires ≥3 shared
+ * digits (same postal sorting district ≈ genuinely nearby) — so a pincode from
+ * a region with no doctors (Mumbai 400xxx shares nothing with our cities)
+ * returns null instead of a far-away false match. Constrained to `city` when
+ * given and that narrows the group.
+ */
+function nearestByPincodePrefix(pincode, city) {
+  const pool = doctors.filter((d) => d.pincode);
+  let bestLen = 0;
+  for (const d of pool) {
+    const len = sharedPrefixLen(pincode, d.pincode);
+    if (len > bestLen) bestLen = len;
+  }
+  if (bestLen < 3) return null;
+
+  let group = pool.filter((d) => sharedPrefixLen(pincode, d.pincode) === bestLen);
+  if (city) {
+    const inCity = group.filter((d) => d.city === city);
+    if (inCity.length) group = inCity;
+  }
+  return pickBest(group);
+}
+
 /**
  * Find the best doctor matching a free-text location string that may contain a
  * city name, a 6-digit pincode, or both (in any order, comma/space separated).
  *
  * Matching priority:
- *   1. **Exact pincode** — most specific; if a 6-digit Indian pincode is found
- *      in the string, doctors with that pincode are matched first.
- *   2. **City name** (case-insensitive) — fallback when no pincode is present
- *      or no doctors have that pincode.
- *   3. Among all matches, the doctor with the best contact-info quality wins
- *      (same scoring as findNearest).
+ *   1. **Exact pincode** — most specific; refined to the resolved city when one
+ *      is also given and agrees.
+ *   2. **Nearby pincode** — same postal district (≥3 shared leading digits)
+ *      when no exact pincode hit; refined by city when given.
+ *   3. **Canonical city** — the input city resolved to its exact data spelling
+ *      (aliases + typo-tolerant), when there's no usable pincode.
+ * Among the matches, the doctor with the best contact-info quality wins.
  *
- * Returns `{ ...doctor, distance_km: 0 }` or `null`.
+ * Returns `{ ...doctor, distance_km: 0 }` (matched by area, not coordinates) or
+ * `null` when the location names no city/district we cover (caller → 404).
  *
  * Examples of accepted input:
- *   "Delhi 110009"  →  pincode match first, city refines
- *   "110009"        →  pincode match
- *   "Agra"          →  city match
- *   "agra, 282001"  →  pincode match within Agra
+ *   "Bangalore"       →  alias → Bengaluru doctor
+ *   "gaziabad"        →  typo → Ghaziabad doctor
+ *   "Delhi 110009"    →  exact pincode, city agrees
+ *   "560099"          →  no exact hit → nearest Bengaluru (560xxx) doctor
+ *   "Mumbai 400001"   →  unknown city + unknown district → null → 404
  */
 export function findByLocation(location) {
-  const input = location.trim();
+  const input = (location ?? "").trim();
   if (!input) return null;
 
   // Extract a 6-digit Indian pincode (if present).
   const pincodeMatch = input.match(/\b(\d{6})\b/);
   const pincode = pincodeMatch ? pincodeMatch[1] : null;
 
-  // Extract city: strip the pincode (if any), commas, extra spaces → whatever
-  // remains is treated as the city name.
-  const cityRaw = input
-    .replace(/\b\d{6}\b/, "")   // remove pincode
-    .replace(/[,]/g, " ")       // commas → spaces
-    .replace(/\s+/g, " ")       // collapse whitespace
-    .trim()
-    .toLowerCase();
+  // Everything that isn't the pincode is the city string → resolve to the exact
+  // spelling in the data (fixes "bangalore" → "Bengaluru", typos, etc.).
+  const cityRaw = input.replace(/\b\d{6}\b/, " ").replace(/[,]/g, " ");
+  const city = canonicalCity(cityRaw);
 
-  // --- 1. Pincode match (most specific) ---
+  // --- 1. Pincode (most specific) ---
   if (pincode) {
-    const pincodeHits = doctors.filter((d) => d.pincode === pincode);
-
-    // If we also have a city string, narrow within pincode hits.
-    if (pincodeHits.length > 0 && cityRaw) {
-      const refined = pincodeHits.filter(
-        (d) => d.city && d.city.toLowerCase() === cityRaw
-      );
-      if (refined.length > 0) return pickBest(refined);
+    // 1a. Exact 6-digit pincode; refine to the city when it agrees.
+    const exact = doctors.filter((d) => d.pincode === pincode);
+    if (exact.length) {
+      const inCity = city ? exact.filter((d) => d.city === city) : [];
+      return pickBest(inCity.length ? inCity : exact);
     }
 
-    if (pincodeHits.length > 0) return pickBest(pincodeHits);
+    // 1b. No exact hit → nearest doctor in the same postal district.
+    const nearby = nearestByPincodePrefix(pincode, city);
+    if (nearby) return nearby;
   }
 
-  // --- 2. City name match (case-insensitive) ---
-  if (cityRaw) {
-    const cityHits = doctors.filter(
-      (d) => d.city && d.city.toLowerCase() === cityRaw
-    );
+  // --- 2. Canonical city ---
+  if (city) {
+    const cityHits = doctors.filter((d) => d.city === city);
     if (cityHits.length > 0) return pickBest(cityHits);
-
-    // Partial / fuzzy: city name *contains* the input or input contains the
-    // city name (handles "New Delhi" → "Delhi", "Noida" → "NOIDA", etc.)
-    const partialHits = doctors.filter(
-      (d) =>
-        d.city &&
-        (d.city.toLowerCase().includes(cityRaw) ||
-          cityRaw.includes(d.city.toLowerCase()))
-    );
-    if (partialHits.length > 0) return pickBest(partialHits);
   }
 
   return null;

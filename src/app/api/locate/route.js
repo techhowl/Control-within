@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { JOURNEY_COOKIE, getJourney, logEvent } from "@/lib/journey";
 import { findNearest, listCities } from "@/lib/doctors";
+import { findNearestChemist } from "@/lib/chemists";
 import { createZohoRecord } from "@/lib/zoho";
 
 /**
@@ -36,6 +37,10 @@ export async function POST(request) {
   }
 
   const { src, city } = body ?? {};
+  // utm_source distinguishes a chemist QR ("chemist") from a clinic QR
+  // ("clinic"). Stored for attribution; the chemist lookup itself runs
+  // regardless so the record always carries the nearest Agra chemist.
+  const utmSource = typeof body?.utm_source === "string" ? body.utm_source : null;
   let lat = Number(body?.lat);
   let lng = Number(body?.lng);
 
@@ -64,6 +69,11 @@ export async function POST(request) {
     return Response.json({ error: "no_doctors" }, { status: 500 });
   }
 
+  // Nearest chemist to the same coordinates. Best-effort: a chemist miss must
+  // never block the doctor result (the dataset is Agra-only, so this is null
+  // only if it somehow has no coordinates at all).
+  const chemist = findNearestChemist(lat, lng);
+
   // --- Journey event (best-effort; analytics must not break the response) ---
   try {
     const journeyId = (await cookies()).get(JOURNEY_COOKIE)?.value;
@@ -74,8 +84,11 @@ export async function POST(request) {
           lat,
           lng,
           src: src ?? null,
+          utm_source: utmSource,
           sdpid: doctor.sdpid,
           distance_km: doctor.distance_km,
+          chemist_id: chemist?.id ?? null,
+          chemist_distance_km: chemist?.distance_km ?? null,
         });
       }
     }
@@ -118,6 +131,15 @@ export async function POST(request) {
     // renders these as "lat, lng".
     User_Address_Coordinates_Latitude: round6(lat),
     User_Address_Coordinates_Longitude: round6(lng),
+    // UTM source of the QR scan ("chemist" | "clinic"), for attribution.
+    UTM_Source: utmSource,
+    // --- Nearest chemist to the same coordinates (Agra retail-chemist list) ---
+    Chemist_Name: chemist?.name ?? null,
+    Chemist_Area: chemist?.area ?? null,
+    Chemist_Address: chemist?.address ?? null,
+    Chemist_City: chemist?.city ?? null,
+    Chemist_Pincode: chemist?.pincode ?? null,
+    Chemist_Distance_Km: chemist?.distance_km ?? null,
   };
   try {
     await createZohoRecord(process.env.ZOHO_LOCATOR_MODULE, record);
@@ -142,5 +164,5 @@ export async function POST(request) {
     }
   }
 
-  return Response.json({ doctor, crm_saved: crmSaved });
+  return Response.json({ doctor, chemist, crm_saved: crmSaved });
 }

@@ -74,7 +74,7 @@ export default function DoctorLocator() {
       fetch("/api/locate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...payload, src }),
+        body: JSON.stringify({ ...payload, src, utm_source: utmSource }),
         keepalive: true,
       }).catch(() => {});
       // Patch the visitor's coordinates onto their Lead (Address Latitude/
@@ -91,7 +91,7 @@ export default function DoctorLocator() {
       }).catch(() => {});
       goToVideos();
     },
-    [src, goToVideos]
+    [src, utmSource, goToVideos]
   );
 
   const requestLocation = useCallback(() => {

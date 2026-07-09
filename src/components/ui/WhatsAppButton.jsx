@@ -18,17 +18,21 @@ export default function WhatsAppButton({ children, className, onClick, ...rest }
 
   // Read the chatId dropped by /api/lead (client-readable cw_chat cookie) so the
   // prefilled message carries it in [brackets] for CRM/WhatsApp stitching.
-  const readChatId = () => {
-    if (typeof document === "undefined") return null;
-    const match = document.cookie.match(/(?:^|;\s*)cw_chat=([^;]+)/);
-    return match ? decodeURIComponent(match[1]) : null;
-  };
+  // DISABLED: chatId/lead flow is paused — keep for easy re-enable later.
+  // const readChatId = () => {
+  //   if (typeof document === "undefined") return null;
+  //   const match = document.cookie.match(/(?:^|;\s*)cw_chat=([^;]+)/);
+  //   return match ? decodeURIComponent(match[1]) : null;
+  // };
 
   const buildWhatsappUrl = () => {
-    const chatId = readChatId();
-    const text = chatId
-      ? `Hi, I would like to know more information. ref:[${chatId}]`
-      : "Hi, I would like to know more information.";
+    // Plain "Hi" message, no chatId ref. To restore stitching, uncomment
+    // readChatId above and swap the line below back to the ref: variant.
+    // const chatId = readChatId();
+    // const text = chatId
+    //   ? `Hi, I would like to know more information. ref:[${chatId}]`
+    //   : "Hi, I would like to know more information.";
+    const text = "Hi, I would like to know more information.";
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
   };
 

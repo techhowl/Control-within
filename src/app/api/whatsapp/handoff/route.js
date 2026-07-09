@@ -3,7 +3,7 @@ import { JOURNEY_COOKIE, getJourney, logEvent } from "@/lib/journey";
 import { getSupabase } from "@/lib/supabase";
 
 const DEFAULT_MESSAGE =
-  "Hi! I'd like to know more about long-term, reversible contraception options.";
+  "Hi";
 
 /**
  * GET /api/whatsapp/handoff
@@ -58,7 +58,10 @@ export async function GET(request) {
     }
   }
 
-  const text = shortRef ? `${DEFAULT_MESSAGE} [${shortRef}]` : DEFAULT_MESSAGE;
+  // DISABLED: chatId/short_ref stitching paused — always send the plain
+  // message. Restore by swapping back to the shortRef variant below.
+  // const text = shortRef ? `${DEFAULT_MESSAGE} [${shortRef}]` : DEFAULT_MESSAGE;
+  const text = DEFAULT_MESSAGE;
   const waUrl = `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
 
   if (wantsRedirect) {

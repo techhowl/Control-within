@@ -50,7 +50,7 @@
     "state": "CH",
     "pincode": "134116",
     "phone": "9855738386",
-    "address": "Peer Muchalla Rd, Sector 20, Panchkula, Punjab 134117",
+    "address": "Peer Muchalla Rd, Sector 20, Panchkula, Punjab 134116",
     "lat": 30.669792,
     "lng": 76.886803
   },
@@ -59,7 +59,7 @@
     "name": "Dr. Monika Narang",
     "city": "Panchkula",
     "state": "CH",
-    "pincode": "140603",
+    "pincode": "134113",
     "phone": "9041126000",
     "address": "Blessings Hospital, Site No 1, Sector 15, Adjoining Govt. Girls Senior Sec. School, Panchkula, Haryana 134113",
     "lat": 30.69754,
@@ -83,7 +83,7 @@
     "state": "DL",
     "pincode": "110033",
     "phone": "9999169078",
-    "address": "tyagi hospital, 210,adarsh Nagar ND-33",
+    "address": "tyagi hospital, 210,adarsh Nagar ND-110033",
     "lat": 28.613895,
     "lng": 77.209006
   },
@@ -226,7 +226,7 @@
     "state": "Karnataka",
     "pincode": null,
     "phone": null,
-    "address": "—",
+    "address": null,
     "lat": 12.976794,
     "lng": 77.590082
   },
@@ -314,7 +314,7 @@
     "state": "Karnataka",
     "pincode": "560043",
     "phone": "080-16161617",
-    "address": "OVUM HOSPITAL, Kalyan Nagar, Bengaluru, Karnataka, 560036",
+    "address": "OVUM HOSPITAL, Kalyan Nagar, Bengaluru, Karnataka, 560043",
     "lat": 12.976794,
     "lng": 77.590082
   },
@@ -347,7 +347,7 @@
     "state": "Karnataka",
     "pincode": "560011",
     "phone": null,
-    "address": "Cloudnine Hospital - Jayanagar \\| Best Maternity & Pregnancy Centre, 1st Floor, 1533, 9th Main Rd, Bairasandra Extension, Jaya Nagar 1st Block, Jayanagar 3rd Block, Jayanagar, Bengaluru, Karnataka 560011",
+    "address": "Cloudnine Hospital - Jayanagar | Best Maternity & Pregnancy Centre, 1st Floor, 1533, 9th Main Rd, Bairasandra Extension, Jaya Nagar 1st Block, Jayanagar 3rd Block, Jayanagar, Bengaluru, Karnataka 560011",
     "lat": 12.976794,
     "lng": 77.590082
   },
@@ -589,7 +589,7 @@
     "state": "NCR",
     "pincode": "201001",
     "phone": "8595541914",
-    "address": "Kancal Clinic; A-10, A-10, Nehru Housing Society, Ashok Nagar, Kalka Garhi, Naya Ganj, Ghaziabad, Uttar Pradesh 201001 \\| Raj Maternity & Surgical Centre; A-10, Ashok Nagar, (Near Holy Child School), Ghaziabad. Ashok Nagar, Nehru Nagar III, Nehru Nagar, Ghaziabad, Uttar Pradesh, India201001",
+    "address": "Kancal Clinic; A-10, A-10, Nehru Housing Society, Ashok Nagar, Kalka Garhi, Naya Ganj, Ghaziabad, Uttar Pradesh 201001 | Raj Maternity & Surgical Centre; A-10, Ashok Nagar, (Near Holy Child School), Ghaziabad. Ashok Nagar, Nehru Nagar III, Nehru Nagar, Ghaziabad, Uttar Pradesh, India201001",
     "lat": 28.671153,
     "lng": 77.412036
   },
@@ -820,7 +820,7 @@
     "state": "NCR",
     "pincode": null,
     "phone": null,
-    "address": "—",
+    "address": null,
     "lat": 28.774997,
     "lng": 77.458697
   },
@@ -996,7 +996,7 @@
     "state": "NCR",
     "pincode": null,
     "phone": null,
-    "address": "—",
+    "address": null,
     "lat": 28.570633,
     "lng": 77.327215
   },
@@ -1007,7 +1007,7 @@
     "state": "NCR",
     "pincode": null,
     "phone": null,
-    "address": "—",
+    "address": null,
     "lat": 28.570633,
     "lng": 77.327215
   },
@@ -1029,7 +1029,7 @@
     "state": "NCR",
     "pincode": null,
     "phone": null,
-    "address": "—",
+    "address": null,
     "lat": 28.570633,
     "lng": 77.327215
   },
@@ -1040,7 +1040,7 @@
     "state": "NCR",
     "pincode": null,
     "phone": null,
-    "address": "—",
+    "address": null,
     "lat": 28.570633,
     "lng": 77.327215
   },
@@ -1766,7 +1766,7 @@
     "state": "WestUP",
     "pincode": null,
     "phone": null,
-    "address": "—",
+    "address": null,
     "lat": 27.175255,
     "lng": 78.009816
   },
@@ -1788,7 +1788,7 @@
     "state": "WestUP",
     "pincode": null,
     "phone": null,
-    "address": "—",
+    "address": null,
     "lat": 27.175255,
     "lng": 78.009816
   },
@@ -1799,7 +1799,7 @@
     "state": "WestUP",
     "pincode": null,
     "phone": null,
-    "address": "—",
+    "address": null,
     "lat": 27.175255,
     "lng": 78.009816
   },
@@ -1821,7 +1821,7 @@
     "state": "WestUP",
     "pincode": null,
     "phone": null,
-    "address": "—",
+    "address": null,
     "lat": 27.175255,
     "lng": 78.009816
   },
@@ -1832,7 +1832,7 @@
     "state": "WestUP",
     "pincode": null,
     "phone": null,
-    "address": "—",
+    "address": null,
     "lat": 27.175255,
     "lng": 78.009816
   },
@@ -1843,7 +1843,7 @@
     "state": "WestUP",
     "pincode": null,
     "phone": null,
-    "address": "—",
+    "address": null,
     "lat": 27.175255,
     "lng": 78.009816
   },
@@ -1854,7 +1854,7 @@
     "state": "WestUP",
     "pincode": null,
     "phone": null,
-    "address": "—",
+    "address": null,
     "lat": 27.175255,
     "lng": 78.009816
   },
@@ -1865,7 +1865,7 @@
     "state": "WestUP",
     "pincode": null,
     "phone": null,
-    "address": "—",
+    "address": null,
     "lat": 27.175255,
     "lng": 78.009816
   },
@@ -1876,7 +1876,7 @@
     "state": "WestUP",
     "pincode": null,
     "phone": null,
-    "address": "—",
+    "address": null,
     "lat": 27.175255,
     "lng": 78.009816
   },
@@ -1887,7 +1887,7 @@
     "state": "WestUP",
     "pincode": null,
     "phone": null,
-    "address": "—",
+    "address": null,
     "lat": 27.175255,
     "lng": 78.009816
   },
@@ -1898,7 +1898,7 @@
     "state": "WestUP",
     "pincode": null,
     "phone": null,
-    "address": "—",
+    "address": null,
     "lat": 27.175255,
     "lng": 78.009816
   },
@@ -1909,7 +1909,7 @@
     "state": "WestUP",
     "pincode": null,
     "phone": null,
-    "address": "—",
+    "address": null,
     "lat": 27.175255,
     "lng": 78.009816
   },

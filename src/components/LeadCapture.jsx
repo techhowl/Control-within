@@ -44,12 +44,13 @@ export default function LeadCapture() {
     if (!hasAttribution) return;
 
     fired.current = true;
-    fetch("/api/lead", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...params, entry_path: pathname || "/" }),
-      keepalive: true,
-    }).catch(() => {});
+    // DISABLED: chatId + Zoho Lead creation is paused. Re-enable by uncommenting.
+    // fetch("/api/lead", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ ...params, entry_path: pathname || "/" }),
+    //   keepalive: true,
+    // }).catch(() => {});
   }, [searchParams, pathname]);
 
   return null;

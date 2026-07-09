@@ -31,7 +31,8 @@ export default function DoctorLocator() {
   const journeyStarted = useRef(false);
   // Zoho Lead id returned by the arrival /api/lead call — used to patch the
   // visitor's coordinates onto the same Lead once geolocation resolves.
-  const leadIdRef = useRef(null);
+  // DISABLED: re-enable with the /api/lead calls below.
+  // const leadIdRef = useRef(null);
 
   // Auto-open on QR arrival, and create the Lead (mints chatId + starts the
   // journey) so the locator event and the WhatsApp chatId stitch to the same
@@ -40,22 +41,24 @@ export default function DoctorLocator() {
     if (!isQr || journeyStarted.current) return;
     journeyStarted.current = true;
     setOpen(true);
-    fetch("/api/lead", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        entry_path: "/",
-        utm_source: utmSource || "qr",
-        utm_medium: utmMedium,
-        utm_campaign: utmCampaign,
-        src,
-      }),
-    })
-      .then((r) => r.json())
-      .then((d) => {
-        leadIdRef.current = d?.leadId ?? null;
-      })
-      .catch(() => {});
+    // DISABLED: chatId + Zoho Lead creation paused. Modal + /api/locate still
+    // run; leadIdRef stays null. Re-enable by uncommenting.
+    // fetch("/api/lead", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({
+    //     entry_path: "/",
+    //     utm_source: utmSource || "qr",
+    //     utm_medium: utmMedium,
+    //     utm_campaign: utmCampaign,
+    //     src,
+    //   }),
+    // })
+    //   .then((r) => r.json())
+    //   .then((d) => {
+    //     leadIdRef.current = d?.leadId ?? null;
+    //   })
+    //   .catch(() => {});
   }, [isQr, src, utmSource, utmMedium, utmCampaign]);
 
   // Close the modal and jump the visitor to the contraceptive-implant videos.
@@ -77,18 +80,18 @@ export default function DoctorLocator() {
         body: JSON.stringify({ ...payload, src, utm_source: utmSource }),
         keepalive: true,
       }).catch(() => {});
-      // Patch the visitor's coordinates onto their Lead (Address Latitude/
-      // Longitude). resumed:true path in /api/lead runs the Zoho update.
-      fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          lat: payload.lat,
-          lng: payload.lng,
-          leadId: leadIdRef.current,
-        }),
-        keepalive: true,
-      }).catch(() => {});
+      // DISABLED: chatId/Lead flow paused — no coords patch onto a Lead.
+      // Re-enable alongside the arrival /api/lead call above.
+      // fetch("/api/lead", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //     lat: payload.lat,
+      //     lng: payload.lng,
+      //     leadId: leadIdRef.current,
+      //   }),
+      //   keepalive: true,
+      // }).catch(() => {});
       goToVideos();
     },
     [src, utmSource, goToVideos]

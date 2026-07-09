@@ -14,7 +14,7 @@
 | 3 | 8047 | Dr. Renu Chakarvarty | Panchkula | CH | 134117 | `30.6795` | `76.849305` |
 | 4 | 8049 | Dr. Bhavna Agarwal | Panchkula | CH | 134109 | `30.69754` | `76.855107` |
 | 5 | 8063 | Dr. Ruchita Kaushal | Panchkula | CH | 134116 | `30.669792` | `76.886803` |
-| 6 | 8269 | Dr. Monika Narang | Panchkula | CH | 140603 | `30.69754` | `76.855107` |
+| 6 | 8269 | Dr. Monika Narang | Panchkula | CH | 134113 | `30.69754` | `76.855107` |
 | 7 | 4062 | Dr. Arpana Jain | Delhi | DL | 110009 | `28.613895` | `77.209006` |
 | 8 | 4071 | Dr. Madhu Tyagi | Delhi | DL | 110033 | `28.613895` | `77.209006` |
 | 9 | 4167 | Dr. Mamta Mishra | Delhi | DL | 110070 | `28.613895` | `77.209006` |
@@ -257,7 +257,7 @@
 | **City** | Panchkula |
 | **Pincode** | 134116 |
 | **Phone** | 9855738386 |
-| **Address** | Peer Muchalla Rd, Sector 20, Panchkula, Punjab 134117 |
+| **Address** | Peer Muchalla Rd, Sector 20, Panchkula, Punjab 134116 |
 | **Latitude** | `30.669792` |
 | **Longitude** | `76.886803` |
 
@@ -269,7 +269,7 @@
 | **SDPID** | 8269 |
 | **State** | CH |
 | **City** | Panchkula |
-| **Pincode** | 140603 |
+| **Pincode** | 134113 |
 | **Phone** | 9041126000 |
 | **Address** | Blessings Hospital, Site No 1, Sector 15, Adjoining Govt. Girls Senior Sec. School, Panchkula, Haryana 134113 |
 | **Latitude** | `30.69754` |
@@ -299,7 +299,7 @@
 | **City** | Delhi |
 | **Pincode** | 110033 |
 | **Phone** | 9999169078 |
-| **Address** | tyagi hospital, 210,adarsh Nagar ND-33 |
+| **Address** | tyagi hospital, 210,adarsh Nagar ND-110033 |
 | **Latitude** | `28.613895` |
 | **Longitude** | `77.209006` |
 
@@ -481,7 +481,7 @@
 | **City** | Bengaluru |
 | **Pincode** | None |
 | **Phone** | 0 |
-| **Address** | — |
+| **Address** | None |
 | **Latitude** | `12.976794` |
 | **Longitude** | `77.590082` |
 
@@ -593,7 +593,7 @@
 | **City** | Bengaluru |
 | **Pincode** | 560043 |
 | **Phone** | 080-16161617 |
-| **Address** | OVUM HOSPITAL, Kalyan Nagar, Bengaluru, Karnataka, 560036 |
+| **Address** | OVUM HOSPITAL, Kalyan Nagar, Bengaluru, Karnataka, 560043 |
 | **Latitude** | `12.976794` |
 | **Longitude** | `77.590082` |
 
@@ -635,7 +635,7 @@
 | **City** | Bengaluru |
 | **Pincode** | 560011 |
 | **Phone** | 0 |
-| **Address** | Cloudnine Hospital - Jayanagar \| Best Maternity & Pregnancy Centre, 1st Floor, 1533, 9th Main Rd, Bairasandra Extension, Jaya Nagar 1st Block, Jayanagar 3rd Block, Jayanagar, Bengaluru, Karnataka 560011 |
+| **Address** | Cloudnine Hospital - Jayanagar | Best Maternity & Pregnancy Centre, 1st Floor, 1533, 9th Main Rd, Bairasandra Extension, Jaya Nagar 1st Block, Jayanagar 3rd Block, Jayanagar, Bengaluru, Karnataka 560011 |
 | **Latitude** | `12.976794` |
 | **Longitude** | `77.590082` |
 
@@ -943,7 +943,7 @@
 | **City** | Ghaziabad |
 | **Pincode** | 201001 |
 | **Phone** | 8595541914 |
-| **Address** | Kancal Clinic; A-10, A-10, Nehru Housing Society, Ashok Nagar, Kalka Garhi, Naya Ganj, Ghaziabad, Uttar Pradesh 201001 \| Raj Maternity & Surgical Centre; A-10, Ashok Nagar, (Near Holy Child School), Ghaziabad. Ashok Nagar, Nehru Nagar III, Nehru Nagar, Ghaziabad, Uttar Pradesh, India201001 |
+| **Address** | Kancal Clinic; A-10, A-10, Nehru Housing Society, Ashok Nagar, Kalka Garhi, Naya Ganj, Ghaziabad, Uttar Pradesh 201001 | Raj Maternity & Surgical Centre; A-10, Ashok Nagar, (Near Holy Child School), Ghaziabad. Ashok Nagar, Nehru Nagar III, Nehru Nagar, Ghaziabad, Uttar Pradesh, India201001 |
 | **Latitude** | `28.671153` |
 | **Longitude** | `77.412036` |
 
@@ -1237,7 +1237,7 @@
 | **City** | Ghaziabad |
 | **Pincode** | None |
 | **Phone** | 0 |
-| **Address** | — |
+| **Address** | None |
 | **Latitude** | `28.774997` |
 | **Longitude** | `77.458697` |
 
@@ -1461,7 +1461,7 @@
 | **City** | NOIDA |
 | **Pincode** | None |
 | **Phone** | 0 |
-| **Address** | — |
+| **Address** | None |
 | **Latitude** | `28.570633` |
 | **Longitude** | `77.327215` |
 
@@ -1475,7 +1475,7 @@
 | **City** | NOIDA |
 | **Pincode** | None |
 | **Phone** | 0 |
-| **Address** | — |
+| **Address** | None |
 | **Latitude** | `28.570633` |
 | **Longitude** | `77.327215` |
 
@@ -1503,7 +1503,7 @@
 | **City** | NOIDA |
 | **Pincode** | None |
 | **Phone** | 0 |
-| **Address** | — |
+| **Address** | None |
 | **Latitude** | `28.570633` |
 | **Longitude** | `77.327215` |
 
@@ -1517,7 +1517,7 @@
 | **City** | NOIDA |
 | **Pincode** | None |
 | **Phone** | 0 |
-| **Address** | — |
+| **Address** | None |
 | **Latitude** | `28.570633` |
 | **Longitude** | `77.327215` |
 
@@ -2441,7 +2441,7 @@
 | **City** | Agra |
 | **Pincode** | None |
 | **Phone** | 0 |
-| **Address** | — |
+| **Address** | None |
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
@@ -2469,7 +2469,7 @@
 | **City** | Agra |
 | **Pincode** | None |
 | **Phone** | 0 |
-| **Address** | — |
+| **Address** | None |
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
@@ -2483,7 +2483,7 @@
 | **City** | Agra |
 | **Pincode** | None |
 | **Phone** | 0 |
-| **Address** | — |
+| **Address** | None |
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
@@ -2511,7 +2511,7 @@
 | **City** | Agra |
 | **Pincode** | None |
 | **Phone** | 0 |
-| **Address** | — |
+| **Address** | None |
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
@@ -2525,7 +2525,7 @@
 | **City** | Agra |
 | **Pincode** | None |
 | **Phone** | 0 |
-| **Address** | — |
+| **Address** | None |
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
@@ -2539,7 +2539,7 @@
 | **City** | Agra |
 | **Pincode** | None |
 | **Phone** | 0 |
-| **Address** | — |
+| **Address** | None |
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
@@ -2553,7 +2553,7 @@
 | **City** | Agra |
 | **Pincode** | None |
 | **Phone** | 0 |
-| **Address** | — |
+| **Address** | None |
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
@@ -2567,7 +2567,7 @@
 | **City** | Agra |
 | **Pincode** | None |
 | **Phone** | 0 |
-| **Address** | — |
+| **Address** | None |
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
@@ -2581,7 +2581,7 @@
 | **City** | Agra |
 | **Pincode** | None |
 | **Phone** | 0 |
-| **Address** | — |
+| **Address** | None |
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
@@ -2595,7 +2595,7 @@
 | **City** | Agra |
 | **Pincode** | None |
 | **Phone** | 0 |
-| **Address** | — |
+| **Address** | None |
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
@@ -2609,7 +2609,7 @@
 | **City** | Agra |
 | **Pincode** | None |
 | **Phone** | 0 |
-| **Address** | — |
+| **Address** | None |
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
@@ -2623,7 +2623,7 @@
 | **City** | Agra |
 | **Pincode** | None |
 | **Phone** | 0 |
-| **Address** | — |
+| **Address** | None |
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 

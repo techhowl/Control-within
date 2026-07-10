@@ -73,7 +73,7 @@ export default function WhatsAppButton({ children, className, onClick, ...rest }
     // Increased z-index to 9999 to guarantee it sits above absolutely everything
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 p-4 sm:p-6 backdrop-blur-sm">
       {/* Added max-h-[90vh] and overflow-y-auto for small screens like iPhone SE */}
-      <div className="form-submit relative w-full max-w-md bg-white rounded-xl shadow-2xl p-5 sm:p-6 max-h-[90vh] overflow-y-auto animate-in fade-in zoom-in duration-200">
+      <div className="ct-whatsapp relative w-full max-w-md bg-white rounded-xl shadow-2xl p-5 sm:p-6 max-h-[90vh] overflow-y-auto animate-in fade-in zoom-in duration-200">
         
         {/* 'X' Button - given a background/padding so it's easier to tap on mobile */}
         <button 

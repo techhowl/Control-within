@@ -8,37 +8,37 @@ import Reveal from "@/components/ui/Reveal";
  */
 const LEFT = [
   {
-    title: "99% Effective",
-    body: "Fewer than 1 in 100 women using the implant become pregnant each year.",
+    title: "Reduces Heavy Bleeding by 80–90%",
+    body: "Most women see a significant reduction in bleeding. In clinical trials, nearly 9 in 10 women experienced meaningful improvement within 6 months.",
   },
   {
-    title: "Discreet",
-    body: "Placed under the skin of your upper arm. Invisible to others and easy to forget about.",
+    title: "Relieves Period Pain",
+    body: "Reduces menstrual cramps and pelvic pain associated with endometriosis.",
   },
   {
-    title: "No Recurring Costs",
-    body: "One procedure. No pharmacy runs, no monthly spend.",
+    title: "Clinically Used to Manage Endometriosis",
+    body: "Suppresses the growth of endometrium-like tissue.",
   },
 ];
 
 const RIGHT = [
   {
-    title: "No Daily Action",
-    body: "Once it's in place, it works continuously for up to 3 years. No pills. No reminders.",
+    title: "Protects Against Anaemia",
+    body: "Protects against iron-deficiency anaemia by reducing blood loss.",
+  },
+  {
+    title: "Up to 5 Years of Contraception",
+    body: "Over 99% effective. No daily pill. No partner involvement.",
   },
   {
     title: "Fully Reversible",
-    body: "Want to plan a pregnancy? The implant can be removed at any time, with fertility returning quickly.",
-  },
-  {
-    title: "Safe for Breastfeeding",
-    body: "Can be used while breastfeeding. No interference with milk production.",
+    body: "Normal cycles return quickly after removal.",
   },
 ];
 
 const OESTROGEN = {
-  title: "No Oestrogen",
-  body: "Can be used throughout breastfeeding and by women who cannot use methods containing estrogen.",
+  title: "Locally Acting Hormone",
+  body: "Releases low-dose progestin directly in the uterus.",
 };
 
 function Feature({ item }) {
@@ -59,10 +59,10 @@ export default function Benefits() {
       <div className="mx-auto max-w-6xl px-[5%]">
         <Reveal className="text-center">
           <h2 className="font-clash text-3xl font-semibold text-dark md:text-4xl">
-            The Difference When You Choose
+            What Changes When You Choose
           </h2>
           <span className="mt-3 block text-xm font-semibold uppercase tracking-[0.22em] text-accent md:text-base">
-            The Contraceptive Implant
+            The Hormonal IUS
           </span>
         </Reveal>
 
@@ -75,8 +75,8 @@ export default function Benefits() {
                 className="absolute inset-0 -z-10 scale-110 rounded-full bg-accent-light-2/40 blur-2xl"
               />
               <img
-                src="/implant_2ndfold.png"
-                alt="Illustration of the contraceptive implant placed just under the skin of the upper arm"
+                src="/ius_2ndfold.webp"
+                alt="Illustration of the hormonal IUS placed inside the uterus"
                 className="h-56 w-56 rounded-full object-cover"
                 draggable={false}
               />
@@ -113,8 +113,8 @@ export default function Benefits() {
                 className="absolute inset-0 -z-10 scale-110 rounded-full bg-accent-light-2/40 blur-2xl"
               />
               <img
-                src="/implant_2ndfold.png"
-                alt="Illustration of the contraceptive implant placed just under the skin of the upper arm"
+                src="/ius_2ndfold.png"
+                alt="Illustration of the hormonal IUS placed inside the uterus"
                 className="h-64 w-64 rounded-full object-cover md:h-72 md:w-72 lg:h-80 lg:w-80"
                 draggable={false}
               />

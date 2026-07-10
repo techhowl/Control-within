@@ -73,7 +73,7 @@ export default function WhatsAppButton({ children, className, onClick, ...rest }
     // Increased z-index to 9999 to guarantee it sits above absolutely everything
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 p-4 sm:p-6 backdrop-blur-sm">
       {/* Added max-h-[90vh] and overflow-y-auto for small screens like iPhone SE */}
-      <div className="relative w-full max-w-md bg-white rounded-xl shadow-2xl p-5 sm:p-6 max-h-[90vh] overflow-y-auto animate-in fade-in zoom-in duration-200">
+      <div className="form-submit relative w-full max-w-md bg-white rounded-xl shadow-2xl p-5 sm:p-6 max-h-[90vh] overflow-y-auto animate-in fade-in zoom-in duration-200">
         
         {/* 'X' Button - given a background/padding so it's easier to tap on mobile */}
         <button 
@@ -100,10 +100,10 @@ export default function WhatsAppButton({ children, className, onClick, ...rest }
           </h3>
           
           <p className="text-sm text-gray-600 leading-relaxed mb-4">
-            By tapping Chat on WhatsApp, you'll move to a private, confidential conversation with our counselling team. Your details are never shared with family, employers, or anyone else. 
+            By tapping Chat on WhatsApp, you'll move to WhatsApp for a private and confidential conversation. Your details are never shared with family or employers. Should you choose to book an appointment to know more, your contact details will be shared with a preferred doctor or clinic.
           </p>
           <p className="text-sm font-medium text-gray-800 mb-6">
-            Type EXIT anytime to stop and delete your data.
+            Type EXIT anytime to stop.
           </p>
 
           {/* Manual Click Button */}

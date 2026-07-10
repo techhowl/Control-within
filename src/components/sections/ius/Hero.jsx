@@ -15,7 +15,7 @@ export default function Hero() {
 
       {/* Mobile only — hero image as a full-bleed background behind the copy. */}
       <img
-        src="/implant_hero_1.webp"
+        src="/ius_hero.webp"
         alt=""
         aria-hidden="true"
         draggable={false}
@@ -32,22 +32,20 @@ export default function Hero() {
           {/* Heading */}
           <div className="lg:justify-self-start lg:max-w-104">
             <h1 className="font-author font-bold leading-[1.05] text-dark text-[clamp(2.2rem,3vw,3.5rem)]">
-              The
+              Hormonal
               <br />
-              Contraceptive
-              <br />
-              Implant
+              IUS
             </h1>
 
             {/* Teal separator line */}
             <div className="mt-6 h-[5px] w-40 rounded-full bg-teal" />
 
             <p className="mt-6 font-author font-bold leading-[1.15] text-muted text-[clamp(1.2rem,2vw,2rem)]">
-              One Decision.
+              Say Goodbye To
               <br />
-              Three Years.
+              Heavy, Painful
               <br />
-              99% Effective.
+              Periods
             </p>
           </div>
 
@@ -55,8 +53,8 @@ export default function Hero() {
           <div className="relative mx-auto mt-12 w-[clamp(300px,82vw,480px)] lg:mt-0 lg:w-[clamp(360px,38vw,640px)]">
             <div className="hidden overflow-hidden rounded-[2rem] shadow-soft md:block md:rounded-[2.5rem]">
               <img
-                src="/implant_hero_1.webp"
-                alt="A hand holding the matchstick-sized contraceptive implant rod"
+                src="/ius_hero.webp"
+                alt="The small T-shaped hormonal IUS device"
                 className="h-full w-full object-cover"
                 draggable={false}
               />
@@ -70,10 +68,10 @@ export default function Hero() {
               percent — the "merged" look, without ever overflowing the screen. */}
           <div className="relative z-10 mx-auto mt-6 w-[clamp(300px,82vw,480px)] rounded-[1.75rem] bg-accent p-6 text-white shadow-hover lg:mx-0 lg:mt-0 lg:w-[calc(100%+4rem)] lg:justify-self-end lg:p-7 xl:p-8">
             <p className="text-[0.95rem] leading-relaxed text-white/95">
-              The Contraceptive Implant is a matchstick-sized rod placed under
-              the skin of your upper arm. A 10-minute procedure and
-              you&rsquo;re protected for up to 3 years. No daily pill. No
-              partner dependency. No mental load.
+              The Hormonal IUS is a small T-shaped device placed inside the
+              uterus. It significantly reduces heavy menstrual bleeding, and
+              manages endometriosis, while also providing up to 5 years of
+              contraception.
             </p>
 
             <WhatsAppButton className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-teal px-6 py-2.5 text-[0.8rem] font-semibold uppercase tracking-wider text-white transition-colors hover:bg-teal-hover">

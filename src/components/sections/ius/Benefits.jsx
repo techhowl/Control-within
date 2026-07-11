@@ -75,7 +75,7 @@ export default function Benefits() {
                 className="absolute inset-0 -z-10 scale-110 rounded-full bg-accent-light-2/40 blur-2xl"
               />
               <img
-                src="/ius_2ndfold.webp"
+                src="/ius_2ndfold.png"
                 alt="Illustration of the hormonal IUS placed inside the uterus"
                 className="h-56 w-56 rounded-full object-cover"
                 draggable={false}

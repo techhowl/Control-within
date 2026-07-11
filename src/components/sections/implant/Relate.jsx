@@ -18,11 +18,6 @@ const PILLS = [
     response: "Once inserted, you can forget about it. No more worrying.",
     icon: "/brain.png",
   },
-  // {
-  //   text: "I'm worried about taking long-term contraceptives pre-marriage.",
-  //   response: "Easily removable and fertility returns quickly.",
-  //   icon: "/sad.png",
-  // },
   {
     text: "I want something that doesn't depend on my partner",
     response: "It's in your body. The control stays with you.",
@@ -76,9 +71,7 @@ export default function Relate() {
           </h2>
         </div>
 
-        {/* ── Flip pills ── content-width pills wrap and centre, giving the
-            organic zigzag placement. Each flips on click; both faces share one
-            grid cell so the pill sizes to whichever face is wider (both fit). ── */}
+        {/* ── Flip pills ── */}
         <div className="mt-10 flex flex-wrap justify-center gap-3 md:gap-x-5 md:gap-y-5">
           {PILLS.map((pill, i) => {
             const active = activeIndex === i;
@@ -91,26 +84,30 @@ export default function Relate() {
                 onClick={() => setActiveIndex(active ? null : i)}
                 className="cursor-pointer rounded-full perspective-distant focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#614D92]/40 focus-visible:ring-offset-2"
               >
-                {/* Rotating inner — both faces stacked in one grid cell */}
+                {/* Rotating inner */}
                 <div
                   className={`grid transition-transform duration-900 ease-in-out transform-3d ${
                     active ? "rotate-y-180" : ""
                   }`}
                 >
                   {/* Front — the concern */}
-                  <div className="col-start-1 row-start-1 inline-flex items-center gap-2.5 rounded-full bg-[#E6E2F1] px-5 py-3 text-left text-sm font-medium text-[#614D92] backface-hidden md:whitespace-nowrap md:px-7 md:py-4 md:text-sm">
+                  {/* Added justify-center here */}
+                  <div className="col-start-1 row-start-1 inline-flex items-center justify-center gap-2.5 rounded-full bg-[#E6E2F1] px-5 py-3 text-center text-sm font-medium text-[#614D92] backface-hidden md:whitespace-nowrap md:px-7 md:py-4 md:text-sm">
                     <img
                       src={pill.icon}
                       alt=""
                       aria-hidden="true"
                       className="hidden shrink-0 object-contain md:inline-block md:h-6 md:w-6"
                     />
-                    <span>&ldquo;{pill.text}&rdquo;</span>
+                    {/* Added text-center here for wrapped mobile text */}
+                    <span className="text-center">&ldquo;{pill.text}&rdquo;</span>
                   </div>
 
                   {/* Back — how the implant solves it */}
-                  <div className="col-start-1 row-start-1 inline-flex items-center justify-center rounded-full bg-[#614D92] px-5 py-3 text-sm font-medium text-white shadow-lg shadow-[#614D92]/20 backface-hidden rotate-y-180 md:whitespace-nowrap md:px-7 md:py-4 md:text-sm">
-                    <span>{pill.response}</span>
+                  {/* Added text-center here */}
+                  <div className="col-start-1 row-start-1 inline-flex items-center justify-center rounded-full bg-[#614D92] px-5 py-3 text-center text-sm font-medium text-white shadow-lg shadow-[#614D92]/20 backface-hidden rotate-y-180 md:whitespace-nowrap md:px-7 md:py-4 md:text-sm">
+                    {/* Added text-center here for wrapped mobile text */}
+                    <span className="text-center">{pill.response}</span>
                   </div>
                 </div>
               </button>

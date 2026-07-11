@@ -74,7 +74,7 @@ export default function Process() {
         </div>
 
         {/* Carousel — full-width lavender panel */}
-        <div className="relative mt-12 rounded-[2rem] bg-[#E9E5F3] p-5 md:p-10">
+        <div className="relative mt-10 rounded-[2rem] bg-[#E9E5F3] p-5 md:p-10">
           <div className="overflow-hidden">
             <div
               className="flex transition-transform duration-500 ease-out"

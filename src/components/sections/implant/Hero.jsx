@@ -12,7 +12,6 @@ export default function Hero() {
         draggable={false}
         className="pointer-events-none absolute -top-4 right-0 z-0 hidden w-[55%] max-w-[720px] select-none mix-blend-multiply md:block md:w-[46%]"
       />
-
       {/* Mobile only — hero image as a full-bleed background behind the copy. */}
       <img
         src="/implant_hero_1.webp"
@@ -21,7 +20,6 @@ export default function Hero() {
         draggable={false}
         className="pointer-events-none absolute inset-0 z-0 h-full w-full select-none object-cover opacity-10 md:hidden"
       />
-
       <div className="relative z-10 mx-auto w-full max-w-[1600px] px-6 pb-16 pt-32 md:px-12 md:pb-24 md:pt-40 lg:px-16 lg:pb-20 lg:pt-28">
         {/* Below lg: the three blocks stack in flow (mobile/tablet — unchanged).
             lg+: a symmetric 3-column grid — [text · image · card]. The image
@@ -38,11 +36,11 @@ export default function Hero() {
               <br />
               Implant
             </h1>
-
-            {/* Teal separator line */}
-            <div className="mt-6 h-[5px] w-40 rounded-full bg-teal" />
-
-            <p className="mt-6 font-author font-bold leading-[1.15] text-muted text-[clamp(1.2rem,2vw,2rem)]">
+            {/* Teal separator line - Reduced top margin on mobile, kept mt-6 on md+ */}
+            <div className="mt-3 md:mt-6 h-[5px] w-40 rounded-full bg-teal" />
+            
+            {/* Text Description - Reduced top margin on mobile, kept mt-6 on md+ */}
+            <p className="mt-3 md:mt-6 font-author font-bold leading-[1.15] text-muted text-[clamp(1.2rem,2vw,2rem)]">
               One Decision.
               <br />
               Three Years.
@@ -50,9 +48,9 @@ export default function Hero() {
               99% Effective.
             </p>
           </div>
-
-          {/* Centred visual */}
-          <div className="relative mx-auto mt-12 w-[clamp(300px,82vw,480px)] lg:mt-0 lg:w-[clamp(360px,38vw,640px)]">
+          
+          {/* Centred visual - Added `hidden md:block` to the outer wrapper so it doesn't leave an empty mt-12 gap on mobile */}
+          <div className="relative mx-auto mt-12 hidden md:block w-[clamp(300px,82vw,480px)] lg:mt-0 lg:w-[clamp(360px,38vw,640px)]">
             <div className="hidden overflow-hidden rounded-[2rem] shadow-soft md:block md:rounded-[2.5rem]">
               <img
                 src="/implant_hero_1.webp"
@@ -62,20 +60,15 @@ export default function Hero() {
               />
             </div>
           </div>
-
-          {/* Purple info card — stacks below the visual on mobile (same width &
-              centring as before). On lg+ its right edge is pinned to the right
-              column (mirroring the heading on the left), while the extra ~4rem
-              of width spills left so the card overlaps the image edge by a few
-              percent — the "merged" look, without ever overflowing the screen. */}
+          
+          {/* Purple info card — The mt-6 is kept, which acts as the only spacing on mobile now that the empty image container above it is hidden. */}
           <div className="relative z-10 mx-auto mt-6 w-[clamp(300px,82vw,480px)] rounded-[1.75rem] bg-accent p-6 text-white shadow-hover lg:mx-0 lg:mt-0 lg:w-[calc(100%+4rem)] lg:justify-self-end lg:p-7 xl:p-8">
-            <p className="text-[0.95rem] leading-relaxed text-white/95">
+            <p className="text-sm leading-relaxed text-white/95">
               The Contraceptive Implant is a matchstick-sized rod placed under
               the skin of your upper arm. A 10-minute procedure and
               you&rsquo;re protected for up to 3 years. No daily pill. No
               partner dependency. No mental load.
             </p>
-
             <WhatsAppButton className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-teal px-6 py-2.5 text-[0.8rem] font-semibold uppercase tracking-wider text-white transition-colors hover:bg-teal-hover">
               CHAT ON WHATSAPP
             </WhatsAppButton>

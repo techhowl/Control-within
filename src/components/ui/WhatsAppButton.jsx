@@ -100,7 +100,7 @@ export default function WhatsAppButton({ children, className, onClick, ...rest }
           </h3>
           
           <p className="text-sm text-gray-600 leading-relaxed mb-4">
-            By tapping Chat on WhatsApp, you'll move to WhatsApp for a private and confidential conversation. Your details are never shared with family or employers. Should you choose to book an appointment to know more, your contact details will be shared with a preferred doctor or clinic.
+            By tapping Chat on WhatsApp, you'll move to WhatsApp for a private and confidential conversation. By initiating this conversation, you also consent to receiving automated informational text updates from ControlWithin.com.  We value your digital privacy and will never share your personal information with family or employers. Should you choose to book an appointment to know more, your contact details will be shared with a preferred doctor or clinic.
           </p>
           <p className="text-sm font-medium text-gray-800 mb-6">
             Type EXIT anytime to stop.

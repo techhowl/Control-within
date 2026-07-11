@@ -76,7 +76,8 @@ function FlipCard({ card, flipped, onToggle }) {
         </div>
 
         {/* Back */}
-        <div className="backface-hidden rotate-y-180 absolute inset-0 overflow-y-auto rounded-[1.75rem] bg-[#FBF7F0] p-6 shadow-hover md:p-8">
+        {/* Added custom WebKit scrollbar styles prefixed with max-md: to force visibility only on mobile */}
+        <div className="backface-hidden rotate-y-180 absolute inset-0 overflow-y-auto rounded-[1.75rem] bg-[#FBF7F0] p-6 shadow-hover md:p-8 max-md:[&::-webkit-scrollbar-thumb]:rounded-full max-md:[&::-webkit-scrollbar-thumb]:bg-dark/25 max-md:[&::-webkit-scrollbar-track]:my-4 max-md:[&::-webkit-scrollbar-track]:bg-transparent max-md:[&::-webkit-scrollbar]:w-1.5 max-md:[&::-webkit-scrollbar]:block">
           <ul className="space-y-4">
             {card.items.map((item) => (
               <li
@@ -106,7 +107,7 @@ export default function Aftercare() {
             Placement Done. Now What?
           </h2>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-3 md:gap-6">
+          <div className="mt-10 grid gap-5 md:grid-cols-3 md:gap-6">
             {CARDS.map((card, i) => (
               <FlipCard
                 key={card.title}

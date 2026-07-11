@@ -23,14 +23,25 @@ const LEFT = [
 
 const RIGHT = [
   {
-    title: "No Daily Action",
+    titleStr: "No Daily Action",
+    title: (
+      <>
+        No Daily <br className="md:hidden" /> Action
+      </>
+    ),
     body: "Once it's in place, it works continuously for up to 3 years. No pills. No reminders.",
   },
   {
-    title: "Fully Reversible",
+    titleStr: "Fully Reversible",
+    title: (
+      <>
+        Fully <br className="md:hidden" /> Reversible
+      </>
+    ),
     body: "Want to plan a pregnancy? The implant can be removed at any time, with fertility returning quickly.",
   },
   {
+    titleStr: "Safe for Breastfeeding",
     title: "Safe for Breastfeeding",
     body: "Can be used while breastfeeding. No interference with milk production.",
   },
@@ -85,7 +96,7 @@ export default function Benefits() {
 
           <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10">
             {[...LEFT, ...RIGHT].map((item, i) => (
-              <Reveal key={item.title} delay={i * 60}>
+              <Reveal key={item.titleStr || item.title} delay={i * 60}>
                 <Feature item={item} />
               </Reveal>
             ))}
@@ -97,7 +108,7 @@ export default function Benefits() {
           <div className="order-2 flex flex-col gap-12 md:order-1">
             {LEFT.map((item, i) => (
               <Reveal
-                key={item.title}
+                key={item.titleStr || item.title}
                 delay={i * 80}
                 className={i === 1 ? "md:-translate-x-22 lg:-translate-x-30" : ""}
               >
@@ -124,7 +135,7 @@ export default function Benefits() {
           <div className="order-3 flex flex-col gap-12">
             {RIGHT.map((item, i) => (
               <Reveal
-                key={item.title}
+                key={item.titleStr || item.title}
                 delay={i * 80}
                 className={i === 1 ? "md:translate-x-22 lg:translate-x-30" : ""}
               >

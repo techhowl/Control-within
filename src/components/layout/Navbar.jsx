@@ -39,7 +39,7 @@ export default function Navbar() {
       }`}
       aria-label="Main navigation"
     >
-      <div className="mx-auto flex w-full max-w-[1600px] items-center justify-between px-6 py-2 md:px-12 lg:px-16">
+      <div className="mx-auto flex w-full max-w-[1600px] items-center justify-between px-4 py-2 md:px-12 lg:px-16">
         {/* Logo */}
         <Link
           href="/"
@@ -50,7 +50,7 @@ export default function Navbar() {
           <img
             src="/cw-logo.png"
             alt="Control Within"
-            className="h-12 w-auto object-contain md:h-20"
+            className="h-18 w-auto object-contain md:h-20"
           />
         </Link>
 

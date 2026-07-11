@@ -47,7 +47,7 @@ export default function SideEffects() {
         </Reveal>
 
         {/* Three reassurance points */}
-        <div className="mt-16 grid gap-12 sm:grid-cols-3 sm:gap-8 md:mt-20 md:gap-10">
+        <div className="mt-10 grid gap-12 sm:grid-cols-3 sm:gap-8 md:mt-20 md:gap-10">
           {POINTS.map((point, i) => (
             <Reveal
               key={point.title}
@@ -59,9 +59,18 @@ export default function SideEffects() {
                 alt=""
                 aria-hidden="true"
                 draggable={false}
-                className="h-14 w-14 object-contain md:h-16 md:w-16"
+                // Applies h-16 w-16 to /people.png on mobile, h-14 w-14 to the rest.
+                // Desktop remains md:h-16 md:w-16 for all.
+                className={`object-contain md:h-16 md:w-16 ${
+                  point.icon === "/people.png" ? "h-16 w-16" : "h-14 w-14"
+                }`}
               />
-              <h3 className="mt-6 font-clash text-lg font-bold text-dark md:text-xl">
+              {/* Conditional top margin: shrinks gap on mobile for /people.png only, keeps md:mt-6 for desktop */}
+              <h3 
+                className={`font-clash text-lg font-bold text-dark md:text-xl ${
+                  point.icon === "/people.png" ? "mt-2 md:mt-6" : "mt-6"
+                }`}
+              >
                 {point.title}
               </h3>
               <p className="mt-4 max-w-[16rem] text-sm leading-relaxed text-muted md:text-base">

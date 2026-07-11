@@ -18,11 +18,11 @@ const PILLS = [
     response: "Once inserted, you can forget about it. No more worrying.",
     icon: "/brain.png",
   },
-  {
-    text: "I'm worried about taking long-term contraceptives pre-marriage.",
-    response: "Easily removable and fertility returns quickly.",
-    icon: "/sad.png",
-  },
+  // {
+  //   text: "I'm worried about taking long-term contraceptives pre-marriage.",
+  //   response: "Easily removable and fertility returns quickly.",
+  //   icon: "/sad.png",
+  // },
   {
     text: "I want something that doesn't depend on my partner",
     response: "It's in your body. The control stays with you.",
@@ -39,7 +39,7 @@ const PILLS = [
     icon: "/shield.png",
   },
   {
-    text: "I just had a miscarriage and don't want to deal with this anytime soon",
+    text: "I just had a miscarriage and don't want to have another pregnancy soon",
     response: "Up to 3 years of protection. Take the time you need, on your terms.",
     icon: "/disappointed.png",
   },
@@ -49,7 +49,7 @@ const PILLS = [
     icon: "/hourglass.png",
   },
   {
-    text: "I want something private. No one needs to know",
+    text: "I want something private",
     response: "Invisible under the skin. No packaging or constant pharmacy run.",
     icon: "/lock.png",
   },
@@ -79,7 +79,7 @@ export default function Relate() {
         {/* ── Flip pills ── content-width pills wrap and centre, giving the
             organic zigzag placement. Each flips on click; both faces share one
             grid cell so the pill sizes to whichever face is wider (both fit). ── */}
-        <div className="mt-14 flex flex-wrap justify-center gap-3 md:gap-x-5 md:gap-y-5">
+        <div className="mt-10 flex flex-wrap justify-center gap-3 md:gap-x-5 md:gap-y-5">
           {PILLS.map((pill, i) => {
             const active = activeIndex === i;
 
@@ -98,7 +98,7 @@ export default function Relate() {
                   }`}
                 >
                   {/* Front — the concern */}
-                  <div className="col-start-1 row-start-1 inline-flex items-center gap-2.5 rounded-full bg-[#E6E2F1] px-5 py-3 text-left text-xs font-medium text-[#614D92] backface-hidden md:whitespace-nowrap md:px-7 md:py-4 md:text-sm">
+                  <div className="col-start-1 row-start-1 inline-flex items-center gap-2.5 rounded-full bg-[#E6E2F1] px-5 py-3 text-left text-sm font-medium text-[#614D92] backface-hidden md:whitespace-nowrap md:px-7 md:py-4 md:text-sm">
                     <img
                       src={pill.icon}
                       alt=""
@@ -109,7 +109,7 @@ export default function Relate() {
                   </div>
 
                   {/* Back — how the implant solves it */}
-                  <div className="col-start-1 row-start-1 inline-flex items-center justify-center rounded-full bg-[#614D92] px-5 py-3 text-xs font-medium text-white shadow-lg shadow-[#614D92]/20 backface-hidden rotate-y-180 md:whitespace-nowrap md:px-7 md:py-4 md:text-sm">
+                  <div className="col-start-1 row-start-1 inline-flex items-center justify-center rounded-full bg-[#614D92] px-5 py-3 text-sm font-medium text-white shadow-lg shadow-[#614D92]/20 backface-hidden rotate-y-180 md:whitespace-nowrap md:px-7 md:py-4 md:text-sm">
                     <span>{pill.response}</span>
                   </div>
                 </div>

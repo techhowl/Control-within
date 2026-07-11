@@ -277,7 +277,7 @@ export default function Hero() {
         </AnimatePresence>
       </div>
 
-      <div className="relative z-10 flex h-full flex-1 flex-col px-[5%] pb-7 pt-24 max-md:pb-16 md:pt-[clamp(8.5rem,15vh,11rem)] md:pb-[clamp(3.5rem,8vh,7rem)]">
+      <div className="relative z-10 flex h-full flex-1 flex-col px-[5%] pb-7 pt-28 max-md:pb-16 md:pt-[clamp(8.5rem,15vh,11rem)] md:pb-[clamp(3.5rem,8vh,7rem)]">
         
         <header className="flex items-start justify-between gap-6">
           <AnimatePresence mode="wait">

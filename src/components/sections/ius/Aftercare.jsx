@@ -82,9 +82,9 @@ function FlipCard({ card, flipped, onToggle }) {
           </span>
         </div>
 
-        {/* Back */}
-        <div className="backface-hidden rotate-y-180 absolute inset-0 overflow-y-auto rounded-[1.75rem] bg-[#FBF7F0] p-6 shadow-hover md:p-8">
-          <div className="space-y-4">
+        {/* Back — Updated with visible scrollbar styling */}
+        <div className="backface-hidden rotate-y-180 absolute inset-0 overflow-y-auto rounded-[1.75rem] bg-[#FBF7F0] p-6 shadow-hover md:p-8 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:my-6 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-dark/20">
+          <div className="space-y-4 pb-4">
             {card.items.map((item, idx) => {
               if (item.type === "heading") {
                 return (
@@ -123,7 +123,7 @@ export default function Aftercare() {
       <div className="bg-[#EDE9F6] py-10 md:py-20">
         <div className="w-full px-[5%]">
           <h2 className="text-center font-clash text-3xl font-semibold text-dark md:text-4xl">
-            Placement Done. Now What?
+            Placement Done. <span className="block md:inline">Now What?</span>
           </h2>
 
           <div className="mt-12 grid gap-5 md:grid-cols-3 md:gap-6">

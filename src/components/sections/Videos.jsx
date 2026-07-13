@@ -17,7 +17,9 @@ const VIDEOS = [
     theme: "teal",
     title: "What is an hIUS",
     img: "/video_cover_IUS.jpg",
-    sources: {}
+    sources: {
+      en: "https://www.youtube.com/embed/ZmAoVaYVTMg" // <-- Added your new English video here
+    }
   },
 ];
 

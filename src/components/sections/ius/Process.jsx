@@ -17,17 +17,17 @@ const STEPS = [
   {
     title: "Prep",
     body: "You lie down comfortably. The doctor performs a pelvic exam and determines the size and position of the uterus. A speculum is gently placed, the cervix is cleaned and stabilized.",
-    image: "/IUS-process-2.png",
+    image: "/ius_process_2.png",
   },
   {
     title: "Insertion",
     body: "The doctor measures the depth and direction of the cervical canal and uterine cavity. The IUS is gently guided through the cervix into the uterus, the applicator removed, and the threads are trimmed.During insertion, most women feel a sharp, intense cramp that lasts about 30 to 90 seconds — the time it takes to place the device.",
-    image: "/IUS-process-4.png",
+    image: "/ius_process_3.png",
   },
   {
     title: "Confirmation",
     body: "The doctor checks placement. Two thin strings remain in the cervix (not visible externally).",
-    image: "/IUS-process-4.png",
+    image: "/ius_process_4.png",
   },
   {
     title: "Recovery",
@@ -98,7 +98,7 @@ export default function Process() {
                         {step.body}
                       </p>
                     </div>
-                    <div className="h-52 overflow-hidden bg-teal md:h-64">
+                    <div className="h-52 overflow-hidden bg-surface md:h-64">
                       <img
                         src={step.image}
                         alt={`Step ${i + 1}: ${step.title}`}

@@ -7,7 +7,7 @@ import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 const LINKS = [
   { href: "/implant", label: "Implants" },
-  { href: "#methods", label: "hIUS" },
+  { href: "/ius", label: "hIUS" },
 ];
 
 export default function Navbar() {

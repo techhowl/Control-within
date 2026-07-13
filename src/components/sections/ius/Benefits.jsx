@@ -8,8 +8,8 @@ import Reveal from "@/components/ui/Reveal";
  */
 const LEFT = [
   {
-    title: "Reduces Heavy Bleeding by 80–90%",
-    body: "Most women see a significant reduction in bleeding. In clinical trials, nearly 9 in 10 women experienced meaningful improvement within 6 months.",
+    title: "Fully Reversible",
+    body: "Normal cycles return quickly after removal.",
   },
   {
     title: "Relieves Period Pain",
@@ -31,14 +31,14 @@ const RIGHT = [
     body: "Over 99% effective. No daily pill. No partner involvement.",
   },
   {
-    title: "Fully Reversible",
-    body: "Normal cycles return quickly after removal.",
+    title: "Locally Acting Hormone",
+    body: "Releases low-dose progestin directly in the uterus.",
   },
 ];
 
 const OESTROGEN = {
-  title: "Locally Acting Hormone",
-  body: "Releases low-dose progestin directly in the uterus.",
+  title: "Reduces Heavy Bleeding by 80–90%",
+  body: "Most women see a significant reduction in bleeding. In clinical trials, nearly 9 in 10 women experienced meaningful improvement within 6 months.",
 };
 
 function Feature({ item }) {

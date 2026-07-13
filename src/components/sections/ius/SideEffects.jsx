@@ -30,13 +30,13 @@ export default function SideEffects() {
       id="implant-side-effects"
       className="relative overflow-hidden bg-surface py-10 md:py-24"
     >
-      {/* Faint hand watermark — decorative, sits behind the copy. */}
+      {/* Faint hand watermark — opacity lowered using opacity-20 */}
       <img
-        src="/newsection_implant_bg.png"
+        src="/background_ius.png"
         alt=""
         aria-hidden="true"
         draggable={false}
-        className="pointer-events-none absolute inset-0 z-0 h-full w-full select-none object-cover object-center"
+        className="pointer-events-none absolute inset-0 z-0 h-full w-full select-none object-cover object-center opacity-40"
       />
 
       <div className="relative z-10 mx-auto max-w-6xl px-[5%]">

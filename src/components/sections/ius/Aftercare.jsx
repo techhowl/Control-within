@@ -14,21 +14,25 @@ const CARDS = [
     subtitle: "(First Few Days)",
     front: "bg-[#D8CDEB]",
     items: [
-      "Mild bruising, swelling, or soreness at the insertion site. It settles within days",
-      "The rod is small and under the skin; the area may feel slightly tender",
+      { type: "point", text: "Cramping and light spotting are common and expected because your uterus is adjusting to the device. Doctors will suggest paracetamol (325–1,000 mg), or other pain reliever as needed" },
+      { type: "point", text: "Most women feel mild discomfort or a dull ache for 1–2 days; rest helps" },
     ],
   },
   {
-    title: "First\n1–3 Months",
+    title: "3-6 Months",
     subtitle: "",
     front: "bg-[#9A8BC4]",
     items: [
-      "Irregular spotting or bleeding is the most common change.",
-      "Some women experience breast tenderness or mild nausea, usually temporary, settles within the first month.",
-      "Periods may become lighter, irregular, or stop altogether. This is a known hormonal effect, not a health warning.",
-      "Some women report headaches, mood changes, or acne. These vary by individual.",
-      "Some women may develop cysts on the ovaries. These usually resolve on their own, but occasionally medical attention is needed.",
-      "Weight gain, typically a few pounds over the first year or two, usually gradual, is reported by some women. Review your diet with your doctor to know more.",
+      { type: "heading", text: "First 1-3 months (adjustment phase)" },
+      { type: "point", text: "Bleeding may be lighter, heavier, or completely unpredictable." },
+      { type: "point", text: "Light spotting between your expected periods is very common early on." },
+      { type: "point", text: "Few women may notice temporary hormonal shifts like mild mood changes, headaches, or acne. These typically improve over time" },
+      { type: "point", text: "A follow-up visit after her first monthly bleeding or 3 to 6 weeks after IUD insertion is recommended" },
+      { type: "heading", text: "Months 3 to 6 (Settling In)" },
+      { type: "point", text: "Significant reduction in bleeding by month 3; full effect typically established by month 6" },
+      { type: "point", text: "A small majority of women notice gradual weight changes or low mood during use. These vary between individuals — speak to your doctor if either becomes a concern." },
+      { type: "point", text: "Most women experience much lighter periods or none at all. This is the intended outcome, not a problem" },
+      { type: "point", text: "For a small number of women, the hormonal shifts like mood changes, headaches, or acne, can persist long-term. If these do not improve after 6 months and become bothersome, speak with your doctor about management options" },
     ],
   },
   {
@@ -36,11 +40,14 @@ const CARDS = [
     subtitle: "(Contact Your Doctor If)",
     front: "bg-[#614D92]",
     items: [
-      "The rod feels bent, broken, or you see it coming out",
-      "You can no longer feel the rod under the skin",
-      "You can see the rod poking out",
-      "You feel pain, heat, pus or redness at the insertion site that does not resolve on its own",
-      "You wish to remove the implant or get a new implant",
+      { type: "point", text: "Severe ongoing cramping that isn't improving" },
+      { type: "point", text: "You can't feel the strings during a check" },
+      { type: "point", text: "Heavy bleeding that's increasing rather than decreasing after 6 months" },
+      { type: "point", text: "Any signs of infection (fever, unusual discharge, tenderness)" },
+      { type: "point", text: "You think the hIUS might have slipped out of your uterus" },
+      { type: "point", text: "You experience symptoms of Pelvic Inflammatory Disease, such as intense lower abdominal pain, painful intercourse, unusual vaginal discharge, fever, chills, nausea etc. " },
+      { type: "point", text: "You experience symptoms of pregnancy" },
+      { type: "point", text: "You wish to remove the hIUS or get a new one" },
     ],
   },
 ];
@@ -77,17 +84,30 @@ function FlipCard({ card, flipped, onToggle }) {
 
         {/* Back */}
         <div className="backface-hidden rotate-y-180 absolute inset-0 overflow-y-auto rounded-[1.75rem] bg-[#FBF7F0] p-6 shadow-hover md:p-8">
-          <ul className="space-y-4">
-            {card.items.map((item) => (
-              <li
-                key={item}
-                className="flex items-start gap-2.5 text-sm leading-relaxed text-dark/85 md:text-[0.95rem]"
-              >
-                <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-dark/70" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="space-y-4">
+            {card.items.map((item, idx) => {
+              if (item.type === "heading") {
+                return (
+                  <h4 
+                    key={idx} 
+                    className={`font-clash text-[1.05rem] font-bold text-dark/95 ${idx > 0 ? "pt-3" : ""}`}
+                  >
+                    {item.text}
+                  </h4>
+                );
+              }
+              
+              return (
+                <div
+                  key={idx}
+                  className="flex items-start gap-2.5 text-sm leading-relaxed text-dark/85 md:text-[0.95rem]"
+                >
+                  <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-dark/70" />
+                  <span>{item.text}</span>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

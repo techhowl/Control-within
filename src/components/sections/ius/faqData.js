@@ -4,67 +4,53 @@
  */
 export const IUS_FAQS = [
   {
-    q: "When can I get it placed?",
+    q: "Will the placement hurt?",
     a: [
-      "The ideal time for placement is during the first 5 days of your regular period and the implant is effective immediately. You can have the implant placed another time of the month but your doctor will likely rule out pregnancy first. If the placement happens after Day 5 of your cycle, you must use a backup barrier method (like condoms) after placement.",
-      "The implant can be placed between 21 and 28 days after delivery for immediate protection. If placed later than Day 28, a 7-day backup method is required.",
-      "If her monthly bleeding has not returned while breastfeeding, she can have implants inserted any time between giving birth and 6 months.",
+      "Most women experience cramping during placement, ranging from mild to intense for 30–90 seconds, similar to a severe period cramp. It passes quickly. Your doctor may offer a local anaesthetic or recommend taking an OTC painkiller 30 minutes before the procedure.",
     ],
   },
   {
-    q: "How quickly does it work after insertion?",
-    a: "Within 24 hours of insertion, the hormone is absorbed into your bloodstream and begins suppressing ovulation.",
+    q: "How long until I see results for heavy periods?",
+    a: "Most women notice meaningful reduction in bleeding within 3 months. Full effect — including very light or no periods — is typically established by 6 months.",
   },
   {
-    q: "Can the Implant move from its location?",
-    a: "Once placed correctly, the implant stays put. A small amount of natural tissue forms around it, keeping it exactly where your doctor placed it.",
+    q: " Does the hIUS only work as a contraceptive?",
+    a: "Many women choose the hormonal IUS not only for contraception, but also because it can help with heavy menstrual bleeding, period-related pain, and the weakness that results from excessive blood loss.",
   },
   {
-    q: "Will my fertility return?",
-    a: "Fertility returns quickly after removal — sometimes within the first week. The implant has no impact on long-term fertility.",
+    q: "Can I feel it? Can my partner feel it?",
+    a: "You cannot feel the device itself. It has two thin, soft strings that pass through the opening of your cervix and hang slightly into the top of your vagina. Within a few weeks, they will sit safely against the walls of your vagina. Most partners cannot feel them; if they do, your doctor can trim them slightly.",
   },
   {
-    q: "Will the placement of the implant in my arm hurt?",
-    a: "A local anaesthetic is used, so the actual insertion will cause minimal discomfort. The initial sting from the anaesthetic is typically the worst of it, comparable to a vaccine. Any soreness at the site settles within a few days.",
+    q: "What if I want to get pregnant?",
+    a: "Remove it. Fertility typically returns quickly after removal. Most women who want to conceive do so within a year.",
   },
   {
-    q: "Can I use it if I've never been pregnant?",
-    a: "Yes. According to WHO’s Medical Eligibility Criteria for Contraceptive Use, age is not relevant to implant use. Implant use will not affect a young woman’s future fertility, whether or not she has already had children.",
+    q: "How is it removed and does it hurt?",
+    a: "Removal is a quick procedure done by a trained doctor. Using the small strings attached to the hormonal IUS, the doctor gently removes it in just a few minutes. Most women experience only a brief cramp or pinch that settles immediately. Once removed, you can start planning a pregnancy whenever you're ready.",
   },
   {
-    q: "What happens to my periods?",
-    a: "Your periods may become lighter, irregular, or stop. About 1 in 5 women experience no periods at all. This is a side effect of the hormone, not a health concern. Fertility is not affected.",
+    q: "Do I need to have had children to get one?",
+    a: "No. The requirement of prior pregnancy is not necessary. Women who have never been pregnant can use the hIUS.",
   },
   {
-    q: "If I don't get my period, how will I know I'm not pregnant?",
-    a: "The implant is over 99% effective. If you want reassurance, a standard pregnancy test works at any time.",
+    q: "Is this the same as a copper IUD?",
+    a: "No. The copper IUD is hormone-free and used for contraception only. The hIUS releases a low dose of progestin locally — this is what produces the health benefits for bleeding and pain. They are different devices with different mechanisms.",
   },
   {
-    q: "Does it protect against STIs?",
-    a: "No. The implant prevents pregnancy only. Use condoms for STI protection.",
+    q: "Will my periods stop completely?",
+    a: "For many women, yes, eventually. About 1 in 5 women experience no periods after the adjustment window. For most others, periods become much lighter. This is a benefit, not a concern.",
   },
   {
-    q: "Can I remove it before 3 years if I change my mind?",
-    a: "Yes, at any time. A trained doctor removes it in a quick minor procedure. Fertility returns quickly after removal.",
+    q: "Is the hormone absorbed into my whole body?",
+    a: "The progestin in the hIUS is released locally, directly into the uterus. Systemic absorption is very low — significantly less than the pill.",
+  },
+  {
+    q: "Can it be used to treat endometriosis?",
+    a: "Yes. The hIUS suppresses the growth of endometrium-like tissue and reduces associated pelvic pain. It is endorsed by WHO, FOGSI, NICE, and ACOG as a first-line treatment option.",
   },
   {
     q: "How is it removed and does it hurt?",
     a: "Your doctor will numb a tiny patch of skin on your inner upper arm with local anaesthesia. They will make a tiny 2-mm nick in your skin and gently slide the matchstick-sized implant out using a pair of medical tweezers. You will feel some pressure but no sharp pain, and the tiny nick is closed with a simple medical strip—no stitches required.",
-  },
-  {
-    q: "Will my partner feel it?",
-    a: "Not at all. The rod is under the skin and completely undetectable during intimacy.",
-  },
-  {
-    q: "Is it safe if I'm breastfeeding?",
-    a: "Yes. There is no effect on infant growth or development.",
-  },
-  {
-    q: "Does it affect my bones or long-term health?",
-    a: "No. The contraceptive implant does not appear to negatively affect bone health and is considered a safe long-term option for most women. If you have specific health concerns, speak with your doctor.",
-  },
-  {
-    q: "What if I'm on other medications?",
-    a: "Some medications (certain epilepsy drugs, HIV medications, rifampicin) can interfere with how well the implant works. Tell your doctor everything you're currently taking — including vitamins and herbal supplements — so they can advise you.",
   },
 ];

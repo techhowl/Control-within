@@ -6,21 +6,21 @@ import Reveal from "@/components/ui/Reveal";
 const STORIES = [
   {
     quote:
-      '"I was on the pill for four years. The mental load of tracking it every single day, the anxiety when I missed one, it was exhausting. The implant changed that completely. 10 minutes in the doctor\'s chair and I haven\'t thought about contraception since."',
+      '"I had been managing endometriosis for six years. Every month was a countdown to pain. My gynaecologist suggested the hIUS as part of managing it. Within four months, the difference was real. I stopped dreading my cycle."',
     who: "Sheetal",
-    meta: "27 | Mumbai",
+    meta: "29 | Hyderabad",
   },
   {
     quote:
-      '"I had my second baby and knew I needed something reliable but wasn\'t ready for anything permanent. The doctor inserted it while I was still in hospital recovery. I didn\'t even realise how easy it would be."',
+      '"After my second baby, my periods came back heavier than ever. I was anemic, exhausted, and going through pads at a rate that was genuinely affecting my life. The hIUS brought it down to almost nothing within three months."',
     who: "Aaliyah",
-    meta: "31 | Pune",
+    meta: "31 | Chennai",
   },
   {
     quote:
-      '"I wasn\'t even sure I could get one because I\'d never been pregnant. Turns out that doesn\'t matter at all. My doctor explained everything clearly and I walked out feeling like I\'d made the most sensible decision of my adult life."',
+      '"I didn\'t even know the IUS could help with period pain — I thought it was just a contraceptive device. Once my doctor explained the dual benefit, it felt like an obvious choice. I\'d been living on ibuprofen for years."',
     who: "Ira",
-    meta: "24 | Delhi",
+    meta: "24 | Bengaluru",
   },
 ];
 

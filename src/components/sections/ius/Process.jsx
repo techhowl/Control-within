@@ -11,27 +11,27 @@ import WhatsAppButton from "@/components/ui/WhatsAppButton";
 const STEPS = [
   {
     title: "Consultation",
-    body: "Your doctor reviews your health history and confirms you are eligible. Takes about 15 minutes.",
+    body: "Your gynaecologist reviews your health history, cycle details, and any conditions.",
     image: "/IUS-process-1.webp",
   },
   {
     title: "Prep",
-    body: "The inner side of your non-dominant upper arm is cleaned and a local anaesthetic is applied. You may feel a mild sting.",
+    body: "You lie down comfortably. The doctor performs a pelvic exam and determines the size and position of the uterus. A speculum is gently placed, the cervix is cleaned and stabilized.",
     image: "/IUS-process-2.png",
   },
   {
     title: "Insertion",
-    body: "A small applicator places the rod just under the skin. The procedure itself takes under 5 minutes. No stitches, no surgery.",
-    image: "/IUS-process-3.png",
-  },
-  {
-    title: "Check",
-    body: "You and your doctor feel for the rod to confirm placement. A small bandage is applied.",
+    body: "The doctor measures the depth and direction of the cervical canal and uterine cavity. The IUS is gently guided through the cervix into the uterus, the applicator removed, and the threads are trimmed.During insertion, most women feel a sharp, intense cramp that lasts about 30 to 90 seconds — the time it takes to place the device.",
     image: "/IUS-process-4.png",
   },
   {
-    title: "You're Protected",
-    body: "When inserted at the right time in your cycle, protection begins within 24 hours. Your doctor will tell you if you need backup contraception for the first 7 days. For the first 24–48 hours, you should avoid heavy lifting, vigorous physical activity, and upper-body exercises.",
+    title: "Confirmation",
+    body: "The doctor checks placement. Two thin strings remain in the cervix (not visible externally).",
+    image: "/IUS-process-4.png",
+  },
+  {
+    title: "Recovery",
+    body: "The cramping fades to a dull ache for a few hours, similar to the first day of a period. Some cramping and light spotting for a day or two is normal. You can resume normal activity the same day.",
     image: "/IUS-process-5.png",
   },
 ];
@@ -41,7 +41,7 @@ export default function Process() {
   const [index, setIndex] = useState(0);
 
   // Responsive cards-per-view.
-  useEffect(() => {
+  useEffect(() => { 
     const update = () => {
       const w = window.innerWidth;
       setPerView(w < 640 ? 1 : w < 1024 ? 2 : 4);

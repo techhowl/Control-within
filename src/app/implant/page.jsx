@@ -25,7 +25,7 @@ export default function ImplantPage() {
       <Process />
       <Aftercare />
       <SideEffects />
-      <Stories />
+      {/* <Stories /> */}
       <Faq faqs={IMPLANT_FAQS} heading="Every Question You've Been Sitting On" />
       <Suspense fallback={null}>
         <DoctorLocator />

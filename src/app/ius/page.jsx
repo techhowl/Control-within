@@ -25,7 +25,7 @@ export default function IusPage() {
       <Process />
       <Aftercare />
       <SideEffects />
-      <Stories />
+      {/* <Stories /> */}
       <Faq faqs={IUS_FAQS} heading="Every Question You've Been Sitting On" />
       <Suspense fallback={null}>
         <DoctorLocator />

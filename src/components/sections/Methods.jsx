@@ -40,7 +40,7 @@ const METHODS = [
     image: "/implant_1.png",
     imageMobile: "/implant_mobile.png",
     accent: "#614c91",
-    href: "https://wa.me/918452926740",
+    href: "/implant",
   },
   {
     headline: "Control Over Heavy Menstrual Bleeding And Endometriosis",
@@ -62,7 +62,7 @@ const METHODS = [
     image: "/IUS_1.png",
     imageMobile: "/IUS_mobile.png",
     accent: "#085b5c",
-    href: "https://wa.me/918452926740",
+    href: "/ius",
   },
 ];
 

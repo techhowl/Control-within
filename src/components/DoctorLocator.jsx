@@ -127,7 +127,7 @@ export default function DoctorLocator() {
       aria-label="Share your location"
     >
       <div className="relative w-full max-w-md rounded-[2rem] bg-surface p-7 shadow-hover md:p-9">
-        {/* Any dismissal (× or Skip) still takes the visitor to the videos. */}
+        {/* The × dismissal still takes the visitor to the videos. */}
         <button
           type="button"
           onClick={goToVideos}
@@ -151,13 +151,6 @@ export default function DoctorLocator() {
         >
           {status === "locating" ? "Getting your location…" : "Share my location"}
           {status !== "locating" && <span aria-hidden="true">→</span>}
-        </button>
-        <button
-          type="button"
-          onClick={goToVideos}
-          className="mt-3 w-full text-center text-sm text-muted underline underline-offset-4 hover:text-dark"
-        >
-          Skip
         </button>
       </div>
     </div>

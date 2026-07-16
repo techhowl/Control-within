@@ -145,15 +145,20 @@ export async function POST(request) {
     await createZohoRecord(process.env.ZOHO_LOCATOR_MODULE, record);
     crmSaved = true;
   } catch (err) {
-    // The primary `Name` field ships unique+mandatory. Two visitors matching
-    // the same doctor collide. Once the uniqueness toggle is removed in Zoho,
-    // this never fires; until then, retry with a timestamp suffix so a lead is
-    // never lost (the clean name still leads the string).
+    // Every scan MUST land — no dedup by design (one visitor can legitimately
+    // match the same doctor many times). If the Zoho `Name` field still has its
+    // "do not allow duplicate values" toggle on, two visitors matching the same
+    // doctor collide (DUPLICATE_DATA). Retry with a timestamp + random suffix so
+    // the record is never lost and the retry itself can't re-collide. The clean
+    // doctor name still leads the string, and the true doctor identity lives in
+    // the dedicated Doctor_* fields regardless. Remove the toggle in Zoho to get
+    // clean names back (see Doctor_Name field settings) — this path then no-ops.
     if (String(err.message).includes("DUPLICATE_DATA")) {
+      const token = Math.random().toString(36).slice(2, 8);
       try {
         await createZohoRecord(process.env.ZOHO_LOCATOR_MODULE, {
           ...record,
-          Name: `${doctor.name} — ${zohoNow}`,
+          Name: `${doctor.name} — ${zohoNow} #${token}`,
         });
         crmSaved = true;
       } catch (retryErr) {

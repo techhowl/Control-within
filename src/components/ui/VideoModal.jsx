@@ -41,7 +41,7 @@ export default function VideoModal({ open, title, lang = "en", videoUrl, onClose
           <div className="relative aspect-video w-full">
             <iframe
               className="absolute inset-0 h-full w-full"
-              src={`${videoUrl}?autoplay=1`}
+              src={`${videoUrl}?autoplay=1&rel=0`}
               title={title}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

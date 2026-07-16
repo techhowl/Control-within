@@ -127,15 +127,18 @@ export default function DoctorLocator() {
       aria-label="Share your location"
     >
       <div className="relative w-full max-w-md rounded-[2rem] bg-surface p-7 shadow-hover md:p-9">
-        {/* The × dismissal still takes the visitor to the videos. */}
-        <button
-          type="button"
-          onClick={goToVideos}
-          aria-label="Close"
-          className="absolute right-5 top-5 text-2xl leading-none text-muted transition-colors hover:text-dark"
-        >
-          ×
-        </button>
+        {/* Close appears only after the visitor commits to sharing (status
+            leaves "idle"), so the locate attempt always fires before any exit. */}
+        {status !== "idle" && (
+          <button
+            type="button"
+            onClick={goToVideos}
+            aria-label="Close"
+            className="absolute right-5 top-5 text-2xl leading-none text-muted transition-colors hover:text-dark"
+          >
+            ×
+          </button>
+        )}
 
         <h2 className="mt-3 text-2xl font-semibold text-dark">
           Get to know more about contraceptive implants

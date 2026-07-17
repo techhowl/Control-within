@@ -16,6 +16,14 @@ const DEFAULT_API_DOMAIN = "https://www.zohoapis.in";
 const DEFAULT_ACCOUNTS_DOMAIN = "https://accounts.zoho.in";
 
 // Access tokens live ~1h; cache and refresh a bit early.
+
+
+//https://flow.zoho.in/60076591239/flow/webhook/incoming?zapikey=1001.0ef15f8b19827c4271bc636fed1a3669.ef50942f5ece78ec26ce0396acb8355a&isdebug=false
+
+/*{
+  "fieldName": "AppointmentStatus",
+  "Mobile": "{{1}}"
+} */
 const TOKEN_TTL_BUFFER_MS = 5 * 60 * 1000;
 
 let tokenCache = null; // { token: string, expiresAt: number }
@@ -35,7 +43,7 @@ function requireCreds() {
   if (!clientId || !clientSecret || !refreshToken) {
     throw new Error(
       "Zoho is not configured. Set ZOHO_CLIENT_ID, ZOHO_CLIENT_SECRET and " +
-        "ZOHO_REFRESH_TOKEN in .env.local (see .env.example)."
+      "ZOHO_REFRESH_TOKEN in .env.local (see .env.example)."
     );
   }
   return { clientId, clientSecret, refreshToken };

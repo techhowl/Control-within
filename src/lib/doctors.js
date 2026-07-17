@@ -171,6 +171,49 @@ export function canonicalCity(input) {
   return bestD <= maxDist ? best : null;
 }
 
+/**
+ * Resolve a doctor by (free-text) name. Used by the appointment-notify flow to
+ * find the doctor's phone number from the name the user picked.
+ *   1. exact normalized match ("dr. sheetal jindal" === "Dr. Sheetal Jindal")
+ *   2. substring match either way ("sheetal jindal" ⊂ "dr. sheetal jindal")
+ *   3. fuzzy: closest name within an edit budget that scales with length
+ * Optionally constrained to a city so two doctors sharing a name in different
+ * cities resolve to the right one. Returns the raw doctor record or null.
+ */
+export function findByName(name, city) {
+  const q = normalize(name);
+  if (!q) return null;
+
+  // Narrow to the city first when given and it resolves to one we cover.
+  const canon = city ? canonicalCity(city) : null;
+  const pool = canon ? doctors.filter((d) => d.city === canon) : doctors;
+  const searchPool = pool.length ? pool : doctors;
+
+  // 1. exact normalized match.
+  const exact = searchPool.find((d) => normalize(d.name) === q);
+  if (exact) return exact;
+
+  // 2. substring match (handles missing/extra "Dr." prefix, partial names).
+  const sub = searchPool.find((d) => {
+    const dn = normalize(d.name);
+    return dn.includes(q) || q.includes(dn);
+  });
+  if (sub) return sub;
+
+  // 3. fuzzy: closest name within a length-scaled edit budget.
+  let best = null;
+  let bestD = Infinity;
+  for (const d of searchPool) {
+    const dist = editDistance(q, normalize(d.name));
+    if (dist < bestD) {
+      bestD = dist;
+      best = d;
+    }
+  }
+  const maxDist = Math.max(2, Math.floor(q.length / 4));
+  return bestD <= maxDist ? best : null;
+}
+
 /** Length of the shared leading-digit run of two pincode strings. */
 const sharedPrefixLen = (a, b) => {
   let i = 0;

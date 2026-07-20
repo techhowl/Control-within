@@ -83,7 +83,6 @@ export async function POST(request) {
   const mobile = clean(body?.mobile ?? body?.Mobile ?? body?.mobileNumber);
   const gender = clean(body?.gender ?? body?.Gender);
   const drName = clean(body?.drName ?? body?.DrName ?? body?.doctor_name);
-  const drAddress = clean(body?.drAddress ?? body?.DrAddress ?? body?.doctor_address);
 
   // --- validate required fields --------------------------------------------
   const missing = Object.entries({ name, age, city, pincode, mobile, gender, drName })
@@ -128,25 +127,30 @@ export async function POST(request) {
   // doctor (and any reply) can reference it.
   const appointmentId = makeAppointmentId();
 
-  // Human-readable version (returned for logging / non-template fallback). The
-  // ordered bodyValues below fill the approved Interakt template placeholders.
+  // Human-readable version (returned for logging / non-template fallback). Kept
+  // aligned with the approved Interakt template's layout for easy diffing.
   const message =
-    `New appointment request via Control Within.\n` +
+    `Hello Doctor, you have a new appointment request from a patient via Control Within.\n\n` +
+    `Patient details:\n` +
     `Appointment ID: ${appointmentId}\n` +
-    `Patient: ${name}, ${gender}, age ${age}.\n` +
-    `Location: ${city} - ${pincode}.\n` +
-    `Mobile: ${mobile}.\n` +
-    `Requested doctor: ${doctor.name}` +
-    (drAddress ? ` (${drAddress}).` : ".");
+    `Name: ${name},\n` +
+    `Gender: ${gender},\n` +
+    `Age: ${age}\n` +
+    `Contact: ${mobile}\n` +
+    `City & Pincode: ${city} - ${pincode}\n\n` +
+    `Please review the details above and confirm the appointment at your earliest convenience. Thank you.`;
 
-  // Template {{1}}..{{4}} — combined into 4 vars so Meta's variable-to-word
-  // ratio passes (8 short vars got rejected as "too many variables for length").
-  // Keep this order aligned with the approved template.
+  // Template {{1}}..{{6}} — order MUST match the approved "patient_appointment"
+  // template exactly. City & Pincode are a single combined variable ({{6}}):
+  //   {{1}} Appointment ID, {{2}} Name, {{3}} Gender, {{4}} Age,
+  //   {{5}} Contact, {{6}} City - Pincode
   const bodyValues = [
-    appointmentId,                          // {{1}}
-    `${name}, ${gender}, age ${age}`,       // {{2}}
-    `${city} - ${pincode}, mobile ${mobile}`, // {{3}}
-    doctor.name,                            // {{4}}
+    appointmentId,           // {{1}}
+    name,                    // {{2}}
+    gender,                  // {{3}}
+    age,                     // {{4}}
+    mobile,                  // {{5}}
+    `${city} - ${pincode}`,  // {{6}}
   ];
 
   // --- 3. send via Interakt ------------------------------------------------

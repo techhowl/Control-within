@@ -74,7 +74,7 @@ export default function Hero() {
               contraception.
             </p>
 
-            <WhatsAppButton className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-teal px-6 py-2.5 text-[0.8rem] font-semibold uppercase tracking-wider text-white transition-colors hover:bg-teal-hover">
+            <WhatsAppButton message="Hi, I want to know more about hIUS" className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-teal px-6 py-2.5 text-[0.8rem] font-semibold uppercase tracking-wider text-white transition-colors hover:bg-teal-hover">
               CHAT ON WHATSAPP
             </WhatsAppButton>
           </div>

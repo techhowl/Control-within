@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
-export default function WhatsAppButton({ children, className, onClick, ...rest }) {
+export default function WhatsAppButton({ children, className, onClick, message, ...rest }) {
   const [showPopup, setShowPopup] = useState(false);
   const [mounted, setMounted] = useState(false); // Used to safely render Portal in Next.js
   
@@ -32,7 +32,7 @@ export default function WhatsAppButton({ children, className, onClick, ...rest }
     // const text = chatId
     //   ? `Hi, I would like to know more information. ref:[${chatId}]`
     //   : "Hi, I would like to know more information.";
-    const text = "Hi, I would like to know more information.";
+    const text = message || "Hi, I would like to know more information.";
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
   };
 

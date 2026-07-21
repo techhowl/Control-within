@@ -159,7 +159,8 @@ export async function POST(request) {
   // CRM outage, field mismatch) must NOT block notifying the doctor — the
   // outcome is reported back in the response under `zoho`.
   const leadsModule = process.env.ZOHO_LEADS_MODULE || "Leads";
-  const apptField = process.env.ZOHO_APPOINTMENT_FIELD || "AppointmentId";
+  // Hardcoded Zoho Leads field API name that stores the appointment ID.
+  const apptField = "AppontmentId";
   const zoho = { lead_found: false, updated: false, lead_id: null, error: null };
   try {
     // Match on either the Phone or the Mobile field. Search on the local digits

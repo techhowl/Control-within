@@ -19,7 +19,7 @@ export default function SideEffects() {
           <p className="max-w-xl font-author text-lg leading-relaxed text-dark md:text-xl">
             The adjustment period is temporary. What comes after for most women is significantly less bleeding, less pain, and far more control over their bodies.
           </p>
-          <WhatsAppButton className="mt-7 inline-flex items-center justify-center rounded-full bg-teal px-7 py-3 text-xs font-semibold uppercase tracking-wider text-white transition-colors hover:bg-teal-hover">
+          <WhatsAppButton message="Hi, I want to know more about hIUS" className="mt-7 inline-flex items-center justify-center rounded-full bg-teal px-7 py-3 text-xs font-semibold uppercase tracking-wider text-white transition-colors hover:bg-teal-hover">
             Chat On WhatsApp
           </WhatsAppButton>
         </Reveal>

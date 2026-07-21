@@ -1945,5 +1945,16 @@
     "address": "Swastik hospital; plot number 3, road, Kaveri Vihar Phase 1, Mauja, Rajpur, शमशाबाद गाँव, Agra, Uttar Pradesh 282001",
     "lat": 27.175255,
     "lng": 78.009816
+  },
+  {
+    "sdpid": "9999",
+    "name": "Dr. Chinmay Sandhane",
+    "city": "Mumbai",
+    "state": "MH",
+    "pincode": "400703",
+    "phone": 9082202011,
+    "address": "Vashi, Navi Mumbai, Maharashtra 400703",
+    "lat": 19.076090,
+    "lng": 72.998413
   }
 ]

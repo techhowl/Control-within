@@ -128,6 +128,44 @@ export async function createZohoRecord(moduleApiName, fields) {
 }
 
 /**
+ * Search a Zoho CRM module and return the first matching record (or null).
+ * Uses the COQL-style `criteria` search endpoint.
+ * @param {string} moduleApiName  e.g. "Leads"
+ * @param {string} criteria       e.g. "((Phone:equals:99...)or(Mobile:equals:99...))"
+ * @param {string} [fields]       comma-separated field API names to return
+ * @returns {Promise<object|null>} the first matching record, or null if none
+ */
+export async function searchZohoRecords(moduleApiName, criteria, fields) {
+  if (!moduleApiName) {
+    throw new Error("searchZohoRecords: moduleApiName is required.");
+  }
+  const qs = new URLSearchParams({ criteria });
+  if (fields) qs.set("fields", fields);
+  const url = `${apiDomain()}/crm/v8/${moduleApiName}/search?${qs}`;
+
+  const get = (token) =>
+    fetch(url, {
+      headers: { Authorization: `Zoho-oauthtoken ${token}` },
+    });
+
+  let res = await get(await getZohoAccessToken());
+  if (res.status === 401) {
+    res = await get(await getZohoAccessToken(true));
+  }
+
+  // 204 = no rows matched. Zoho returns an empty body, not JSON.
+  if (res.status === 204) return null;
+
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    throw new Error(
+      `Zoho search of ${moduleApiName} failed (${res.status}): ${JSON.stringify(data)}`
+    );
+  }
+  return data?.data?.[0] ?? null;
+}
+
+/**
  * Update a single existing record in a Zoho CRM module.
  * @param {string} moduleApiName  e.g. "Leads"
  * @param {string} recordId       the Zoho record id to patch

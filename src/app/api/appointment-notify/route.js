@@ -1,6 +1,7 @@
 import { randomBytes } from "crypto";
 import { findByName } from "@/lib/doctors";
 import { sendInteraktTemplate } from "@/lib/interakt";
+import { searchZohoRecords, updateZohoRecord } from "@/lib/zoho";
 
 /**
  * Generate a short, human-readable, collision-resistant appointment ID, e.g.
@@ -153,7 +154,32 @@ export async function POST(request) {
     `${city} - ${pincode}`,  // {{6}}
   ];
 
-  // --- 3. send via Interakt ------------------------------------------------
+  // --- 3. Zoho: find the Lead by mobile, stamp the AppointmentId -----------
+  // Runs before the WhatsApp send. Best-effort: a Zoho miss (lead not found,
+  // CRM outage, field mismatch) must NOT block notifying the doctor — the
+  // outcome is reported back in the response under `zoho`.
+  const leadsModule = process.env.ZOHO_LEADS_MODULE || "Leads";
+  const apptField = process.env.ZOHO_APPOINTMENT_FIELD || "AppointmentId";
+  const zoho = { lead_found: false, updated: false, lead_id: null, error: null };
+  try {
+    // Match on either the Phone or the Mobile field. Search on the local digits
+    // (Zoho stores numbers without country code in most Indian orgs).
+    const q = mobile.replace(/\D/g, "");
+    const local = q.length > 10 && q.startsWith("91") ? q.slice(2) : q;
+    const criteria = `((Phone:equals:${local})or(Mobile:equals:${local}))`;
+    const lead = await searchZohoRecords(leadsModule, criteria, `id,${apptField}`);
+    if (lead?.id) {
+      zoho.lead_found = true;
+      zoho.lead_id = lead.id;
+      await updateZohoRecord(leadsModule, lead.id, { [apptField]: appointmentId });
+      zoho.updated = true;
+    }
+  } catch (err) {
+    zoho.error = err.message;
+    console.error("appointment_zoho_update_failed:", err.message);
+  }
+
+  // --- 4. send via Interakt ------------------------------------------------
   let interakt;
   try {
     interakt = await sendInteraktTemplate({ phone: doctor.phone, bodyValues });
@@ -170,6 +196,7 @@ export async function POST(request) {
         doctor_name: doctor.name,
         doctor_phone: doctor.phone,
         framed_message: message,
+        zoho,
       },
       configErr ? 500 : 502
     );
@@ -181,6 +208,7 @@ export async function POST(request) {
     doctor_name: doctor.name,
     doctor_phone: doctor.phone,
     doctor_city: doctor.city,
+    zoho,
     message,
     interakt,
   });

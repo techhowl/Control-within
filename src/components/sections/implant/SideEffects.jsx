@@ -89,7 +89,7 @@ export default function SideEffects() {
             Any discomfort or apprehensions, your doctor is a call away. Removal
             is always an option.
           </p>
-          <WhatsAppButton className="mt-7 inline-flex items-center justify-center rounded-full bg-teal px-7 py-3 text-xs font-semibold uppercase tracking-wider text-white transition-colors hover:bg-teal-hover">
+          <WhatsAppButton message="Hi, I want to know more about Implant" className="mt-7 inline-flex items-center justify-center rounded-full bg-teal px-7 py-3 text-xs font-semibold uppercase tracking-wider text-white transition-colors hover:bg-teal-hover">
             Chat On WhatsApp
           </WhatsAppButton>
         </Reveal>

@@ -69,7 +69,7 @@ export default function Hero() {
               you&rsquo;re protected for up to 3 years. No daily pill. No
               partner dependency. No mental load.
             </p>
-            <WhatsAppButton className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-teal px-6 py-2.5 text-[0.8rem] font-semibold uppercase tracking-wider text-white transition-colors hover:bg-teal-hover">
+            <WhatsAppButton message="Hi, I want to know more about Implant" className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-teal px-6 py-2.5 text-[0.8rem] font-semibold uppercase tracking-wider text-white transition-colors hover:bg-teal-hover">
               CHAT ON WHATSAPP
             </WhatsAppButton>
           </div>

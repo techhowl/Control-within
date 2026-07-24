@@ -1,27 +1,5 @@
 [
   {
-    "sdpid": "8220",
-    "name": "Dr. Sheetal Jindal",
-    "city": "Chandigarh",
-    "state": "CH",
-    "pincode": "160020",
-    "phone": null,
-    "address": "Jindal IVF , 3050, Dakshin Marg, Behind shri Guru Ravidas Bhawan, Sec. 20 D, Chandigarh",
-    "lat": 30.743665,
-    "lng": 76.782256
-  },
-  {
-    "sdpid": "8283",
-    "name": "Dr. Jaslin Mavi",
-    "city": "Mohali",
-    "state": "CH",
-    "pincode": "140101",
-    "phone": null,
-    "address": "Mavi Hospital, 149, Near Police station, Chandigarh road, Morinda, Punjab",
-    "lat": 30.69088,
-    "lng": 76.711488
-  },
-  {
     "sdpid": "8047",
     "name": "Dr. Renu Chakarvarty",
     "city": "Panchkula",
@@ -110,17 +88,6 @@
     "lng": 77.209006
   },
   {
-    "sdpid": "6740",
-    "name": "Dr. Neera Agrawal",
-    "city": "Delhi",
-    "state": "DL",
-    "pincode": "110092",
-    "phone": null,
-    "address": "Max Super Speciality Hospital108 A, Indraprasth Extension, Landmark: Opposite Sanchar Apartments, Delhi 110092",
-    "lat": 28.613895,
-    "lng": 77.209006
-  },
-  {
     "sdpid": "8616",
     "name": "Dr. Anuradaha Kapoor",
     "city": "Delhi",
@@ -165,17 +132,6 @@
     "lng": 77.209006
   },
   {
-    "sdpid": "8775",
-    "name": "Dr. Sumedha Gargy",
-    "city": "Ranchi",
-    "state": "Jharkhand",
-    "pincode": "834001",
-    "phone": null,
-    "address": "Amrita Nursing Home & Research Centre",
-    "lat": 23.37005,
-    "lng": 85.325039
-  },
-  {
     "sdpid": "5092",
     "name": "Dr. Pradeepa R",
     "city": "Bengaluru",
@@ -216,17 +172,6 @@
     "pincode": "561203",
     "phone": "9900274615",
     "address": "Shri Krishna Healthcare, 753, Fort road,, Doddaballapur",
-    "lat": 12.976794,
-    "lng": 77.590082
-  },
-  {
-    "sdpid": "6634",
-    "name": "Dr. S Uma Maheshwari",
-    "city": "Bengaluru",
-    "state": "Karnataka",
-    "pincode": null,
-    "phone": null,
-    "address": null,
     "lat": 12.976794,
     "lng": 77.590082
   },
@@ -275,28 +220,6 @@
     "lng": 77.590082
   },
   {
-    "sdpid": "7821",
-    "name": "Dr. Aparna Nair",
-    "city": "Bengaluru",
-    "state": "Karnataka",
-    "pincode": "560066",
-    "phone": null,
-    "address": "Vydehi Institute of Medical Sciences & Research Centre,,  #82, Nallurahalli, Whitefield, Bangalore – 560 066",
-    "lat": 12.976794,
-    "lng": 77.590082
-  },
-  {
-    "sdpid": "8226",
-    "name": "Dr. Sripada Vinekar",
-    "city": "Bengaluru",
-    "state": "Karnataka",
-    "pincode": "560055",
-    "phone": null,
-    "address": "Cloudnine Hospital Malleshwaram",
-    "lat": 12.976794,
-    "lng": 77.590082
-  },
-  {
     "sdpid": "8585",
     "name": "Dr. Kavita Laxmi Easwaran",
     "city": "Bengaluru",
@@ -326,61 +249,6 @@
     "pincode": "560079",
     "phone": "7022735173",
     "address": "Vatsalya Women and Child Clinic, No 565, Beside Post office, 3rd Stage, 4th Block, Shakthi Ganapathi Nagar, Basaweshwarnagar, Bangalore - 560079",
-    "lat": 12.976794,
-    "lng": 77.590082
-  },
-  {
-    "sdpid": "8658",
-    "name": "Dr. Aruna Muralidhar",
-    "city": "Bengaluru",
-    "state": "Karnataka",
-    "pincode": "560011",
-    "phone": null,
-    "address": "Cloudnine Hospital - Jayanagar | Best Maternity & Pregnancy Centre, 1st Floor, 1533, 9th Main Rd, Bairasandra Extension, Jaya Nagar 1st Block, Jayanagar 3rd Block, Jayanagar, Bengaluru, Karnataka 560011",
-    "lat": 12.976794,
-    "lng": 77.590082
-  },
-  {
-    "sdpid": "8671",
-    "name": "Dr. Manjula S Patil",
-    "city": "Bengaluru",
-    "state": "Karnataka",
-    "pincode": "560077",
-    "phone": null,
-    "address": "Ovum Hospitals, Hegde Nagar, 2nd Floor, No 33/4, Hennur Main Road, Kothanur, Bengaluru, Karnataka 560077",
-    "lat": 12.976794,
-    "lng": 77.590082
-  },
-  {
-    "sdpid": "8754",
-    "name": "Dr. Swetha Madhuri",
-    "city": "Bengaluru",
-    "state": "Karnataka",
-    "pincode": "560068",
-    "phone": null,
-    "address": "Swetha's Gynecare, Ground floor, NO:4, Basaveshwara 2nd Main Rd, near Canara bank, Akshayanagara West, Akshaya Gardens, Akshayanagar, Bengaluru, Karnataka 560068",
-    "lat": 12.976794,
-    "lng": 77.590082
-  },
-  {
-    "sdpid": "8755",
-    "name": "Dr. Arpitha Seth",
-    "city": "Bengaluru",
-    "state": "Karnataka",
-    "pincode": "560003",
-    "phone": null,
-    "address": "Indira Manipal Center No.243, Sampige Road, Malleswaram-560003",
-    "lat": 12.976794,
-    "lng": 77.590082
-  },
-  {
-    "sdpid": "8758",
-    "name": "Dr. Pradeepa",
-    "city": "Bengaluru",
-    "state": "Karnataka",
-    "pincode": "560011",
-    "phone": null,
-    "address": "Sri Krishna Sevashrama Hospital",
     "lat": 12.976794,
     "lng": 77.590082
   },
@@ -427,94 +295,6 @@
     "address": "Janani clinic; SY No 3/2, Opposite True Life Hospital, Balagere Road, Bengaluru 560087",
     "lat": 12.976794,
     "lng": 77.590082
-  },
-  {
-    "sdpid": "7993",
-    "name": "Dr. Anita Kant",
-    "city": "Faridabad",
-    "state": "NCR",
-    "pincode": "121001",
-    "phone": null,
-    "address": "Asian Institute of Medical SciencesBadkal Flyover Road, Faridabad City, Landmark: Near Hotel Express Sarovar Portico & Park Plaza, Faridabad",
-    "lat": 28.403148,
-    "lng": 77.310556
-  },
-  {
-    "sdpid": "8007",
-    "name": "Dr. Niti Kautish",
-    "city": "Faridabad",
-    "state": "NCR",
-    "pincode": "121001",
-    "phone": null,
-    "address": "Fortis Escorts HospitalNeelam Bata Road, AC Nagar, New Industrial Township, Faridabad",
-    "lat": 28.403148,
-    "lng": 77.310556
-  },
-  {
-    "sdpid": "8013",
-    "name": "Dr. Ravinder Kaur Khurana",
-    "city": "Faridabad",
-    "state": "NCR",
-    "pincode": "121002",
-    "phone": null,
-    "address": "Metro Heart Institute with Multispeciality/Pushpawanti Health Care ClinicSector 16 A, Faridabad (Delhi - NCR) - 121002, India/Shop Number 2, Lower Ground Floor, Tigaon Road, Landmark: Near Sai Dham Mandir, Faridabad",
-    "lat": 28.435388,
-    "lng": 77.306061
-  },
-  {
-    "sdpid": "8016",
-    "name": "Dr. Sandhya Nanda",
-    "city": "Faridabad",
-    "state": "NCR",
-    "pincode": "121007",
-    "phone": null,
-    "address": "Nanda Nursing Home12, Landmark: Near Arya Samaj Mandir, Sector - 15, Faridabad, Haryana - 121007, India",
-    "lat": 28.37275,
-    "lng": 77.31177
-  },
-  {
-    "sdpid": "8027",
-    "name": "Dr. Deepti Sharma",
-    "city": "Faridabad",
-    "state": "NCR",
-    "pincode": "121002",
-    "phone": null,
-    "address": "Amrita Hospital Mata Amritanandamayi Marg, Sector 88, Faridabad, Haryana",
-    "lat": 28.435388,
-    "lng": 77.306061
-  },
-  {
-    "sdpid": "8028",
-    "name": "Dr. Gargi Agrawal",
-    "city": "Faridabad",
-    "state": "NCR",
-    "pincode": "121002",
-    "phone": null,
-    "address": "Amrita Hospital Mata Amritanandamayi Marg, Sector 88, Faridabad, Haryana",
-    "lat": 28.435388,
-    "lng": 77.306061
-  },
-  {
-    "sdpid": "8031",
-    "name": "Dr. Namrta Seth",
-    "city": "Faridabad",
-    "state": "NCR",
-    "pincode": "121002",
-    "phone": null,
-    "address": "Amrita Hospital Mata Amritanandamayi Marg, Sector 88, Faridabad, Haryana",
-    "lat": 28.435388,
-    "lng": 77.306061
-  },
-  {
-    "sdpid": "8038",
-    "name": "Dr. Sangeeta Chopra",
-    "city": "Faridabad",
-    "state": "NCR",
-    "pincode": "121002",
-    "phone": null,
-    "address": "Chopra Nursing Home, 5l/145, Near Mother Dairy, Faridabad",
-    "lat": 28.435388,
-    "lng": 77.306061
   },
   {
     "sdpid": "3158",
@@ -583,50 +363,6 @@
     "lng": 77.412036
   },
   {
-    "sdpid": "6703",
-    "name": "Dr. Gunjan Gupta",
-    "city": "Ghaziabad",
-    "state": "NCR",
-    "pincode": "201014",
-    "phone": null,
-    "address": "Gunjan IVF World, 2nd Floor, Jaipuria Sunrise Plaza, above Bikanerwala, Ahinsa Khand 1, Indirapuram, Ghaziabad, Uttar Pradesh 201014",
-    "lat": 28.634214,
-    "lng": 77.369913
-  },
-  {
-    "sdpid": "6715",
-    "name": "Dr. Kusum Gupta",
-    "city": "Ghaziabad",
-    "state": "NCR",
-    "pincode": "201005",
-    "phone": null,
-    "address": "Sneh Maternity Centre, E 38, E Block, Lajpat Nagar, Block E, Rajendra Nagar, Sahibabad, Ghaziabad, Uttar Pradesh 201005",
-    "lat": 28.680602,
-    "lng": 77.359165
-  },
-  {
-    "sdpid": "6721",
-    "name": "Dr. Gunjan Gulati",
-    "city": "Ghaziabad",
-    "state": "NCR",
-    "pincode": null,
-    "phone": null,
-    "address": "Mediwin Hospital 12/73, Block 12, Raj Nagarn Extensation Ghaziyabad",
-    "lat": 28.774997,
-    "lng": 77.458697
-  },
-  {
-    "sdpid": "6724",
-    "name": "Dr. Vanipuri",
-    "city": "Ghaziabad",
-    "state": "NCR",
-    "pincode": "201017",
-    "phone": null,
-    "address": "Women Wellness ClinicS-2 Ground Floor,Quantum Residency Raj Nagar Extn. Ghaziyabad pin-201017",
-    "lat": 28.69152,
-    "lng": 77.447541
-  },
-  {
     "sdpid": "6789",
     "name": "Dr. Astha Agarwal",
     "city": "Ghaziabad",
@@ -634,17 +370,6 @@
     "pincode": "201017",
     "phone": "8882476129",
     "address": "Snehita Women's Health Clinicno CS22, Snehita Women's Health Clinic Shop, KW Srishti Rd, market, Raj Nagar Extension, Ghaziabad, Uttar Pradesh 201017 (also attached to Cloud Nine)",
-    "lat": 28.69152,
-    "lng": 77.447541
-  },
-  {
-    "sdpid": "6798",
-    "name": "Dr. Pragya Pandey",
-    "city": "Ghaziabad",
-    "state": "NCR",
-    "pincode": "201002",
-    "phone": null,
-    "address": "Manipal HospitalOPD-4, Manipal Hospital, Hapur Rd, near NH-24, near Landcraft Golflink, G.Z.B, Navyug Market, Pandav Nagar, Ghaziabad, Uttar Pradesh 201002",
     "lat": 28.69152,
     "lng": 77.447541
   },
@@ -658,116 +383,6 @@
     "address": "Advik Infertility ClinicBank Colony, Modi Nagar, Ghaziabad - 201204",
     "lat": 28.804506,
     "lng": 77.542455
-  },
-  {
-    "sdpid": "6820",
-    "name": "Dr. Prerna Singhal",
-    "city": "Ghaziabad",
-    "state": "NCR",
-    "pincode": "201014",
-    "phone": null,
-    "address": "Healing Tree HospitalPlot No -30/1, Near One Square Mall, Shakti Khand 3-Indirapuram-201014 (Near One Square Mall)",
-    "lat": 28.634214,
-    "lng": 77.369913
-  },
-  {
-    "sdpid": "7555",
-    "name": "Dr. Rani Ghai",
-    "city": "Ghaziabad",
-    "state": "NCR",
-    "pincode": "201009",
-    "phone": null,
-    "address": "Dr. Rani Ghai Clinic, B- 22 Sector - 9 , New Vijay Nagar Ghaziabad    Pincode- 201009",
-    "lat": 28.650707,
-    "lng": 77.437655
-  },
-  {
-    "sdpid": "8295",
-    "name": "Dr. Rachna Jindal",
-    "city": "Ghaziabad",
-    "state": "NCR",
-    "pincode": "201003",
-    "phone": null,
-    "address": "Dr Rachna Jindal Maternity Centre, National Highway 58, Sector 7, Pocket C, Patel Nagar 3, Patel Nagar, Ghaziabad, Uttar Pradesh 201003",
-    "lat": 28.671153,
-    "lng": 77.412036
-  },
-  {
-    "sdpid": "8296",
-    "name": "Dr. Rekha Loiwal",
-    "city": "Ghaziabad",
-    "state": "NCR",
-    "pincode": "201001",
-    "phone": null,
-    "address": "Nagar Hospital, B-1, Near By Hindi Bhawan, Lohia Nagar, Lohia Nagar-201001",
-    "lat": 28.671153,
-    "lng": 77.412036
-  },
-  {
-    "sdpid": "8297",
-    "name": "Dr. Parul Gupta",
-    "city": "Ghaziabad",
-    "state": "NCR",
-    "pincode": "201009",
-    "phone": null,
-    "address": "Dr. Parul Gupta Child Care Clinic, 83/2, Opposite Opulent Mall, West Model Town, Model Town-201009",
-    "lat": 28.650707,
-    "lng": 77.437655
-  },
-  {
-    "sdpid": "8298",
-    "name": "Dr. Madhuri Verma",
-    "city": "Ghaziabad",
-    "state": "NCR",
-    "pincode": "201010",
-    "phone": null,
-    "address": "Uttam Hospital, E-230, Sector 9-201010",
-    "lat": 28.642853,
-    "lng": 77.326734
-  },
-  {
-    "sdpid": "8299",
-    "name": "Dr. Archana Singh",
-    "city": "Ghaziabad",
-    "state": "NCR",
-    "pincode": "201009",
-    "phone": null,
-    "address": "Dev Mangalam Hospital, Sector 12, Teacher Colony, Pratap Vihar, Ghaziabad, Uttar Pradesh 201009",
-    "lat": 28.650707,
-    "lng": 77.437655
-  },
-  {
-    "sdpid": "8300",
-    "name": "Dr. Archana Verma",
-    "city": "Ghaziabad",
-    "state": "NCR",
-    "pincode": "201002",
-    "phone": null,
-    "address": "Archana Nursing Home, SI 3, Block I, Shastri Nagar, Ghaziabad, Uttar Pradesh 201002",
-    "lat": 28.69152,
-    "lng": 77.447541
-  },
-  {
-    "sdpid": "8301",
-    "name": "Dr. Anjana Sabharwal",
-    "city": "Ghaziabad",
-    "state": "NCR",
-    "pincode": "201014",
-    "phone": null,
-    "address": "Prime Hospital, VPU 20, Ground Floor, Shipra Krishna Vista Plaza, Dr Sushila Naiyar Marg, Ahinsa Khand 1, Indirapuram, Ghaziabad, Uttar Pradesh 201014",
-    "lat": 28.634214,
-    "lng": 77.369913
-  },
-  {
-    "sdpid": "8302",
-    "name": "Dr. Shalini Agarwal",
-    "city": "Ghaziabad",
-    "state": "NCR",
-    "pincode": "201002",
-    "phone": null,
-    "address": "Agarwal Nursing Home & Maternity Centre, House Number-R-12/44, Near ALT Centre, Raj Nagar-201002",
-    "lat": 28.69152,
-    "lng": 77.447541
   },
   {
     "sdpid": "8613",
@@ -790,28 +405,6 @@
     "address": "Shri Sai Nursing Home, Swasthya Vihar, Swasthya Vihar, Modinagar, Modinagar, G. T. Road, Modinagar, Ghaziabad, Uttar Pradesh, 201204",
     "lat": 28.804506,
     "lng": 77.542455
-  },
-  {
-    "sdpid": "9009",
-    "name": "Dr. Seema Varsnay",
-    "city": "Ghaziabad",
-    "state": "NCR",
-    "pincode": "201005",
-    "phone": null,
-    "address": "L-216, Lajpat Nagar, Om nagar Mohan Nagar, Rajendra Nagar, Sahibabad, Ghaziabad, Uttar Pradesh 201005",
-    "lat": 28.680602,
-    "lng": 77.359165
-  },
-  {
-    "sdpid": "9014",
-    "name": "Dr. Maneesha Agrawal",
-    "city": "Ghaziabad",
-    "state": "NCR",
-    "pincode": null,
-    "phone": null,
-    "address": null,
-    "lat": 28.774997,
-    "lng": 77.458697
   },
   {
     "sdpid": "9050",
@@ -880,17 +473,6 @@
     "lng": 77.084888
   },
   {
-    "sdpid": "4378",
-    "name": "Dr. Nandita",
-    "city": "NOIDA",
-    "state": "NCR",
-    "pincode": "201301",
-    "phone": null,
-    "address": "kailash hospital , sector 27 noida",
-    "lat": 28.591159,
-    "lng": 77.352535
-  },
-  {
     "sdpid": "4391",
     "name": "Dr. Jigyasa Govil",
     "city": "NOIDA",
@@ -946,17 +528,6 @@
     "lng": 77.352535
   },
   {
-    "sdpid": "6801",
-    "name": "Dr. Pushpa Singh",
-    "city": "NOIDA",
-    "state": "NCR",
-    "pincode": "201301",
-    "phone": null,
-    "address": "H No. 95, Sector - 15a, Gautam Budh Nagar, , Sector 15-201301",
-    "lat": 28.591159,
-    "lng": 77.352535
-  },
-  {
     "sdpid": "6804",
     "name": "Dr. Sanchita Dubey",
     "city": "NOIDA",
@@ -977,61 +548,6 @@
     "address": "Cloudnine hospital-Gaur city; 5th Avenue Gaur City, Noida Extension, Gaur City 1, Sector 4, Noida, Ghaziabad, Uttar Pradesh 201016",
     "lat": 28.628656,
     "lng": 77.359901
-  },
-  {
-    "sdpid": "9010",
-    "name": "Dr. Deepika Negi",
-    "city": "NOIDA",
-    "state": "NCR",
-    "pincode": null,
-    "phone": null,
-    "address": null,
-    "lat": 28.570633,
-    "lng": 77.327215
-  },
-  {
-    "sdpid": "9011",
-    "name": "Dr. Meenakshi Tanwar",
-    "city": "NOIDA",
-    "state": "NCR",
-    "pincode": null,
-    "phone": null,
-    "address": null,
-    "lat": 28.570633,
-    "lng": 77.327215
-  },
-  {
-    "sdpid": "9012",
-    "name": "Dr. B.S. Akhila",
-    "city": "NOIDA",
-    "state": "NCR",
-    "pincode": "201308",
-    "phone": null,
-    "address": "Vedansh Surya Hospital; 47, Knowledge Park III, Greater Noida, Uttar Pradesh 201308",
-    "lat": 28.516049,
-    "lng": 77.42075
-  },
-  {
-    "sdpid": "9013",
-    "name": "Dr. Komal Singh",
-    "city": "NOIDA",
-    "state": "NCR",
-    "pincode": null,
-    "phone": null,
-    "address": null,
-    "lat": 28.570633,
-    "lng": 77.327215
-  },
-  {
-    "sdpid": "9015",
-    "name": "Dr. Vandana C Sharma",
-    "city": "NOIDA",
-    "state": "NCR",
-    "pincode": null,
-    "phone": null,
-    "address": null,
-    "lat": 28.570633,
-    "lng": 77.327215
   },
   {
     "sdpid": "6583",
@@ -1056,17 +572,6 @@
     "lng": 85.839452
   },
   {
-    "sdpid": "6833",
-    "name": "Dr. Sabri Bhatacharya",
-    "city": "Bhubaneswar",
-    "state": "Odisha",
-    "pincode": "751015",
-    "phone": null,
-    "address": "Usthi Hospital Bhuabneswar",
-    "lat": 20.260296,
-    "lng": 85.839452
-  },
-  {
     "sdpid": "8636",
     "name": "Dr. Santosh Mishra",
     "city": "Bhubaneswar",
@@ -1076,50 +581,6 @@
     "address": "Sanjita Maternity Centre, Plot No 1, Ekamra Rd, near New Airport Traffic, Unit 6, Forest Park, Bhubaneswar, Odisha 751001",
     "lat": 20.260296,
     "lng": 85.839452
-  },
-  {
-    "sdpid": "8646",
-    "name": "Dr. Harpreet Kaur",
-    "city": "Bhubaneswar",
-    "state": "Odisha",
-    "pincode": "751030",
-    "phone": null,
-    "address": "Manipal Hospital ( Earlier AMRI ) Plot No-1 Besides , Satysai Enclave Rd, Khandagiri, BBSR",
-    "lat": 20.260296,
-    "lng": 85.839452
-  },
-  {
-    "sdpid": "8870",
-    "name": "Dr. Sunita Mishra",
-    "city": "Bhubaneswar",
-    "state": "Odisha",
-    "pincode": "751032",
-    "phone": null,
-    "address": "IMS & SUM -2 , Phulanakhara, BBSR",
-    "lat": 20.260296,
-    "lng": 85.839452
-  },
-  {
-    "sdpid": "8894",
-    "name": "Dr. Samikshya Nanda",
-    "city": "Bhubaneswar",
-    "state": "Odisha",
-    "pincode": "751002",
-    "phone": null,
-    "address": "Cura Neuro & Gyanaecare, Infront Of Amber Show Room, Near Nuagaon Petrol Pump,Lingipur,BBSR",
-    "lat": 20.260296,
-    "lng": 85.839452
-  },
-  {
-    "sdpid": "8217",
-    "name": "Dr. Vidhu Modgil",
-    "city": "Ludhiana",
-    "state": "Punjab",
-    "pincode": "141002",
-    "phone": null,
-    "address": "Suman Hospital, 537, Harnam Nagar, Model town, Ludhiana",
-    "lat": 30.909016,
-    "lng": 75.851601
   },
   {
     "sdpid": "8610",
@@ -1140,28 +601,6 @@
     "pincode": "141013",
     "phone": "8619018421",
     "address": "Cloudnine Hospital, Firozpur Road, opp. MBD mall, Ludhiana-141012, Ameritus Hospital, B-28, 200 Feet Road, Passi Nagar, Ludhiana, Punjab 141013",
-    "lat": 30.909016,
-    "lng": 75.851601
-  },
-  {
-    "sdpid": "8627",
-    "name": "Dr. Kanupriya Jain",
-    "city": "Ludhiana",
-    "state": "Punjab",
-    "pincode": "141012",
-    "phone": null,
-    "address": "Cloudnine Hospital, Firozpur Road, opp. MBD mall, Ludhiana-141012, Ameritus Hospital, B-28, 200 Feet Road, Passi Nagar, Ludhiana, Punjab 141013",
-    "lat": 30.909016,
-    "lng": 75.851601
-  },
-  {
-    "sdpid": "8689",
-    "name": "Dr. Ashima Taneja",
-    "city": "Ludhiana",
-    "state": "Punjab",
-    "pincode": "141001",
-    "phone": null,
-    "address": "Dayanand Medical College, Civil line Tagore Nagar, Ludhiana, Punjab",
     "lat": 30.909016,
     "lng": 75.851601
   },
@@ -1252,61 +691,6 @@
     "address": "Raman Hospital, 1226/3, Kitchlu Nagar Ext. Lane No 1, Near Ramsharnam, Ludhiana, Punjab, India 141001",
     "lat": 30.909016,
     "lng": 75.851601
-  },
-  {
-    "sdpid": "6479",
-    "name": "Dr. Y Sandhya Rani",
-    "city": "Hyderabad",
-    "state": "Telangana",
-    "pincode": "500048",
-    "phone": null,
-    "address": "Sri vijaya hospital, Attapur, Hyderabad",
-    "lat": 17.360589,
-    "lng": 78.474061
-  },
-  {
-    "sdpid": "7823",
-    "name": "Dr. Tripura Sundari",
-    "city": "Hyderabad",
-    "state": "Telangana",
-    "pincode": "500082",
-    "phone": null,
-    "address": "KIMS Hospital, Door No. 1-8-31/1, Block 1, 2, 3, Opposite Sai Baba Temple, Krishna Nagar Colony, Main Road, Minister Road, Punjagutta-500082 (Opposite Sai Baba Temple, Krishna Nagar Colony)",
-    "lat": 17.414448,
-    "lng": 78.459518
-  },
-  {
-    "sdpid": "8707",
-    "name": "Dr. P M Abhirama Sundari",
-    "city": "Hyderabad",
-    "state": "Telangana",
-    "pincode": "500010",
-    "phone": null,
-    "address": "Sundari Maternity And General Hospital; No.1, 8-84, Temple Alwal Rd, Anand Rao Nagar, Temple Alwal, Alwal, Hyderabad, Secunderabad, Telangana 500010",
-    "lat": 17.360589,
-    "lng": 78.474061
-  },
-  {
-    "sdpid": "8761",
-    "name": "Dr. S Vidyarani",
-    "city": "Hyderabad",
-    "state": "Telangana",
-    "pincode": "500010",
-    "phone": null,
-    "address": "Sundari Maternity And General Hospital; No.1, 8-84, Temple Alwal Rd, Anand Rao Nagar, Temple Alwal, Alwal, Hyderabad, Secunderabad, Telangana 500010",
-    "lat": 17.360589,
-    "lng": 78.474061
-  },
-  {
-    "sdpid": "8901",
-    "name": "Dr. Vasundhara Cheepurupalli",
-    "city": "Hyderabad",
-    "state": "Telangana",
-    "pincode": "500003",
-    "phone": null,
-    "address": "KIMS hospital, Minister road, Secunderabad, Hyderabad, Telangana",
-    "lat": 17.360589,
-    "lng": 78.474061
   },
   {
     "sdpid": "8070",
@@ -1573,17 +957,6 @@
     "lng": 78.009816
   },
   {
-    "sdpid": "8124",
-    "name": "Dr. Sangeeta Chaturvedi",
-    "city": "Agra",
-    "state": "WestUP",
-    "pincode": "282007",
-    "phone": null,
-    "address": "Sangeeta Mother & Child Care Center, 106, Tyagi Market, Shastripuram Road, Paschim Puri Chauraha, Sikandra, Agra, Uttar Pradesh 282007",
-    "lat": 27.175255,
-    "lng": 78.009816
-  },
-  {
     "sdpid": "8127",
     "name": "Dr. Namita Shiromany",
     "city": "Agra",
@@ -1661,28 +1034,6 @@
     "lng": 78.009816
   },
   {
-    "sdpid": "8252",
-    "name": "Dr. Darsha",
-    "city": "Agra",
-    "state": "WestUP",
-    "pincode": "282007",
-    "phone": null,
-    "address": "113, Paschimpuri, Shastripuram Road, Agra",
-    "lat": 27.175255,
-    "lng": 78.009816
-  },
-  {
-    "sdpid": "8253",
-    "name": "Dr. Moshmi Singhal",
-    "city": "Agra",
-    "state": "WestUP",
-    "pincode": "282001",
-    "phone": null,
-    "address": "14, Lata Kunj, Mathura Road, Agra",
-    "lat": 27.175255,
-    "lng": 78.009816
-  },
-  {
     "sdpid": "8303",
     "name": "Dr. Sunita Malhotra",
     "city": "Agra",
@@ -1701,17 +1052,6 @@
     "pincode": "282001",
     "phone": "9359901992",
     "address": "S R Hospital, Namner Rd, Katlupur, Rakabganj, Agra, Uttar Pradesh 282001",
-    "lat": 27.175255,
-    "lng": 78.009816
-  },
-  {
-    "sdpid": "8305",
-    "name": "FPAI Clinic Agra",
-    "city": "Agra",
-    "state": "WestUP",
-    "pincode": "282010",
-    "phone": null,
-    "address": "2 HIG, Friends Colony, Shahganj, Agra - 282010",
     "lat": 27.175255,
     "lng": 78.009816
   },
@@ -1738,28 +1078,6 @@
     "lng": 78.009816
   },
   {
-    "sdpid": "8692",
-    "name": "Dr. Urvashi Verma",
-    "city": "Agra",
-    "state": "WestUP",
-    "pincode": "282010",
-    "phone": null,
-    "address": "Urvashi Clinic, Shahgunj, Agra - 282010",
-    "lat": 27.175255,
-    "lng": 78.009816
-  },
-  {
-    "sdpid": "9016",
-    "name": "Dr. Anu Shree Rawat",
-    "city": "Agra",
-    "state": "WestUP",
-    "pincode": null,
-    "phone": null,
-    "address": null,
-    "lat": 27.175255,
-    "lng": 78.009816
-  },
-  {
     "sdpid": "9017",
     "name": "Dr. Shivani Shikha",
     "city": "Agra",
@@ -1771,28 +1089,6 @@
     "lng": 78.009816
   },
   {
-    "sdpid": "9018",
-    "name": "Dr. Somiya Mohaniya",
-    "city": "Agra",
-    "state": "WestUP",
-    "pincode": null,
-    "phone": null,
-    "address": null,
-    "lat": 27.175255,
-    "lng": 78.009816
-  },
-  {
-    "sdpid": "9019",
-    "name": "Dr. Bhawana Singh",
-    "city": "Agra",
-    "state": "WestUP",
-    "pincode": null,
-    "phone": null,
-    "address": null,
-    "lat": 27.175255,
-    "lng": 78.009816
-  },
-  {
     "sdpid": "9020",
     "name": "Dr. Hema Sadana",
     "city": "Agra",
@@ -1800,105 +1096,6 @@
     "pincode": "282001",
     "phone": "9068479517",
     "address": "Ashwani Hospital; H-94, Hig Flats, Water Works Crossing, Fatehabad Road, Agra-282001, Uttar Pradesh",
-    "lat": 27.175255,
-    "lng": 78.009816
-  },
-  {
-    "sdpid": "9021",
-    "name": "Dr. Kavita Bhatnagar",
-    "city": "Agra",
-    "state": "WestUP",
-    "pincode": null,
-    "phone": null,
-    "address": null,
-    "lat": 27.175255,
-    "lng": 78.009816
-  },
-  {
-    "sdpid": "9022",
-    "name": "Dr. Sarita Mittal",
-    "city": "Agra",
-    "state": "WestUP",
-    "pincode": null,
-    "phone": null,
-    "address": null,
-    "lat": 27.175255,
-    "lng": 78.009816
-  },
-  {
-    "sdpid": "9024",
-    "name": "Dr. Eshita Bansal",
-    "city": "Agra",
-    "state": "WestUP",
-    "pincode": null,
-    "phone": null,
-    "address": null,
-    "lat": 27.175255,
-    "lng": 78.009816
-  },
-  {
-    "sdpid": "9025",
-    "name": "Dr. Shardha Mishra",
-    "city": "Agra",
-    "state": "WestUP",
-    "pincode": null,
-    "phone": null,
-    "address": null,
-    "lat": 27.175255,
-    "lng": 78.009816
-  },
-  {
-    "sdpid": "9026",
-    "name": "Dr. Pushplata",
-    "city": "Agra",
-    "state": "WestUP",
-    "pincode": null,
-    "phone": null,
-    "address": null,
-    "lat": 27.175255,
-    "lng": 78.009816
-  },
-  {
-    "sdpid": "9027",
-    "name": "Dr. Mamta",
-    "city": "Agra",
-    "state": "WestUP",
-    "pincode": null,
-    "phone": null,
-    "address": null,
-    "lat": 27.175255,
-    "lng": 78.009816
-  },
-  {
-    "sdpid": "9028",
-    "name": "Dr. Shushma Gupta",
-    "city": "Agra",
-    "state": "WestUP",
-    "pincode": null,
-    "phone": null,
-    "address": null,
-    "lat": 27.175255,
-    "lng": 78.009816
-  },
-  {
-    "sdpid": "9029",
-    "name": "Dr. Kaviya Sharma",
-    "city": "Agra",
-    "state": "WestUP",
-    "pincode": null,
-    "phone": null,
-    "address": null,
-    "lat": 27.175255,
-    "lng": 78.009816
-  },
-  {
-    "sdpid": "9030",
-    "name": "Dr. Anupama Tayagi",
-    "city": "Agra",
-    "state": "WestUP",
-    "pincode": null,
-    "phone": null,
-    "address": null,
     "lat": 27.175255,
     "lng": 78.009816
   },

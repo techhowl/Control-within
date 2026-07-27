@@ -2,6 +2,46 @@
 
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import { getSessionId } from "@/components/LeadCapture";
+
+/**
+ * Tell the server the visitor is leaving for WhatsApp. This instant is the
+ * anchor /api/attribution/claim matches against Interakt's Created_at, so it
+ * has to be recorded before the tab hands off — sendBeacon is queued by the
+ * browser and survives the navigation, unlike a normal fetch.
+ *
+ * The campaign params ride along from the current URL in case the landing ping
+ * never made it (blocked request, storage cleared mid-visit).
+ */
+function pingWhatsAppClick() {
+  try {
+    const sid = getSessionId();
+    if (!sid || typeof navigator === "undefined" || !navigator.sendBeacon) return;
+
+    const q = new URLSearchParams(window.location.search);
+    const payload = { session_id: sid, event: "wa_click" };
+    for (const key of [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_content",
+      "utm_term",
+      "placement",
+      "platform",
+      "src",
+    ]) {
+      const v = q.get(key);
+      if (v) payload[key] = v;
+    }
+
+    navigator.sendBeacon(
+      "/api/attribution/session",
+      new Blob([JSON.stringify(payload)], { type: "application/json" })
+    );
+  } catch {
+    // Tracking must never stand between the user and WhatsApp.
+  }
+}
 
 export default function WhatsAppButton({ children, className, onClick, message, ...rest }) {
   const [showPopup, setShowPopup] = useState(false);
@@ -37,6 +77,7 @@ export default function WhatsAppButton({ children, className, onClick, message, 
   };
 
   const triggerRedirect = () => {
+    pingWhatsAppClick();
     window.open(buildWhatsappUrl(), "_blank", "noopener,noreferrer");
     setShowPopup(false);
   };

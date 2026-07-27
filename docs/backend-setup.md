@@ -86,6 +86,94 @@ Invoke-RestMethod -Uri http://localhost:3000/api/journey/erase -Method Post -Web
 Then check **Table Editor → journeys / journey_events** in Supabase to see the
 rows appear and disappear.
 
+## UTM attribution (Valkey + Interakt → Zoho)
+
+Campaign params live in the landing URL, the visitor then leaves for WhatsApp,
+and WhatsApp carries nothing forward. Interakt's webhook knows the phone number
+and when the contact was created, but nothing about the ad. The two are bridged
+by timestamp proximity, using a Valkey session store:
+
+```
+land ?utm_…     POST /api/attribution/session {event:"land"}      store params, anchor = server now
+tap WhatsApp    sendBeacon           {event:"wa_click"}           anchor moves to the click  ← the signal
+user sends "Hi" Interakt creates the contact                      → Created_at
+form submitted  Zoho Flow node creates the Lead
+                POST /api/attribution/claim {mobile, Created_at}  match, then patch the Lead
+```
+
+This is a heuristic, not a guarantee. It is wrong only when two visitors overlap
+inside the matching window, and an unmatched claim writes the neutral `Whatsapp`
+placeholder set rather than inventing data.
+
+### Routes
+
+| Method | Path | Purpose |
+| ------ | ---- | ------- |
+| POST | `/api/attribution/session` | Browser ping. Body: `{ session_id, event: "land"\|"wa_click", utm_*, placement, platform, src, entry_path }`. Always 204, even when Valkey is down. |
+| POST | `/api/attribution/claim` | Interakt webhook. Header `x-api-key: <ATTRIBUTION_API_KEY>`. Body: `{ mobile, Created_at }`. Matches a session and patches the Lead. Flat JSON response. |
+| GET | `/api/attribution/debug?key=…` | Last 50 claim outcomes + live session count + the active window config. Use it to tune the lag settings. |
+
+### Interakt setup
+
+Add a **Trigger a Webhook** node **after** the existing Zoho Flow node — running
+before it means there is no Lead to patch yet (the retry backoff is a safety
+net, not a substitute):
+
+- POST `https://controlwithin.com/api/attribution/claim`
+- Headers: `Content-Type: application/json`, `x-api-key: <ATTRIBUTION_API_KEY>`
+- Body: `{ "mobile": "{{6}}", "Created_at": "<contact created_at variable>" }`
+
+`Created_at` is parsed leniently: ISO-8601, `YYYY-MM-DD HH:mm:ss` (read as UTC),
+epoch seconds, epoch milliseconds. An unresolved `{{…}}` placeholder is ignored
+rather than treated as a date.
+
+### Write rules
+
+- **`UTM_Source` is never touched.** Not created, not updated, matched or not —
+  the WhatsApp phrase system owns that field. It is still reported in the
+  response so you can see what the matched session carried.
+- **Fill-if-blank.** Of the remaining fields, only empty ones are written; an
+  existing value is never overwritten, so re-runs and manual corrections
+  survive. This assumes Zoho Flow no longer pre-fills the UTM fields at lead
+  creation — if it does, those fields stay stuck at their placeholder values.
+- **No match → placeholder set.** `UTM_Medium/Platform = Whatsapp`,
+  `UTM_Campaign = Connexi * Howl` (env-overridable), so every Lead still
+  carries campaign context.
+- **Idempotent.** The outcome is cached per mobile for 7 days, so Interakt
+  retries cost nothing. A failed CRM write is *not* cached and stays retryable.
+
+### Matching windows
+
+`Created_at` is when the contact was created on WhatsApp — for a first-time
+messager that is seconds after the WhatsApp tap, which makes it a tight anchor.
+A returning contact carries an old `Created_at`, so anything older than
+`ATTR_STALE_SEC` falls back to anchoring on API arrival time with a wider window.
+
+| profile | window before the anchor | expected lag |
+| ------- | ------------------------ | ------------ |
+| `created_at` | `ATTR_CREATED_MAX_LAG_SEC` (600s) | `ATTR_CREATED_EXPECTED_LAG_SEC` (25s) |
+| `arrival` | `ATTR_ARRIVAL_MIN/MAX_LAG_SEC` (10–420s) | `ATTR_ARRIVAL_EXPECTED_LAG_SEC` (70s) |
+
+Compare real `lag_sec` values in `/api/attribution/debug` and retune the
+expected-lag values in `.env` — no code change needed.
+
+### Valkey keys
+
+All prefixed with a `{cw}` hash tag so the Lua matcher stays single-slot if the
+instance ever becomes a cluster. Nothing needs provisioning; TTLs clean up.
+
+| key | type | TTL |
+| --- | ---- | --- |
+| `{cw}:s:<sid>` | HASH — params + `landed_at` + `wa_click_at` | 24h |
+| `{cw}:anchor` | ZSET — score = anchor ms, member = sid | trimmed per write |
+| `{cw}:claim:<sid>` | STRING — `sha256(mobile+salt)`, the claim guard | 7d |
+| `{cw}:mob:<hash>` | STRING — cached outcome for retries | 7d |
+| `{cw}:audit` | LIST — last 200 outcomes | capped |
+
+Raw phone numbers are never stored, only salted SHA-256 hashes. Selection and
+claiming happen in one atomic Lua call, so two leads submitted in the same
+second can never be handed the same session.
+
 ## Phase 2 (later, needs accounts)
 
 - **Interakt** outbound (User/Event Track API) + inbound webhook

@@ -2,21 +2,45 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
+import { customAlphabet } from "nanoid";
 
 /**
- * Invisible attribution capture for paid arrivals.
+ * Invisible attribution capture.
  *
- * When a visitor lands with campaign params (utm_*, placement, platform), this
- * POSTs to /api/lead — which mints an 8-char chatId, creates a Zoho Lead, and
- * drops the client-readable `cw_chat` cookie so the WhatsApp buttons can embed
- * the chatId in their prefilled message.
+ * Mints a session id on first arrival, keeps it in localStorage, and reports
+ * the landing (plus any campaign params) to /api/attribution/session. The
+ * server stamps the time. When the visitor later leaves for WhatsApp,
+ * <WhatsAppButton/> pings the same session id with a `wa_click` event, and
+ * /api/attribution/claim matches that moment against Interakt's Created_at to
+ * attribute the Lead.
  *
- * QR arrivals (?src=qr...) are owned by <DoctorLocator/>, which calls /api/lead
- * itself as part of its modal → geolocation → locate sequence. We skip them
- * here to avoid a duplicate Lead.
+ * Every landing is reported, not only campaign ones: an organic session that
+ * goes unrecorded can be mistaken for someone else's paid session inside the
+ * matching window.
  *
  * Renders nothing. Must sit inside a <Suspense> boundary (useSearchParams).
  */
+
+export const SID_KEY = "cw_sid";
+
+const nano = customAlphabet("0123456789abcdefghijklmnopqrstuvwxyz", 12);
+
+/** Stable per-browser session id, created on first visit. */
+export function getSessionId() {
+  if (typeof window === "undefined") return null;
+  try {
+    let sid = window.localStorage.getItem(SID_KEY);
+    if (!sid) {
+      sid = nano();
+      window.localStorage.setItem(SID_KEY, sid);
+    }
+    return sid;
+  } catch {
+    // Private mode / storage disabled — attribution degrades, nothing breaks.
+    return null;
+  }
+}
+
 export default function LeadCapture() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -24,9 +48,10 @@ export default function LeadCapture() {
 
   useEffect(() => {
     if (fired.current) return;
+    fired.current = true;
 
-    const src = searchParams.get("src");
-    if (typeof src === "string" && src.startsWith("qr")) return; // QR → DoctorLocator
+    const sid = getSessionId();
+    if (!sid) return;
 
     const params = {
       utm_source: searchParams.get("utm_source"),
@@ -36,21 +61,20 @@ export default function LeadCapture() {
       utm_term: searchParams.get("utm_term"),
       placement: searchParams.get("placement"),
       platform: searchParams.get("platform"),
-      src,
+      src: searchParams.get("src"),
     };
 
-    // Only fire when there is real attribution to capture.
-    const hasAttribution = Object.values(params).some((v) => v);
-    if (!hasAttribution) return;
-
-    fired.current = true;
-    // DISABLED: chatId + Zoho Lead creation is paused. Re-enable by uncommenting.
-    // fetch("/api/lead", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({ ...params, entry_path: pathname || "/" }),
-    //   keepalive: true,
-    // }).catch(() => {});
+    fetch("/api/attribution/session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        session_id: sid,
+        event: "land",
+        ...params,
+        entry_path: pathname || "/",
+      }),
+      keepalive: true,
+    }).catch(() => {});
   }, [searchParams, pathname]);
 
   return null;

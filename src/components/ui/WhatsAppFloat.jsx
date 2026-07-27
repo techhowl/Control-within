@@ -9,8 +9,9 @@ export default function WhatsAppFloat() {
   return (
     <div className="fixed bottom-6 left-6 z-40 md:hidden">
       <WhatsAppButton
+        id="btn_global_whatsapp_float"
         aria-label="Chat with us on WhatsApp"
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-hover transition-transform hover:scale-105 active:scale-95"
+        className="btn-chat flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-hover transition-transform hover:scale-105 active:scale-95"
       >
         <img
           src="/WhatsApp-float.webp"

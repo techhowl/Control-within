@@ -30,9 +30,10 @@ export default function VideoModal({ open, title, lang = "en", videoUrl, onClose
       >
         <button
           type="button"
+          id="btn_lightbox_close"
           onClick={onClose}
           aria-label="Close video"
-          className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white transition-colors hover:bg-black/70 backdrop-blur-md"
+          className="btn-lightbox absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white transition-colors hover:bg-black/70 backdrop-blur-md"
         >
           ✕
         </button>

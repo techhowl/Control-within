@@ -34,7 +34,7 @@ const SLIDES = [
       "Reversible — return to fertility is quick once removed",
       "No recurring costs",
     ],
-    cta: { label: "Watch A Video On Contraceptive Implants", href: "#videos" },
+    cta: { label: "Watch A Video On Contraceptive Implants", href: "#videos", id: "btn_implant_watchvideo", cls: "btn-video" },
   },
   {
     bg: "#faf8f5",
@@ -54,7 +54,7 @@ const SLIDES = [
       "Dual functionality as a contraceptive",
       "Fertility returns within weeks, after removal",
     ],
-    cta: { label: "Watch A Video On Hormonal IUS", href: "#videos" },
+    cta: { label: "Watch A Video On Hormonal IUS", href: "#videos", id: "btn_ius_watchvideo", cls: "btn-video" },
   },
   {
     bg: "#ede6d9",
@@ -117,11 +117,12 @@ function Cta({ slide, className = "" }) {
   return (
     <a
       href={slide.cta.href}
+      id={slide.cta.id}
       onClick={(e) => e.stopPropagation()}
       onTouchStart={(e) => e.stopPropagation()}
       onTouchEnd={(e) => e.stopPropagation()}
       {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className={`relative z-50 inline-flex items-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5 ${className}`}
+      className={`relative z-50 inline-flex items-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5 ${slide.cta.cls ? `${slide.cta.cls} ` : ""}${className}`}
       style={{ backgroundColor: slide.accent }}
     >
       {slide.cta.label}

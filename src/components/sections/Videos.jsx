@@ -6,6 +6,7 @@ import VideoModal from "@/components/ui/VideoModal";
 const VIDEOS = [
   {
     theme: "purple",
+    slug: "implant",
     title: "What is a Contraceptive Implant",
     img: "/video_cover_implant.jpg",
     sources: {
@@ -15,6 +16,7 @@ const VIDEOS = [
   },
   {
     theme: "teal",
+    slug: "ius",
     title: "What is an hIUS",
     img: "/video_cover_IUS.jpg",
     sources: {
@@ -53,10 +55,11 @@ export default function Videos() {
             {LANGS.map(([code, label]) => (
               <button
                 key={code}
+                id={`btn_home_lang_${code}`}
                 type="button"
                 onClick={() => setLang(code)}
                 aria-pressed={lang === code}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                className={`btn-lang rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
                   lang === code ? "bg-white text-dark" : "text-white/70 hover:text-white"
                 }`}
               >
@@ -98,9 +101,10 @@ export default function Videos() {
               <Reveal key={video.title} delay={(i + 1) * 80}>
                 <button
                   type="button"
+                  id={`btn_home_watchvideo_${video.slug}_${lang === "hi" ? "hin" : "eng"}`}
                   onClick={() => setActive(video.title)}
                   aria-label={`Play: ${video.title}`}
-                  className={`group relative flex aspect-video w-full flex-col justify-end overflow-hidden rounded-[1.75rem] bg-linear-to-br p-7 text-left ${grad}`}
+                  className={`btn-video group relative flex aspect-video w-full flex-col justify-end overflow-hidden rounded-[1.75rem] bg-linear-to-br p-7 text-left ${grad}`}
                 >
                   <img
                     src={video.img}

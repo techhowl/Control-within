@@ -66,7 +66,8 @@ export default function Footer() {
                 return (
                   <WhatsAppButton
                     key={link.label}
-                    className="text-sm font-medium text-bg/70 transition-colors hover:text-white"
+                    id="btn_global_chat_footer"
+                    className="btn-chat text-sm font-medium text-bg/70 transition-colors hover:text-white"
                   >
                     {link.label}
                   </WhatsAppButton>

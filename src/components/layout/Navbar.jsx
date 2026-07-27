@@ -6,8 +6,8 @@ import Link from "next/link";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 const LINKS = [
-  { href: "/implant", label: "Implants" },
-  { href: "/ius", label: "hIUS" },
+  { href: "/implant", label: "Implants", id: "btn_global_nav_implant" },
+  { href: "/ius", label: "hIUS", id: "btn_global_nav_ius" },
 ];
 
 export default function Navbar() {
@@ -60,8 +60,9 @@ export default function Navbar() {
             {LINKS.map((link) => (
               <a
                 key={link.label}
+                id={link.id}
                 href={link.href}
-                className="rounded-full px-5 py-2 text-sm font-medium text-text/80 transition-colors hover:bg-accent-light-2/60 hover:text-accent"
+                className="btn-nav rounded-full px-5 py-2 text-sm font-medium text-text/80 transition-colors hover:bg-accent-light-2/60 hover:text-accent"
               >
                 {link.label}
               </a>
@@ -69,7 +70,7 @@ export default function Navbar() {
           </div>
           
           {/* DESKTOP REPLACEMENT */}
-          <WhatsAppButton className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-accent-hover">
+          <WhatsAppButton id="btn_global_chat_header" className="btn-chat rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-accent-hover">
             Chat Now
           </WhatsAppButton>
         </div>
@@ -112,18 +113,20 @@ export default function Navbar() {
           {LINKS.map((link) => (
             <a
               key={link.label}
+              id={link.id}
               href={link.href}
               onClick={closeMenu}
-              className="rounded-2xl px-4 py-3 text-base font-medium text-text transition-colors hover:bg-accent-light-2/50 hover:text-accent"
+              className="btn-nav rounded-2xl px-4 py-3 text-base font-medium text-text transition-colors hover:bg-accent-light-2/50 hover:text-accent"
             >
               {link.label}
             </a>
           ))}
           
           {/* MOBILE REPLACEMENT */}
-          <WhatsAppButton 
+          <WhatsAppButton
+            id="btn_global_chat_header"
             onClick={closeMenu}
-            className="mt-1 w-full rounded-2xl bg-accent px-4 py-3 text-center text-base font-semibold text-white transition-colors hover:bg-accent-hover"
+            className="btn-chat mt-1 w-full rounded-2xl bg-accent px-4 py-3 text-center text-base font-semibold text-white transition-colors hover:bg-accent-hover"
           >
             Chat Now
           </WhatsAppButton>

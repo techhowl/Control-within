@@ -15,9 +15,14 @@ import { findByLocation } from "@/lib/doctors";
  *   Either field alone is enough; both together narrows the match. The legacy
  *   single-string { "location": "Delhi 110009" } shape is still accepted.
  *
+ * Matching runs exact pincode → postal district → city name → and finally, when
+ * a pincode was given, any doctor within NEAREST_DOCTOR_RADIUS_KM (default 30)
+ * of it. Only that last tier reports a real `distance_km`; the others matched by
+ * area, not coordinates, and report 0. See findByLocation in @/lib/doctors.
+ *
  * Returns (200): { success, doctor_name, doctor_phone, doctor_city, ... }
  * Returns (400): { success: false, error, message }
- * Returns (404): { success: false, error, message }
+ * Returns (404): { success: false, error, message } — nothing in range
  */
 
 // --- CORS helper: lets Interakt (and Postman / any origin) call freely -------

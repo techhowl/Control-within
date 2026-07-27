@@ -1,4 +1,5 @@
 import doctors from "@/data/doctors.json";
+import pincodeCoords from "@/data/pincodes.json";
 
 /**
  * Nearest-doctor lookup over the geocoded doctor list (src/data/doctors.json,
@@ -68,6 +69,46 @@ export function findNearest(lat, lng) {
     }
   }
   return best ? { ...best, distance_km: round1(bestKm) } : null;
+}
+
+// How far a doctor may be from the requester's pincode and still count as a
+// match. Only reached once name-based matching has failed outright, so this
+// trades "no doctor at all" for "a doctor this many km away" — retune it in
+// .env, no rebuild needed (src/data/pincodes.json is built out to 75 km).
+const DEFAULT_RADIUS_KM = 30;
+
+function radiusKm() {
+  const n = Number(process.env.NEAREST_DOCTOR_RADIUS_KM);
+  return Number.isFinite(n) && n > 0 ? n : DEFAULT_RADIUS_KM;
+}
+
+/**
+ * Closest doctor within `maxKm` of a pincode, measured properly.
+ *
+ * The last resort in findByLocation, and the only tier that reports a real
+ * distance. It exists because pincode-prefix matching is blind to geography:
+ * Faridabad (121001) shares just two leading digits with Gurgaon (122xxx), so
+ * the district rule rejects it, yet the clinic is ~27 km up the road. Digits
+ * that disagree do not mean far apart.
+ *
+ * Coordinates come from the pre-built pincode table, so this stays a local
+ * lookup — see scripts/build-pincodes.mjs. A pincode missing from the table is
+ * further than the build ceiling from every doctor, which is already an answer:
+ * null, and the caller 404s.
+ *
+ * Returns `{ ...doctor, distance_km }` or null.
+ */
+export function findWithinRadius(pincode, maxKm = radiusKm()) {
+  const coords = pincodeCoords[pincode];
+  if (!coords) return null;
+
+  const [lat, lng] = coords;
+  const nearest = findNearest(lat, lng);
+  if (!nearest) return null;
+
+  // findNearest already applied the quality tie-break; all that is left is
+  // whether the winner is close enough to be worth returning.
+  return nearest.distance_km <= maxKm ? nearest : null;
 }
 
 /**
@@ -257,17 +298,23 @@ function nearestByPincodePrefix(pincode, city) {
  *      when no exact pincode hit; refined by city when given.
  *   3. **Canonical city** — the input city resolved to its exact data spelling
  *      (aliases + typo-tolerant), when there's no usable pincode.
+ *   4. **Radius** — any doctor within NEAREST_DOCTOR_RADIUS_KM (default 30) of
+ *      the pincode's real coordinates. Needs a pincode; a bare unknown city
+ *      name gives nothing to measure from.
  * Among the matches, the doctor with the best contact-info quality wins.
  *
- * Returns `{ ...doctor, distance_km: 0 }` (matched by area, not coordinates) or
- * `null` when the location names no city/district we cover (caller → 404).
+ * Returns `{ ...doctor, distance_km }` or `null` when nothing is in range
+ * (caller → 404). `distance_km` is a real measured value only for a tier-4
+ * match; tiers 1–3 matched by area rather than coordinates and report 0.
  *
  * Examples of accepted input:
  *   "Bangalore"       →  alias → Bengaluru doctor
  *   "gaziabad"        →  typo → Ghaziabad doctor
  *   "Delhi 110009"    →  exact pincode, city agrees
  *   "560099"          →  no exact hit → nearest Bengaluru (560xxx) doctor
- *   "Mumbai 400001"   →  unknown city + unknown district → null → 404
+ *   "Faridabad 121001" → unknown city, district 121 uncovered → radius → a
+ *                        Gurgaon doctor ~27 km away, distance_km: 27
+ *   "Mumbai 400001"   →  nothing within the radius → null → 404
  */
 export function findByLocation(location) {
   const input = (location ?? "").trim();
@@ -300,6 +347,16 @@ export function findByLocation(location) {
   if (city) {
     const cityHits = doctors.filter((d) => d.city === city);
     if (cityHits.length > 0) return pickBest(cityHits);
+  }
+
+  // --- 3. Radius fallback ---
+  // Nothing matched by name or district. Before giving up, ask the only
+  // question that is actually about distance: is there a doctor within
+  // NEAREST_DOCTOR_RADIUS_KM of where this pincode is? Needs a pincode — a
+  // bare unknown city name gives us no position to measure from.
+  if (pincode) {
+    const near = findWithinRadius(pincode);
+    if (near) return near;
   }
 
   return null;

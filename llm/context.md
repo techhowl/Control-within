@@ -2,6 +2,21 @@
 
 ## Changes Log
 
+### 2026-07-27 — Nearest-doctor radius fallback (30 km)
+- **Added** `src/data/pincodes.json` (1,430 entries, 37 KB) + `scripts/build-pincodes.mjs`, which trims the GeoNames India postal export (CC BY 4.0) to pincodes within 75 km of a doctor and stores their centroid coordinates. Rebuild whenever `doctors.json` changes: `node scripts/build-pincodes.mjs IN.txt`.
+- **Added** `findWithinRadius(pincode, maxKm)` to `src/lib/doctors.js`, wired into `findByLocation()` as a 4th tier after exact pincode → postal district → city name. `NEAREST_DOCTOR_RADIUS_KM` (default 30) tunes it; the table is built to 75 km so retuning needs no rebuild.
+- **Why**: matching was purely name/digit based — `distance_km` was hardcoded `0` and no radius existed anywhere. Pincode prefixes are blind to geography: Faridabad `121001` shares only 2 leading digits with Gurgaon `122xxx`, so the ≥3-digit district rule 404'd a user with a clinic 28 km away. Now `121001` → NOIDA doctor, `distance_km: 28.7`.
+- A tier-4 match reports a **real measured** `distance_km`; tiers 1–3 still report `0` because they matched by area, not coordinates.
+- Resolution is a local table lookup, deliberately not a live geocode — this endpoint is an Interakt webhook and cannot afford a third-party HTTP call mid-request.
+- **Limit**: needs a pincode. City-only input naming a city we don't cover (`{"City":"Faridabad"}` alone) still 404s — there is nothing to measure from. Interakt should always send `Pincode`.
+
+### 2026-07-27 — Attribution: percent-decoding + re-attribution on new campaigns
+- **Changed** `clean()` in `src/lib/attribution.js` to percent-decode (up to twice, so `%2520` resolves) and collapse whitespace. A campaign name pasted into Meta Ads already encoded (`Control%20Within%20|%20July`) survives the browser's own decode and was reaching Zoho with the `%20`s intact. Applied on capture *and* on read, so sessions already stored with `%20` come out clean.
+- **Changed** the write policy in `/api/attribution/claim` from unconditional fill-if-blank to **matched → overwrite, unmatched → fill-if-blank**. A returning contact's Lead already has every UTM field populated, so a later campaign could never be recorded; last touch now wins. The placeholder set still cannot clobber a real campaign value.
+- Response gains `fields_overwritten`; the no-op reason is now one of `already_current` / `already_filled` / `nothing_to_write` instead of collapsing into a single case.
+- **Known gap**: `IDEMPOTENCY_TTL_SEC` stays at 7 days, so a contact returning through a new campaign *within* that week hits the cache before the matcher runs and is not re-attributed. Deliberate — the retry horizon was kept over same-week re-attribution.
+- **Known gap**: the `lead_id` shortcut path skips the Zoho search, so the record's current field values are unknown and everything is treated as blank — the only route by which the unmatched placeholder set can overwrite a real campaign. Needs a get-record-by-id in `src/lib/zoho.js` to close.
+
 ### 2026-07-27 — UTM attribution: Valkey sessions → Zoho Lead
 - **Added** `src/lib/valkey.js` — lazy ioredis singleton on `VALKEY_URL` (Aiven Valkey, `rediss://`), plus the `attrClaim` Lua script that selects and claims the best-matching session atomically in one round trip.
 - **Added** `src/lib/attribution.js` — param whitelist, session recording, `Created_at` parsing (ISO / `YYYY-MM-DD HH:mm:ss` as UTC / epoch s / epoch ms), anchor resolution, salted mobile hashing, phone variants, claim release, audit ring.

@@ -31,8 +31,12 @@ export async function POST(request) {
 
     if (body?.event === "wa_click") {
       await recordWaClick(sid, params);
+      console.log(`[session] wa_click sid=${sid} params=${Object.keys(params).join(",") || "-"}`);
     } else {
-      await recordLand(sid, params);
+      const { created } = await recordLand(sid, params);
+      console.log(
+        `[session] land sid=${sid} ${created ? "new" : "existing (ttl refreshed)"} params=${Object.keys(params).join(",") || "-"}`
+      );
     }
   } catch (err) {
     // Bad JSON, Valkey down, anything — swallow it. Attribution is best-effort.

@@ -9,6 +9,9 @@
 - **Changed** `src/components/LeadCapture.jsx` — now mints a `cw_sid` session id into localStorage and reports every landing (organic included, so an unrecorded session can't be mistaken for someone else's paid one). The old `/api/lead` chatId flow stays disabled.
 - **Changed** `src/components/ui/WhatsAppButton.jsx` — `sendBeacon`s a `wa_click` event inside `triggerRedirect()`, the single choke point every WhatsApp exit passes through. That instant is the matching anchor.
 - Matching is time-proximity against Interakt's `Created_at`, with a fallback to API arrival time for returning contacts. Writes are **fill-if-blank**; an unmatched claim writes the `Whatsapp` / `Connexi * Howl` placeholder set. Requires Zoho Flow to no longer pre-fill the UTM fields.
+- **Sessions are single-use**: the Lua matcher deletes the hash and removes the anchor member as it hands the data back, so a session can never be matched twice. A failed CRM write calls `restoreSession()` to put it back at its original anchor score. There is no longer a `{cw}:claim:<sid>` guard key — deletion *is* the guard.
+- **Zoho's search index lags record creation by up to ~100s** (measured). The claim route does one inline search, then answers Interakt immediately with `deferred:true` and keeps retrying via `after()` at 8/15/30/45/60s. Passing `lead_id` in the body skips the lookup entirely.
+- Fallback values come from `.env` (`ATTR_DEFAULT_*`); a missing var logs `defaults.env_missing` before falling back to the built-in literal.
 - **`UTM_Source` is excluded from all writes** — owned by the WhatsApp phrase system. The claim route's `ZOHO_UTM_FIELDS` whitelist is the single place that enforces it; the field is still reported in the response for visibility.
 - Docs: see the "UTM attribution" section in `docs/backend-setup.md`.
 

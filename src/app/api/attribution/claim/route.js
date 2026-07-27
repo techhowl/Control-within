@@ -1,4 +1,5 @@
 import crypto from "node:crypto";
+import { after } from "next/server";
 import {
   claimSession,
   clean,
@@ -8,7 +9,7 @@ import {
   phoneVariants,
   pushAudit,
   recallClaim,
-  releaseClaim,
+  restoreSession,
   rememberClaim,
   resolveAnchor,
   sessionToZohoFields,
@@ -27,8 +28,11 @@ import { searchZohoRecords, updateZohoRecord } from "@/lib/zoho";
  * Header:  x-api-key: <ATTRIBUTION_API_KEY>
  *
  * Rules:
- *   - only BLANK Lead fields are written; anything already populated is left
- *     alone, so a re-run or a manual correction is never clobbered
+ *   - a matched session overwrites the Lead's existing UTM values (last touch
+ *     wins), so a contact who returns through a later campaign is re-attributed
+ *     instead of staying frozen on the campaign that first found them
+ *   - with no match, only BLANK fields are filled — the neutral placeholder set
+ *     can never clobber a real campaign value
  *   - when no session matches, the neutral Whatsapp placeholder set is written
  *     so every Lead still carries a source
  *   - never 500s: a failure returns success:false with a reason, so the
@@ -51,16 +55,65 @@ const ZOHO_UTM_FIELDS = [
   "Src",
 ];
 
-// The Lead is created by Zoho Flow at almost the same instant Interakt calls
-// us, so the first search can legitimately find nothing. Back off and retry —
-// but the whole handler has to answer well inside Interakt's webhook timeout,
-// and each search round trip is ~1s, so the total budget stays under ~10s.
-const SEARCH_RETRY_DELAYS_MS = [0, 1500, 3500];
+/**
+ * Zoho's /search endpoint reads an index that is populated asynchronously after
+ * a record is written, so a Lead that Zoho Flow created seconds ago is often
+ * not findable yet — observed missing for well over 6s, then present. Retrying
+ * inside the request would blow Interakt's webhook timeout, so the search is
+ * split in two:
+ *
+ *   FAST   one attempt inline. Covers the common case where the Lead predates
+ *          this call (a returning contact, or a slow form).
+ *   SLOW   the rest, run by `after()` once the response is already on the wire.
+ *          Interakt gets its answer in ~1s while we keep trying for ~2.5 min.
+ *
+ * `after()` needs a live process to finish the work, which Dokploy's long-lived
+ * Node server provides. On a freeze-after-response serverless host this would
+ * need a queue instead.
+ */
+const SEARCH_DELAYS_FAST_MS = [0];
+const SEARCH_DELAYS_SLOW_MS = [8000, 15000, 30000, 45000, 60000];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 function json(payload, status = 200) {
   return Response.json(payload, { status });
+}
+
+/**
+ * Step logging. Every line is prefixed with a short per-request id so
+ * concurrent claims stay readable when they interleave in the container log.
+ */
+function makeLogger(startedAt) {
+  const rid = crypto.randomBytes(3).toString("hex");
+  return (step, detail) => {
+    const ms = Date.now() - startedAt;
+    console.log(
+      `[claim ${rid} +${ms}ms] ${step}${detail === undefined ? "" : " " + (typeof detail === "string" ? detail : JSON.stringify(detail))}`
+    );
+  };
+}
+
+/** Mask any run of 7+ digits down to its last 4, so logs never carry a number. */
+function maskDigits(text) {
+  return String(text).replace(/\d{7,}/g, (m) => `…${m.slice(-4)}`);
+}
+
+/**
+ * Shape of an inbound body, safe to log: keys plus masked, truncated values.
+ * This is the line that tells you what Interakt actually sent when the mapping
+ * is wrong — the whole reason a 400 is hard to diagnose otherwise.
+ */
+function describeBody(body) {
+  if (!body || typeof body !== "object") return { type: typeof body, value: String(body).slice(0, 80) };
+  const out = {};
+  for (const [k, v] of Object.entries(body)) {
+    out[k] =
+      v === null || v === undefined
+        ? String(v)
+        : maskDigits(String(v)).slice(0, 60);
+  }
+  return out;
 }
 
 /** Constant-time comparison so the shared secret can't be probed by timing. */
@@ -85,7 +138,7 @@ function isBlank(value) {
  * full record, which is what the fill-if-blank check needs, and it avoids
  * failing outright if one custom field is named differently in the CRM.
  */
-async function findLead(moduleName, mobile) {
+async function findLead(moduleName, mobile, log, delays, phase) {
   const variants = phoneVariants(mobile);
   if (!variants.length) return null;
 
@@ -96,68 +149,231 @@ async function findLead(moduleName, mobile) {
       .join("or") +
     ")";
 
-  for (const delay of SEARCH_RETRY_DELAYS_MS) {
-    if (delay) await sleep(delay);
+  log(`zoho.search.${phase}`, maskDigits(criteria));
+
+  for (let i = 0; i < delays.length; i++) {
+    const delay = delays[i];
+    if (delay) {
+      log("zoho.search.backoff", `${delay}ms before attempt ${i + 1}/${delays.length}`);
+      await sleep(delay);
+    }
     try {
       const lead = await searchZohoRecords(moduleName, criteria);
-      if (lead) return lead;
+      if (lead) {
+        log("zoho.search.hit", { phase, attempt: i + 1, lead_id: lead.id });
+        return lead;
+      }
+      log("zoho.search.miss", `${phase} attempt ${i + 1} of ${delays.length}`);
     } catch (err) {
+      log("zoho.search.error", `${phase} attempt ${i + 1}: ${err.message}`);
       console.error("attribution_zoho_search_failed:", err.message);
     }
   }
   return null;
 }
 
+/**
+ * Given a Lead, work out which fields to write and write them.
+ * Shared by the inline path and the deferred `after()` path.
+ *
+ * Two policies, decided by whether a real session matched:
+ *
+ *   matched    last-touch wins. A populated field is overwritten with the new
+ *              campaign's value. Without this a contact who came back through a
+ *              later campaign would keep their first campaign forever, because
+ *              the Lead already exists and every UTM field is already filled —
+ *              the new campaign's spend would attribute to nothing.
+ *   no match   fill-if-blank, as before. The neutral Whatsapp placeholder set
+ *              must never clobber a real campaign value.
+ *
+ * A field whose stored value already equals what we would write is left alone,
+ * so a re-run is a no-op rather than a pointless Zoho update.
+ */
+async function patchLead({ moduleName, lead, fields, matched, log }) {
+  const patch = {};
+  const skipped = [];
+  const overwritten = [];
+  const unchanged = [];
+  for (const key of ZOHO_UTM_FIELDS) {
+    if (fields[key] === undefined) continue;
+    if (isBlank(lead[key])) {
+      patch[key] = fields[key];
+      continue;
+    }
+    if (!matched) {
+      skipped.push(key);
+      continue;
+    }
+    if (String(lead[key]).trim() === fields[key]) {
+      unchanged.push(key);
+      continue;
+    }
+    patch[key] = fields[key];
+    overwritten.push(key);
+  }
+  log("lead.current", Object.fromEntries(ZOHO_UTM_FIELDS.map((k) => [k, lead[k] ?? null])));
+  log("patch.built", {
+    policy: matched ? "overwrite (matched session — last touch wins)" : "fill-if-blank (defaults)",
+    write: patch,
+    overwriting_existing: overwritten,
+    skipped_because_filled: skipped,
+    already_current: unchanged,
+  });
+
+  if (Object.keys(patch).length === 0) {
+    // Three different reasons for writing nothing, and the audit trail is
+    // useless if they collapse into one: a filled record we refused to touch,
+    // a record that already carries exactly this campaign, or a session that
+    // only carried fields this route is not allowed to write (utm_source alone).
+    const error = skipped.length
+      ? "already_filled"
+      : unchanged.length
+        ? "already_current"
+        : "nothing_to_write";
+    log("zoho.update.skipped", error);
+    return { patch, skipped, overwritten, zohoUpdated: false, error };
+  }
+
+  try {
+    await updateZohoRecord(moduleName, lead.id, patch);
+    log("zoho.update.ok", { lead_id: lead.id, wrote: Object.keys(patch), overwrote: overwritten });
+    return { patch, skipped, overwritten, zohoUpdated: true, error: null };
+  } catch (err) {
+    log("zoho.update.error", err.message);
+    console.error("attribution_zoho_update_failed:", err.message);
+    return { patch, skipped, overwritten, zohoUpdated: false, error: "zoho_update_failed" };
+  }
+}
+
 export async function POST(request) {
   const arrivedAt = Date.now();
+  const log = makeLogger(arrivedAt);
+  log("start", { ua: request.headers.get("user-agent")?.slice(0, 60) || "-" });
 
   if (!authorized(request)) {
+    log("auth.reject", process.env.ATTRIBUTION_API_KEY ? "bad x-api-key" : "ATTRIBUTION_API_KEY unset");
     return json({ success: false, error: "unauthorized" }, 401);
   }
+  log("auth.ok");
 
   let body;
   try {
     body = await request.json();
-  } catch {
+  } catch (err) {
+    log("body.invalid_json", err.message);
     return json({ success: false, error: "invalid_json" }, 400);
   }
+  log("body.received", describeBody(body));
 
-  const mobile = clean(body?.mobile ?? body?.Mobile ?? body?.phone ?? body?.Phone);
+  // Interakt's variable picker names this field differently depending on where
+  // it is inserted from, so accept every plausible spelling rather than 400.
+  const MOBILE_KEYS = [
+    "mobile",
+    "Mobile",
+    "phone",
+    "Phone",
+    "phone_number",
+    "phoneNumber",
+    "Phone_Number",
+    "contact",
+    "Contact",
+  ];
+  const mobileKey = MOBILE_KEYS.find((k) => clean(body?.[k]));
+  const mobile = mobileKey ? clean(body[mobileKey]) : null;
+
   if (!mobile || phoneVariants(mobile).length === 0) {
+    log("mobile.missing", {
+      keys: Object.keys(body || {}),
+      accepted: MOBILE_KEYS,
+      hint: "need a 10+ digit number under one of the accepted keys; an unresolved {{n}} is ignored",
+    });
     return json({ success: false, error: "missing_mobile" }, 400);
   }
+  log("mobile.source", `from body.${mobileKey}`);
+  log("mobile.ok", { variants: phoneVariants(mobile).map(maskDigits) });
 
   const createdAtRaw =
     body?.Created_at ?? body?.created_at ?? body?.created_at_utc ?? body?.createdAt;
   const createdAt = parseCreatedAt(createdAtRaw);
+  log("created_at.parsed", {
+    // Masked: a mis-mapped Interakt variable puts the phone number here.
+    raw: createdAtRaw === undefined ? "(absent)" : maskDigits(String(createdAtRaw)).slice(0, 40),
+    parsed: createdAt ? new Date(createdAt).toISOString() : null,
+    age_sec: createdAt ? Math.round((arrivedAt - createdAt) / 1000) : null,
+    ...(createdAtRaw !== undefined && createdAt === null
+      ? { warning: "unparseable or out of range — falling back to arrival-time matching" }
+      : {}),
+  });
+
   const mobileHash = hashMobile(mobile);
 
   // --- Idempotency: Interakt retries must not re-run the match or the write --
   try {
     const cached = await recallClaim(mobileHash);
-    if (cached) return json({ ...cached, cached: true });
+    if (cached) {
+      log("idempotency.hit", { session_id: cached.session_id, zoho_lead_id: cached.zoho_lead_id });
+      return json({ ...cached, cached: true });
+    }
+    log("idempotency.miss");
   } catch (err) {
+    log("idempotency.error", err.message);
     console.error("attribution_recall_failed:", err.message);
   }
 
   const anchor = resolveAnchor(createdAt, arrivedAt);
+  log("anchor.resolved", {
+    mode: anchor.mode,
+    ref: new Date(anchor.ref).toISOString(),
+    window_sec: `${Math.round((anchor.ref - anchor.lo) / 1000)}s..${Math.round((anchor.ref - anchor.hi) / 1000)}s before ref`,
+    expected_lag_sec: Math.round(anchor.expectedLag / 1000),
+  });
 
   // --- Match ---------------------------------------------------------------
   let claimed = { sid: null, lagMs: 0, candidates: 0, session: {} };
   try {
-    claimed = await claimSession({ mobileHash, anchor });
+    claimed = await claimSession({ anchor });
+    log("match.result", {
+      session_id: claimed.sid || "(none)",
+      candidates: claimed.candidates,
+      lag_sec: claimed.sid ? Math.round(claimed.lagMs / 1000) : null,
+      session: claimed.sid ? claimed.session : undefined,
+      consumed: claimed.sid ? "session deleted from Valkey" : undefined,
+    });
   } catch (err) {
     // Valkey down: fall through with no match. The Lead still gets the
     // placeholder set, which is better than leaving it blank.
+    log("match.error", err.message);
     console.error("attribution_claim_failed:", err.message);
   }
 
+  // The exact anchor score the session had, so a failed write can put it back
+  // in the same place on the timeline. lag = ref - score, so score = ref - lag.
+  const claimedAnchorMs = anchor.ref - claimed.lagMs;
+
   const sessionFields = sessionToZohoFields(claimed.session);
   const matched = Boolean(claimed.sid) && Object.keys(sessionFields).length > 0;
-  const fields = matched ? sessionFields : defaultZohoFields();
+
+  let fields = sessionFields;
+  if (!matched) {
+    const { fields: defaults, missing } = defaultZohoFields();
+    fields = defaults;
+    if (missing.length) {
+      log("defaults.env_missing", {
+        vars: missing,
+        effect: "using the built-in literal for these; set them in .env",
+      });
+    }
+  }
 
   let confidence = "none";
   if (matched) confidence = claimed.candidates > 1 ? "low" : "high";
+
+  log("fields.chosen", {
+    source: matched ? "session" : "defaults (.env)",
+    confidence,
+    fields,
+    note: "UTM_Source is reported but never written",
+  });
 
   const base = {
     success: true,
@@ -174,72 +390,106 @@ export async function POST(request) {
 
   // --- Write to the Lead ---------------------------------------------------
   const moduleName = process.env.ZOHO_LEADS_MODULE || "Leads";
-  const lead = await findLead(moduleName, mobile);
 
-  if (!lead?.id) {
-    // Nothing to patch. Give the session back so a retry can use it.
-    await releaseClaim(claimed.sid).catch(() => {});
-    const miss = {
+  // Zoho Flow can hand us the Lead id directly; then no lookup is needed and
+  // the search index can lag as much as it likes.
+  const givenLeadId = clean(body?.lead_id ?? body?.leadId ?? body?.zoho_lead_id);
+
+  /** Finish the job once a Lead is in hand: patch, cache, audit. */
+  const finish = async (lead) => {
+    const { patch, skipped, overwritten, zohoUpdated, error } = await patchLead({
+      moduleName,
+      lead,
+      fields,
+      matched,
+      log,
+    });
+
+    const result = {
       ...base,
-      success: false,
-      error: "lead_not_found",
-      zoho_updated: false,
-      zoho_lead_id: "",
-      fields_written: "",
+      success: error !== "zoho_update_failed",
+      zoho_lead_id: lead.id,
+      zoho_updated: zohoUpdated,
+      fields_written: Object.keys(patch).join(","),
+      fields_skipped: skipped.join(","),
+      fields_overwritten: overwritten.join(","),
+      ...(error ? { error } : {}),
     };
-    await pushAudit({ at: new Date(arrivedAt).toISOString(), ...miss }).catch(() => {});
-    return json(miss);
-  }
 
-  // Fill-if-blank: never overwrite a value that is already on the record.
-  const patch = {};
-  const skipped = [];
-  for (const key of ZOHO_UTM_FIELDS) {
-    if (fields[key] === undefined) continue;
-    if (isBlank(lead[key])) patch[key] = fields[key];
-    else skipped.push(key);
-  }
-
-  let zohoUpdated = false;
-  let error = null;
-  if (Object.keys(patch).length === 0) {
-    // Distinguish "the record already had everything" from "the session only
-    // carried fields this route is not allowed to write" (e.g. utm_source
-    // alone) — otherwise the audit trail misreports why nothing happened.
-    error = skipped.length ? "already_filled" : "nothing_to_write";
-  } else {
-    try {
-      await updateZohoRecord(moduleName, lead.id, patch);
-      zohoUpdated = true;
-    } catch (err) {
-      console.error("attribution_zoho_update_failed:", err.message);
-      error = "zoho_update_failed";
-      await releaseClaim(claimed.sid).catch(() => {});
+    // Only remember outcomes that landed — a failed write must stay retryable.
+    if (error !== "zoho_update_failed") {
+      await rememberClaim(mobileHash, result).catch((err) => {
+        log("idempotency.store.error", err.message);
+      });
+    } else {
+      log("idempotency.store.skipped", "failed write stays retryable");
+      // The session was consumed by the claim; put it back so the retry has
+      // something to match instead of silently losing the attribution.
+      await restoreSession(claimed.sid, claimed.session, claimedAnchorMs)
+        .then(() => claimed.sid && log("session.restored", claimed.sid))
+        .catch((err) => log("session.restore.error", err.message));
     }
-  }
 
-  const result = {
-    ...base,
-    success: error !== "zoho_update_failed",
-    zoho_lead_id: lead.id,
-    zoho_updated: zohoUpdated,
-    fields_written: Object.keys(patch).join(","),
-    fields_skipped: skipped.join(","),
-    ...(error ? { error } : {}),
+    await pushAudit({
+      at: new Date(arrivedAt).toISOString(),
+      created_at_raw: maskDigits(clean(createdAtRaw) ?? ""),
+      ...result,
+    }).catch(() => {});
+
+    return result;
   };
 
-  // Only remember outcomes that actually landed — a failed write must stay
-  // retryable.
-  if (error !== "zoho_update_failed") {
-    await rememberClaim(mobileHash, result).catch((err) =>
-      console.error("attribution_remember_failed:", err.message)
-    );
+  if (givenLeadId) {
+    log("lead.provided", givenLeadId);
+    const result = await finish({ id: givenLeadId });
+    log("done", result);
+    return json(result);
   }
-  await pushAudit({
-    at: new Date(arrivedAt).toISOString(),
-    created_at_raw: clean(createdAtRaw) || null,
-    ...result,
-  }).catch(() => {});
 
-  return json(result);
+  const lead = await findLead(moduleName, mobile, log, SEARCH_DELAYS_FAST_MS, "inline");
+  if (lead?.id) {
+    const result = await finish(lead);
+    log("done", result);
+    return json(result);
+  }
+
+  // --- Not indexed yet: answer now, keep trying in the background ----------
+  // The consumed session is NOT restored here — the deferred pass still holds
+  // its data and owns it. It goes back only if every retry fails.
+  log("lead.deferred", "not in the search index yet; retrying after the response");
+
+  after(async () => {
+    const late = await findLead(moduleName, mobile, log, SEARCH_DELAYS_SLOW_MS, "deferred");
+    if (!late?.id) {
+      log("lead.not_found", "deferred retries exhausted; restoring the session");
+      await restoreSession(claimed.sid, claimed.session, claimedAnchorMs).catch((err) =>
+        log("session.restore.error", err.message)
+      );
+      await pushAudit({
+        at: new Date(arrivedAt).toISOString(),
+        ...base,
+        success: false,
+        error: "lead_not_found",
+        zoho_updated: false,
+        zoho_lead_id: "",
+        fields_written: "",
+        fields_overwritten: "",
+      }).catch(() => {});
+      return;
+    }
+    const result = await finish(late);
+    log("done.deferred", result);
+  });
+
+  const pending = {
+    ...base,
+    deferred: true,
+    zoho_updated: false,
+    zoho_lead_id: "",
+    fields_written: "",
+    fields_overwritten: "",
+    note: "lead not in Zoho's search index yet; the update is retrying in the background",
+  };
+  log("done", pending);
+  return json(pending);
 }

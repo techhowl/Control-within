@@ -19,25 +19,29 @@ import Redis from "ioredis";
 export const K = {
   session: (sid) => `{cw}:s:${sid}`,
   anchor: "{cw}:anchor",
-  claim: (sid) => `{cw}:claim:${sid}`,
   mobile: (hash) => `{cw}:mob:${hash}`,
   audit: "{cw}:audit",
 };
 
 export const SESSION_TTL_SEC = 60 * 60 * 24; // 24h — long enough for slow funnels
-export const CLAIM_TTL_SEC = 60 * 60 * 24 * 7; // 7d — idempotency horizon
+export const IDEMPOTENCY_TTL_SEC = 60 * 60 * 24 * 7; // 7d — Interakt retry horizon
 export const AUDIT_MAX = 200;
 
 /**
- * Pick the unclaimed session whose anchor is closest to the expected lag before
- * the reference instant, and claim it — atomically, in one round trip.
+ * Pick the session whose anchor is closest to the expected lag before the
+ * reference instant, hand back its data, and CONSUME it — atomically, in one
+ * round trip.
  *
- * Atomicity matters: two leads submitted within the same second must never be
- * handed the same session. Doing the select and the claim in Lua removes the
- * read-then-write race entirely, so no optimistic retry loop is needed.
+ * Consuming means the hash is deleted and the member removed from the anchor
+ * set, so a session is usable exactly once. Atomicity matters: two leads
+ * submitted within the same second must never be handed the same session, and
+ * doing select + delete in Lua removes the read-then-write race entirely.
+ *
+ * If the CRM write later fails, the caller puts the session back with
+ * restoreSession() — it still holds the data returned here.
  *
  * KEYS[1] = {cw}:anchor
- * ARGV    = loMs, hiMs, refMs, expectedLagMs, mobileHash, claimTtlSec
+ * ARGV    = loMs, hiMs, refMs, expectedLagMs
  * Returns { sid, lagMs, candidateCount, hgetallFlatArray }
  *          sid is "" when nothing matched (candidateCount still reported).
  */
@@ -48,24 +52,24 @@ local expected = tonumber(ARGV[4])
 local best, bestDelta, bestLag
 for i = 1, #ids do
   local sid = ids[i]
-  if redis.call('EXISTS', '{cw}:claim:' .. sid) == 0 then
-    local score = redis.call('ZSCORE', KEYS[1], sid)
-    if score then
-      local lag = ref - tonumber(score)
-      local delta = math.abs(lag - expected)
-      if (not bestDelta) or delta < bestDelta then
-        best = sid
-        bestDelta = delta
-        bestLag = lag
-      end
+  local score = redis.call('ZSCORE', KEYS[1], sid)
+  if score then
+    local lag = ref - tonumber(score)
+    local delta = math.abs(lag - expected)
+    if (not bestDelta) or delta < bestDelta then
+      best = sid
+      bestDelta = delta
+      bestLag = lag
     end
   end
 end
 if not best then
   return { '', '0', tostring(#ids), {} }
 end
-redis.call('SET', '{cw}:claim:' .. best, ARGV[5], 'EX', tonumber(ARGV[6]))
-return { best, tostring(bestLag), tostring(#ids), redis.call('HGETALL', '{cw}:s:' .. best) }
+local data = redis.call('HGETALL', '{cw}:s:' .. best)
+redis.call('DEL', '{cw}:s:' .. best)
+redis.call('ZREM', KEYS[1], best)
+return { best, tostring(bestLag), tostring(#ids), data }
 `;
 
 let client = null;

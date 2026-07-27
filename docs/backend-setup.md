@@ -132,15 +132,32 @@ rather than treated as a date.
 - **`UTM_Source` is never touched.** Not created, not updated, matched or not —
   the WhatsApp phrase system owns that field. It is still reported in the
   response so you can see what the matched session carried.
-- **Fill-if-blank.** Of the remaining fields, only empty ones are written; an
-  existing value is never overwritten, so re-runs and manual corrections
-  survive. This assumes Zoho Flow no longer pre-fills the UTM fields at lead
-  creation — if it does, those fields stay stuck at their placeholder values.
-- **No match → placeholder set.** `UTM_Medium/Platform = Whatsapp`,
-  `UTM_Campaign = Connexi * Howl` (env-overridable), so every Lead still
-  carries campaign context.
+- **Values are percent-decoded.** A campaign name pasted into Meta Ads already
+  encoded (`Control%20Within%20|%20July`) survives the browser's own decode and
+  would reach Zoho with the `%20`s intact. `clean()` decodes up to twice (so
+  `%2520` also resolves) and collapses whitespace, on capture *and* on read — so
+  sessions already stored with `%20` come out clean too.
+- **Matched session → last touch wins.** Of the remaining fields, a matched
+  session's values are written even over an existing value. Without this a
+  contact who comes back through a *later* campaign keeps their first campaign
+  forever — the Lead already exists with every UTM field filled, so the new
+  campaign's spend would attribute to nothing. The overwritten field names come
+  back in `fields_overwritten`.
+- **No match → fill-if-blank.** The neutral placeholder set
+  (`UTM_Medium/Platform = Whatsapp`, `UTM_Campaign = Connexi * Howl`,
+  env-overridable) only ever fills empty fields, so it can never clobber a real
+  campaign value. Every Lead still ends up carrying campaign context.
+- **A no-op is reported, not hidden.** Nothing written comes back as
+  `already_current` (the Lead already carries exactly this campaign),
+  `already_filled` (unmatched, so we refused to touch a populated field) or
+  `nothing_to_write` (the session only carried fields this route may not write).
 - **Idempotent.** The outcome is cached per mobile for 7 days, so Interakt
   retries cost nothing. A failed CRM write is *not* cached and stays retryable.
+  Note the flip side: a contact who returns through a new campaign **within**
+  those 7 days hits the cache before the matcher runs, so that visit is not
+  re-attributed. Re-attribution starts working once the cache entry expires.
+  Shorten `IDEMPOTENCY_TTL_SEC` in `src/lib/valkey.js` if same-week
+  re-attribution matters more than a long retry horizon.
 
 ### Matching windows
 
@@ -164,15 +181,22 @@ instance ever becomes a cluster. Nothing needs provisioning; TTLs clean up.
 
 | key | type | TTL |
 | --- | ---- | --- |
-| `{cw}:s:<sid>` | HASH — params + `landed_at` + `wa_click_at` | 24h |
+| `{cw}:s:<sid>` | HASH — params + `landed_at` + `wa_click_at` | 24h, or until consumed |
 | `{cw}:anchor` | ZSET — score = anchor ms, member = sid | trimmed per write |
-| `{cw}:claim:<sid>` | STRING — `sha256(mobile+salt)`, the claim guard | 7d |
 | `{cw}:mob:<hash>` | STRING — cached outcome for retries | 7d |
 | `{cw}:audit` | LIST — last 200 outcomes | capped |
 
-Raw phone numbers are never stored, only salted SHA-256 hashes. Selection and
-claiming happen in one atomic Lua call, so two leads submitted in the same
-second can never be handed the same session.
+Raw phone numbers are never stored, only salted SHA-256 hashes.
+
+**Sessions are single-use.** The matcher selects, reads and *deletes* the
+session in one atomic Lua call, so it disappears the moment it is used and two
+leads can never be handed the same one. If the CRM write then fails, the caller
+puts it back with its original anchor score (`restoreSession`) — otherwise a
+Zoho hiccup would destroy the attribution outright.
+
+> Testing against this instance consumes real visitor sessions. Point
+> `VALKEY_URL` at a scratch instance when experimenting, or a live visitor loses
+> their attribution.
 
 ## Phase 2 (later, needs accounts)
 

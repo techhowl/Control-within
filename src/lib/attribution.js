@@ -3,7 +3,7 @@ import {
   getValkey,
   K,
   SESSION_TTL_SEC,
-  CLAIM_TTL_SEC,
+  IDEMPOTENCY_TTL_SEC,
   AUDIT_MAX,
 } from "@/lib/valkey";
 
@@ -54,9 +54,44 @@ function envInt(name, fallback) {
   return Number.isFinite(n) && n >= 0 ? n : fallback;
 }
 
-/** Trim a value, rejecting empties and unresolved Interakt {{n}} placeholders. */
+/**
+ * Undo percent-encoding that survived the query string.
+ *
+ * `URLSearchParams.get()` already decodes once, so a normally-encoded param
+ * arrives clean. What still shows up is a campaign name that was pasted into
+ * Meta Ads *already encoded* — the ad URL literally carries
+ * `Control%20Within%20|%20July`, which survives one decode unchanged and lands
+ * in Zoho with the `%20`s intact.
+ *
+ * Decoded at most twice, since a genuinely double-encoded value (`%2520`) needs
+ * the second pass, and only while a `%XX` sequence is actually present. A
+ * malformed sequence (a bare `%`, a `%` in a real campaign name) makes
+ * decodeURIComponent throw — keep what we had at that point rather than losing
+ * the value.
+ */
+function decodePercent(s) {
+  let out = s;
+  for (let i = 0; i < 2 && /%[0-9A-Fa-f]{2}/.test(out); i++) {
+    try {
+      const next = decodeURIComponent(out);
+      if (next === out) break;
+      out = next;
+    } catch {
+      break;
+    }
+  }
+  return out;
+}
+
+/**
+ * Trim a value, rejecting empties and unresolved Interakt {{n}} placeholders.
+ * Percent-escapes are decoded and runs of whitespace collapsed first, so the
+ * `{{` check still catches a `%7B%7B` and Zoho never receives `%20`.
+ */
 export function clean(value) {
-  const s = (value ?? "").toString().trim();
+  const raw = (value ?? "").toString().trim();
+  if (!raw) return null;
+  const s = decodePercent(raw).replace(/\s+/g, " ").trim();
   if (!s || s.includes("{{")) return null;
   return s.slice(0, MAX_VALUE_LEN);
 }
@@ -105,8 +140,17 @@ export function parseCreatedAt(raw) {
   const s = clean(raw);
   if (!s) return null;
 
-  if (/^\d{10}$/.test(s)) return Number(s) * 1000;
-  if (/^\d{13}$/.test(s)) return Number(s);
+  // Sanity bounds. A bare 10-digit string is ambiguous: it can be epoch
+  // seconds, but it is also exactly the shape of an Indian mobile number, and
+  // a mis-mapped Interakt variable sends the phone number here. Anything
+  // outside a plausible date range is rejected rather than silently believed —
+  // 8999431754 as epoch seconds is the year 2255.
+  const MIN_MS = Date.UTC(2020, 0, 1);
+  const MAX_MS = Date.UTC(2100, 0, 1);
+  const bounded = (ms) => (ms >= MIN_MS && ms <= MAX_MS ? ms : null);
+
+  if (/^\d{10}$/.test(s)) return bounded(Number(s) * 1000);
+  if (/^\d{13}$/.test(s)) return bounded(Number(s));
 
   // A bare "YYYY-MM-DD HH:mm:ss" has no zone; Interakt documents these as UTC,
   // but Date.parse would read it as local time. Normalise before parsing.
@@ -116,7 +160,7 @@ export function parseCreatedAt(raw) {
   }
 
   const ms = Date.parse(candidate);
-  return Number.isFinite(ms) ? ms : null;
+  return Number.isFinite(ms) ? bounded(ms) : null;
 }
 
 /**
@@ -225,22 +269,20 @@ function flatArrayToObject(flat) {
 }
 
 /**
- * Claim the best-matching session for a lead. See CLAIM_LUA in lib/valkey.js —
- * selection and claiming happen atomically so concurrent leads cannot be handed
- * the same session.
+ * Claim the best-matching session for a lead and consume it. See CLAIM_LUA in
+ * lib/valkey.js — selection and deletion happen atomically, so a session is
+ * handed out exactly once and concurrent leads can never share one.
  *
  * @returns {Promise<{sid:string|null, lagMs:number, candidates:number, session:object}>}
  */
-export async function claimSession({ mobileHash, anchor }) {
+export async function claimSession({ anchor }) {
   const r = getValkey();
   const res = await r.attrClaim(
     K.anchor,
     String(Math.round(anchor.lo)),
     String(Math.round(anchor.hi)),
     String(Math.round(anchor.ref)),
-    String(Math.round(anchor.expectedLag)),
-    mobileHash,
-    String(CLAIM_TTL_SEC)
+    String(Math.round(anchor.expectedLag))
   );
 
   const [sid, lagMs, candidates, flat] = res || [];
@@ -253,20 +295,29 @@ export async function claimSession({ mobileHash, anchor }) {
 }
 
 /**
- * Hand a claimed session back. Called when the CRM step fails after the claim
- * succeeded — otherwise a Zoho hiccup would lock that session for 7 days and
- * the Interakt retry would find nothing to match.
+ * Put a consumed session back, exactly as it was. Called when the CRM step
+ * fails after the session was already claimed — without this, a Zoho hiccup
+ * would silently destroy the attribution and the Interakt retry would find
+ * nothing to match.
+ *
+ * The original anchor score is restored (not "now"), so the session stays in
+ * the same position on the timeline and can only be matched by a claim whose
+ * reference instant genuinely lines up with it.
  */
-export async function releaseClaim(sid) {
-  if (!sid) return;
+export async function restoreSession(sid, session, anchorMs) {
+  if (!sid || !session || !Object.keys(session).length) return;
   const r = getValkey();
-  await r.del(K.claim(sid));
+  const pipe = r.pipeline();
+  pipe.hset(K.session(sid), session);
+  pipe.expire(K.session(sid), SESSION_TTL_SEC);
+  pipe.zadd(K.anchor, Math.round(anchorMs), sid);
+  await pipe.exec();
 }
 
 /** Remember the outcome for this mobile so Interakt retries are free. */
 export async function rememberClaim(mobileHash, payload) {
   const r = getValkey();
-  await r.set(K.mobile(mobileHash), JSON.stringify(payload), "EX", CLAIM_TTL_SEC);
+  await r.set(K.mobile(mobileHash), JSON.stringify(payload), "EX", IDEMPOTENCY_TTL_SEC);
 }
 
 export async function recallClaim(mobileHash) {
@@ -313,19 +364,41 @@ export function sessionToZohoFields(session = {}) {
   return out;
 }
 
+// Fallback values live in .env so they can be changed without a code edit.
+// Each entry is [Zoho field, env var, last-resort literal].
+const DEFAULT_FIELD_ENV = [
+  ["UTM_Source", "ATTR_DEFAULT_UTM_SOURCE", "Whatsapp"],
+  ["UTM_Medium", "ATTR_DEFAULT_UTM_MEDIUM", "Whatsapp"],
+  ["Platform", "ATTR_DEFAULT_PLATFORM", "Whatsapp"],
+  ["UTM_Campaign", "ATTR_DEFAULT_UTM_CAMPAIGN", "Connexi * Howl"],
+];
+
 /**
  * Neutral fallback written when no session matched, so every Lead still carries
  * campaign context rather than a row of blanks.
  *
- * UTM_Source is listed here for the response payload only — the claim route's
+ * Values come from .env. A var that is unset or blank falls back to the literal
+ * and is reported in `missing` — the caller logs that, because silently writing
+ * a hardcoded value when the environment was meant to supply it is exactly the
+ * kind of drift that goes unnoticed for weeks.
+ *
+ * UTM_Source is included for the response payload only — the claim route's
  * write whitelist excludes it, because the WhatsApp phrase system owns that
  * field and must not be overwritten by attribution.
+ *
+ * @returns {{fields: object, missing: string[]}}
  */
 export function defaultZohoFields() {
-  return {
-    UTM_Source: process.env.ATTR_DEFAULT_UTM_SOURCE || "Whatsapp",
-    UTM_Medium: process.env.ATTR_DEFAULT_UTM_MEDIUM || "Whatsapp",
-    Platform: process.env.ATTR_DEFAULT_PLATFORM || "Whatsapp",
-    UTM_Campaign: process.env.ATTR_DEFAULT_UTM_CAMPAIGN || "Connexi * Howl",
-  };
+  const fields = {};
+  const missing = [];
+  for (const [field, envVar, literal] of DEFAULT_FIELD_ENV) {
+    const value = (process.env[envVar] ?? "").trim();
+    if (value) {
+      fields[field] = value;
+    } else {
+      fields[field] = literal;
+      missing.push(envVar);
+    }
+  }
+  return { fields, missing };
 }

@@ -62,6 +62,11 @@ const TEMPLATES = {
 // is the medium. Both slots count as Meta.
 const META_HINTS = ["fb", "ig", "facebook", "instagram", "messenger", "meta"];
 
+// Same story for Google: the spec URL tags utm_source=google, but a hand-built
+// search link reads utm_medium=google with no source at all. Checked in both
+// slots for the same reason.
+const GOOGLE_HINTS = ["google", "paid_search", "adwords", "google_ads", "googleads", "gads"];
+
 const lower = (v) => String(v ?? "").trim().toLowerCase();
 
 /** "hiUS" | "implant" → the brand's spelling, or null when unrecognised. */
@@ -70,12 +75,31 @@ export function methodLabel(raw) {
   return METHOD_LABELS[key] ?? null;
 }
 
-/** /implant and /ius imply the method even when utm_method is missing. */
+/** /implant and /ius name the method the visitor is reading about. */
 function methodFromPath(pathname) {
   const p = lower(pathname);
   if (p.startsWith("/implant")) return METHOD_LABELS.implant;
   if (p.startsWith("/ius")) return METHOD_LABELS.hius;
   return null;
+}
+
+/**
+ * Which method to name in the message.
+ *
+ * Where the visitor is *now* outranks the ad that brought them. Somebody who
+ * clicked an Implant ad, browsed to the hIUS page and then tapped Chat wants to
+ * talk about hIUS — `utm_method` records what was advertised, not what they
+ * chose. The channel still comes from the campaign, so that visitor opens
+ * WhatsApp with "saw your ad on META" + "hIUS".
+ *
+ *   1. `explicit` — a button that speaks for one method (a method card's CTA)
+ *   2. the path — /implant, /ius
+ *   3. `utm_method` — what the ad was about, the fallback on shared pages like /
+ */
+export function resolveMethod(params = {}, pathname = "", explicit = null) {
+  return (
+    methodLabel(explicit) || methodFromPath(pathname) || methodLabel(params.utm_method)
+  );
 }
 
 /**
@@ -104,7 +128,7 @@ export function resolveChannel(params = {}) {
   ) {
     return "meta";
   }
-  if (source === "google" || medium === "paid_search") return "google";
+  if (GOOGLE_HINTS.includes(source) || GOOGLE_HINTS.includes(medium)) return "google";
   return null;
 }
 
@@ -114,11 +138,11 @@ export function resolveChannel(params = {}) {
  * DEFAULT_MESSAGE. Returning null rather than a half-built sentence is
  * deliberate: no invented copy, ever.
  */
-export function buildCampaignMessage(params = {}, pathname = "") {
+export function buildCampaignMessage(params = {}, pathname = "", explicitMethod = null) {
   const channel = resolveChannel(params);
   if (!channel) return null;
 
-  const method = methodLabel(params.utm_method) || methodFromPath(pathname);
+  const method = resolveMethod(params, pathname, explicitMethod);
   if (!method) return null;
 
   return TEMPLATES[channel](method);
@@ -166,8 +190,8 @@ export function readStoredParams() {
  * the campaign message, but arriving fresh on a *new* campaign URL overrides
  * whatever was stored.
  */
-export function currentCampaignMessage(search, pathname) {
+export function currentCampaignMessage(search, pathname, explicitMethod = null) {
   const live = paramsFromSearch(search);
   const params = Object.keys(live).length ? live : readStoredParams();
-  return buildCampaignMessage(params, pathname);
+  return buildCampaignMessage(params, pathname, explicitMethod);
 }

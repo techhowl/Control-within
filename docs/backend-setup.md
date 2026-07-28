@@ -115,7 +115,7 @@ where the person came from before anyone types. Built at click time in
 | channel signal in the URL | message |
 | ------------------------- | ------- |
 | `platform=meta`, `utm_medium=paid_social`, or `fb`/`ig`/`facebook`/`instagram`/`messenger`/`meta` in **either** `utm_source` or `utm_medium` | Hi, I saw your ad on META and would like to know more about **{method}**. |
-| `utm_source=google` (or `utm_medium=paid_search`) | Hi, I saw your ad on Google and would like to know more about **{method}**. |
+| `google`/`paid_search`/`adwords`/`google_ads`/`googleads`/`gads` in **either** `utm_source` or `utm_medium` | Hi, I saw your ad on Google and would like to know more about **{method}**. |
 | `src=qr…`/`utm_medium=scan` + `utm_source=chemist` | Hi, I scanned the QR code at the chemist and would like to know more about **{method}**. |
 | `src=qr…`/`utm_medium=scan` + `utm_source=clinic` | Hi, I scanned the QR code at the clinic and would like to know more about **{method}**. |
 
@@ -124,17 +124,40 @@ where the person came from before anyone types. Built at click time in
 never the string `meta`. Hand-built links (bio links, offline QR sheets) name the
 network in whichever slot the author picked — `utm_source=offline&utm_medium=instagram`
 is a real example — so `utm_source` and `utm_medium` are both checked against the
-network list. Note the wording says "ad" either way.
+network list. Note the wording says "ad" either way. Google is treated the same:
+`utm_medium=google` with no `utm_source` at all is a real link and counts.
 
-Rules, in order:
+**Unexpanded ad macros are dropped, not stored.** A value that is entirely braces
+and a token — Google ValueTrack `{keyword}` / `{campaignid}`, Meta
+`{{campaign.name}}`, or their `%7Bkeyword%7D` encoding — is rejected by `clean()`,
+so a broken tracking template leaves `UTM_Term` empty rather than filling the CRM
+with the literal `{keyword}`. A brace *inside* a longer value is left alone.
 
-1. A `message` prop on `<WhatsAppButton/>` always wins. The six section CTAs on
-   `/ius` and `/implant` set one; every campaign URL lands on `/`, where none do.
-2. Otherwise the campaign message, if the URL yields both a channel and a method.
-   A missing `utm_method` is inferred from the path (`/implant`, `/ius`).
-3. Otherwise the unchanged default, `Hi, I would like to know more information.`
-   Channel without method, or method without channel, falls through to here — no
-   half-built sentence is ever sent.
+Every WhatsApp surface goes through `<WhatsAppButton/>` — the desktop and mobile
+"Chat Now", the mobile floating icon, the Hero CTA, the method cards, the footer
+link and the `/ius` + `/implant` section CTAs — so all of them behave the same.
+
+Message, in order:
+
+1. The **campaign message**, whenever the params yield a channel *and* a method.
+   It outranks a `message` prop: that prop only names a method ("…about hIUS")
+   while this names the method *and* the channel.
+2. Otherwise the `message` prop, which is what organic visitors on `/ius` and
+   `/implant` see. Unchanged wording.
+3. Otherwise `Hi, I would like to know more information.` Channel without method,
+   or method without channel, lands here — no half-built sentence is ever sent.
+
+**Method**, most specific first — where the visitor is *now* beats the ad that
+brought them, because `utm_method` records what was advertised, not what they
+chose:
+
+1. A `method` prop, for a button that speaks for one method (a method card CTA).
+2. The path — `/implant`, `/ius`.
+3. `utm_method`, the fallback on shared pages like `/`.
+
+So an Implant ad → visitor browses to `/ius` → taps any chat button sends
+"Hi, I saw your ad on META and would like to know more about **hIUS**." The
+channel stays from the campaign; the method follows the visitor.
 
 Landing params are cached in `localStorage.cw_utm`, so the message still works
 after the visitor clicks through to another page and the query string is gone.

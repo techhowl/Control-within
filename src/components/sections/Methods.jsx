@@ -173,6 +173,10 @@ function MethodCard({ m }) {
         <div className="mt-auto flex justify-end pt-5 pb-2 md:pb-0">
           {m.href.includes("wa.me") ? (
             <WhatsAppButton
+              // This card speaks for one method, and the visitor is on a page
+              // that covers both — so name it, rather than letting utm_method
+              // from the ad decide.
+              method={m.productName}
               onClick={(e) => e.stopPropagation()} // Prevents the card from closing when clicked
               className="inline-flex items-center gap-2 rounded-full bg-dark py-2 pl-5 pr-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
             >

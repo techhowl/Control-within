@@ -90,15 +90,29 @@ function decodePercent(s) {
 }
 
 /**
- * Trim a value, rejecting empties and unresolved Interakt {{n}} placeholders.
+ * An ad-platform macro the platform never expanded — the whole value is nothing
+ * but braces and a token. Google ValueTrack `{keyword}`, `{campaignid}`; Meta
+ * `{{campaign.name}}`; percent-encoded as `%7Bkeyword%7D`, already decoded by
+ * the time this runs.
+ *
+ * These arrive on a real click whenever the tracking template is wrong, or on
+ * any hand-tested link, and `{keyword}` in the CRM's UTM_Term is worse than an
+ * empty UTM_Term: it looks like data. Only a value that is *entirely* a macro is
+ * rejected, so a campaign name that happens to contain a brace still gets
+ * through.
+ */
+const UNEXPANDED_MACRO = /^\{+[^{}]*\}+$/;
+
+/**
+ * Trim a value, rejecting empties and unexpanded ad-platform macros.
  * Percent-escapes are decoded and runs of whitespace collapsed first, so the
- * `{{` check still catches a `%7B%7B` and Zoho never receives `%20`.
+ * macro checks still catch a `%7B%7B` and Zoho never receives `%20`.
  */
 export function clean(value) {
   const raw = (value ?? "").toString().trim();
   if (!raw) return null;
   const s = decodePercent(raw).replace(/\s+/g, " ").trim();
-  if (!s || s.includes("{{")) return null;
+  if (!s || s.includes("{{") || UNEXPANDED_MACRO.test(s)) return null;
   return s.slice(0, MAX_VALUE_LEN);
 }
 

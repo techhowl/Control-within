@@ -39,7 +39,7 @@ function pingWhatsAppClick() {
   }
 }
 
-export default function WhatsAppButton({ children, className, onClick, message, ...rest }) {
+export default function WhatsAppButton({ children, className, onClick, message, method, ...rest }) {
   const [showPopup, setShowPopup] = useState(false);
   const [mounted, setMounted] = useState(false); // Used to safely render Portal in Next.js
   
@@ -69,14 +69,25 @@ export default function WhatsAppButton({ children, className, onClick, message, 
     //   ? `Hi, I would like to know more information. ref:[${chatId}]`
     //   : "Hi, I would like to know more information.";
 
-    // An explicit `message` prop still wins — those buttons say something
-    // specific about the section they sit in. Otherwise the campaign params
-    // decide, so a visitor from an ad or a QR code opens the chat already
-    // telling the counsellor where they came from and which method they read
-    // about. Read at click time, not render time: the popup gives the URL a
-    // moment to change, and stored landing params are client-only.
-    const campaign = currentCampaignMessage(window.location.search, window.location.pathname);
-    const text = message || campaign || DEFAULT_MESSAGE;
+    // A campaign visitor gets the campaign phrase, whichever button they tap:
+    // every Chat Now, Chat On WhatsApp and the mobile float icon included. It
+    // outranks the `message` prop because that prop only names a method
+    // ("…about hIUS") while the campaign phrase names the method *and* where
+    // they came from — dropping the channel would lose the more useful half.
+    // The method still tracks the page they are on, so an Implant ad that led
+    // to /ius sends "saw your ad on META … about hIUS".
+    //
+    // `message` remains the wording for organic visitors, and DEFAULT_MESSAGE
+    // the fallback when neither applies.
+    //
+    // Read at click time, not render time: the popup gives the URL a moment to
+    // change, and stored landing params are client-only.
+    const campaign = currentCampaignMessage(
+      window.location.search,
+      window.location.pathname,
+      method
+    );
+    const text = campaign || message || DEFAULT_MESSAGE;
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
   };
 

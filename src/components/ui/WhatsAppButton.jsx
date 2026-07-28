@@ -3,6 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { getSessionId } from "@/components/LeadCapture";
+import {
+  CAMPAIGN_FIELDS,
+  DEFAULT_MESSAGE,
+  currentCampaignMessage,
+} from "@/lib/campaign";
 
 /**
  * Tell the server the visitor is leaving for WhatsApp. This instant is the
@@ -20,16 +25,7 @@ function pingWhatsAppClick() {
 
     const q = new URLSearchParams(window.location.search);
     const payload = { session_id: sid, event: "wa_click" };
-    for (const key of [
-      "utm_source",
-      "utm_medium",
-      "utm_campaign",
-      "utm_content",
-      "utm_term",
-      "placement",
-      "platform",
-      "src",
-    ]) {
+    for (const key of CAMPAIGN_FIELDS) {
       const v = q.get(key);
       if (v) payload[key] = v;
     }
@@ -72,7 +68,15 @@ export default function WhatsAppButton({ children, className, onClick, message, 
     // const text = chatId
     //   ? `Hi, I would like to know more information. ref:[${chatId}]`
     //   : "Hi, I would like to know more information.";
-    const text = message || "Hi, I would like to know more information.";
+
+    // An explicit `message` prop still wins — those buttons say something
+    // specific about the section they sit in. Otherwise the campaign params
+    // decide, so a visitor from an ad or a QR code opens the chat already
+    // telling the counsellor where they came from and which method they read
+    // about. Read at click time, not render time: the popup gives the URL a
+    // moment to change, and stored landing params are client-only.
+    const campaign = currentCampaignMessage(window.location.search, window.location.pathname);
+    const text = message || campaign || DEFAULT_MESSAGE;
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
   };
 

@@ -33,6 +33,12 @@ export const UTM_FIELDS = [
   "utm_campaign",
   "utm_content",
   "utm_term",
+  // Which method the ad was about (Implant | hIUS). Drives the prefilled
+  // WhatsApp message in src/lib/campaign.js; stored here too so the session
+  // carries it. Deliberately absent from the Zoho map in sessionToZohoFields —
+  // there is no UTM_Method field in the CRM, and writing an unknown field name
+  // fails the whole update.
+  "utm_method",
   "placement",
   "platform",
   "src",

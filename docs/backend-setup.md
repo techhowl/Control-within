@@ -105,11 +105,47 @@ This is a heuristic, not a guarantee. It is wrong only when two visitors overlap
 inside the matching window, and an unmatched claim writes the neutral `Whatsapp`
 placeholder set rather than inventing data.
 
+### Prefilled WhatsApp message
+
+The one piece of attribution that *does* survive the jump: the counsellor sees
+where the person came from before anyone types. Built at click time in
+`src/lib/campaign.js` from two things — the channel, and `utm_method`
+(`implant` | `hiUS`, matched case-insensitively).
+
+| channel signal in the URL | message |
+| ------------------------- | ------- |
+| `platform=meta` (or `utm_medium=paid_social`) | Hi, I saw your ad on META and would like to know more about **{method}**. |
+| `utm_source=google` (or `utm_medium=paid_search`) | Hi, I saw your ad on Google and would like to know more about **{method}**. |
+| `src=qr…`/`utm_medium=scan` + `utm_source=chemist` | Hi, I scanned the QR code at the chemist and would like to know more about **{method}**. |
+| `src=qr…`/`utm_medium=scan` + `utm_source=clinic` | Hi, I scanned the QR code at the clinic and would like to know more about **{method}**. |
+
+`{method}` renders as `Implant` or `hIUS`. Meta is detected on `platform`, not
+`utm_source`, because `{{site_source_name}}` resolves to `fb`/`ig`/`msg` — never
+`meta`.
+
+Rules, in order:
+
+1. A `message` prop on `<WhatsAppButton/>` always wins. The six section CTAs on
+   `/ius` and `/implant` set one; every campaign URL lands on `/`, where none do.
+2. Otherwise the campaign message, if the URL yields both a channel and a method.
+   A missing `utm_method` is inferred from the path (`/implant`, `/ius`).
+3. Otherwise the unchanged default, `Hi, I would like to know more information.`
+   Channel without method, or method without channel, falls through to here — no
+   half-built sentence is ever sent.
+
+Landing params are cached in `localStorage.cw_utm`, so the message still works
+after the visitor clicks through to another page and the query string is gone.
+Arriving on a new campaign URL overwrites it; an organic page view does not.
+
+`utm_method` is stored on the session but **not** written to Zoho — there is no
+`UTM_Method` field in the CRM, and an unknown field name fails the whole update.
+Add the field, then add the mapping in `sessionToZohoFields`.
+
 ### Routes
 
 | Method | Path | Purpose |
 | ------ | ---- | ------- |
-| POST | `/api/attribution/session` | Browser ping. Body: `{ session_id, event: "land"\|"wa_click", utm_*, placement, platform, src, entry_path }`. Always 204, even when Valkey is down. |
+| POST | `/api/attribution/session` | Browser ping. Body: `{ session_id, event: "land"\|"wa_click", utm_*` (incl. `utm_method`)`, placement, platform, src, entry_path }`. Always 204, even when Valkey is down. |
 | POST | `/api/attribution/claim` | Interakt webhook. Header `x-api-key: <ATTRIBUTION_API_KEY>`. Body: `{ mobile, Created_at }`. Matches a session and patches the Lead. Flat JSON response. |
 | GET | `/api/attribution/debug?key=…` | Last 50 claim outcomes + live session count + the active window config. Use it to tune the lag settings. |
 

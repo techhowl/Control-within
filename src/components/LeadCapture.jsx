@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { customAlphabet } from "nanoid";
+import { CAMPAIGN_FIELDS, storeParams } from "@/lib/campaign";
 
 /**
  * Invisible attribution capture.
@@ -53,16 +54,17 @@ export default function LeadCapture() {
     const sid = getSessionId();
     if (!sid) return;
 
-    const params = {
-      utm_source: searchParams.get("utm_source"),
-      utm_medium: searchParams.get("utm_medium"),
-      utm_campaign: searchParams.get("utm_campaign"),
-      utm_content: searchParams.get("utm_content"),
-      utm_term: searchParams.get("utm_term"),
-      placement: searchParams.get("placement"),
-      platform: searchParams.get("platform"),
-      src: searchParams.get("src"),
-    };
+    const params = {};
+    for (const field of CAMPAIGN_FIELDS) {
+      const v = searchParams.get(field);
+      if (v) params[field] = v;
+    }
+
+    // Keep the campaign for the rest of the visit, so the WhatsApp button still
+    // knows where this person came from after they click through to another
+    // page and the params drop off the URL. Only written when the landing
+    // actually carried a campaign — an organic view must not wipe it.
+    storeParams(params);
 
     fetch("/api/attribution/session", {
       method: "POST",

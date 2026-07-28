@@ -2,6 +2,15 @@
 
 ## Changes Log
 
+### 2026-07-27 — `utm_method` → prefilled WhatsApp message
+- **Added** `src/lib/campaign.js` — client-only. Resolves the channel (meta / google / QR-chemist / QR-clinic) and the method (`utm_method=implant|hiUS`, matched case-insensitively) from the URL, and returns the matching sentence. Returns `null` rather than a partial sentence when either half is missing, so no copy is ever invented.
+- **Changed** `src/components/ui/WhatsAppButton.jsx` — the *default* prefilled message is now campaign-derived. Precedence: explicit `message` prop → campaign message → the unchanged `Hi, I would like to know more information.` The six `message=` CTAs on `/ius` and `/implant` are untouched; every campaign URL lands on `/`, where no button sets one, so all campaign traffic gets the derived message.
+- **Changed** `src/components/LeadCapture.jsx` — caches the landing params in `localStorage.cw_utm` so the message survives in-site navigation (the query string only exists on the first page view). Overwritten by a new campaign landing, never by an organic one.
+- **Added** `utm_method` to `UTM_FIELDS` in `src/lib/attribution.js` (stored on the session) and to the `wa_click` beacon. Deliberately **not** in `sessionToZohoFields` — no `UTM_Method` field exists in the CRM and an unknown field name fails the whole Zoho update.
+- Meta is detected on `platform=meta`, not `utm_source`: Meta resolves `{{site_source_name}}` to `fb`/`ig`/`msg`, never `meta`. `utm_medium=paid_social` and an fb/ig source list are backups.
+- Method falls back to the path when `utm_method` is absent (`/implant` → Implant, `/ius` → hIUS).
+- Docs: "Prefilled WhatsApp message" in `docs/backend-setup.md`.
+
 ### 2026-07-27 — Nearest-doctor radius fallback (30 km)
 - **Added** `src/data/pincodes.json` (1,430 entries, 37 KB) + `scripts/build-pincodes.mjs`, which trims the GeoNames India postal export (CC BY 4.0) to pincodes within 75 km of a doctor and stores their centroid coordinates. Rebuild whenever `doctors.json` changes: `node scripts/build-pincodes.mjs IN.txt`.
 - **Added** `findWithinRadius(pincode, maxKm)` to `src/lib/doctors.js`, wired into `findByLocation()` as a 4th tier after exact pincode → postal district → city name. `NEAREST_DOCTOR_RADIUS_KM` (default 30) tunes it; the table is built to 75 km so retuning needs no rebuild.

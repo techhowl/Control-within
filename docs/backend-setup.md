@@ -114,14 +114,17 @@ where the person came from before anyone types. Built at click time in
 
 | channel signal in the URL | message |
 | ------------------------- | ------- |
-| `platform=meta` (or `utm_medium=paid_social`) | Hi, I saw your ad on META and would like to know more about **{method}**. |
+| `platform=meta`, `utm_medium=paid_social`, or `fb`/`ig`/`facebook`/`instagram`/`messenger`/`meta` in **either** `utm_source` or `utm_medium` | Hi, I saw your ad on META and would like to know more about **{method}**. |
 | `utm_source=google` (or `utm_medium=paid_search`) | Hi, I saw your ad on Google and would like to know more about **{method}**. |
 | `src=qr…`/`utm_medium=scan` + `utm_source=chemist` | Hi, I scanned the QR code at the chemist and would like to know more about **{method}**. |
 | `src=qr…`/`utm_medium=scan` + `utm_source=clinic` | Hi, I scanned the QR code at the clinic and would like to know more about **{method}**. |
 
-`{method}` renders as `Implant` or `hIUS`. Meta is detected on `platform`, not
-`utm_source`, because `{{site_source_name}}` resolves to `fb`/`ig`/`msg` — never
-`meta`.
+`{method}` renders as `Implant` or `hIUS`. Meta paid traffic is detected on
+`platform=meta`, because `{{site_source_name}}` resolves to `fb`/`ig`/`msg` and
+never the string `meta`. Hand-built links (bio links, offline QR sheets) name the
+network in whichever slot the author picked — `utm_source=offline&utm_medium=instagram`
+is a real example — so `utm_source` and `utm_medium` are both checked against the
+network list. Note the wording says "ad" either way.
 
 Rules, in order:
 

@@ -7,7 +7,7 @@
 - **Changed** `src/components/ui/WhatsAppButton.jsx` — the *default* prefilled message is now campaign-derived. Precedence: explicit `message` prop → campaign message → the unchanged `Hi, I would like to know more information.` The six `message=` CTAs on `/ius` and `/implant` are untouched; every campaign URL lands on `/`, where no button sets one, so all campaign traffic gets the derived message.
 - **Changed** `src/components/LeadCapture.jsx` — caches the landing params in `localStorage.cw_utm` so the message survives in-site navigation (the query string only exists on the first page view). Overwritten by a new campaign landing, never by an organic one.
 - **Added** `utm_method` to `UTM_FIELDS` in `src/lib/attribution.js` (stored on the session) and to the `wa_click` beacon. Deliberately **not** in `sessionToZohoFields` — no `UTM_Method` field exists in the CRM and an unknown field name fails the whole Zoho update.
-- Meta is detected on `platform=meta`, not `utm_source`: Meta resolves `{{site_source_name}}` to `fb`/`ig`/`msg`, never `meta`. `utm_medium=paid_social` and an fb/ig source list are backups.
+- Meta is detected on `platform=meta`, not `utm_source`: Meta resolves `{{site_source_name}}` to `fb`/`ig`/`msg`, never `meta`. `utm_medium=paid_social` is a backup, plus a network list (`fb`/`ig`/`facebook`/`instagram`/`messenger`/`meta`) matched against **both** `utm_source` and `utm_medium` — hand-built links put the network in either slot, e.g. the real `utm_source=offline&utm_medium=instagram`.
 - Method falls back to the path when `utm_method` is absent (`/implant` → Implant, `/ius` → hIUS).
 - Docs: "Prefilled WhatsApp message" in `docs/backend-setup.md`.
 

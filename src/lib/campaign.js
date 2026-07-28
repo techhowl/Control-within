@@ -54,8 +54,13 @@ const TEMPLATES = {
 
 // Meta fills utm_source from {{site_source_name}}, which resolves to fb / ig /
 // msg / an — never the string "meta". `platform=meta` is the hardcoded part of
-// the URL and the reliable signal; the source list is a safety net.
-const META_SOURCES = ["fb", "ig", "facebook", "instagram", "messenger"];
+// the paid URL and the most reliable signal.
+//
+// Checked against utm_source *and* utm_medium, because hand-built links name the
+// network in whichever slot the author felt like: a bio or offline-shared link
+// reads utm_source=offline&utm_medium=instagram, where the only mention of Meta
+// is the medium. Both slots count as Meta.
+const META_HINTS = ["fb", "ig", "facebook", "instagram", "messenger", "meta"];
 
 const lower = (v) => String(v ?? "").trim().toLowerCase();
 
@@ -91,7 +96,12 @@ export function resolveChannel(params = {}) {
     if (source === "clinic") return "clinic";
     return null;
   }
-  if (platform === "meta" || medium === "paid_social" || META_SOURCES.includes(source)) {
+  if (
+    platform === "meta" ||
+    medium === "paid_social" ||
+    META_HINTS.includes(source) ||
+    META_HINTS.includes(medium)
+  ) {
     return "meta";
   }
   if (source === "google" || medium === "paid_search") return "google";

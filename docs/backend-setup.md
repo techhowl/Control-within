@@ -191,9 +191,17 @@ rather than treated as a date.
 
 ### Write rules
 
-- **`UTM_Source` is never touched.** Not created, not updated, matched or not —
-  the WhatsApp phrase system owns that field. It is still reported in the
-  response so you can see what the matched session carried.
+- **`UTM_Source` is never touched — except a QR scan at a named place.** The
+  WhatsApp phrase system owns that field for every channel, so a Meta or Google
+  match leaves it alone and only reports the value in the response. The one
+  exception: when the matched session is a scan (`src=qr…` or `utm_medium=scan`)
+  **and** `utm_source` is `chemist` or `clinic`, that value is written, over an
+  existing one if need be. Which counter the person was standing at is the
+  strongest source signal the funnel produces and it lives nowhere else in the
+  Lead — `Src` only carries `qr_connexi_campaign`, identical for both. Gated on a
+  *matched* session, so an unmatched claim can never write the placeholder
+  `Whatsapp` there. Look for `UTM_Source writable — QR scan at chemist` in the
+  logs. See `qrLocationSource()` in the claim route.
 - **Values are percent-decoded.** A campaign name pasted into Meta Ads already
   encoded (`Control%20Within%20|%20July`) survives the browser's own decode and
   would reach Zoho with the `%20`s intact. `clean()` decodes up to twice (so

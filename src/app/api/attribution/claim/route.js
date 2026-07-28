@@ -43,8 +43,9 @@ import { searchZohoRecords, updateZohoRecord } from "@/lib/zoho";
  */
 
 // Fields this route is allowed to write. UTM_Source is deliberately absent —
-// it is owned by the WhatsApp phrase system, so we never create or update it,
-// matched or not. The matched value is still reported in the response.
+// it is owned by the WhatsApp phrase system, so we never create or update it.
+// The matched value is still reported in the response. See qrLocationSource()
+// for the single exception.
 const ZOHO_UTM_FIELDS = [
   "UTM_Medium",
   "UTM_Campaign",
@@ -54,6 +55,28 @@ const ZOHO_UTM_FIELDS = [
   "Platform",
   "Src",
 ];
+
+/**
+ * The one case where this route does write UTM_Source: a QR code scanned at a
+ * named place.
+ *
+ * `chemist` / `clinic` is the whole point of those codes — which counter the
+ * person was standing at is the realest source signal the funnel ever gets, and
+ * it exists nowhere else in the Lead (`Src` only carries the campaign marker,
+ * `qr_connexi_campaign`, which is identical for both). The WhatsApp phrase
+ * system keeps ownership of UTM_Source for every other channel.
+ *
+ * @returns {"chemist"|"clinic"|null}
+ */
+function qrLocationSource(session = {}) {
+  const src = (clean(session.src) || "").toLowerCase();
+  const medium = (clean(session.utm_medium) || "").toLowerCase();
+  const source = (clean(session.utm_source) || "").toLowerCase();
+
+  const scanned = src.startsWith("qr") || medium === "scan";
+  if (!scanned) return null;
+  return source === "chemist" || source === "clinic" ? source : null;
+}
 
 /**
  * Zoho's /search endpoint reads an index that is populated asynchronously after
@@ -188,13 +211,17 @@ async function findLead(moduleName, mobile, log, delays, phase) {
  *
  * A field whose stored value already equals what we would write is left alone,
  * so a re-run is a no-op rather than a pointless Zoho update.
+ *
+ * `writableFields` is ZOHO_UTM_FIELDS plus UTM_Source on a QR scan at a named
+ * place — passed in rather than recomputed here, because only the caller knows
+ * which session was claimed.
  */
-async function patchLead({ moduleName, lead, fields, matched, log }) {
+async function patchLead({ moduleName, lead, fields, matched, writableFields, log }) {
   const patch = {};
   const skipped = [];
   const overwritten = [];
   const unchanged = [];
-  for (const key of ZOHO_UTM_FIELDS) {
+  for (const key of writableFields) {
     if (fields[key] === undefined) continue;
     if (isBlank(lead[key])) {
       patch[key] = fields[key];
@@ -211,7 +238,7 @@ async function patchLead({ moduleName, lead, fields, matched, log }) {
     patch[key] = fields[key];
     overwritten.push(key);
   }
-  log("lead.current", Object.fromEntries(ZOHO_UTM_FIELDS.map((k) => [k, lead[k] ?? null])));
+  log("lead.current", Object.fromEntries(writableFields.map((k) => [k, lead[k] ?? null])));
   log("patch.built", {
     policy: matched ? "overwrite (matched session — last touch wins)" : "fill-if-blank (defaults)",
     write: patch,
@@ -368,11 +395,19 @@ export async function POST(request) {
   let confidence = "none";
   if (matched) confidence = claimed.candidates > 1 ? "low" : "high";
 
+  // A QR scan at a chemist or clinic is the only thing that unlocks UTM_Source.
+  // Checked against the matched session, so an unmatched claim can never write
+  // the placeholder "Whatsapp" into it.
+  const qrPlace = matched ? qrLocationSource(claimed.session) : null;
+  const writableFields = qrPlace ? [...ZOHO_UTM_FIELDS, "UTM_Source"] : ZOHO_UTM_FIELDS;
+
   log("fields.chosen", {
     source: matched ? "session" : "defaults (.env)",
     confidence,
     fields,
-    note: "UTM_Source is reported but never written",
+    note: qrPlace
+      ? `UTM_Source writable — QR scan at ${qrPlace}`
+      : "UTM_Source is reported but never written",
   });
 
   const base = {
@@ -402,6 +437,7 @@ export async function POST(request) {
       lead,
       fields,
       matched,
+      writableFields,
       log,
     });
 

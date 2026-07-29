@@ -55,7 +55,7 @@ export default function Videos() {
             {LANGS.map(([code, label]) => (
               <button
                 key={code}
-                id={`btn_home_lang_${code}`}
+                id={`btn_home_videolang_${code}`}
                 type="button"
                 onClick={() => setLang(code)}
                 aria-pressed={lang === code}

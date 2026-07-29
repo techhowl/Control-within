@@ -141,7 +141,7 @@ export default function Process() {
           <p className="text-base text-muted md:text-lg">
             You can reach your doctor any time with questions.
           </p>
-          <WhatsAppButton id="btn_ius_chat_mid" method="hIUS" className="btn-chat inline-flex items-center gap-2 rounded-full bg-teal px-6 py-3 text-xs font-semibold uppercase tracking-wide text-white transition-colors hover:bg-teal-hover">
+          <WhatsAppButton id="btn_ius_chat_process" method="hIUS" className="btn-chat inline-flex items-center gap-2 rounded-full bg-teal px-6 py-3 text-xs font-semibold uppercase tracking-wide text-white transition-colors hover:bg-teal-hover">
             Chat On WhatsApp <span aria-hidden="true">→</span>
           </WhatsAppButton>
         </div>

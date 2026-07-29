@@ -89,7 +89,8 @@ export default function IsThisForYou() {
             action. A gynaecologist can help you decide which fits your life.
           </p>
           <WhatsAppButton
-            className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-accent-hover"
+            id="btn_home_chat_isthisforyou"
+            className="btn-chat inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-accent-hover"
           >
             Chat On WhatsApp <span aria-hidden="true">→</span>
           </WhatsAppButton>

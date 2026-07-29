@@ -15,7 +15,7 @@ const SLIDES = [
     image: "hero_1.png",
     label: "Control Within",
     sublabel: "Long-term & reversible",
-    cta: { label: "Find A Doctor Near You", href: "https://wa.me/918452926740" },
+    cta: { label: "Find A Doctor Near You", href: "https://wa.me/918452926740", id: "btn_home_finddoctor_hero_banner", cls: "btn-cta" },
   },
   {
     bg: "#d7cfeb",
@@ -34,7 +34,7 @@ const SLIDES = [
       "Reversible — return to fertility is quick once removed",
       "No recurring costs",
     ],
-    cta: { label: "Watch A Video On Contraceptive Implants", href: "#videos", id: "btn_implant_watchvideo", cls: "btn-video" },
+    cta: { label: "Watch A Video On Contraceptive Implants", href: "#videos", id: "btn_home_implant_watchvideo_banner", cls: "btn-video" },
   },
   {
     bg: "#faf8f5",
@@ -54,7 +54,7 @@ const SLIDES = [
       "Dual functionality as a contraceptive",
       "Fertility returns within weeks, after removal",
     ],
-    cta: { label: "Watch A Video On Hormonal IUS", href: "#videos", id: "btn_ius_watchvideo", cls: "btn-video" },
+    cta: { label: "Watch A Video On Hormonal IUS", href: "#videos", id: "btn_home_ius_watchvideo_banner", cls: "btn-video" },
   },
   {
     bg: "#ede6d9",
@@ -67,7 +67,7 @@ const SLIDES = [
     image: "hero_4.png",
     label: "Implant or hIUS",
     sublabel: "Your choice, your control",
-    cta: { label: "Know More", href: "#methods" },
+    cta: { label: "Know More", href: "#methods", id: "btn_home_know_more_banner", cls: "btn-cta" },
   },
 ];
 
@@ -104,7 +104,8 @@ function Cta({ slide, className = "" }) {
         className={`inline-block rounded-full ${className}`}
       >
         <WhatsAppButton
-          className="relative z-50 flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5 w-full h-full"
+          id={slide.cta.id}
+          className={`relative z-50 flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5 w-full h-full${slide.cta.cls ? ` ${slide.cta.cls}` : ""}`}
         >
           {slide.cta.label}
           <span aria-hidden="true">→</span>

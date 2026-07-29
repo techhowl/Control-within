@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const PANELS = [
   {
     side: "left",
+    slug: "implant",
     title: (
       <>
         Contraceptive <br /> Implants
@@ -40,6 +41,7 @@ const PANELS = [
   },
   {
     side: "right",
+    slug: "ius",
     title: (
       <>
         Hormonal <br /> IUS
@@ -199,8 +201,9 @@ function MobilePanel({ panel }) {
   return (
     <motion.div
       layout
+      id={`btn_home_tab_${panel.slug}`}
       onClick={() => setOpen(!open)}
-      className="relative rounded-2xl cursor-pointer overflow-hidden shadow-sm"
+      className="btn-tab relative rounded-2xl cursor-pointer overflow-hidden shadow-sm"
       style={{ backgroundColor: panel.bg }}
     >
       {/* Header Area */}
@@ -212,7 +215,10 @@ function MobilePanel({ panel }) {
 
       {/* Bottom Right CTA Text & Circular Arrow (Hidden when open) */}
       {!open && (
-        <div className="absolute bottom-5 right-5 flex items-center gap-1.5">
+        <div
+          id={`btn_home_readmore_${panel.slug}`}
+          className="btn-readmore absolute bottom-5 right-5 flex items-center gap-1.5"
+        >
           <span className="text-[13px] font-semibold tracking-wide text-white/95">
             Click to read more
           </span>

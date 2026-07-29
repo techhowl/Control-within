@@ -37,6 +37,7 @@ const METHODS = [
       "Helps reduce risk of iron-deficiency anaemia",
     ],
     cta: "Know More About Implants",
+    ctaId: "btn_home_learnmore_implant",
     image: "/implant_1.png",
     imageMobile: "/implant_mobile.png",
     accent: "#614c91",
@@ -59,6 +60,7 @@ const METHODS = [
       "Lower hormone exposure than a daily pill",
     ],
     cta: "Know More About hIUS",
+    ctaId: "btn_home_learnmore_ius",
     image: "/IUS_1.png",
     imageMobile: "/IUS_mobile.png",
     accent: "#085b5c",
@@ -176,9 +178,10 @@ function MethodCard({ m }) {
               // This card speaks for one method, and the visitor is on a page
               // that covers both — so name it, rather than letting utm_method
               // from the ad decide.
+              id={m.ctaId}
               method={m.productName}
               onClick={(e) => e.stopPropagation()} // Prevents the card from closing when clicked
-              className="inline-flex items-center gap-2 rounded-full bg-dark py-2 pl-5 pr-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+              className="btn-learnmore inline-flex items-center gap-2 rounded-full bg-dark py-2 pl-5 pr-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
             >
               {m.cta}
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-dark">
@@ -188,10 +191,11 @@ function MethodCard({ m }) {
           ) : (
             <a
               href={m.href}
+              id={m.ctaId}
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-2 rounded-full bg-dark py-2 pl-5 pr-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+              className="btn-learnmore inline-flex items-center gap-2 rounded-full bg-dark py-2 pl-5 pr-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
             >
               {m.cta}
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-dark">

@@ -50,6 +50,11 @@ const TEMPLATES = {
     `Hi, I scanned the QR code at the chemist and would like to know more about ${m}.`,
   clinic: (m) =>
     `Hi, I scanned the QR code at the clinic and would like to know more about ${m}.`,
+  // No campaign params at all: an organic visitor, arriving via search, a shared
+  // link or by typing the address. Still worth naming — the counsellor learns the
+  // method, and "visited your website" is the honest description of how they got
+  // here. This is the channel every unrecognised URL lands on.
+  website: (m) => `Hi, I visited your website and would like to know more about ${m}.`,
 };
 
 // Meta fills utm_source from {{site_source_name}}, which resolves to fb / ig /
@@ -103,11 +108,13 @@ export function resolveMethod(params = {}, pathname = "", explicit = null) {
 }
 
 /**
- * Which of the four campaign routes this visitor arrived by, or null.
+ * How this visitor arrived. Never null — anything unrecognised, including a URL
+ * with no params at all, is "website".
  *
- * QR is tested first because it is the only one that names a physical place,
- * and its `utm_source` (chemist / clinic) is what distinguishes the two
- * messages — a QR link missing that is not enough to say where it was scanned.
+ * QR is tested first because it is the only channel that names a physical place,
+ * and its `utm_source` (chemist / clinic) is what separates the two messages. A
+ * scan link without that falls through to "website": a QR code we cannot place
+ * tells us nothing more than a plain visit does.
  */
 export function resolveChannel(params = {}) {
   const src = lower(params.src);
@@ -118,7 +125,7 @@ export function resolveChannel(params = {}) {
   if (src.startsWith("qr") || medium === "scan") {
     if (source === "chemist") return "chemist";
     if (source === "clinic") return "clinic";
-    return null;
+    return "website";
   }
   if (
     platform === "meta" ||
@@ -129,23 +136,21 @@ export function resolveChannel(params = {}) {
     return "meta";
   }
   if (GOOGLE_HINTS.includes(source) || GOOGLE_HINTS.includes(medium)) return "google";
-  return null;
+  return "website";
 }
 
 /**
- * The prefilled message for these params, or null when the params do not
- * describe a campaign we have wording for — the caller then keeps
- * DEFAULT_MESSAGE. Returning null rather than a half-built sentence is
- * deliberate: no invented copy, ever.
+ * The prefilled message for these params, or null when no method can be
+ * determined — the caller then keeps DEFAULT_MESSAGE. Every channel resolves, so
+ * the method is the only thing that can be missing, and that happens exactly on
+ * the pages covering both methods (`/`) when no ad or button named one. Returning
+ * null rather than guessing a method is deliberate: no invented copy, ever.
  */
 export function buildCampaignMessage(params = {}, pathname = "", explicitMethod = null) {
-  const channel = resolveChannel(params);
-  if (!channel) return null;
-
   const method = resolveMethod(params, pathname, explicitMethod);
   if (!method) return null;
 
-  return TEMPLATES[channel](method);
+  return TEMPLATES[resolveChannel(params)](method);
 }
 
 /** Pull the campaign fields out of a query string. */

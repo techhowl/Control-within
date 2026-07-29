@@ -69,16 +69,16 @@ export default function WhatsAppButton({ children, className, onClick, message, 
     //   ? `Hi, I would like to know more information. ref:[${chatId}]`
     //   : "Hi, I would like to know more information.";
 
-    // A campaign visitor gets the campaign phrase, whichever button they tap:
-    // every Chat Now, Chat On WhatsApp and the mobile float icon included. It
-    // outranks the `message` prop because that prop only names a method
-    // ("…about hIUS") while the campaign phrase names the method *and* where
-    // they came from — dropping the channel would lose the more useful half.
-    // The method still tracks the page they are on, so an Implant ad that led
-    // to /ius sends "saw your ad on META … about hIUS".
+    // One phrase system for every button — Chat Now, Chat On WhatsApp, the
+    // mobile float icon, the method cards, the footer link. It names where the
+    // visitor came from (an ad, a QR code at a chemist or clinic, or just the
+    // website) and which method they are looking at, so the counsellor opens the
+    // chat already knowing both.
     //
-    // `message` remains the wording for organic visitors, and DEFAULT_MESSAGE
-    // the fallback when neither applies.
+    // Needs a method to say anything, which is the one thing a page covering
+    // both methods cannot supply: on `/` with no ad and no method card, this
+    // returns null and DEFAULT_MESSAGE stands. `message` is a per-button escape
+    // hatch, unused today — prefer `method` and let the phrase system word it.
     //
     // Read at click time, not render time: the popup gives the URL a moment to
     // change, and stored landing params are client-only.

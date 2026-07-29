@@ -102,7 +102,7 @@ form submitted  Zoho Flow node creates the Lead
 ```
 
 This is a heuristic, not a guarantee. It is wrong only when two visitors overlap
-inside the matching window, and an unmatched claim writes the neutral `Whatsapp`
+inside the matching window, and an unmatched claim writes the neutral `Website`
 placeholder set rather than inventing data.
 
 ### Prefilled WhatsApp message
@@ -118,6 +118,7 @@ where the person came from before anyone types. Built at click time in
 | `google`/`paid_search`/`adwords`/`google_ads`/`googleads`/`gads` in **either** `utm_source` or `utm_medium` | Hi, I saw your ad on Google and would like to know more about **{method}**. |
 | `src=qr…`/`utm_medium=scan` + `utm_source=chemist` | Hi, I scanned the QR code at the chemist and would like to know more about **{method}**. |
 | `src=qr…`/`utm_medium=scan` + `utm_source=clinic` | Hi, I scanned the QR code at the clinic and would like to know more about **{method}**. |
+| anything else, including no params at all — an organic visit | Hi, I visited your website and would like to know more about **{method}**. |
 
 `{method}` renders as `Implant` or `hIUS`. Meta paid traffic is detected on
 `platform=meta`, because `{{site_source_name}}` resolves to `fb`/`ig`/`msg` and
@@ -139,19 +140,22 @@ link and the `/ius` + `/implant` section CTAs — so all of them behave the same
 
 Message, in order:
 
-1. The **campaign message**, whenever the params yield a channel *and* a method.
-   It outranks a `message` prop: that prop only names a method ("…about hIUS")
-   while this names the method *and* the channel.
-2. Otherwise the `message` prop, which is what organic visitors on `/ius` and
-   `/implant` see. Unchanged wording.
-3. Otherwise `Hi, I would like to know more information.` Channel without method,
-   or method without channel, lands here — no half-built sentence is ever sent.
+1. The **phrase above**, whenever a method can be determined. Every channel
+   resolves — an unrecognised or param-free URL is `website` — so this is what
+   almost every click sends.
+2. A `message` prop on the button. An escape hatch, unused today: prefer `method`
+   and let the phrase system do the wording, so there is one place to change it.
+3. `Hi, I would like to know more information.` Reached only when no method is
+   known, which is exactly `/` and `/privacy-policy` with no ad and no method
+   card — those pages cover both methods, and guessing one would be inventing
+   copy.
 
 **Method**, most specific first — where the visitor is *now* beats the ad that
 brought them, because `utm_method` records what was advertised, not what they
 chose:
 
-1. A `method` prop, for a button that speaks for one method (a method card CTA).
+1. A `method` prop, for a button that speaks for one method — the method cards on
+   `/`, and the section CTAs on `/ius` and `/implant`.
 2. The path — `/implant`, `/ius`.
 3. `utm_method`, the fallback on shared pages like `/`.
 
@@ -200,7 +204,7 @@ rather than treated as a date.
   strongest source signal the funnel produces and it lives nowhere else in the
   Lead — `Src` only carries `qr_connexi_campaign`, identical for both. Gated on a
   *matched* session, so an unmatched claim can never write the placeholder
-  `Whatsapp` there. Look for `UTM_Source writable — QR scan at chemist` in the
+  `Website` there. Look for `UTM_Source writable — QR scan at chemist` in the
   logs. See `qrLocationSource()` in the claim route.
 - **Values are percent-decoded.** A campaign name pasted into Meta Ads already
   encoded (`Control%20Within%20|%20July`) survives the browser's own decode and
@@ -214,7 +218,7 @@ rather than treated as a date.
   campaign's spend would attribute to nothing. The overwritten field names come
   back in `fields_overwritten`.
 - **No match → fill-if-blank.** The neutral placeholder set
-  (`UTM_Medium/Platform = Whatsapp`, `UTM_Campaign = Connexi * Howl`,
+  (`UTM_Medium/Platform = Website`, `UTM_Campaign = Connexi * Howl`,
   env-overridable) only ever fills empty fields, so it can never clobber a real
   campaign value. Every Lead still ends up carrying campaign context.
 - **A no-op is reported, not hidden.** Nothing written comes back as

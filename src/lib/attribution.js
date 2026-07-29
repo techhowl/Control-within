@@ -387,9 +387,9 @@ export function sessionToZohoFields(session = {}) {
 // Fallback values live in .env so they can be changed without a code edit.
 // Each entry is [Zoho field, env var, last-resort literal].
 const DEFAULT_FIELD_ENV = [
-  ["UTM_Source", "ATTR_DEFAULT_UTM_SOURCE", "Whatsapp"],
-  ["UTM_Medium", "ATTR_DEFAULT_UTM_MEDIUM", "Whatsapp"],
-  ["Platform", "ATTR_DEFAULT_PLATFORM", "Whatsapp"],
+  ["UTM_Source", "ATTR_DEFAULT_UTM_SOURCE", "Website"],
+  ["UTM_Medium", "ATTR_DEFAULT_UTM_MEDIUM", "Website"],
+  ["Platform", "ATTR_DEFAULT_PLATFORM", "Website"],
   ["UTM_Campaign", "ATTR_DEFAULT_UTM_CAMPAIGN", "Connexi * Howl"],
 ];
 

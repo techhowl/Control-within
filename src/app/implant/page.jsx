@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Script from "next/script";
 import DoctorLocator from "@/components/DoctorLocator";
 import Hero from "@/components/sections/implant/Hero";
 import Benefits from "@/components/sections/implant/Benefits";
@@ -18,18 +19,28 @@ export const metadata = {
 
 export default function ImplantPage() {
   return (
-    <main className="overflow-x-hidden">
-      <Hero />
-      <Benefits />
-      <Relate />
-      <Process />
-      <Aftercare />
-      <SideEffects />
-      {/* <Stories /> */}
-      <Faq faqs={IMPLANT_FAQS} heading="Every Question You've Been Sitting On" />
-      <Suspense fallback={null}>
-        <DoctorLocator />
-      </Suspense>
-    </main>
+    <>
+      {/* Microsoft Clarity — loads only on /implant */}
+      <Script id="ms-clarity" strategy="afterInteractive">
+        {`(function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "xwhzbek4ne");`}
+      </Script>
+      <main className="overflow-x-hidden">
+        <Hero />
+        <Benefits />
+        <Relate />
+        <Process />
+        <Aftercare />
+        <SideEffects />
+        {/* <Stories /> */}
+        <Faq faqs={IMPLANT_FAQS} heading="Every Question You've Been Sitting On" />
+        <Suspense fallback={null}>
+          <DoctorLocator />
+        </Suspense>
+      </main>
+    </>
   );
 }

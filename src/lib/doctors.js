@@ -313,7 +313,7 @@ function nearestByPincodePrefix(pincode, city) {
  *   "Delhi 110009"    →  exact pincode, city agrees
  *   "560099"          →  no exact hit → nearest Bengaluru (560xxx) doctor
  *   "Faridabad 121001" → unknown city, district 121 uncovered → radius → a
- *                        Gurgaon doctor ~27 km away, distance_km: 27
+ *                        NOIDA doctor ~22 km away, distance_km: 22
  *   "Mumbai 400001"   →  nothing within the radius → null → 404
  */
 export function findByLocation(location) {

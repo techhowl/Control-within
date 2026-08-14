@@ -1,7 +1,8 @@
 # Doctors Geocoded List
 
-> **Total**: 177 doctors  |  **Geocoded**: 177  |  **Not found**: 0
+> **Total**: 163 doctors  |  **Geocoded**: 163  |  **Not found**: 0
 > Source: Nominatim / OpenStreetMap  |  Country filter: India
+> Last update: August intake — 74 exclusions removed, 60 additions geocoded.
 
 ---
 
@@ -9,217 +10,175 @@
 
 | # | SDPID | Doctor Name | City | State | Pincode | Latitude | Longitude |
 |--:|------:|-------------|------|-------|--------:|---------:|----------:|
-| 1 | 8220 | Dr. Sheetal Jindal | Chandigarh | CH | 160020 | `30.743665` | `76.782256` |
-| 2 | 8283 | Dr. Jaslin Mavi | Mohali | CH | 140101 | `30.69088` | `76.711488` |
-| 3 | 8047 | Dr. Renu Chakarvarty | Panchkula | CH | 134117 | `30.6795` | `76.849305` |
-| 4 | 8049 | Dr. Bhavna Agarwal | Panchkula | CH | 134109 | `30.69754` | `76.855107` |
-| 5 | 8063 | Dr. Ruchita Kaushal | Panchkula | CH | 134116 | `30.669792` | `76.886803` |
-| 6 | 8269 | Dr. Monika Narang | Panchkula | CH | 134113 | `30.69754` | `76.855107` |
-| 7 | 4062 | Dr. Arpana Jain | Delhi | DL | 110009 | `28.613895` | `77.209006` |
-| 8 | 4071 | Dr. Madhu Tyagi | Delhi | DL | 110033 | `28.613895` | `77.209006` |
-| 9 | 4167 | Dr. Mamta Mishra | Delhi | DL | 110070 | `28.613895` | `77.209006` |
-| 10 | 6652 | Dr. Aruna Nigam | Delhi | DL | 110071 | `28.613895` | `77.209006` |
-| 11 | 6740 | Dr. Neera Agrawal | Delhi | DL | 110092 | `28.613895` | `77.209006` |
-| 12 | 8616 | Dr. Anuradaha Kapoor | Delhi | DL | 110034 | `28.613895` | `77.209006` |
-| 13 | 8617 | Dr. Sonika Naik | Delhi | DL | 110092 | `28.613895` | `77.209006` |
-| 14 | 8618 | Dr. Usha M Kumar | Delhi | DL | 110052 | `28.613895` | `77.209006` |
-| 15 | 8620 | Dr. Kalpana  | Delhi | DL | 110091 | `28.613895` | `77.209006` |
-| 16 | 8775 | Dr. Sumedha Gargy | Ranchi | Jharkhand | 834001 | `23.37005` | `85.325039` |
-| 17 | 5092 | Dr. Pradeepa R  | Bengaluru | Karnataka | 560041 | `12.976794` | `77.590082` |
-| 18 | 6627 | Dr. Kavita Laxmi Easwaran | Bengaluru | Karnataka | 560043 | `12.976794` | `77.590082` |
-| 19 | 6629 | Dr. Uma Maheswari | Bengaluru | Karnataka | 560068 | `12.976794` | `77.590082` |
-| 20 | 6630 | Dr. Geetha M.S. | Bengaluru | Karnataka | 561203 | `12.976794` | `77.590082` |
-| 21 | 6634 | Dr. S Uma Maheshwari | Bengaluru | Karnataka | None | `12.976794` | `77.590082` |
-| 22 | 6636 | Dr. Akshita R Seth | Bengaluru | Karnataka | 560003 | `12.976794` | `77.590082` |
-| 23 | 7812 | Dr. Arundhati Herle | Bengaluru | Karnataka | 560050 | `12.976794` | `77.590082` |
-| 24 | 7813 | Dr. Ambuja Govindraj | Bengaluru | Karnataka | 560010 | `12.976794` | `77.590082` |
-| 25 | 7816 | Dr. Bs Susheela Rani | Bengaluru | Karnataka | 560042 | `12.976794` | `77.590082` |
-| 26 | 7821 | Dr. Aparna Nair | Bengaluru | Karnataka | 560066 | `12.976794` | `77.590082` |
-| 27 | 8226 | Dr. Sripada Vinekar | Bengaluru | Karnataka | 560055 | `12.976794` | `77.590082` |
-| 28 | 8577 | Dr. Geeta | Bengaluru | Karnataka | 560028 | `12.976794` | `77.590082` |
-| 29 | 8585 | Dr. Kavita Laxmi Easwaran | Bengaluru | Karnataka | 560043 | `12.976794` | `77.590082` |
-| 30 | 8587 | Dr. Ambuja Govindaraj | Bengaluru | Karnataka | 560037 | `12.967308` | `77.716706` |
-| 31 | 8597 | Dr. Rachna Arvind | Bengaluru | Karnataka | 560079 | `12.976794` | `77.590082` |
-| 32 | 8658 | Dr. Aruna Muralidhar | Bengaluru | Karnataka | 560011 | `12.976794` | `77.590082` |
-| 33 | 8671 | Dr. Manjula S Patil | Bengaluru | Karnataka | 560077 | `12.976794` | `77.590082` |
-| 34 | 8754 | Dr. Swetha Madhuri | Bengaluru | Karnataka | 560068 | `12.976794` | `77.590082` |
-| 35 | 8755 | Dr. Arpitha Seth | Bengaluru | Karnataka | 560003 | `12.976794` | `77.590082` |
-| 36 | 8758 | Dr. Pradeepa | Bengaluru | Karnataka | 560011 | `12.976794` | `77.590082` |
-| 37 | 8759 | Dr. Manjula Chandrashekar | Bengaluru | Karnataka | 560040 | `12.976794` | `77.590082` |
-| 38 | 8839 | Dr. Sahana K P | Bengaluru | Karnataka | 560079 | `12.976794` | `77.590082` |
-| 39 | 8888 | Dr. Aparna K | Bengaluru | Karnataka | 560079 | `12.976794` | `77.590082` |
-| 40 | 8945 | Dr. Janani Chandra-Varthur | Bengaluru | Karnataka | 560087 | `12.976794` | `77.590082` |
-| 41 | 7993 | Dr. Anita Kant | Faridabad | NCR | 121001 | `28.403148` | `77.310556` |
-| 42 | 8007 | Dr. Niti Kautish | Faridabad | NCR | 121001 | `28.403148` | `77.310556` |
-| 43 | 8013 | Dr. Ravinder Kaur Khurana | Faridabad | NCR | 121002 | `28.435388` | `77.306061` |
-| 44 | 8016 | Dr. Sandhya Nanda | Faridabad | NCR | 121007 | `28.37275` | `77.31177` |
-| 45 | 8027 | Dr. Deepti Sharma  | Faridabad | NCR | 121002 | `28.435388` | `77.306061` |
-| 46 | 8028 | Dr. Gargi Agrawal  | Faridabad | NCR | 121002 | `28.435388` | `77.306061` |
-| 47 | 8031 | Dr. Namrta Seth  | Faridabad | NCR | 121002 | `28.435388` | `77.306061` |
-| 48 | 8038 | Dr. Sangeeta Chopra  | Faridabad | NCR | 121002 | `28.435388` | `77.306061` |
-| 49 | 3158 | Dr. Astha Agrawal  | Ghaziabad | NCR | 201017 | `28.69152` | `77.447541` |
-| 50 | 6667 | Dr. Hemangi Negi | Ghaziabad | NCR | 201010 | `28.642853` | `77.326734` |
-| 51 | 6673 | Dr. Ritu Gupta | Ghaziabad | NCR | 201010 | `28.642853` | `77.326734` |
-| 52 | 6684 | Dr. Shubha Gupta | Ghaziabad | NCR | 201010 | `28.642853` | `77.326734` |
-| 53 | 6701 | Dr. Archana Sharma  | Ghaziabad | NCR | 201001 | `28.671153` | `77.412036` |
-| 54 | 6702 | Dr. Alpana Kansal  | Ghaziabad | NCR | 201001 | `28.671153` | `77.412036` |
-| 55 | 6703 | Dr. Gunjan Gupta  | Ghaziabad | NCR | 201014 | `28.634214` | `77.369913` |
-| 56 | 6715 | Dr. Kusum Gupta  | Ghaziabad | NCR | 201005 | `28.680602` | `77.359165` |
-| 57 | 6721 | Dr. Gunjan Gulati  | Ghaziabad | NCR | None | `28.774997` | `77.458697` |
-| 58 | 6724 | Dr. Vanipuri  | Ghaziabad | NCR | 201017 | `28.69152` | `77.447541` |
-| 59 | 6789 | Dr. Astha Agarwal | Ghaziabad | NCR | 201017 | `28.69152` | `77.447541` |
-| 60 | 6798 | Dr. Pragya Pandey | Ghaziabad | NCR | 201002 | `28.69152` | `77.447541` |
-| 61 | 6814 | Dr. Archana Tiwari | Ghaziabad | NCR | 201204 | `28.804506` | `77.542455` |
-| 62 | 6820 | Dr. Prerna Singhal | Ghaziabad | NCR | 201014 | `28.634214` | `77.369913` |
-| 63 | 7555 | Dr. Rani Ghai | Ghaziabad | NCR | 201009 | `28.650707` | `77.437655` |
-| 64 | 8295 | Dr. Rachna Jindal | Ghaziabad | NCR | 201003 | `28.671153` | `77.412036` |
-| 65 | 8296 | Dr. Rekha Loiwal | Ghaziabad | NCR | 201001 | `28.671153` | `77.412036` |
-| 66 | 8297 | Dr. Parul Gupta | Ghaziabad | NCR | 201009 | `28.650707` | `77.437655` |
-| 67 | 8298 | Dr. Madhuri Verma | Ghaziabad | NCR | 201010 | `28.642853` | `77.326734` |
-| 68 | 8299 | Dr. Archana Singh | Ghaziabad | NCR | 201009 | `28.650707` | `77.437655` |
-| 69 | 8300 | Dr. Archana Verma | Ghaziabad | NCR | 201002 | `28.69152` | `77.447541` |
-| 70 | 8301 | Dr. Anjana Sabharwal | Ghaziabad | NCR | 201014 | `28.634214` | `77.369913` |
-| 71 | 8302 | Dr. Shalini Agarwal | Ghaziabad | NCR | 201002 | `28.69152` | `77.447541` |
-| 72 | 8613 | Dr. Chhaya Goyal | Ghaziabad | NCR | 201002 | `28.69152` | `77.447541` |
-| 73 | 8654 | Dr. Pulkit Teyagi | Ghaziabad | NCR | 201204 | `28.804506` | `77.542455` |
-| 74 | 9009 | Dr. Seema Varsnay | Ghaziabad | NCR | 201005 | `28.680602` | `77.359165` |
-| 75 | 9014 | Dr. Maneesha Agrawal | Ghaziabad | NCR | None | `28.774997` | `77.458697` |
-| 76 | 9050 | Dr. Chumkai Dey Sinha | Ghaziabad | NCR | 201001 | `28.671153` | `77.412036` |
-| 77 | 3019 | Dr. Shameem K. Khan | Gurgaon | NCR | 122001 | `28.489087` | `77.011157` |
-| 78 | 3022 | Dr. Deepika Tiwari | Gurgaon | NCR | 122003 | `28.480863` | `77.084888` |
-| 79 | 3028 | Dr. Suman Lal | Gurgaon | NCR | 122002 | `28.480863` | `77.084888` |
-| 80 | 4267 | Dr. Priyanka Bansal | Gurgaon | NCR | 122003 | `28.480863` | `77.084888` |
-| 81 | 4318 | Dr. Nupur Gupta | Gurgaon | NCR | 122002 | `28.480863` | `77.084888` |
-| 82 | 4378 | Dr. Nandita | NOIDA | NCR | 201301 | `28.591159` | `77.352535` |
-| 83 | 4391 | Dr. Jigyasa Govil | NOIDA | NCR | 201301 | `28.591159` | `77.352535` |
-| 84 | 4394 | Dr. Ekta | NOIDA | NCR | 201301 | `28.591159` | `77.352535` |
-| 85 | 4409 | Dr. Deepa | NOIDA | NCR | 201307 | `28.591159` | `77.352535` |
-| 86 | 6694 | Dr. Jigyasa Govil | NOIDA | NCR | 201301 | `28.591159` | `77.352535` |
-| 87 | 6695 | Dr. Ekta Singh | NOIDA | NCR | 201301 | `28.591159` | `77.352535` |
-| 88 | 6801 | Dr. Pushpa Singh | NOIDA | NCR | 201301 | `28.591159` | `77.352535` |
-| 89 | 6804 | Dr. Sanchita Dubey | NOIDA | NCR | 201301 | `28.591159` | `77.352535` |
-| 90 | 8991 | Dr. Jigyasa Govil | NOIDA | NCR | 201016 | `28.628656` | `77.359901` |
-| 91 | 9010 | Dr. Deepika Negi | NOIDA | NCR | None | `28.570633` | `77.327215` |
-| 92 | 9011 | Dr. Meenakshi Tanwar | NOIDA | NCR | None | `28.570633` | `77.327215` |
-| 93 | 9012 | Dr. B.S. Akhila  | NOIDA | NCR | 201308 | `28.516049` | `77.42075` |
-| 94 | 9013 | Dr. Komal Singh | NOIDA | NCR | None | `28.570633` | `77.327215` |
-| 95 | 9015 | Dr. Vandana C Sharma | NOIDA | NCR | None | `28.570633` | `77.327215` |
-| 96 | 6583 | Dr. P.K. Acharya | Bhubaneswar | Odisha | 751002 | `20.260296` | `85.839452` |
-| 97 | 6601 | Dr. Soudamini Mohapatra | Bhubaneswar | Odisha | 751007 | `20.260296` | `85.839452` |
-| 98 | 6833 | Dr. Sabri Bhatacharya | Bhubaneswar | Odisha | 751015 | `20.260296` | `85.839452` |
-| 99 | 8636 | Dr. Santosh Mishra | Bhubaneswar | Odisha | 751001 | `20.260296` | `85.839452` |
-| 100 | 8646 | Dr. Harpreet Kaur | Bhubaneswar | Odisha | 751030 | `20.260296` | `85.839452` |
-| 101 | 8870 | Dr. Sunita Mishra | Bhubaneswar | Odisha | 751032 | `20.260296` | `85.839452` |
-| 102 | 8894 | Dr. Samikshya Nanda | Bhubaneswar | Odisha | 751002 | `20.260296` | `85.839452` |
-| 103 | 8217 | Dr. Vidhu Modgil | Ludhiana | Punjab | 141002 | `30.909016` | `75.851601` |
-| 104 | 8610 | Dr. Schumailla Bassi | Ludhiana | Punjab | 141001 | `30.909016` | `75.851601` |
-| 105 | 8612 | Dr. Sunita Goyal | Ludhiana | Punjab | 141013 | `30.909016` | `75.851601` |
-| 106 | 8627 | Dr. Kanupriya Jain | Ludhiana | Punjab | 141012 | `30.909016` | `75.851601` |
-| 107 | 8689 | Dr. Ashima Taneja | Ludhiana | Punjab | 141001 | `30.909016` | `75.851601` |
-| 108 | 8812 | Dr. Suhashni Raina | Ludhiana | Punjab | 141003 | `30.909016` | `75.851601` |
-| 109 | 8814 | Dr. Nidhi Lama | Ludhiana | Punjab | 141003 | `30.909016` | `75.851601` |
-| 110 | 8827 | Dr. Roopangi Modgil | Ludhiana | Punjab | 141110 | `30.909016` | `75.851601` |
-| 111 | 8828 | Dr. Seema Mishra | Ludhiana | Punjab | 141001 | `30.909016` | `75.851601` |
-| 112 | 8831 | Dr. Manu Singhla | Ludhiana | Punjab | 141001 | `30.909016` | `75.851601` |
-| 113 | 8834 | Dr. Garima Hind | Ludhiana | Punjab | 148021 | `30.909016` | `75.851601` |
-| 114 | 8835 | Dr. Deepika Garg | Ludhiana | Punjab | 141401 | `30.909016` | `75.851601` |
-| 115 | 8910 | Dr. Anshu Mittal | Ludhiana | Punjab | 141001 | `30.909016` | `75.851601` |
-| 116 | 6479 | Dr. Y Sandhya Rani | Hyderabad | Telangana | 500048 | `17.360589` | `78.474061` |
-| 117 | 7823 | Dr. Tripura Sundari | Hyderabad | Telangana | 500082 | `17.414448` | `78.459518` |
-| 118 | 8707 | Dr. P M Abhirama Sundari | Hyderabad | Telangana | 500010 | `17.360589` | `78.474061` |
-| 119 | 8761 | Dr. S Vidyarani | Hyderabad | Telangana | 500010 | `17.360589` | `78.474061` |
-| 120 | 8901 | Dr. Vasundhara Cheepurupalli | Hyderabad | Telangana | 500003 | `17.360589` | `78.474061` |
-| 121 | 8070 | Dr. Anjana Arora | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
-| 122 | 8072 | Dr. Shanu Agarwal | Agra | WestUP | 282010 | `27.175255` | `78.009816` |
-| 123 | 8076 | Dr. Rinju Sharma | Agra | WestUP | 282006 | `27.175255` | `78.009816` |
-| 124 | 8077 | Dr. Sanjana Maheshwari | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
-| 125 | 8082 | Dr. Nidhi Pandey | Agra | WestUP | 282010 | `27.175255` | `78.009816` |
-| 126 | 8086 | Dr. Anjali Singh | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
-| 127 | 8087 | Dr. Gargi Gupta | Agra | WestUP | 282010 | `27.175255` | `78.009816` |
-| 128 | 8090 | Dr. Savita Tyagi | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
-| 129 | 8091 | Dr. Arushi Bansal | Agra | WestUP | 282007 | `27.175255` | `78.009816` |
-| 130 | 8094 | Dr. Sukanya Verma | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
-| 131 | 8095 | Dr. Rashi Gupta | Agra | WestUP | 211004 | `27.175255` | `78.009816` |
-| 132 | 8096 | Dr. Alka Bindal | Agra | WestUP | 282007 | `27.175255` | `78.009816` |
-| 133 | 8097 | Dr. Nirmala Yadav | Agra | WestUP | 282010 | `27.175255` | `78.009816` |
-| 134 | 8098 | Dr. Bharti Bansal | Agra | WestUP | 282002 | `27.175255` | `78.009816` |
-| 135 | 8099 | Dr. Anju Sharma | Agra | WestUP | 282002 | `27.175255` | `78.009816` |
-| 136 | 8100 | Dr. Rekha Tandon | Agra | WestUP | 282007 | `27.175255` | `78.009816` |
-| 137 | 8102 | Dr. Neeraj Pathak | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
-| 138 | 8103 | Dr. Preeti Mishra | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
-| 139 | 8107 | Dr. Sonal Gupta | Agra | WestUP | 282004 | `27.175255` | `78.009816` |
-| 140 | 8108 | Dr. Shalini Gupta | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
-| 141 | 8113 | Dr. Narendra Malhotra | Agra | WestUP | 282007 | `27.175255` | `78.009816` |
-| 142 | 8115 | Dr. Jaideep Malhotra | Agra | WestUP | 282007 | `27.175255` | `78.009816` |
-| 143 | 8121 | Dr. Kamini Khurana | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
-| 144 | 8122 | Dr. Sudha Bansal | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
-| 145 | 8124 | Dr. Sangeeta Chaturvedi | Agra | WestUP | 282007 | `27.175255` | `78.009816` |
-| 146 | 8127 | Dr. Namita Shiromany | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
-| 147 | 8129 | Dr. Suman Bansal | Agra | WestUP | 282002 | `27.175255` | `78.009816` |
-| 148 | 8131 | Dr. Saroj Singh | Agra | WestUP | 282002 | `27.175255` | `78.009816` |
-| 149 | 8132 | Dr. Amita Mangal | Agra | WestUP | 282002 | `27.175255` | `78.009816` |
-| 150 | 8134 | Dr. Neha Upadhyaya | Agra | WestUP | 282002 | `27.175255` | `78.009816` |
-| 151 | 8136 | Dr. Seema Singh | Agra | WestUP | 282002 | `27.175255` | `78.009816` |
-| 152 | 8138 | Dr. Anjali Vohra | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
-| 153 | 8252 | Dr. Darsha  | Agra | WestUP | 282007 | `27.175255` | `78.009816` |
-| 154 | 8253 | Dr. Moshmi Singhal  | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
-| 155 | 8303 | Dr. Sunita Malhotra  | Agra | WestUP | 282002 | `27.175255` | `78.009816` |
-| 156 | 8304 | Dr. Nidhi Banshal | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
-| 157 | 8305 | FPAI Clinic Agra  | Agra | WestUP | 282010 | `27.175255` | `78.009816` |
-| 158 | 8306 | Dr. Arti Manoj | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
-| 159 | 8675 | Dr. Anjana Sharma | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
-| 160 | 8692 | Dr. Urvashi Verma | Agra | WestUP | 282010 | `27.175255` | `78.009816` |
-| 161 | 9016 | Dr. Anu Shree Rawat | Agra | WestUP | None | `27.175255` | `78.009816` |
-| 162 | 9017 | Dr. Shivani Shikha | Agra | WestUP | 282007 | `27.175255` | `78.009816` |
-| 163 | 9018 | Dr. Somiya Mohaniya | Agra | WestUP | None | `27.175255` | `78.009816` |
-| 164 | 9019 | Dr. Bhawana Singh | Agra | WestUP | None | `27.175255` | `78.009816` |
-| 165 | 9020 | Dr. Hema Sadana | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
-| 166 | 9021 | Dr. Kavita Bhatnagar | Agra | WestUP | None | `27.175255` | `78.009816` |
-| 167 | 9022 | Dr. Sarita Mittal | Agra | WestUP | None | `27.175255` | `78.009816` |
-| 168 | 9024 | Dr. Eshita Bansal | Agra | WestUP | None | `27.175255` | `78.009816` |
-| 169 | 9025 | Dr. Shardha Mishra | Agra | WestUP | None | `27.175255` | `78.009816` |
-| 170 | 9026 | Dr. Pushplata | Agra | WestUP | None | `27.175255` | `78.009816` |
-| 171 | 9027 | Dr. Mamta  | Agra | WestUP | None | `27.175255` | `78.009816` |
-| 172 | 9028 | Dr. Shushma Gupta | Agra | WestUP | None | `27.175255` | `78.009816` |
-| 173 | 9029 | Dr. Kaviya Sharma | Agra | WestUP | None | `27.175255` | `78.009816` |
-| 174 | 9030 | Dr. Anupama Tayagi | Agra | WestUP | None | `27.175255` | `78.009816` |
-| 175 | 9031 | Dr. Sandhi jain | Agra | WestUP | 282005 | `27.175255` | `78.009816` |
-| 176 | 9032 | Dr. Sonam Bala | Agra | WestUP | 282006 | `27.175255` | `78.009816` |
-| 177 | 9033 | Dr. Vandna Jain | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
+| 1 | 8047 | Dr. Renu Chakarvarty | Panchkula | CH | 134117 | `30.6795` | `76.849305` |
+| 2 | 8049 | Dr. Bhavna Agarwal | Panchkula | CH | 134109 | `30.69754` | `76.855107` |
+| 3 | 8063 | Dr. Ruchita Kaushal | Panchkula | CH | 134116 | `30.669792` | `76.886803` |
+| 4 | 8269 | Dr. Monika Narang | Panchkula | CH | 134113 | `30.69754` | `76.855107` |
+| 5 | 4062 | Dr. Arpana Jain | Delhi | DL | 110009 | `28.613895` | `77.209006` |
+| 6 | 4071 | Dr. Madhu Tyagi | Delhi | DL | 110033 | `28.613895` | `77.209006` |
+| 7 | 4167 | Dr. Mamta Mishra | Delhi | DL | 110070 | `28.613895` | `77.209006` |
+| 8 | 6652 | Dr. Aruna Nigam | Delhi | DL | 110071 | `28.613895` | `77.209006` |
+| 9 | 8616 | Dr. Anuradaha Kapoor | Delhi | DL | 110034 | `28.613895` | `77.209006` |
+| 10 | 8617 | Dr. Sonika Naik | Delhi | DL | 110092 | `28.613895` | `77.209006` |
+| 11 | 8618 | Dr. Usha M Kumar | Delhi | DL | 110052 | `28.613895` | `77.209006` |
+| 12 | 8620 | Dr. Kalpana | Delhi | DL | 110091 | `28.613895` | `77.209006` |
+| 13 | 5092 | Dr. Pradeepa R | Bengaluru | Karnataka | 560041 | `12.976794` | `77.590082` |
+| 14 | 6627 | Dr. Kavita Laxmi Easwaran | Bengaluru | Karnataka | 560043 | `12.976794` | `77.590082` |
+| 15 | 6629 | Dr. Uma Maheswari | Bengaluru | Karnataka | 560068 | `12.976794` | `77.590082` |
+| 16 | 6630 | Dr. Geetha M.S. | Bengaluru | Karnataka | 561203 | `12.976794` | `77.590082` |
+| 17 | 6636 | Dr. Akshita R Seth | Bengaluru | Karnataka | 560003 | `12.976794` | `77.590082` |
+| 18 | 7812 | Dr. Arundhati Herle | Bengaluru | Karnataka | 560050 | `12.976794` | `77.590082` |
+| 19 | 7813 | Dr. Ambuja Govindraj | Bengaluru | Karnataka | 560010 | `12.976794` | `77.590082` |
+| 20 | 7816 | Dr. Bs Susheela Rani | Bengaluru | Karnataka | 560042 | `12.976794` | `77.590082` |
+| 21 | 8585 | Dr. Kavita Laxmi Easwaran | Bengaluru | Karnataka | 560043 | `12.976794` | `77.590082` |
+| 22 | 8587 | Dr. Ambuja Govindaraj | Bengaluru | Karnataka | 560037 | `12.967308` | `77.716706` |
+| 23 | 8597 | Dr. Rachna Arvind | Bengaluru | Karnataka | 560079 | `12.976794` | `77.590082` |
+| 24 | 8759 | Dr. Manjula Chandrashekar | Bengaluru | Karnataka | 560040 | `12.976794` | `77.590082` |
+| 25 | 8839 | Dr. Sahana K P | Bengaluru | Karnataka | 560079 | `12.976794` | `77.590082` |
+| 26 | 8888 | Dr. Aparna K | Bengaluru | Karnataka | 560079 | `12.976794` | `77.590082` |
+| 27 | 8945 | Dr. Janani Chandra-Varthur | Bengaluru | Karnataka | 560087 | `12.976794` | `77.590082` |
+| 28 | 3158 | Dr. Astha Agrawal | Ghaziabad | NCR | 201017 | `28.69152` | `77.447541` |
+| 29 | 6667 | Dr. Hemangi Negi | Ghaziabad | NCR | 201010 | `28.642853` | `77.326734` |
+| 30 | 6673 | Dr. Ritu Gupta | Ghaziabad | NCR | 201010 | `28.642853` | `77.326734` |
+| 31 | 6684 | Dr. Shubha Gupta | Ghaziabad | NCR | 201010 | `28.642853` | `77.326734` |
+| 32 | 6701 | Dr. Archana Sharma | Ghaziabad | NCR | 201001 | `28.671153` | `77.412036` |
+| 33 | 6702 | Dr. Alpana Kansal | Ghaziabad | NCR | 201001 | `28.671153` | `77.412036` |
+| 34 | 6789 | Dr. Astha Agarwal | Ghaziabad | NCR | 201017 | `28.69152` | `77.447541` |
+| 35 | 6814 | Dr. Archana Tiwari | Ghaziabad | NCR | 201204 | `28.804506` | `77.542455` |
+| 36 | 8613 | Dr. Chhaya Goyal | Ghaziabad | NCR | 201002 | `28.69152` | `77.447541` |
+| 37 | 8654 | Dr. Pulkit Teyagi | Ghaziabad | NCR | 201204 | `28.804506` | `77.542455` |
+| 38 | 9050 | Dr. Chumkai Dey Sinha | Ghaziabad | NCR | 201001 | `28.671153` | `77.412036` |
+| 39 | 3019 | Dr. Shameem K. Khan | Gurgaon | NCR | 122001 | `28.489087` | `77.011157` |
+| 40 | 3022 | Dr. Deepika Tiwari | Gurgaon | NCR | 122003 | `28.480863` | `77.084888` |
+| 41 | 3028 | Dr. Suman Lal | Gurgaon | NCR | 122002 | `28.480863` | `77.084888` |
+| 42 | 4267 | Dr. Priyanka Bansal | Gurgaon | NCR | 122003 | `28.480863` | `77.084888` |
+| 43 | 4318 | Dr. Nupur Gupta | Gurgaon | NCR | 122002 | `28.480863` | `77.084888` |
+| 44 | 4391 | Dr. Jigyasa Govil | NOIDA | NCR | 201301 | `28.591159` | `77.352535` |
+| 45 | 4394 | Dr. Ekta | NOIDA | NCR | 201301 | `28.591159` | `77.352535` |
+| 46 | 4409 | Dr. Deepa | NOIDA | NCR | 201307 | `28.591159` | `77.352535` |
+| 47 | 6694 | Dr. Jigyasa Govil | NOIDA | NCR | 201301 | `28.591159` | `77.352535` |
+| 48 | 6695 | Dr. Ekta Singh | NOIDA | NCR | 201301 | `28.591159` | `77.352535` |
+| 49 | 6804 | Dr. Sanchita Dubey | NOIDA | NCR | 201301 | `28.591159` | `77.352535` |
+| 50 | 8991 | Dr. Jigyasa Govil | NOIDA | NCR | 201016 | `28.628656` | `77.359901` |
+| 51 | 6583 | Dr. P.K. Acharya | Bhubaneswar | Odisha | 751002 | `20.260296` | `85.839452` |
+| 52 | 6601 | Dr. Soudamini Mohapatra | Bhubaneswar | Odisha | 751007 | `20.260296` | `85.839452` |
+| 53 | 8636 | Dr. Santosh Mishra | Bhubaneswar | Odisha | 751001 | `20.260296` | `85.839452` |
+| 54 | 8610 | Dr. Schumailla Bassi | Ludhiana | Punjab | 141001 | `30.909016` | `75.851601` |
+| 55 | 8612 | Dr. Sunita Goyal | Ludhiana | Punjab | 141013 | `30.909016` | `75.851601` |
+| 56 | 8812 | Dr. Suhashni Raina | Ludhiana | Punjab | 141003 | `30.909016` | `75.851601` |
+| 57 | 8814 | Dr. Nidhi Lama | Ludhiana | Punjab | 141003 | `30.909016` | `75.851601` |
+| 58 | 8827 | Dr. Roopangi Modgil | Ludhiana | Punjab | 141110 | `30.909016` | `75.851601` |
+| 59 | 8828 | Dr. Seema Mishra | Ludhiana | Punjab | 141001 | `30.909016` | `75.851601` |
+| 60 | 8831 | Dr. Manu Singhla | Ludhiana | Punjab | 141001 | `30.909016` | `75.851601` |
+| 61 | 8834 | Dr. Garima Hind | Ludhiana | Punjab | 148021 | `30.909016` | `75.851601` |
+| 62 | 8835 | Dr. Deepika Garg | Ludhiana | Punjab | 141401 | `30.909016` | `75.851601` |
+| 63 | 8910 | Dr. Anshu Mittal | Ludhiana | Punjab | 141001 | `30.909016` | `75.851601` |
+| 64 | 8070 | Dr. Anjana Arora | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
+| 65 | 8072 | Dr. Shanu Agarwal | Agra | WestUP | 282010 | `27.175255` | `78.009816` |
+| 66 | 8076 | Dr. Rinju Sharma | Agra | WestUP | 282006 | `27.175255` | `78.009816` |
+| 67 | 8077 | Dr. Sanjana Maheshwari | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
+| 68 | 8082 | Dr. Nidhi Pandey | Agra | WestUP | 282010 | `27.175255` | `78.009816` |
+| 69 | 8086 | Dr. Anjali Singh | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
+| 70 | 8087 | Dr. Gargi Gupta | Agra | WestUP | 282010 | `27.175255` | `78.009816` |
+| 71 | 8090 | Dr. Savita Tyagi | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
+| 72 | 8091 | Dr. Arushi Bansal | Agra | WestUP | 282007 | `27.175255` | `78.009816` |
+| 73 | 8094 | Dr. Sukanya Verma | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
+| 74 | 8095 | Dr. Rashi Gupta | Agra | WestUP | 211004 | `27.175255` | `78.009816` |
+| 75 | 8096 | Dr. Alka Bindal | Agra | WestUP | 282007 | `27.175255` | `78.009816` |
+| 76 | 8097 | Dr. Nirmala Yadav | Agra | WestUP | 282010 | `27.175255` | `78.009816` |
+| 77 | 8098 | Dr. Bharti Bansal | Agra | WestUP | 282002 | `27.175255` | `78.009816` |
+| 78 | 8099 | Dr. Anju Sharma | Agra | WestUP | 282002 | `27.175255` | `78.009816` |
+| 79 | 8100 | Dr. Rekha Tandon | Agra | WestUP | 282007 | `27.175255` | `78.009816` |
+| 80 | 8102 | Dr. Neeraj Pathak | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
+| 81 | 8103 | Dr. Preeti Mishra | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
+| 82 | 8107 | Dr. Sonal Gupta | Agra | WestUP | 282004 | `27.175255` | `78.009816` |
+| 83 | 8108 | Dr. Shalini Gupta | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
+| 84 | 8113 | Dr. Narendra Malhotra | Agra | WestUP | 282007 | `27.175255` | `78.009816` |
+| 85 | 8115 | Dr. Jaideep Malhotra | Agra | WestUP | 282007 | `27.175255` | `78.009816` |
+| 86 | 8121 | Dr. Kamini Khurana | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
+| 87 | 8122 | Dr. Sudha Bansal | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
+| 88 | 8127 | Dr. Namita Shiromany | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
+| 89 | 8129 | Dr. Suman Bansal | Agra | WestUP | 282002 | `27.175255` | `78.009816` |
+| 90 | 8131 | Dr. Saroj Singh | Agra | WestUP | 282002 | `27.175255` | `78.009816` |
+| 91 | 8132 | Dr. Amita Mangal | Agra | WestUP | 282002 | `27.175255` | `78.009816` |
+| 92 | 8134 | Dr. Neha Upadhyaya | Agra | WestUP | 282002 | `27.175255` | `78.009816` |
+| 93 | 8136 | Dr. Seema Singh | Agra | WestUP | 282002 | `27.175255` | `78.009816` |
+| 94 | 8138 | Dr. Anjali Vohra | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
+| 95 | 8303 | Dr. Sunita Malhotra | Agra | WestUP | 282002 | `27.175255` | `78.009816` |
+| 96 | 8304 | Dr. Nidhi Banshal | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
+| 97 | 8306 | Dr. Arti Manoj | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
+| 98 | 8675 | Dr. Anjana Sharma | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
+| 99 | 9017 | Dr. Shivani Shikha | Agra | WestUP | 282007 | `27.175255` | `78.009816` |
+| 100 | 9020 | Dr. Hema Sadana | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
+| 101 | 9031 | Dr. Sandhi jain | Agra | WestUP | 282005 | `27.175255` | `78.009816` |
+| 102 | 9032 | Dr. Sonam Bala | Agra | WestUP | 282006 | `27.175255` | `78.009816` |
+| 103 | 9033 | Dr. Vandna Jain | Agra | WestUP | 282001 | `27.175255` | `78.009816` |
+| 104 | 8266 | Dr. Nisha Goyal | Mohali | CH | 140603 | `30.647688` | `76.818597` |
+| 105 | 9221 | Dr. Simran Dhawan | Panchkula | CH | 134109 | `30.696779` | `76.854143` |
+| 106 | 8595 | Dr. Satwant Kaur | Ambala | Haryana | 136135 | `30.161228` | `76.891636` |
+| 107 | 3068 | Dr. Anubha Vidyarthi | Ranchi | Jharkhand | 834001 | `23.373023` | `85.33676` |
+| 108 | 8911 | Dr. Basudha Jhaa | Ranchi | Jharkhand | 834002 | `23.338834` | `85.313534` |
+| 109 | 3054 | Dr. Beauty Banerjee | Ranchi | Jharkhand | 834001 | `23.373023` | `85.33676` |
+| 110 | 8650 | Dr. Rajni Kumari | Ranchi | Jharkhand | 834001 | `23.373023` | `85.33676` |
+| 111 | 8976 | Dr. Rekharani Singh | Ranchi | Jharkhand | 834002 | `23.338834` | `85.313534` |
+| 112 | 6846 | Dr. Sunita Mishra | Ranchi | Jharkhand | 834002 | `23.338834` | `85.313534` |
+| 113 | 6858 | Dr. Swati Chaitnya | Ranchi | Jharkhand | 834009 | `23.395302` | `85.360388` |
+| 114 | 3051 | Dr. Swatilal | Ranchi | Jharkhand | 834001 | `23.373023` | `85.33676` |
+| 115 | 3070 | Dr. Tripti Prakesh | Ranchi | Jharkhand | 834009 | `23.395302` | `85.360388` |
+| 116 | 3053 | Dr. Vandita | Ranchi | Jharkhand | 834001 | `23.373023` | `85.33676` |
+| 117 | 7905 | Dr. Chaitra Poornima Ramakrishna | Bengaluru | Karnataka | 560079 | `12.988213` | `77.532641` |
+| 118 | 6635 | Dr. Chaitra S. Niranthara | Bengaluru | Karnataka | 560013 | `13.04942` | `77.552189` |
+| 119 | 8838 | Dr. Chetna N. Aradhya | Bengaluru | Karnataka | 560072 | `12.965746` | `77.514076` |
+| 120 | 8221 | Dr. Leela Shankar | Bengaluru | Karnataka | 560010 | `12.990603` | `77.551414` |
+| 121 | 8671 | Dr. Manjula S Patil | Bengaluru | Karnataka | 560077 | `13.062532` | `77.653022` |
+| 122 | 9185 | Dr. Manjula Thunti | Bengaluru | Karnataka | 560064 | `13.140169` | `77.572251` |
+| 123 | 8598 | Dr. P Chetana Arvind | Bengaluru | Karnataka | 560079 | `12.988213` | `77.532641` |
+| 124 | 8758 | Dr. Pradeepa | Bengaluru | Karnataka | 560011 | `12.930218` | `77.585123` |
+| 125 | 9187 | Dr. Rizwana Ahamadh | Bengaluru | Karnataka | 560005 | `12.996796` | `77.619046` |
+| 126 | 5095 | Dr. Shilpa Venkatesh | Bengaluru | Karnataka | 560102 | `12.915145` | `77.650513` |
+| 127 | 6620 | Dr. Sowmya H.M. | Bengaluru | Karnataka | 560076 | `12.880645` | `77.603868` |
+| 128 | 8754 | Dr. Swetha Madhuri | Bengaluru | Karnataka | 560114 | `12.876444` | `77.636043` |
+| 129 | 9194 | Dr. Varalakshmi K | Bengaluru | Karnataka | 560097 | `13.078555` | `77.555229` |
+| 130 | 8799 | Dr. Viqat Ara | Bengaluru | Karnataka | 560005 | `12.996796` | `77.619046` |
+| 131 | 8883 | Dr. Apeksha Mittal | Ghaziabad | NCR | 201201 | `28.843582` | `77.567187` |
+| 132 | 8882 | Dr. Neelu Khaneja | Ghaziabad | NCR | 201001 | `28.660864` | `77.424564` |
+| 133 | 6748 | Dr. Richa Gupta | Ghaziabad | NCR | 201009 | `28.641589` | `77.437051` |
+| 134 | 9037 | DR. SATAKSHI GARG | Ghaziabad | NCR | 201204 | `28.843582` | `77.567187` |
+| 135 | 4373 | Dr. Aditi Ghai | NOIDA | NCR | 201318 | `28.601434` | `77.440218` |
+| 136 | 8909 | Dr. Rashmi Dey | NOIDA | NCR | 201318 | `28.601434` | `77.440218` |
+| 137 | 7683 | Dr. Swetha Mathur | NOIDA | NCR | 201304 | `28.528672` | `77.388007` |
+| 138 | 8604 | Dr. Anamika Mishra | Bhubaneswar | Odisha | 751009 | `20.257103` | `85.828948` |
+| 139 | 6556 | Dr. Asima Patra | Bhubaneswar | Odisha | 751014 | `20.252501` | `85.843041` |
+| 140 | 6573 | Dr. Jayprakas Pani | Bhubaneswar | Odisha | 751022 | `20.289068` | `85.834439` |
+| 141 | 3004 | Dr. Mamata Nayak | Bhubaneswar | Odisha | 753014 | `20.476559` | `85.842496` |
+| 142 | 8606 | Dr. Mohini | Bhubaneswar | Odisha | 751030 | `20.256177` | `85.78839` |
+| 143 | 6593 | Dr. Sanjusmita Tripathy | Bhubaneswar | Odisha | 751007 | `20.288648` | `85.850623` |
+| 144 | 8649 | Dr. Sujata Swain | Bhubaneswar | Odisha | 751016 | `20.327675` | `85.818288` |
+| 145 | 6562 | Dr. Swapnita Hota | Bhubaneswar | Odisha | 751016 | `20.327675` | `85.818288` |
+| 146 | 8820 | Dr. Amrita Kaur | Ludhiana | Punjab | 141008 | `30.931114` | `75.838839` |
+| 147 | 8829 | Dr. Anurag Jain | Ludhiana | Punjab | 141001 | `30.903489` | `75.828647` |
+| 148 | 8211 | Dr. Ginny Gupta | Ludhiana | Punjab | 141001 | `30.903489` | `75.828647` |
+| 149 | 8212 | Dr. Gitanjali Kaur | Ludhiana | Punjab | 141002 | `30.901513` | `75.824811` |
+| 150 | 9108 | Dr. Manjot Walia Kakkar | Ludhiana | Punjab | 142029 | `30.801154` | `75.761915` |
+| 151 | 9208 | Dr. Patwantinder Kaur | Ludhiana | Punjab | 142026 | `30.800854` | `75.483541` |
+| 152 | 8822 | Dr. Supreeta Kaur | Ludhiana | Punjab | 141003 | `30.877744` | `75.86553` |
+| 153 | 8256 | Dr. Liza Gupta | Zirakpur | Punjab | 140603 | `30.647688` | `76.818597` |
+| 154 | 8059 | Dr. Monica Juneja | Zirakpur | Punjab | 140603 | `30.647688` | `76.818597` |
+| 155 | 8774 | Dr. Raghu Tejasvi | Hyderabad | Telangana | 500081 | `17.447573` | `78.382946` |
+| 156 | 7823 | Dr. Tripura Sundari | Hyderabad | Telangana | 500082 | `17.427219` | `78.454108` |
+| 157 | 8078 | Dr. Bhavna Singh | Agra | WestUP | 282009 | `27.074382` | `78.010594` |
+| 158 | 9105 | Dr. Mandeep Kaur | Agra | WestUP | 282007 | `27.204824` | `77.961764` |
+| 159 | 8117 | Dr. Manpreet Sharma | Agra | WestUP | 282007 | `27.204824` | `77.961764` |
+| 160 | 8075 | Dr. Nidhi Dixit | Agra | WestUP | 282001 | `27.150627` | `78.055504` |
+| 161 | 8130 | Dr. Ranjana Gupta | Agra | WestUP | 282002 | `27.193623` | `78.003221` |
+| 162 | 8074 | Dr. Renu Sharma | Agra | WestUP | 282007 | `27.204824` | `77.961764` |
+| 163 | 8118 | Dr. Shemi Bansal | Agra | WestUP | 282007 | `27.204824` | `77.961764` |
 
 ---
 
 ## Detailed Doctor Profiles
 
-### 1. Dr. Sheetal Jindal
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8220 |
-| **State** | CH |
-| **City** | Chandigarh |
-| **Pincode** | 160020 |
-| **Phone** | 0 |
-| **Address** | Jindal IVF , 3050, Dakshin Marg, Behind shri Guru Ravidas Bhawan, Sec. 20 D, Chandigarh |
-| **Latitude** | `30.743665` |
-| **Longitude** | `76.782256` |
-
-### 2. Dr. Jaslin Mavi
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8283 |
-| **State** | CH |
-| **City** | Mohali |
-| **Pincode** | 140101 |
-| **Phone** | 0 |
-| **Address** | Mavi Hospital, 149, Near Police station, Chandigarh road, Morinda, Punjab |
-| **Latitude** | `30.69088` |
-| **Longitude** | `76.711488` |
-
-### 3. Dr. Renu Chakarvarty
+### 1. Dr. Renu Chakarvarty
 
 | Field | Value |
 |-------|-------|
@@ -233,7 +192,7 @@
 | **Latitude** | `30.6795` |
 | **Longitude** | `76.849305` |
 
-### 4. Dr. Bhavna Agarwal
+### 2. Dr. Bhavna Agarwal
 
 | Field | Value |
 |-------|-------|
@@ -247,7 +206,7 @@
 | **Latitude** | `30.69754` |
 | **Longitude** | `76.855107` |
 
-### 5. Dr. Ruchita Kaushal
+### 3. Dr. Ruchita Kaushal
 
 | Field | Value |
 |-------|-------|
@@ -261,7 +220,7 @@
 | **Latitude** | `30.669792` |
 | **Longitude** | `76.886803` |
 
-### 6. Dr. Monika Narang
+### 4. Dr. Monika Narang
 
 | Field | Value |
 |-------|-------|
@@ -275,7 +234,7 @@
 | **Latitude** | `30.69754` |
 | **Longitude** | `76.855107` |
 
-### 7. Dr. Arpana Jain
+### 5. Dr. Arpana Jain
 
 | Field | Value |
 |-------|-------|
@@ -289,7 +248,7 @@
 | **Latitude** | `28.613895` |
 | **Longitude** | `77.209006` |
 
-### 8. Dr. Madhu Tyagi
+### 6. Dr. Madhu Tyagi
 
 | Field | Value |
 |-------|-------|
@@ -303,7 +262,7 @@
 | **Latitude** | `28.613895` |
 | **Longitude** | `77.209006` |
 
-### 9. Dr. Mamta Mishra
+### 7. Dr. Mamta Mishra
 
 | Field | Value |
 |-------|-------|
@@ -317,7 +276,7 @@
 | **Latitude** | `28.613895` |
 | **Longitude** | `77.209006` |
 
-### 10. Dr. Aruna Nigam
+### 8. Dr. Aruna Nigam
 
 | Field | Value |
 |-------|-------|
@@ -331,21 +290,7 @@
 | **Latitude** | `28.613895` |
 | **Longitude** | `77.209006` |
 
-### 11. Dr. Neera Agrawal
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 6740 |
-| **State** | DL |
-| **City** | Delhi |
-| **Pincode** | 110092 |
-| **Phone** | 0 |
-| **Address** | Max Super Speciality Hospital108 A, Indraprasth Extension, Landmark: Opposite Sanchar Apartments, Delhi 110092 |
-| **Latitude** | `28.613895` |
-| **Longitude** | `77.209006` |
-
-### 12. Dr. Anuradaha Kapoor
+### 9. Dr. Anuradaha Kapoor
 
 | Field | Value |
 |-------|-------|
@@ -359,7 +304,7 @@
 | **Latitude** | `28.613895` |
 | **Longitude** | `77.209006` |
 
-### 13. Dr. Sonika Naik
+### 10. Dr. Sonika Naik
 
 | Field | Value |
 |-------|-------|
@@ -373,7 +318,7 @@
 | **Latitude** | `28.613895` |
 | **Longitude** | `77.209006` |
 
-### 14. Dr. Usha M Kumar
+### 11. Dr. Usha M Kumar
 
 | Field | Value |
 |-------|-------|
@@ -387,7 +332,7 @@
 | **Latitude** | `28.613895` |
 | **Longitude** | `77.209006` |
 
-### 15. Dr. Kalpana 
+### 12. Dr. Kalpana
 
 | Field | Value |
 |-------|-------|
@@ -401,21 +346,7 @@
 | **Latitude** | `28.613895` |
 | **Longitude** | `77.209006` |
 
-### 16. Dr. Sumedha Gargy
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8775 |
-| **State** | Jharkhand |
-| **City** | Ranchi |
-| **Pincode** | 834001 |
-| **Phone** | 0 |
-| **Address** | Amrita Nursing Home & Research Centre |
-| **Latitude** | `23.37005` |
-| **Longitude** | `85.325039` |
-
-### 17. Dr. Pradeepa R 
+### 13. Dr. Pradeepa R
 
 | Field | Value |
 |-------|-------|
@@ -429,7 +360,7 @@
 | **Latitude** | `12.976794` |
 | **Longitude** | `77.590082` |
 
-### 18. Dr. Kavita Laxmi Easwaran
+### 14. Dr. Kavita Laxmi Easwaran
 
 | Field | Value |
 |-------|-------|
@@ -443,7 +374,7 @@
 | **Latitude** | `12.976794` |
 | **Longitude** | `77.590082` |
 
-### 19. Dr. Uma Maheswari
+### 15. Dr. Uma Maheswari
 
 | Field | Value |
 |-------|-------|
@@ -457,7 +388,7 @@
 | **Latitude** | `12.976794` |
 | **Longitude** | `77.590082` |
 
-### 20. Dr. Geetha M.S.
+### 16. Dr. Geetha M.S.
 
 | Field | Value |
 |-------|-------|
@@ -471,21 +402,7 @@
 | **Latitude** | `12.976794` |
 | **Longitude** | `77.590082` |
 
-### 21. Dr. S Uma Maheshwari
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 6634 |
-| **State** | Karnataka |
-| **City** | Bengaluru |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | None |
-| **Latitude** | `12.976794` |
-| **Longitude** | `77.590082` |
-
-### 22. Dr. Akshita R Seth
+### 17. Dr. Akshita R Seth
 
 | Field | Value |
 |-------|-------|
@@ -499,7 +416,7 @@
 | **Latitude** | `12.976794` |
 | **Longitude** | `77.590082` |
 
-### 23. Dr. Arundhati Herle
+### 18. Dr. Arundhati Herle
 
 | Field | Value |
 |-------|-------|
@@ -513,7 +430,7 @@
 | **Latitude** | `12.976794` |
 | **Longitude** | `77.590082` |
 
-### 24. Dr. Ambuja Govindraj
+### 19. Dr. Ambuja Govindraj
 
 | Field | Value |
 |-------|-------|
@@ -527,7 +444,7 @@
 | **Latitude** | `12.976794` |
 | **Longitude** | `77.590082` |
 
-### 25. Dr. Bs Susheela Rani
+### 20. Dr. Bs Susheela Rani
 
 | Field | Value |
 |-------|-------|
@@ -541,49 +458,7 @@
 | **Latitude** | `12.976794` |
 | **Longitude** | `77.590082` |
 
-### 26. Dr. Aparna Nair
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 7821 |
-| **State** | Karnataka |
-| **City** | Bengaluru |
-| **Pincode** | 560066 |
-| **Phone** | 0 |
-| **Address** | Vydehi Institute of Medical Sciences & Research Centre,,  #82, Nallurahalli, Whitefield, Bangalore – 560 066 |
-| **Latitude** | `12.976794` |
-| **Longitude** | `77.590082` |
-
-### 27. Dr. Sripada Vinekar
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8226 |
-| **State** | Karnataka |
-| **City** | Bengaluru |
-| **Pincode** | 560055 |
-| **Phone** | 0 |
-| **Address** | Cloudnine Hospital Malleshwaram |
-| **Latitude** | `12.976794` |
-| **Longitude** | `77.590082` |
-
-### 28. Dr. Geeta
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8577 |
-| **State** | Karnataka |
-| **City** | Bengaluru |
-| **Pincode** | 560028 |
-| **Phone** | 080-89898989 |
-| **Address** | FREE LANCE CONSULTANT, Bengaluru, Karnataka, 560028 |
-| **Latitude** | `12.976794` |
-| **Longitude** | `77.590082` |
-
-### 29. Dr. Kavita Laxmi Easwaran
+### 21. Dr. Kavita Laxmi Easwaran
 
 | Field | Value |
 |-------|-------|
@@ -597,7 +472,7 @@
 | **Latitude** | `12.976794` |
 | **Longitude** | `77.590082` |
 
-### 30. Dr. Ambuja Govindaraj
+### 22. Dr. Ambuja Govindaraj
 
 | Field | Value |
 |-------|-------|
@@ -611,7 +486,7 @@
 | **Latitude** | `12.967308` |
 | **Longitude** | `77.716706` |
 
-### 31. Dr. Rachna Arvind
+### 23. Dr. Rachna Arvind
 
 | Field | Value |
 |-------|-------|
@@ -625,77 +500,7 @@
 | **Latitude** | `12.976794` |
 | **Longitude** | `77.590082` |
 
-### 32. Dr. Aruna Muralidhar
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8658 |
-| **State** | Karnataka |
-| **City** | Bengaluru |
-| **Pincode** | 560011 |
-| **Phone** | 0 |
-| **Address** | Cloudnine Hospital - Jayanagar | Best Maternity & Pregnancy Centre, 1st Floor, 1533, 9th Main Rd, Bairasandra Extension, Jaya Nagar 1st Block, Jayanagar 3rd Block, Jayanagar, Bengaluru, Karnataka 560011 |
-| **Latitude** | `12.976794` |
-| **Longitude** | `77.590082` |
-
-### 33. Dr. Manjula S Patil
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8671 |
-| **State** | Karnataka |
-| **City** | Bengaluru |
-| **Pincode** | 560077 |
-| **Phone** | 0 |
-| **Address** | Ovum Hospitals, Hegde Nagar, 2nd Floor, No 33/4, Hennur Main Road, Kothanur, Bengaluru, Karnataka 560077 |
-| **Latitude** | `12.976794` |
-| **Longitude** | `77.590082` |
-
-### 34. Dr. Swetha Madhuri
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8754 |
-| **State** | Karnataka |
-| **City** | Bengaluru |
-| **Pincode** | 560068 |
-| **Phone** | 0 |
-| **Address** | Swetha's Gynecare, Ground floor, NO:4, Basaveshwara 2nd Main Rd, near Canara bank, Akshayanagara West, Akshaya Gardens, Akshayanagar, Bengaluru, Karnataka 560068 |
-| **Latitude** | `12.976794` |
-| **Longitude** | `77.590082` |
-
-### 35. Dr. Arpitha Seth
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8755 |
-| **State** | Karnataka |
-| **City** | Bengaluru |
-| **Pincode** | 560003 |
-| **Phone** | 0 |
-| **Address** | Indira Manipal Center No.243, Sampige Road, Malleswaram-560003 |
-| **Latitude** | `12.976794` |
-| **Longitude** | `77.590082` |
-
-### 36. Dr. Pradeepa
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8758 |
-| **State** | Karnataka |
-| **City** | Bengaluru |
-| **Pincode** | 560011 |
-| **Phone** | 0 |
-| **Address** | Sri Krishna Sevashrama Hospital |
-| **Latitude** | `12.976794` |
-| **Longitude** | `77.590082` |
-
-### 37. Dr. Manjula Chandrashekar
+### 24. Dr. Manjula Chandrashekar
 
 | Field | Value |
 |-------|-------|
@@ -709,7 +514,7 @@
 | **Latitude** | `12.976794` |
 | **Longitude** | `77.590082` |
 
-### 38. Dr. Sahana K P
+### 25. Dr. Sahana K P
 
 | Field | Value |
 |-------|-------|
@@ -723,7 +528,7 @@
 | **Latitude** | `12.976794` |
 | **Longitude** | `77.590082` |
 
-### 39. Dr. Aparna K
+### 26. Dr. Aparna K
 
 | Field | Value |
 |-------|-------|
@@ -737,7 +542,7 @@
 | **Latitude** | `12.976794` |
 | **Longitude** | `77.590082` |
 
-### 40. Dr. Janani Chandra-Varthur
+### 27. Dr. Janani Chandra-Varthur
 
 | Field | Value |
 |-------|-------|
@@ -751,119 +556,7 @@
 | **Latitude** | `12.976794` |
 | **Longitude** | `77.590082` |
 
-### 41. Dr. Anita Kant
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 7993 |
-| **State** | NCR |
-| **City** | Faridabad |
-| **Pincode** | 121001 |
-| **Phone** | 0 |
-| **Address** | Asian Institute of Medical SciencesBadkal Flyover Road, Faridabad City, Landmark: Near Hotel Express Sarovar Portico & Park Plaza, Faridabad |
-| **Latitude** | `28.403148` |
-| **Longitude** | `77.310556` |
-
-### 42. Dr. Niti Kautish
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8007 |
-| **State** | NCR |
-| **City** | Faridabad |
-| **Pincode** | 121001 |
-| **Phone** | 0 |
-| **Address** | Fortis Escorts HospitalNeelam Bata Road, AC Nagar, New Industrial Township, Faridabad |
-| **Latitude** | `28.403148` |
-| **Longitude** | `77.310556` |
-
-### 43. Dr. Ravinder Kaur Khurana
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8013 |
-| **State** | NCR |
-| **City** | Faridabad |
-| **Pincode** | 121002 |
-| **Phone** | 0 |
-| **Address** | Metro Heart Institute with Multispeciality/Pushpawanti Health Care ClinicSector 16 A, Faridabad (Delhi - NCR) - 121002, India/Shop Number 2, Lower Ground Floor, Tigaon Road, Landmark: Near Sai Dham Mandir, Faridabad |
-| **Latitude** | `28.435388` |
-| **Longitude** | `77.306061` |
-
-### 44. Dr. Sandhya Nanda
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8016 |
-| **State** | NCR |
-| **City** | Faridabad |
-| **Pincode** | 121007 |
-| **Phone** | 0 |
-| **Address** | Nanda Nursing Home12, Landmark: Near Arya Samaj Mandir, Sector - 15, Faridabad, Haryana - 121007, India |
-| **Latitude** | `28.37275` |
-| **Longitude** | `77.31177` |
-
-### 45. Dr. Deepti Sharma 
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8027 |
-| **State** | NCR |
-| **City** | Faridabad |
-| **Pincode** | 121002 |
-| **Phone** | 0 |
-| **Address** | Amrita Hospital Mata Amritanandamayi Marg, Sector 88, Faridabad, Haryana |
-| **Latitude** | `28.435388` |
-| **Longitude** | `77.306061` |
-
-### 46. Dr. Gargi Agrawal 
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8028 |
-| **State** | NCR |
-| **City** | Faridabad |
-| **Pincode** | 121002 |
-| **Phone** | 0 |
-| **Address** | Amrita Hospital Mata Amritanandamayi Marg, Sector 88, Faridabad, Haryana |
-| **Latitude** | `28.435388` |
-| **Longitude** | `77.306061` |
-
-### 47. Dr. Namrta Seth 
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8031 |
-| **State** | NCR |
-| **City** | Faridabad |
-| **Pincode** | 121002 |
-| **Phone** | 0 |
-| **Address** | Amrita Hospital Mata Amritanandamayi Marg, Sector 88, Faridabad, Haryana |
-| **Latitude** | `28.435388` |
-| **Longitude** | `77.306061` |
-
-### 48. Dr. Sangeeta Chopra 
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8038 |
-| **State** | NCR |
-| **City** | Faridabad |
-| **Pincode** | 121002 |
-| **Phone** | 0 |
-| **Address** | Chopra Nursing Home, 5l/145, Near Mother Dairy, Faridabad |
-| **Latitude** | `28.435388` |
-| **Longitude** | `77.306061` |
-
-### 49. Dr. Astha Agrawal 
+### 28. Dr. Astha Agrawal
 
 | Field | Value |
 |-------|-------|
@@ -877,7 +570,7 @@
 | **Latitude** | `28.69152` |
 | **Longitude** | `77.447541` |
 
-### 50. Dr. Hemangi Negi
+### 29. Dr. Hemangi Negi
 
 | Field | Value |
 |-------|-------|
@@ -891,7 +584,7 @@
 | **Latitude** | `28.642853` |
 | **Longitude** | `77.326734` |
 
-### 51. Dr. Ritu Gupta
+### 30. Dr. Ritu Gupta
 
 | Field | Value |
 |-------|-------|
@@ -905,7 +598,7 @@
 | **Latitude** | `28.642853` |
 | **Longitude** | `77.326734` |
 
-### 52. Dr. Shubha Gupta
+### 31. Dr. Shubha Gupta
 
 | Field | Value |
 |-------|-------|
@@ -919,7 +612,7 @@
 | **Latitude** | `28.642853` |
 | **Longitude** | `77.326734` |
 
-### 53. Dr. Archana Sharma 
+### 32. Dr. Archana Sharma
 
 | Field | Value |
 |-------|-------|
@@ -933,7 +626,7 @@
 | **Latitude** | `28.671153` |
 | **Longitude** | `77.412036` |
 
-### 54. Dr. Alpana Kansal 
+### 33. Dr. Alpana Kansal
 
 | Field | Value |
 |-------|-------|
@@ -947,63 +640,7 @@
 | **Latitude** | `28.671153` |
 | **Longitude** | `77.412036` |
 
-### 55. Dr. Gunjan Gupta 
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 6703 |
-| **State** | NCR |
-| **City** | Ghaziabad |
-| **Pincode** | 201014 |
-| **Phone** | 0 |
-| **Address** | Gunjan IVF World, 2nd Floor, Jaipuria Sunrise Plaza, above Bikanerwala, Ahinsa Khand 1, Indirapuram, Ghaziabad, Uttar Pradesh 201014 |
-| **Latitude** | `28.634214` |
-| **Longitude** | `77.369913` |
-
-### 56. Dr. Kusum Gupta 
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 6715 |
-| **State** | NCR |
-| **City** | Ghaziabad |
-| **Pincode** | 201005 |
-| **Phone** | 0 |
-| **Address** | Sneh Maternity Centre, E 38, E Block, Lajpat Nagar, Block E, Rajendra Nagar, Sahibabad, Ghaziabad, Uttar Pradesh 201005 |
-| **Latitude** | `28.680602` |
-| **Longitude** | `77.359165` |
-
-### 57. Dr. Gunjan Gulati 
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 6721 |
-| **State** | NCR |
-| **City** | Ghaziabad |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | Mediwin Hospital 12/73, Block 12, Raj Nagarn Extensation Ghaziyabad  |
-| **Latitude** | `28.774997` |
-| **Longitude** | `77.458697` |
-
-### 58. Dr. Vanipuri 
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 6724 |
-| **State** | NCR |
-| **City** | Ghaziabad |
-| **Pincode** | 201017 |
-| **Phone** | 0 |
-| **Address** | Women Wellness ClinicS-2 Ground Floor,Quantum Residency Raj Nagar Extn. Ghaziyabad pin-201017 |
-| **Latitude** | `28.69152` |
-| **Longitude** | `77.447541` |
-
-### 59. Dr. Astha Agarwal
+### 34. Dr. Astha Agarwal
 
 | Field | Value |
 |-------|-------|
@@ -1017,21 +654,7 @@
 | **Latitude** | `28.69152` |
 | **Longitude** | `77.447541` |
 
-### 60. Dr. Pragya Pandey
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 6798 |
-| **State** | NCR |
-| **City** | Ghaziabad |
-| **Pincode** | 201002 |
-| **Phone** | 0 |
-| **Address** | Manipal HospitalOPD-4, Manipal Hospital, Hapur Rd, near NH-24, near Landcraft Golflink, G.Z.B, Navyug Market, Pandav Nagar, Ghaziabad, Uttar Pradesh 201002 |
-| **Latitude** | `28.69152` |
-| **Longitude** | `77.447541` |
-
-### 61. Dr. Archana Tiwari
+### 35. Dr. Archana Tiwari
 
 | Field | Value |
 |-------|-------|
@@ -1045,147 +668,7 @@
 | **Latitude** | `28.804506` |
 | **Longitude** | `77.542455` |
 
-### 62. Dr. Prerna Singhal
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 6820 |
-| **State** | NCR |
-| **City** | Ghaziabad |
-| **Pincode** | 201014 |
-| **Phone** | 0 |
-| **Address** | Healing Tree HospitalPlot No -30/1, Near One Square Mall, Shakti Khand 3-Indirapuram-201014 (Near One Square Mall) |
-| **Latitude** | `28.634214` |
-| **Longitude** | `77.369913` |
-
-### 63. Dr. Rani Ghai
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 7555 |
-| **State** | NCR |
-| **City** | Ghaziabad |
-| **Pincode** | 201009 |
-| **Phone** | 0 |
-| **Address** | Dr. Rani Ghai Clinic, B- 22 Sector - 9 , New Vijay Nagar Ghaziabad    Pincode- 201009 |
-| **Latitude** | `28.650707` |
-| **Longitude** | `77.437655` |
-
-### 64. Dr. Rachna Jindal
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8295 |
-| **State** | NCR |
-| **City** | Ghaziabad |
-| **Pincode** | 201003 |
-| **Phone** | 0 |
-| **Address** | Dr Rachna Jindal Maternity Centre, National Highway 58, Sector 7, Pocket C, Patel Nagar 3, Patel Nagar, Ghaziabad, Uttar Pradesh 201003 |
-| **Latitude** | `28.671153` |
-| **Longitude** | `77.412036` |
-
-### 65. Dr. Rekha Loiwal
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8296 |
-| **State** | NCR |
-| **City** | Ghaziabad |
-| **Pincode** | 201001 |
-| **Phone** | 0 |
-| **Address** | Nagar Hospital, B-1, Near By Hindi Bhawan, Lohia Nagar, Lohia Nagar-201001 |
-| **Latitude** | `28.671153` |
-| **Longitude** | `77.412036` |
-
-### 66. Dr. Parul Gupta
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8297 |
-| **State** | NCR |
-| **City** | Ghaziabad |
-| **Pincode** | 201009 |
-| **Phone** | 0 |
-| **Address** | Dr. Parul Gupta Child Care Clinic, 83/2, Opposite Opulent Mall, West Model Town, Model Town-201009 |
-| **Latitude** | `28.650707` |
-| **Longitude** | `77.437655` |
-
-### 67. Dr. Madhuri Verma
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8298 |
-| **State** | NCR |
-| **City** | Ghaziabad |
-| **Pincode** | 201010 |
-| **Phone** | 0 |
-| **Address** | Uttam Hospital, E-230, Sector 9-201010 |
-| **Latitude** | `28.642853` |
-| **Longitude** | `77.326734` |
-
-### 68. Dr. Archana Singh
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8299 |
-| **State** | NCR |
-| **City** | Ghaziabad |
-| **Pincode** | 201009 |
-| **Phone** | 0 |
-| **Address** | Dev Mangalam Hospital, Sector 12, Teacher Colony, Pratap Vihar, Ghaziabad, Uttar Pradesh 201009 |
-| **Latitude** | `28.650707` |
-| **Longitude** | `77.437655` |
-
-### 69. Dr. Archana Verma
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8300 |
-| **State** | NCR |
-| **City** | Ghaziabad |
-| **Pincode** | 201002 |
-| **Phone** | 0 |
-| **Address** | Archana Nursing Home, SI 3, Block I, Shastri Nagar, Ghaziabad, Uttar Pradesh 201002 |
-| **Latitude** | `28.69152` |
-| **Longitude** | `77.447541` |
-
-### 70. Dr. Anjana Sabharwal
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8301 |
-| **State** | NCR |
-| **City** | Ghaziabad |
-| **Pincode** | 201014 |
-| **Phone** | 0 |
-| **Address** | Prime Hospital, VPU 20, Ground Floor, Shipra Krishna Vista Plaza, Dr Sushila Naiyar Marg, Ahinsa Khand 1, Indirapuram, Ghaziabad, Uttar Pradesh 201014 |
-| **Latitude** | `28.634214` |
-| **Longitude** | `77.369913` |
-
-### 71. Dr. Shalini Agarwal
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8302 |
-| **State** | NCR |
-| **City** | Ghaziabad |
-| **Pincode** | 201002 |
-| **Phone** | 0 |
-| **Address** | Agarwal Nursing Home & Maternity Centre, House Number-R-12/44, Near ALT Centre, Raj Nagar-201002 |
-| **Latitude** | `28.69152` |
-| **Longitude** | `77.447541` |
-
-### 72. Dr. Chhaya Goyal
+### 36. Dr. Chhaya Goyal
 
 | Field | Value |
 |-------|-------|
@@ -1199,7 +682,7 @@
 | **Latitude** | `28.69152` |
 | **Longitude** | `77.447541` |
 
-### 73. Dr. Pulkit Teyagi
+### 37. Dr. Pulkit Teyagi
 
 | Field | Value |
 |-------|-------|
@@ -1209,39 +692,11 @@
 | **City** | Ghaziabad |
 | **Pincode** | 201204 |
 | **Phone** | 7417089619 |
-| **Address** | Shri Sai Nursing Home, Swasthya Vihar, Swasthya Vihar, Modinagar, Modinagar, G. T. Road, Modinagar, Ghaziabad, Uttar Pradesh, 201204  |
+| **Address** | Shri Sai Nursing Home, Swasthya Vihar, Swasthya Vihar, Modinagar, Modinagar, G. T. Road, Modinagar, Ghaziabad, Uttar Pradesh, 201204 |
 | **Latitude** | `28.804506` |
 | **Longitude** | `77.542455` |
 
-### 74. Dr. Seema Varsnay
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9009 |
-| **State** | NCR |
-| **City** | Ghaziabad |
-| **Pincode** | 201005 |
-| **Phone** | 0 |
-| **Address** | L-216, Lajpat Nagar, Om nagar Mohan Nagar, Rajendra Nagar, Sahibabad, Ghaziabad, Uttar Pradesh 201005 |
-| **Latitude** | `28.680602` |
-| **Longitude** | `77.359165` |
-
-### 75. Dr. Maneesha Agrawal
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9014 |
-| **State** | NCR |
-| **City** | Ghaziabad |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | None |
-| **Latitude** | `28.774997` |
-| **Longitude** | `77.458697` |
-
-### 76. Dr. Chumkai Dey Sinha
+### 38. Dr. Chumkai Dey Sinha
 
 | Field | Value |
 |-------|-------|
@@ -1255,7 +710,7 @@
 | **Latitude** | `28.671153` |
 | **Longitude** | `77.412036` |
 
-### 77. Dr. Shameem K. Khan
+### 39. Dr. Shameem K. Khan
 
 | Field | Value |
 |-------|-------|
@@ -1269,7 +724,7 @@
 | **Latitude** | `28.489087` |
 | **Longitude** | `77.011157` |
 
-### 78. Dr. Deepika Tiwari
+### 40. Dr. Deepika Tiwari
 
 | Field | Value |
 |-------|-------|
@@ -1283,7 +738,7 @@
 | **Latitude** | `28.480863` |
 | **Longitude** | `77.084888` |
 
-### 79. Dr. Suman Lal
+### 41. Dr. Suman Lal
 
 | Field | Value |
 |-------|-------|
@@ -1297,7 +752,7 @@
 | **Latitude** | `28.480863` |
 | **Longitude** | `77.084888` |
 
-### 80. Dr. Priyanka Bansal
+### 42. Dr. Priyanka Bansal
 
 | Field | Value |
 |-------|-------|
@@ -1311,7 +766,7 @@
 | **Latitude** | `28.480863` |
 | **Longitude** | `77.084888` |
 
-### 81. Dr. Nupur Gupta
+### 43. Dr. Nupur Gupta
 
 | Field | Value |
 |-------|-------|
@@ -1325,21 +780,7 @@
 | **Latitude** | `28.480863` |
 | **Longitude** | `77.084888` |
 
-### 82. Dr. Nandita
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 4378 |
-| **State** | NCR |
-| **City** | NOIDA |
-| **Pincode** | 201301 |
-| **Phone** | 0 |
-| **Address** | kailash hospital , sector 27 noida  |
-| **Latitude** | `28.591159` |
-| **Longitude** | `77.352535` |
-
-### 83. Dr. Jigyasa Govil
+### 44. Dr. Jigyasa Govil
 
 | Field | Value |
 |-------|-------|
@@ -1353,7 +794,7 @@
 | **Latitude** | `28.591159` |
 | **Longitude** | `77.352535` |
 
-### 84. Dr. Ekta
+### 45. Dr. Ekta
 
 | Field | Value |
 |-------|-------|
@@ -1367,7 +808,7 @@
 | **Latitude** | `28.591159` |
 | **Longitude** | `77.352535` |
 
-### 85. Dr. Deepa
+### 46. Dr. Deepa
 
 | Field | Value |
 |-------|-------|
@@ -1381,7 +822,7 @@
 | **Latitude** | `28.591159` |
 | **Longitude** | `77.352535` |
 
-### 86. Dr. Jigyasa Govil
+### 47. Dr. Jigyasa Govil
 
 | Field | Value |
 |-------|-------|
@@ -1395,7 +836,7 @@
 | **Latitude** | `28.591159` |
 | **Longitude** | `77.352535` |
 
-### 87. Dr. Ekta Singh
+### 48. Dr. Ekta Singh
 
 | Field | Value |
 |-------|-------|
@@ -1409,21 +850,7 @@
 | **Latitude** | `28.591159` |
 | **Longitude** | `77.352535` |
 
-### 88. Dr. Pushpa Singh
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 6801 |
-| **State** | NCR |
-| **City** | NOIDA |
-| **Pincode** | 201301 |
-| **Phone** | 0 |
-| **Address** | H No. 95, Sector - 15a, Gautam Budh Nagar, , Sector 15-201301 |
-| **Latitude** | `28.591159` |
-| **Longitude** | `77.352535` |
-
-### 89. Dr. Sanchita Dubey
+### 49. Dr. Sanchita Dubey
 
 | Field | Value |
 |-------|-------|
@@ -1437,7 +864,7 @@
 | **Latitude** | `28.591159` |
 | **Longitude** | `77.352535` |
 
-### 90. Dr. Jigyasa Govil
+### 50. Dr. Jigyasa Govil
 
 | Field | Value |
 |-------|-------|
@@ -1451,77 +878,7 @@
 | **Latitude** | `28.628656` |
 | **Longitude** | `77.359901` |
 
-### 91. Dr. Deepika Negi
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9010 |
-| **State** | NCR |
-| **City** | NOIDA |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | None |
-| **Latitude** | `28.570633` |
-| **Longitude** | `77.327215` |
-
-### 92. Dr. Meenakshi Tanwar
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9011 |
-| **State** | NCR |
-| **City** | NOIDA |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | None |
-| **Latitude** | `28.570633` |
-| **Longitude** | `77.327215` |
-
-### 93. Dr. B.S. Akhila 
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9012 |
-| **State** | NCR |
-| **City** | NOIDA |
-| **Pincode** | 201308 |
-| **Phone** | 0 |
-| **Address** | Vedansh Surya Hospital; 47, Knowledge Park III, Greater Noida, Uttar Pradesh 201308 |
-| **Latitude** | `28.516049` |
-| **Longitude** | `77.42075` |
-
-### 94. Dr. Komal Singh
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9013 |
-| **State** | NCR |
-| **City** | NOIDA |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | None |
-| **Latitude** | `28.570633` |
-| **Longitude** | `77.327215` |
-
-### 95. Dr. Vandana C Sharma
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9015 |
-| **State** | NCR |
-| **City** | NOIDA |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | None |
-| **Latitude** | `28.570633` |
-| **Longitude** | `77.327215` |
-
-### 96. Dr. P.K. Acharya
+### 51. Dr. P.K. Acharya
 
 | Field | Value |
 |-------|-------|
@@ -1535,7 +892,7 @@
 | **Latitude** | `20.260296` |
 | **Longitude** | `85.839452` |
 
-### 97. Dr. Soudamini Mohapatra
+### 52. Dr. Soudamini Mohapatra
 
 | Field | Value |
 |-------|-------|
@@ -1549,21 +906,7 @@
 | **Latitude** | `20.260296` |
 | **Longitude** | `85.839452` |
 
-### 98. Dr. Sabri Bhatacharya
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 6833 |
-| **State** | Odisha |
-| **City** | Bhubaneswar |
-| **Pincode** | 751015 |
-| **Phone** | 0 |
-| **Address** | Usthi Hospital Bhuabneswar |
-| **Latitude** | `20.260296` |
-| **Longitude** | `85.839452` |
-
-### 99. Dr. Santosh Mishra
+### 53. Dr. Santosh Mishra
 
 | Field | Value |
 |-------|-------|
@@ -1577,63 +920,7 @@
 | **Latitude** | `20.260296` |
 | **Longitude** | `85.839452` |
 
-### 100. Dr. Harpreet Kaur
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8646 |
-| **State** | Odisha |
-| **City** | Bhubaneswar |
-| **Pincode** | 751030 |
-| **Phone** | 0 |
-| **Address** | Manipal Hospital ( Earlier AMRI ) Plot No-1 Besides , Satysai Enclave Rd, Khandagiri, BBSR |
-| **Latitude** | `20.260296` |
-| **Longitude** | `85.839452` |
-
-### 101. Dr. Sunita Mishra
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8870 |
-| **State** | Odisha |
-| **City** | Bhubaneswar |
-| **Pincode** | 751032 |
-| **Phone** | 0 |
-| **Address** | IMS & SUM -2 , Phulanakhara, BBSR |
-| **Latitude** | `20.260296` |
-| **Longitude** | `85.839452` |
-
-### 102. Dr. Samikshya Nanda
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8894 |
-| **State** | Odisha |
-| **City** | Bhubaneswar |
-| **Pincode** | 751002 |
-| **Phone** | 0 |
-| **Address** | Cura Neuro & Gyanaecare, Infront Of Amber Show Room, Near Nuagaon Petrol Pump,Lingipur,BBSR |
-| **Latitude** | `20.260296` |
-| **Longitude** | `85.839452` |
-
-### 103. Dr. Vidhu Modgil
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8217 |
-| **State** | Punjab |
-| **City** | Ludhiana |
-| **Pincode** | 141002 |
-| **Phone** | 0 |
-| **Address** | Suman Hospital, 537, Harnam Nagar, Model town, Ludhiana |
-| **Latitude** | `30.909016` |
-| **Longitude** | `75.851601` |
-
-### 104. Dr. Schumailla Bassi
+### 54. Dr. Schumailla Bassi
 
 | Field | Value |
 |-------|-------|
@@ -1647,7 +934,7 @@
 | **Latitude** | `30.909016` |
 | **Longitude** | `75.851601` |
 
-### 105. Dr. Sunita Goyal
+### 55. Dr. Sunita Goyal
 
 | Field | Value |
 |-------|-------|
@@ -1661,35 +948,7 @@
 | **Latitude** | `30.909016` |
 | **Longitude** | `75.851601` |
 
-### 106. Dr. Kanupriya Jain
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8627 |
-| **State** | Punjab |
-| **City** | Ludhiana |
-| **Pincode** | 141012 |
-| **Phone** | 0 |
-| **Address** | Cloudnine Hospital, Firozpur Road, opp. MBD mall, Ludhiana-141012, Ameritus Hospital, B-28, 200 Feet Road, Passi Nagar, Ludhiana, Punjab 141013 |
-| **Latitude** | `30.909016` |
-| **Longitude** | `75.851601` |
-
-### 107. Dr. Ashima Taneja
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8689 |
-| **State** | Punjab |
-| **City** | Ludhiana |
-| **Pincode** | 141001 |
-| **Phone** | 0 |
-| **Address** | Dayanand Medical College, Civil line Tagore Nagar, Ludhiana, Punjab |
-| **Latitude** | `30.909016` |
-| **Longitude** | `75.851601` |
-
-### 108. Dr. Suhashni Raina
+### 56. Dr. Suhashni Raina
 
 | Field | Value |
 |-------|-------|
@@ -1703,7 +962,7 @@
 | **Latitude** | `30.909016` |
 | **Longitude** | `75.851601` |
 
-### 109. Dr. Nidhi Lama
+### 57. Dr. Nidhi Lama
 
 | Field | Value |
 |-------|-------|
@@ -1717,7 +976,7 @@
 | **Latitude** | `30.909016` |
 | **Longitude** | `75.851601` |
 
-### 110. Dr. Roopangi Modgil
+### 58. Dr. Roopangi Modgil
 
 | Field | Value |
 |-------|-------|
@@ -1731,7 +990,7 @@
 | **Latitude** | `30.909016` |
 | **Longitude** | `75.851601` |
 
-### 111. Dr. Seema Mishra
+### 59. Dr. Seema Mishra
 
 | Field | Value |
 |-------|-------|
@@ -1745,7 +1004,7 @@
 | **Latitude** | `30.909016` |
 | **Longitude** | `75.851601` |
 
-### 112. Dr. Manu Singhla
+### 60. Dr. Manu Singhla
 
 | Field | Value |
 |-------|-------|
@@ -1759,7 +1018,7 @@
 | **Latitude** | `30.909016` |
 | **Longitude** | `75.851601` |
 
-### 113. Dr. Garima Hind
+### 61. Dr. Garima Hind
 
 | Field | Value |
 |-------|-------|
@@ -1773,7 +1032,7 @@
 | **Latitude** | `30.909016` |
 | **Longitude** | `75.851601` |
 
-### 114. Dr. Deepika Garg
+### 62. Dr. Deepika Garg
 
 | Field | Value |
 |-------|-------|
@@ -1787,7 +1046,7 @@
 | **Latitude** | `30.909016` |
 | **Longitude** | `75.851601` |
 
-### 115. Dr. Anshu Mittal
+### 63. Dr. Anshu Mittal
 
 | Field | Value |
 |-------|-------|
@@ -1801,77 +1060,7 @@
 | **Latitude** | `30.909016` |
 | **Longitude** | `75.851601` |
 
-### 116. Dr. Y Sandhya Rani
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 6479 |
-| **State** | Telangana |
-| **City** | Hyderabad |
-| **Pincode** | 500048 |
-| **Phone** | 0 |
-| **Address** | Sri vijaya hospital, Attapur, Hyderabad |
-| **Latitude** | `17.360589` |
-| **Longitude** | `78.474061` |
-
-### 117. Dr. Tripura Sundari
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 7823 |
-| **State** | Telangana |
-| **City** | Hyderabad |
-| **Pincode** | 500082 |
-| **Phone** | 0 |
-| **Address** | KIMS Hospital, Door No. 1-8-31/1, Block 1, 2, 3, Opposite Sai Baba Temple, Krishna Nagar Colony, Main Road, Minister Road, Punjagutta-500082 (Opposite Sai Baba Temple, Krishna Nagar Colony) |
-| **Latitude** | `17.414448` |
-| **Longitude** | `78.459518` |
-
-### 118. Dr. P M Abhirama Sundari
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8707 |
-| **State** | Telangana |
-| **City** | Hyderabad |
-| **Pincode** | 500010 |
-| **Phone** | 0 |
-| **Address** | Sundari Maternity And General Hospital; No.1, 8-84, Temple Alwal Rd, Anand Rao Nagar, Temple Alwal, Alwal, Hyderabad, Secunderabad, Telangana 500010 |
-| **Latitude** | `17.360589` |
-| **Longitude** | `78.474061` |
-
-### 119. Dr. S Vidyarani
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8761 |
-| **State** | Telangana |
-| **City** | Hyderabad |
-| **Pincode** | 500010 |
-| **Phone** | 0 |
-| **Address** | Sundari Maternity And General Hospital; No.1, 8-84, Temple Alwal Rd, Anand Rao Nagar, Temple Alwal, Alwal, Hyderabad, Secunderabad, Telangana 500010 |
-| **Latitude** | `17.360589` |
-| **Longitude** | `78.474061` |
-
-### 120. Dr. Vasundhara Cheepurupalli
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8901 |
-| **State** | Telangana |
-| **City** | Hyderabad |
-| **Pincode** | 500003 |
-| **Phone** | 0 |
-| **Address** | KIMS hospital, Minister road, Secunderabad, Hyderabad, Telangana |
-| **Latitude** | `17.360589` |
-| **Longitude** | `78.474061` |
-
-### 121. Dr. Anjana Arora
+### 64. Dr. Anjana Arora
 
 | Field | Value |
 |-------|-------|
@@ -1885,7 +1074,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 122. Dr. Shanu Agarwal
+### 65. Dr. Shanu Agarwal
 
 | Field | Value |
 |-------|-------|
@@ -1899,7 +1088,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 123. Dr. Rinju Sharma
+### 66. Dr. Rinju Sharma
 
 | Field | Value |
 |-------|-------|
@@ -1913,7 +1102,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 124. Dr. Sanjana Maheshwari
+### 67. Dr. Sanjana Maheshwari
 
 | Field | Value |
 |-------|-------|
@@ -1927,7 +1116,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 125. Dr. Nidhi Pandey
+### 68. Dr. Nidhi Pandey
 
 | Field | Value |
 |-------|-------|
@@ -1936,12 +1125,12 @@
 | **State** | WestUP |
 | **City** | Agra |
 | **Pincode** | 282010 |
-| **Phone** |  562 221 6915 |
+| **Phone** | 562 221 6915 |
 | **Address** | Dr. Anoop Gupta hospital, City Hospital, 71, Bodla Rd, Near Police Station, COD Colony, Saket Colony, Shahganj, Agra, Uttar Pradesh 282010 |
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 126. Dr. Anjali Singh
+### 69. Dr. Anjali Singh
 
 | Field | Value |
 |-------|-------|
@@ -1955,7 +1144,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 127. Dr. Gargi Gupta
+### 70. Dr. Gargi Gupta
 
 | Field | Value |
 |-------|-------|
@@ -1969,7 +1158,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 128. Dr. Savita Tyagi
+### 71. Dr. Savita Tyagi
 
 | Field | Value |
 |-------|-------|
@@ -1983,7 +1172,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 129. Dr. Arushi Bansal
+### 72. Dr. Arushi Bansal
 
 | Field | Value |
 |-------|-------|
@@ -1997,7 +1186,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 130. Dr. Sukanya Verma
+### 73. Dr. Sukanya Verma
 
 | Field | Value |
 |-------|-------|
@@ -2011,7 +1200,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 131. Dr. Rashi Gupta
+### 74. Dr. Rashi Gupta
 
 | Field | Value |
 |-------|-------|
@@ -2025,7 +1214,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 132. Dr. Alka Bindal
+### 75. Dr. Alka Bindal
 
 | Field | Value |
 |-------|-------|
@@ -2039,7 +1228,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 133. Dr. Nirmala Yadav
+### 76. Dr. Nirmala Yadav
 
 | Field | Value |
 |-------|-------|
@@ -2053,7 +1242,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 134. Dr. Bharti Bansal
+### 77. Dr. Bharti Bansal
 
 | Field | Value |
 |-------|-------|
@@ -2067,7 +1256,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 135. Dr. Anju Sharma
+### 78. Dr. Anju Sharma
 
 | Field | Value |
 |-------|-------|
@@ -2081,7 +1270,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 136. Dr. Rekha Tandon
+### 79. Dr. Rekha Tandon
 
 | Field | Value |
 |-------|-------|
@@ -2095,7 +1284,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 137. Dr. Neeraj Pathak
+### 80. Dr. Neeraj Pathak
 
 | Field | Value |
 |-------|-------|
@@ -2109,7 +1298,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 138. Dr. Preeti Mishra
+### 81. Dr. Preeti Mishra
 
 | Field | Value |
 |-------|-------|
@@ -2123,7 +1312,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 139. Dr. Sonal Gupta
+### 82. Dr. Sonal Gupta
 
 | Field | Value |
 |-------|-------|
@@ -2137,7 +1326,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 140. Dr. Shalini Gupta
+### 83. Dr. Shalini Gupta
 
 | Field | Value |
 |-------|-------|
@@ -2151,7 +1340,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 141. Dr. Narendra Malhotra
+### 84. Dr. Narendra Malhotra
 
 | Field | Value |
 |-------|-------|
@@ -2165,7 +1354,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 142. Dr. Jaideep Malhotra
+### 85. Dr. Jaideep Malhotra
 
 | Field | Value |
 |-------|-------|
@@ -2179,7 +1368,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 143. Dr. Kamini Khurana
+### 86. Dr. Kamini Khurana
 
 | Field | Value |
 |-------|-------|
@@ -2193,7 +1382,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 144. Dr. Sudha Bansal
+### 87. Dr. Sudha Bansal
 
 | Field | Value |
 |-------|-------|
@@ -2207,21 +1396,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 145. Dr. Sangeeta Chaturvedi
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8124 |
-| **State** | WestUP |
-| **City** | Agra |
-| **Pincode** | 282007 |
-| **Phone** | 0 |
-| **Address** | Sangeeta Mother & Child Care Center, 106, Tyagi Market, Shastripuram Road, Paschim Puri Chauraha, Sikandra, Agra, Uttar Pradesh 282007 |
-| **Latitude** | `27.175255` |
-| **Longitude** | `78.009816` |
-
-### 146. Dr. Namita Shiromany
+### 88. Dr. Namita Shiromany
 
 | Field | Value |
 |-------|-------|
@@ -2235,7 +1410,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 147. Dr. Suman Bansal
+### 89. Dr. Suman Bansal
 
 | Field | Value |
 |-------|-------|
@@ -2249,7 +1424,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 148. Dr. Saroj Singh
+### 90. Dr. Saroj Singh
 
 | Field | Value |
 |-------|-------|
@@ -2263,7 +1438,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 149. Dr. Amita Mangal
+### 91. Dr. Amita Mangal
 
 | Field | Value |
 |-------|-------|
@@ -2277,7 +1452,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 150. Dr. Neha Upadhyaya
+### 92. Dr. Neha Upadhyaya
 
 | Field | Value |
 |-------|-------|
@@ -2291,7 +1466,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 151. Dr. Seema Singh
+### 93. Dr. Seema Singh
 
 | Field | Value |
 |-------|-------|
@@ -2305,7 +1480,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 152. Dr. Anjali Vohra
+### 94. Dr. Anjali Vohra
 
 | Field | Value |
 |-------|-------|
@@ -2319,35 +1494,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 153. Dr. Darsha 
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8252 |
-| **State** | WestUP |
-| **City** | Agra |
-| **Pincode** | 282007 |
-| **Phone** | 0 |
-| **Address** | 113, Paschimpuri, Shastripuram Road, Agra |
-| **Latitude** | `27.175255` |
-| **Longitude** | `78.009816` |
-
-### 154. Dr. Moshmi Singhal 
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8253 |
-| **State** | WestUP |
-| **City** | Agra |
-| **Pincode** | 282001 |
-| **Phone** | 0 |
-| **Address** | 14, Lata Kunj, Mathura Road, Agra |
-| **Latitude** | `27.175255` |
-| **Longitude** | `78.009816` |
-
-### 155. Dr. Sunita Malhotra 
+### 95. Dr. Sunita Malhotra
 
 | Field | Value |
 |-------|-------|
@@ -2361,7 +1508,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 156. Dr. Nidhi Banshal
+### 96. Dr. Nidhi Banshal
 
 | Field | Value |
 |-------|-------|
@@ -2375,21 +1522,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 157. FPAI Clinic Agra 
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8305 |
-| **State** | WestUP |
-| **City** | Agra |
-| **Pincode** | 282010 |
-| **Phone** | 0 |
-| **Address** | 2 HIG, Friends Colony, Shahganj, Agra - 282010 |
-| **Latitude** | `27.175255` |
-| **Longitude** | `78.009816` |
-
-### 158. Dr. Arti Manoj
+### 97. Dr. Arti Manoj
 
 | Field | Value |
 |-------|-------|
@@ -2403,7 +1536,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 159. Dr. Anjana Sharma
+### 98. Dr. Anjana Sharma
 
 | Field | Value |
 |-------|-------|
@@ -2417,35 +1550,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 160. Dr. Urvashi Verma
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 8692 |
-| **State** | WestUP |
-| **City** | Agra |
-| **Pincode** | 282010 |
-| **Phone** | 0 |
-| **Address** | Urvashi Clinic, Shahgunj, Agra - 282010 |
-| **Latitude** | `27.175255` |
-| **Longitude** | `78.009816` |
-
-### 161. Dr. Anu Shree Rawat
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9016 |
-| **State** | WestUP |
-| **City** | Agra |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | None |
-| **Latitude** | `27.175255` |
-| **Longitude** | `78.009816` |
-
-### 162. Dr. Shivani Shikha
+### 99. Dr. Shivani Shikha
 
 | Field | Value |
 |-------|-------|
@@ -2459,35 +1564,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 163. Dr. Somiya Mohaniya
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9018 |
-| **State** | WestUP |
-| **City** | Agra |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | None |
-| **Latitude** | `27.175255` |
-| **Longitude** | `78.009816` |
-
-### 164. Dr. Bhawana Singh
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9019 |
-| **State** | WestUP |
-| **City** | Agra |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | None |
-| **Latitude** | `27.175255` |
-| **Longitude** | `78.009816` |
-
-### 165. Dr. Hema Sadana
+### 100. Dr. Hema Sadana
 
 | Field | Value |
 |-------|-------|
@@ -2501,133 +1578,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 166. Dr. Kavita Bhatnagar
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9021 |
-| **State** | WestUP |
-| **City** | Agra |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | None |
-| **Latitude** | `27.175255` |
-| **Longitude** | `78.009816` |
-
-### 167. Dr. Sarita Mittal
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9022 |
-| **State** | WestUP |
-| **City** | Agra |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | None |
-| **Latitude** | `27.175255` |
-| **Longitude** | `78.009816` |
-
-### 168. Dr. Eshita Bansal
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9024 |
-| **State** | WestUP |
-| **City** | Agra |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | None |
-| **Latitude** | `27.175255` |
-| **Longitude** | `78.009816` |
-
-### 169. Dr. Shardha Mishra
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9025 |
-| **State** | WestUP |
-| **City** | Agra |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | None |
-| **Latitude** | `27.175255` |
-| **Longitude** | `78.009816` |
-
-### 170. Dr. Pushplata
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9026 |
-| **State** | WestUP |
-| **City** | Agra |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | None |
-| **Latitude** | `27.175255` |
-| **Longitude** | `78.009816` |
-
-### 171. Dr. Mamta 
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9027 |
-| **State** | WestUP |
-| **City** | Agra |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | None |
-| **Latitude** | `27.175255` |
-| **Longitude** | `78.009816` |
-
-### 172. Dr. Shushma Gupta
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9028 |
-| **State** | WestUP |
-| **City** | Agra |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | None |
-| **Latitude** | `27.175255` |
-| **Longitude** | `78.009816` |
-
-### 173. Dr. Kaviya Sharma
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9029 |
-| **State** | WestUP |
-| **City** | Agra |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | None |
-| **Latitude** | `27.175255` |
-| **Longitude** | `78.009816` |
-
-### 174. Dr. Anupama Tayagi
-
-| Field | Value |
-|-------|-------|
-| **Status** | ✅ Geocoded |
-| **SDPID** | 9030 |
-| **State** | WestUP |
-| **City** | Agra |
-| **Pincode** | None |
-| **Phone** | 0 |
-| **Address** | None |
-| **Latitude** | `27.175255` |
-| **Longitude** | `78.009816` |
-
-### 175. Dr. Sandhi jain
+### 101. Dr. Sandhi jain
 
 | Field | Value |
 |-------|-------|
@@ -2641,7 +1592,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 176. Dr. Sonam Bala
+### 102. Dr. Sonam Bala
 
 | Field | Value |
 |-------|-------|
@@ -2655,7 +1606,7 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
-### 177. Dr. Vandna Jain
+### 103. Dr. Vandna Jain
 
 | Field | Value |
 |-------|-------|
@@ -2669,13 +1620,937 @@
 | **Latitude** | `27.175255` |
 | **Longitude** | `78.009816` |
 
+### 104. Dr. Nisha Goyal
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8266 |
+| **State** | CH |
+| **City** | Mohali |
+| **Pincode** | 140603 |
+| **Phone** | 8146756833 |
+| **Address** | Parvarish Hospital, SCO 5, Adjoining MRF, Old Ambala Road, Dhakoli, Zirakpur, Punjab 140603 |
+| **Latitude** | `30.647688` |
+| **Longitude** | `76.818597` |
+
+### 105. Dr. Simran Dhawan
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9221 |
+| **State** | CH |
+| **City** | Panchkula |
+| **Pincode** | 134109 |
+| **Phone** | 9316135516 |
+| **Address** | Dhawan Hospital, Plot No.1, Sec.7 Panchkula |
+| **Latitude** | `30.696779` |
+| **Longitude** | `76.854143` |
+
+### 106. Dr. Satwant Kaur
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8595 |
+| **State** | Haryana |
+| **City** | Ambala |
+| **Pincode** | 136135 |
+| **Phone** | 01744 332000 |
+| **Address** | Adesh Medical College, NH - 1, Near Ambala Cantt., Vill. Mohri, Tehsil. Shahbad (M), District Kurukshetra, Haryana - 136135 |
+| **Latitude** | `30.161228` |
+| **Longitude** | `76.891636` |
+
+### 107. Dr. Anubha Vidyarthi
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 3068 |
+| **State** | Jharkhand |
+| **City** | Ranchi |
+| **Pincode** | 834001 |
+| **Phone** | 7004035243 |
+| **Address** | Amrita Nursing home; Kali Mandir Rd, Burdwan Compound, l, P&T Colony, Lalpur, Ranchi, Jharkhand 834001 |
+| **Latitude** | `23.373023` |
+| **Longitude** | `85.33676` |
+
+### 108. Dr. Basudha Jhaa
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8911 |
+| **State** | Jharkhand |
+| **City** | Ranchi |
+| **Pincode** | 834002 |
+| **Phone** | 6513511433 |
+| **Address** | Trust Multispeciality Hospital, Harmu Bazar, Imli Chowk, Ranchi-834002, Jharkhand |
+| **Latitude** | `23.338834` |
+| **Longitude** | `85.313534` |
+
+### 109. Dr. Beauty Banerjee
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 3054 |
+| **State** | Jharkhand |
+| **City** | Ranchi |
+| **Pincode** | 834001 |
+| **Phone** | 9431382368 |
+| **Address** | KC Roy Memorial hospital; 50, Circular Rd, Ajit Enclave, P&T Colony, Lalpur, Ranchi, Jharkhand 834001; 1St Floor, Bimala Nand Tower, Purulia Rd, beside St. Xavier's College, Ranchi, Jharkhand 834001 |
+| **Latitude** | `23.373023` |
+| **Longitude** | `85.33676` |
+
+### 110. Dr. Rajni Kumari
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8650 |
+| **State** | Jharkhand |
+| **City** | Ranchi |
+| **Pincode** | 834001 |
+| **Phone** | 9470931116 |
+| **Address** | Nakshtara Women & Fertility Clinic, Opposite Prabhat Khabar Gate, H B Road, Kokar, Ranchi-834001 |
+| **Latitude** | `23.373023` |
+| **Longitude** | `85.33676` |
+
+### 111. Dr. Rekharani Singh
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8976 |
+| **State** | Jharkhand |
+| **City** | Ranchi |
+| **Pincode** | 834002 |
+| **Phone** | 7488336541 |
+| **Address** | Vinayak Clinic & Maternity Centre |
+| **Latitude** | `23.338834` |
+| **Longitude** | `85.313534` |
+
+### 112. Dr. Sunita Mishra
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 6846 |
+| **State** | Jharkhand |
+| **City** | Ranchi |
+| **Pincode** | 834002 |
+| **Phone** | 8092459852 |
+| **Address** | Astha hospital, Harmu Housing Colony, Nizam Nagar, Hindpiri, Ranchi, Jharkhand |
+| **Latitude** | `23.338834` |
+| **Longitude** | `85.313534` |
+
+### 113. Dr. Swati Chaitnya
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 6858 |
+| **State** | Jharkhand |
+| **City** | Ranchi |
+| **Pincode** | 834009 |
+| **Phone** | 9065763300 |
+| **Address** | Suyog Hospital; Near Baragain Talab, Baragain Road, Lem Bargain, Bariyatu, Ranchi, Jharkhand 834009 |
+| **Latitude** | `23.395302` |
+| **Longitude** | `85.360388` |
+
+### 114. Dr. Swatilal
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 3051 |
+| **State** | Jharkhand |
+| **City** | Ranchi |
+| **Pincode** | 834001 |
+| **Phone** | 9014388549 |
+| **Address** | KRISHNA NURSING HOME, 53, Circular Road, Lalpur, Ranchi - 834001 |
+| **Latitude** | `23.373023` |
+| **Longitude** | `85.33676` |
+
+### 115. Dr. Tripti Prakesh
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 3070 |
+| **State** | Jharkhand |
+| **City** | Ranchi |
+| **Pincode** | 834009 |
+| **Phone** | 9123254570 |
+| **Address** | Prema Hospital; Near Phed Chowk, Booty More Road, Bariatu, Ranchi-834009, Jharkhand |
+| **Latitude** | `23.395302` |
+| **Longitude** | `85.360388` |
+
+### 116. Dr. Vandita
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 3053 |
+| **State** | Jharkhand |
+| **City** | Ranchi |
+| **Pincode** | 834001 |
+| **Phone** | 7488336541 |
+| **Address** | VINAYAK HOSPITAL; Road No 1, Kokar, Ranchi - 834001 (Near Imam Kothi H B Road, Santamen Nagar) |
+| **Latitude** | `23.373023` |
+| **Longitude** | `85.33676` |
+
+### 117. Dr. Chaitra Poornima Ramakrishna
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 7905 |
+| **State** | Karnataka |
+| **City** | Bengaluru |
+| **Pincode** | 560079 |
+| **Phone** | 9482089357 |
+| **Address** | Sucheta Clinic; No175, 8th Main Cross Road, Rajarajeshwari Nagar, BEML Layout, Basaweshwarnagar, Bangalore- 560079 |
+| **Latitude** | `12.988213` |
+| **Longitude** | `77.532641` |
+
+### 118. Dr. Chaitra S. Niranthara
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 6635 |
+| **State** | Karnataka |
+| **City** | Bengaluru |
+| **Pincode** | 560013 |
+| **Phone** | 9620039891 |
+| **Address** | CANS Hospital, #2, GBM & SON’s Layout Byrappa Garden, Near Gangamma Circle, Jalahalli, Ramachandrapura, Bangalore |
+| **Latitude** | `13.04942` |
+| **Longitude** | `77.552189` |
+
+### 119. Dr. Chetna N. Aradhya
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8838 |
+| **State** | Karnataka |
+| **City** | Bengaluru |
+| **Pincode** | 560072 |
+| **Phone** | 9448658577 |
+| **Address** | Akshama Women's Clinic |
+| **Latitude** | `12.965746` |
+| **Longitude** | `77.514076` |
+
+### 120. Dr. Leela Shankar
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8221 |
+| **State** | Karnataka |
+| **City** | Bengaluru |
+| **Pincode** | 560010 |
+| **Phone** | 9448472854 |
+| **Address** | Abhaya Clinic Rajajinagar |
+| **Latitude** | `12.990603` |
+| **Longitude** | `77.551414` |
+
+### 121. Dr. Manjula S Patil
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8671 |
+| **State** | Karnataka |
+| **City** | Bengaluru |
+| **Pincode** | 560077 |
+| **Phone** | 8095462677 |
+| **Address** | Ovum Hospitals, Hegde Nagar, 2nd Floor, No 33/4, Hennur Main Road, Kothanur, Bengaluru, Karnataka 560077 |
+| **Latitude** | `13.062532` |
+| **Longitude** | `77.653022` |
+
+### 122. Dr. Manjula Thunti
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9185 |
+| **State** | Karnataka |
+| **City** | Bengaluru |
+| **Pincode** | 560064 |
+| **Phone** | 9591622912 |
+| **Address** | Kishore Multispeciality Hospital; MIG, 790, 8th 'A' Cross, Lions Seva Bhavana Road, Sector A, Yelahanka Satellite Town, Yelahanka New Town, Bengaluru, Karnataka 560064 |
+| **Latitude** | `13.140169` |
+| **Longitude** | `77.572251` |
+
+### 123. Dr. P Chetana Arvind
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8598 |
+| **State** | Karnataka |
+| **City** | Bengaluru |
+| **Pincode** | 560079 |
+| **Phone** | 9448369732 |
+| **Address** | Vatsalya Women and Child Clinic, No 565, Beside Post office, 3rd Stage, 4th Block, Shakthi Ganapathi Nagar, Basaweshwarnagar, Bangalore - 560079 |
+| **Latitude** | `12.988213` |
+| **Longitude** | `77.532641` |
+
+### 124. Dr. Pradeepa
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8758 |
+| **State** | Karnataka |
+| **City** | Bengaluru |
+| **Pincode** | 560011 |
+| **Phone** | 7639371904 |
+| **Address** | Sri Krishna Sevashrama Hospital |
+| **Latitude** | `12.930218` |
+| **Longitude** | `77.585123` |
+
+### 125. Dr. Rizwana Ahamadh
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9187 |
+| **State** | Karnataka |
+| **City** | Bengaluru |
+| **Pincode** | 560005 |
+| **Phone** | 9844588672 |
+| **Address** | Aspire Hospital, N0, 92, Mosque Rd, Fraser Town, Bengaluru, Karnataka 560005 |
+| **Latitude** | `12.996796` |
+| **Longitude** | `77.619046` |
+
+### 126. Dr. Shilpa Venkatesh
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 5095 |
+| **State** | Karnataka |
+| **City** | Bengaluru |
+| **Pincode** | 560102 |
+| **Phone** | 9845726200 |
+| **Address** | Swasthya Women Care Clinic |
+| **Latitude** | `12.915145` |
+| **Longitude** | `77.650513` |
+
+### 127. Dr. Sowmya H.M.
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 6620 |
+| **State** | Karnataka |
+| **City** | Bengaluru |
+| **Pincode** | 560076 |
+| **Phone** | 9731056979 |
+| **Address** | Dr Sowmya’s Women Care Clinic, No 1051,Doctors floor,2nd floor,Above ICICI Bank, Bannerghatta Main Rd, Vijaya Bank Layout, Bengaluru, Karnataka 560076 |
+| **Latitude** | `12.880645` |
+| **Longitude** | `77.603868` |
+
+### 128. Dr. Swetha Madhuri
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8754 |
+| **State** | Karnataka |
+| **City** | Bengaluru |
+| **Pincode** | 560114 |
+| **Phone** | 9885976066 |
+| **Address** | Swetha's Gynecare; Ground floor, NO:4, Basaveshwara 2nd Main Rd, near Canara bank, Akshayanagara West, Akshaya Gardens, Akshayanagar, Bengaluru, Karnataka 560114 |
+| **Latitude** | `12.876444` |
+| **Longitude** | `77.636043` |
+
+### 129. Dr. Varalakshmi K
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9194 |
+| **State** | Karnataka |
+| **City** | Bengaluru |
+| **Pincode** | 560097 |
+| **Phone** | 9845720110 |
+| **Address** | Aveksha Hospitals, Varadarajaswamy Layout, no 122, M S Palya Road, Sigapura , Bangalore-560097 |
+| **Latitude** | `13.078555` |
+| **Longitude** | `77.555229` |
+
+### 130. Dr. Viqat Ara
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8799 |
+| **State** | Karnataka |
+| **City** | Bengaluru |
+| **Pincode** | 560005 |
+| **Phone** | 8197040850 |
+| **Address** | AL-Sahha Gynaec Centre; Frazer Town |
+| **Latitude** | `12.996796` |
+| **Longitude** | `77.619046` |
+
+### 131. Dr. Apeksha Mittal
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8883 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201201 |
+| **Phone** | 7417481924 |
+| **Address** | Dhanwantari Ortho & Women Centre, Metro Pillar 1207, Opp, near Raj Chopla, Bank Colony, Modinagar, Uttar Pradesh 201201 |
+| **Latitude** | `28.843582` |
+| **Longitude** | `77.567187` |
+
+### 132. Dr. Neelu Khaneja
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8882 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201001 |
+| **Phone** | 9910726232 |
+| **Address** | Khaneja Nursing Home; III C / 89, opp. Eectricity office, Block C, Nehru Nagar III, Nehru Nagar, Ghaziabad, Uttar Pradesh 201001 |
+| **Latitude** | `28.660864` |
+| **Longitude** | `77.424564` |
+
+### 133. Dr. Richa Gupta
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 6748 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201009 |
+| **Phone** | 9212762953 |
+| **Address** | Krishna Family Hospital and Infertility centre; G 7, Sector-11, Pratap Vihar, Ghaziabad, Uttar Pradesh 201009 |
+| **Latitude** | `28.641589` |
+| **Longitude** | `77.437051` |
+
+### 134. DR. SATAKSHI GARG
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9037 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201204 |
+| **Phone** | 7056239959 |
+| **Address** | Vidhyawati Dubey Hospital; Number 2, Bank Colony, Adarsh Nagar-, Modinagar-201204, Uttar Pradesh |
+| **Latitude** | `28.843582` |
+| **Longitude** | `77.567187` |
+
+### 135. Dr. Aditi Ghai
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 4373 |
+| **State** | NCR |
+| **City** | NOIDA |
+| **Pincode** | 201318 |
+| **Phone** | 7503261399 |
+| **Address** | Ghai clinic; mahagun mywoods first floor gaur city 2 greater noida 201318 |
+| **Latitude** | `28.601434` |
+| **Longitude** | `77.440218` |
+
+### 136. Dr. Rashmi Dey
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8909 |
+| **State** | NCR |
+| **City** | NOIDA |
+| **Pincode** | 201318 |
+| **Phone** | 9625453806 |
+| **Address** | Rashmi Dey clinic; Shop No 145, First Floor, Mahagun Mywoods, Mart, Ghaziabad, Gaur City 2, Greater Noida-201318, Uttar Pradesh |
+| **Latitude** | `28.601434` |
+| **Longitude** | `77.440218` |
+
+### 137. Dr. Swetha Mathur
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 7683 |
+| **State** | NCR |
+| **City** | NOIDA |
+| **Pincode** | 201304 |
+| **Phone** | 8130308551 |
+| **Address** | Srijan Clinic, C Block, Kothi Number 85 (Basement)., Landmark: On CloudNine Hospital Road, Noida |
+| **Latitude** | `28.528672` |
+| **Longitude** | `77.388007` |
+
+### 138. Dr. Anamika Mishra
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8604 |
+| **State** | Odisha |
+| **City** | Bhubaneswar |
+| **Pincode** | 751009 |
+| **Phone** | 9154940954 |
+| **Address** | Ankura Hospital; Near Sisubhavan, Unit 1, Bapuji Nagar, Bhubaneswar, Odisha 751009 |
+| **Latitude** | `20.257103` |
+| **Longitude** | `85.828948` |
+
+### 139. Dr. Asima Patra
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 6556 |
+| **State** | Odisha |
+| **City** | Bhubaneswar |
+| **Pincode** | 751014 |
+| **Phone** | 6291389320 |
+| **Address** | Ananya Nurshing home, Badagada |
+| **Latitude** | `20.252501` |
+| **Longitude** | `85.843041` |
+
+### 140. Dr. Jayprakas Pani
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 6573 |
+| **State** | Odisha |
+| **City** | Bhubaneswar |
+| **Pincode** | 751022 |
+| **Phone** | 8599009063 |
+| **Address** | Apollo Hospital, Sainik School Road, Bhubaneswar |
+| **Latitude** | `20.289068` |
+| **Longitude** | `85.834439` |
+
+### 141. Dr. Mamata Nayak
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 3004 |
+| **State** | Odisha |
+| **City** | Bhubaneswar |
+| **Pincode** | 753014 |
+| **Phone** | 9776907669 |
+| **Address** | Sanjukta Clinic, Cda Sector 7, Cuttack - 753014 |
+| **Latitude** | `20.476559` |
+| **Longitude** | `85.842496` |
+
+### 142. Dr. Mohini
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8606 |
+| **State** | Odisha |
+| **City** | Bhubaneswar |
+| **Pincode** | 751030 |
+| **Phone** | 9154940954 |
+| **Address** | KIIMS,BBSR, Ankura Hospital, Bhubaneswar, Odisha 751030 |
+| **Latitude** | `20.256177` |
+| **Longitude** | `85.78839` |
+
+### 143. Dr. Sanjusmita Tripathy
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 6593 |
+| **State** | Odisha |
+| **City** | Bhubaneswar |
+| **Pincode** | 751007 |
+| **Phone** | 9437101440 |
+| **Address** | Deepak Nurshing home, Saheed nagar |
+| **Latitude** | `20.288648` |
+| **Longitude** | `85.850623` |
+
+### 144. Dr. Sujata Swain
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8649 |
+| **State** | Odisha |
+| **City** | Bhubaneswar |
+| **Pincode** | 751016 |
+| **Phone** | 9078913717 |
+| **Address** | Srujana Clinic. M-68,Samanta Vihar, Nalco Square,BBSR |
+| **Latitude** | `20.327675` |
+| **Longitude** | `85.818288` |
+
+### 145. Dr. Swapnita Hota
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 6562 |
+| **State** | Odisha |
+| **City** | Bhubaneswar |
+| **Pincode** | 751016 |
+| **Phone** | 8763240943 |
+| **Address** | Blue wheel Hospital+Sadhna Clinic; INFRONT OF, Plot NO 159, Gujarat Bhawan Ln, Prachi Enclave, District Center, Chandrasekharpur, Bhubaneswar, Odisha 751016 |
+| **Latitude** | `20.327675` |
+| **Longitude** | `85.818288` |
+
+### 146. Dr. Amrita Kaur
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8820 |
+| **State** | Punjab |
+| **City** | Ludhiana |
+| **Pincode** | 141008 |
+| **Phone** | 9646800209 |
+| **Address** | New Life Hospital; Shingar Cinema Rd, Fatehganj, Ludhiana, Punjab 141008 |
+| **Latitude** | `30.931114` |
+| **Longitude** | `75.838839` |
+
+### 147. Dr. Anurag Jain
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8829 |
+| **State** | Punjab |
+| **City** | Ludhiana |
+| **Pincode** | 141001 |
+| **Phone** | 9855503722 |
+| **Address** | Dr. Zoni Jain Hospital; 133, New Lajpat Nagar, Opp. Hotel Imperial, Pakhowal Road, Ludhiana, Punjab 141001 |
+| **Latitude** | `30.903489` |
+| **Longitude** | `75.828647` |
+
+### 148. Dr. Ginny Gupta
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8211 |
+| **State** | Punjab |
+| **City** | Ludhiana |
+| **Pincode** | 141001 |
+| **Phone** | 9815195017 |
+| **Address** | Health Line hospital; 191, Near new DMCH, Block B, Udham Singh Nagar,Tagore Nagar Ludhiana |
+| **Latitude** | `30.903489` |
+| **Longitude** | `75.828647` |
+
+### 149. Dr. Gitanjali Kaur
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8212 |
+| **State** | Punjab |
+| **City** | Ludhiana |
+| **Pincode** | 141002 |
+| **Phone** | 9815195017 |
+| **Address** | Pal Hospital, 517, R , Pritam Nagar, Model Town, Ludhiana |
+| **Latitude** | `30.901513` |
+| **Longitude** | `75.824811` |
+
+### 150. Dr. Manjot Walia Kakkar
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9108 |
+| **State** | Punjab |
+| **City** | Ludhiana |
+| **Pincode** | 142029 |
+| **Phone** | 8837806208 |
+| **Address** | Kakkar Multispeciality Hospital and Surgical centre; near Indian Oil Petrol Pump, Mansuran, Punjab 142029 |
+| **Latitude** | `30.801154` |
+| **Longitude** | `75.761915` |
+
+### 151. Dr. Patwantinder Kaur
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9208 |
+| **State** | Punjab |
+| **City** | Ludhiana |
+| **Pincode** | 142026 |
+| **Phone** | 9814367581 |
+| **Address** | Kalsi Maternity Home; Near Rani Jhansi Chowk, Jagraon, District Ludhiana, Jagraon, Punjab, India, 142026 |
+| **Latitude** | `30.800854` |
+| **Longitude** | `75.483541` |
+
+### 152. Dr. Supreeta Kaur
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8822 |
+| **State** | Punjab |
+| **City** | Ludhiana |
+| **Pincode** | 141003 |
+| **Phone** | 9888552504 |
+| **Address** | Raj Hospital; Urban Estate Phase 1, Jamalpur, Ludhiana, Punjab 141003 |
+| **Latitude** | `30.877744` |
+| **Longitude** | `75.86553` |
+
+### 153. Dr. Liza Gupta
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8256 |
+| **State** | Punjab |
+| **City** | Zirakpur |
+| **Pincode** | 140603 |
+| **Phone** | 9888866665 |
+| **Address** | VCare Hospital, Plot No – 4, Raksha Enclave, VIP Road, Zirakpur, Punjab – 140603 |
+| **Latitude** | `30.647688` |
+| **Longitude** | `76.818597` |
+
+### 154. Dr. Monica Juneja
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8059 |
+| **State** | Punjab |
+| **City** | Zirakpur |
+| **Pincode** | 140603 |
+| **Phone** | 7837134233 |
+| **Address** | Santosh Hospital, SCF-101A, Patiala Rd, Balaji Enclave, Zirakpur, Punjab 140603 |
+| **Latitude** | `30.647688` |
+| **Longitude** | `76.818597` |
+
+### 155. Dr. Raghu Tejasvi
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8774 |
+| **State** | Telangana |
+| **City** | Hyderabad |
+| **Pincode** | 500081 |
+| **Phone** | 9654125430 |
+| **Address** | Sravani Hospital, Plot no 91, Cyber hills 94, Guttala_Begumpet, Sarojini Naidu Nagar, Madhapur, Hyderabad, Telangana 500081 |
+| **Latitude** | `17.447573` |
+| **Longitude** | `78.382946` |
+
+### 156. Dr. Tripura Sundari
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 7823 |
+| **State** | Telangana |
+| **City** | Hyderabad |
+| **Pincode** | 500082 |
+| **Phone** | 7661066656 |
+| **Address** | KIMS Hospital, Door No. 1-8-31/1, Block 1, 2, 3, Opposite Sai Baba Temple, Krishna Nagar Colony, Main Road, Minister Road, Punjagutta-500082 (Opposite Sai Baba Temple, Krishna Nagar Colony) |
+| **Latitude** | `17.427219` |
+| **Longitude** | `78.454108` |
+
+### 157. Dr. Bhavna Singh
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8078 |
+| **State** | WestUP |
+| **City** | Agra |
+| **Pincode** | 282009 |
+| **Phone** | 7037670224 |
+| **Address** | Chaudhry Hospital, Chaudhary Charan Singh Hospital, NH21, Jaipur Road, Agra, Uttar Pradesh 282009 |
+| **Latitude** | `27.074382` |
+| **Longitude** | `78.010594` |
+
+### 158. Dr. Mandeep Kaur
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9105 |
+| **State** | WestUP |
+| **City** | Agra |
+| **Pincode** | 282007 |
+| **Phone** | 9536214465 |
+| **Address** | Get Well Hospital |
+| **Latitude** | `27.204824` |
+| **Longitude** | `77.961764` |
+
+### 159. Dr. Manpreet Sharma
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8117 |
+| **State** | WestUP |
+| **City** | Agra |
+| **Pincode** | 282007 |
+| **Phone** | 6366530173 |
+| **Address** | Rainbow Hospital, Rainbow Hospital, National Highway 2, Bain Bazar, Near Guru Ka Tal, Sikandra, Agra, Uttar Pradesh |
+| **Latitude** | `27.204824` |
+| **Longitude** | `77.961764` |
+
+### 160. Dr. Nidhi Dixit
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8075 |
+| **State** | WestUP |
+| **City** | Agra |
+| **Pincode** | 282001 |
+| **Phone** | 7505697390 |
+| **Address** | Dixit Hospital and maternity home; prem nagar, 31/167, ukharra road, Tourist Complex Area, Near Man Singh Palace, Impeypura, Tajganj, Agra, Uttar Pradesh 282001 |
+| **Latitude** | `27.150627` |
+| **Longitude** | `78.055504` |
+
+### 161. Dr. Ranjana Gupta
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8130 |
+| **State** | WestUP |
+| **City** | Agra |
+| **Pincode** | 282002 |
+| **Phone** | 5624092392 |
+| **Address** | Sikandara Hospital, Near Bhagwan Talkies, Bye Pass Road, Agra |
+| **Latitude** | `27.193623` |
+| **Longitude** | `78.003221` |
+
+### 162. Dr. Renu Sharma
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8074 |
+| **State** | WestUP |
+| **City** | Agra |
+| **Pincode** | 282007 |
+| **Phone** | +91 84451 83677 |
+| **Address** | Bindra Devi Nursing Home , Bindra Devi Nursing And Maternity Home, Sikandra-Bodla Rd, Sector 1, Bodla, Lohamandi, Agra, Uttar Pradesh 282007 |
+| **Latitude** | `27.204824` |
+| **Longitude** | `77.961764` |
+
+### 163. Dr. Shemi Bansal
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8118 |
+| **State** | WestUP |
+| **City** | Agra |
+| **Pincode** | 282007 |
+| **Phone** | 9618430699 |
+| **Address** | Rainbow Hospital, Ujala Cygnus Rainbow Hospital, Sikandra, Agra, Uttar Pradesh 282007 |
+| **Latitude** | `27.204824` |
+| **Longitude** | `77.961764` |
+
 ---
 
 ## Geocoding Statistics
 
-| Metric | Count |
+| Metric | Value |
 |--------|------:|
-| Total doctors | 177 |
-| Successfully geocoded | 177 |
-| Failed / Not found | 0 |
-| Success rate | 100.0% |
+| Total doctors | 163 |
+| Successfully geocoded | 163 (100%) |
+| Not found | 0 |
+| Carried over from previous build | 103 |
+| Removed this build (exclusion list) | 74 |
+| Added this build (August intake) | 60 |
+
+### Coordinate precision
+
+The August additions were geocoded at **pincode-polygon precision**, a step up from the
+city-centroid coordinates used for the carried-over records. Both tiers are present in the
+dataset; distances remain approximate.
+
+| Tier | Records | Applies to |
+|------|--------:|------------|
+| pincode | 59 | August additions |
+| address (pincode overridden) | 1 | August additions |
+| city centroid | 103 | carried-over records (unchanged) |
+
+### ⚠️ Records where city and pincode disagree
+
+These are geocoded from the **pincode**, which matches the address in each case. The `City`
+field is kept as supplied so it still matches the source database.
+
+| SDPID | Doctor | City field | Pincode resolves to | Address agrees with |
+|------:|--------|------------|---------------------|---------------------|
+| 3004 | Dr. Mamata Nayak | Bhubaneswar | Cuttack (753014), ~24 km away | Cuttack |
+| 8266 | Dr. Nisha Goyal | Mohali | Zirakpur (140603) | Zirakpur |
+| 8595 | Dr. Satwant Kaur | Ambala | Shahbad, Kurukshetra (136135) | Shahbad, Kurukshetra |
+| 9108 | Dr. Manjot Walia Kakkar | Ludhiana | Mansuran (142029), ~30 km away | Mansuran |
+| 9208 | Dr. Patwantinder Kaur | Ludhiana | Jagraon (142026), ~37 km away | Jagraon, District Ludhiana |
+
+### ⚠️ Source data error
+
+**SDPID 8883 — Dr. Apeksha Mittal.** The source pincode `201201` resolves to *Gunnaur, Sambhal*,
+94 km from Ghaziabad, but the address reads *"Bank Colony, Modinagar, Uttar Pradesh 201201"* —
+and Modinagar is `201204` (confirmed by SDPID 9037, same Bank Colony address). The record is
+geocoded to **Modinagar**; the `Pincode` field still carries the source value `201201` rather
+than inventing a correction. Left as-is, this doctor would have been placed 94 km off and would
+also match anyone searching pincode 201201. **Worth confirming with the data owner.**
+
+### By state
+
+| State | Doctors |
+|-------|--------:|
+| WestUP | 47 |
+| NCR | 30 |
+| Karnataka | 29 |
+| Punjab | 19 |
+| Odisha | 11 |
+| Jharkhand | 10 |
+| DL | 8 |
+| CH | 6 |
+| Telangana | 2 |
+| Haryana | 1 |
+| **Total** | **163** |
+
+### By city
+
+| City | Doctors |
+|------|--------:|
+| Agra | 47 |
+| Bengaluru | 29 |
+| Ludhiana | 17 |
+| Ghaziabad | 15 |
+| Bhubaneswar | 11 |
+| NOIDA | 10 |
+| Ranchi | 10 |
+| Delhi | 8 |
+| Gurgaon | 5 |
+| Panchkula | 5 |
+| Hyderabad | 2 |
+| Zirakpur | 2 |
+| Ambala | 1 |
+| Mohali | 1 |
+
+---
+
+## Rebuilding
+
+This file is the source of truth. Regenerate `src/data/doctors.json` from it with:
+
+```bash
+node scripts/build-doctors.mjs
+```
+
+The script asserts an exact record count (currently 163) and fails loudly on a format
+change, so update `EXPECTED` there whenever the roster size changes.

@@ -7,7 +7,7 @@
 //
 // It reads the "Detailed Doctor Profiles" section (the summary table lacks
 // Phone/Address). Each doctor is a `### N. <name>` heading followed by a
-// | **Field** | Value | table. Fails loudly if the count isn't 163.
+// | **Field** | Value | table. Fails loudly if the count isn't 194.
 
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
@@ -16,8 +16,8 @@ import { fileURLToPath } from "node:url";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SRC = resolve(ROOT, "docs/Doctors_Geocoded.md");
 const OUT = resolve(ROOT, "src/data/doctors.json");
-// Roster size after the August intake: 177 − 74 exclusions + 60 additions.
-const EXPECTED = 163;
+// Roster size after the referral intake: 163 + 31 additions.
+const EXPECTED = 194;
 
 const HEADING = /^###\s+\d+\.\s*(.+?)\s*$/; // "### 1. Dr. Sheetal Jindal"
 const ROW = /^\|\s*\*\*(.+?)\*\*\s*\|\s*(.*?)\s*\|\s*$/; // "| **SDPID** | 8220 |"

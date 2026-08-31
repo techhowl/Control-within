@@ -1,8 +1,8 @@
 # Doctors Geocoded List
 
-> **Total**: 163 doctors  |  **Geocoded**: 163  |  **Not found**: 0
+> **Total**: 194 doctors  |  **Geocoded**: 194  |  **Not found**: 0
 > Source: Nominatim / OpenStreetMap  |  Country filter: India
-> Last update: August intake — 74 exclusions removed, 60 additions geocoded.
+> Last update: referral intake — 31 doctors added (163 → 194).
 
 ---
 
@@ -59,12 +59,12 @@
 | 47 | 6694 | Dr. Jigyasa Govil | NOIDA | NCR | 201301 | `28.591159` | `77.352535` |
 | 48 | 6695 | Dr. Ekta Singh | NOIDA | NCR | 201301 | `28.591159` | `77.352535` |
 | 49 | 6804 | Dr. Sanchita Dubey | NOIDA | NCR | 201301 | `28.591159` | `77.352535` |
-| 50 | 8991 | Dr. Jigyasa Govil | NOIDA | NCR | 201016 | `28.628656` | `77.359901` |
+| 50 | 8991 | Dr. Jigyasa Govil | NOIDA | NCR | 201016 | `28.610479` | `77.425433` |
 | 51 | 6583 | Dr. P.K. Acharya | Bhubaneswar | Odisha | 751002 | `20.260296` | `85.839452` |
 | 52 | 6601 | Dr. Soudamini Mohapatra | Bhubaneswar | Odisha | 751007 | `20.260296` | `85.839452` |
 | 53 | 8636 | Dr. Santosh Mishra | Bhubaneswar | Odisha | 751001 | `20.260296` | `85.839452` |
 | 54 | 8610 | Dr. Schumailla Bassi | Ludhiana | Punjab | 141001 | `30.909016` | `75.851601` |
-| 55 | 8612 | Dr. Sunita Goyal | Ludhiana | Punjab | 141013 | `30.909016` | `75.851601` |
+| 55 | 8612 | Dr. Sunita Goyal | Ludhiana | Punjab | 141013 | `30.867684` | `75.830799` |
 | 56 | 8812 | Dr. Suhashni Raina | Ludhiana | Punjab | 141003 | `30.909016` | `75.851601` |
 | 57 | 8814 | Dr. Nidhi Lama | Ludhiana | Punjab | 141003 | `30.909016` | `75.851601` |
 | 58 | 8827 | Dr. Roopangi Modgil | Ludhiana | Punjab | 141110 | `30.909016` | `75.851601` |
@@ -173,6 +173,37 @@
 | 161 | 8130 | Dr. Ranjana Gupta | Agra | WestUP | 282002 | `27.193623` | `78.003221` |
 | 162 | 8074 | Dr. Renu Sharma | Agra | WestUP | 282007 | `27.204824` | `77.961764` |
 | 163 | 8118 | Dr. Shemi Bansal | Agra | WestUP | 282007 | `27.204824` | `77.961764` |
+| 164 | 8301 | Dr. Anjana Sabharwal | Ghaziabad | NCR | 201014 | `28.640989` | `77.3672` |
+| 165 | 8908 | Dr. Anuradha Tyagi | Ghaziabad | NCR | 201003 | `28.712823` | `77.377493` |
+| 166 | 8299 | Dr. Archana Singh | Ghaziabad | NCR | 201009 | `28.642821` | `77.436706` |
+| 167 | 6721 | Dr. Gunjan Gulati | Ghaziabad | NCR | 201002 | `28.668351` | `77.452135` |
+| 168 | 6818 | Dr. Harshu Gupta | Ghaziabad | NCR | 201001 | `28.66078` | `77.424217` |
+| 169 | 6715 | Dr. Kusum Gupta | Ghaziabad | NCR | 201005 | `28.684942` | `77.364137` |
+| 170 | 8298 | Dr. Madhuri Verma | Ghaziabad | NCR | 201010 | `28.649363` | `77.356201` |
+| 171 | 9014 | Dr. Maneesha Agrawal | Ghaziabad | NCR | 201001 | `28.66078` | `77.424217` |
+| 172 | 6792 | Dr. Manisha Goyal | Ghaziabad | NCR | 201003 | `28.712823` | `77.377493` |
+| 173 | 8677 | Dr. Neha Poddar | Ghaziabad | NCR | 201003 | `28.712823` | `77.377493` |
+| 174 | 7555 | Dr. Rani Ghai | Ghaziabad | NCR | 201009 | `28.642821` | `77.436706` |
+| 175 | 8296 | Dr. Rekha Loiwal | Ghaziabad | NCR | 201001 | `28.66078` | `77.424217` |
+| 176 | 9127 | Dr. Shikha Mishra | Ghaziabad | NCR | 201005 | `28.684942` | `77.364137` |
+| 177 | 6826 | Dr. Smita Jain | Ghaziabad | NCR | 201014 | `28.640989` | `77.3672` |
+| 178 | 6786 | Dr. Surabhi Agarwal | Ghaziabad | NCR | 201012 | `28.656791` | `77.365991` |
+| 179 | 9051 | Dr. Amita Bansal | NOIDA | NCR | 201016 | `28.610479` | `77.425433` |
+| 180 | 4405 | Dr. Mona Verma | NOIDA | NCR | 201016 | `28.610479` | `77.425433` |
+| 181 | 9015 | Dr. Vandana C Sharma | NOIDA | NCR | 201303 | `28.554521` | `77.36052` |
+| 182 | 8644 | Dr. Chinmayee Kar | Bhubaneswar | Odisha | 751003 | `20.278733` | `85.782473` |
+| 183 | 9066 | Dr. Anshu Sharma Arora | Ludhiana | Punjab | 141007 | `30.926275` | `75.880042` |
+| 184 | 9060 | Dr. Davinder Kaur | Ludhiana | Punjab | 141001 | `30.903489` | `75.828647` |
+| 185 | 9245 | Dr. Mandeep Kaur | Ludhiana | Punjab | 141002 | `30.901513` | `75.824811` |
+| 186 | 9069 | Dr. Priti Gupta | Ludhiana | Punjab | 142026 | `30.800854` | `75.483541` |
+| 187 | 9068 | Dr. Ranvir Kaur | Ludhiana | Punjab | 142026 | `30.800854` | `75.483541` |
+| 188 | 8825 | Dr. Seema Popli | Ludhiana | Punjab | 141001 | `30.903489` | `75.828647` |
+| 189 | 9071 | Dr. Shailja Mittal | Ludhiana | Punjab | 141012 | `30.884448` | `75.791361` |
+| 190 | 9057 | Dr. Shaily Jain | Ludhiana | Punjab | 141109 | `30.648132` | `75.600277` |
+| 191 | 9164 | Dr. Shuchitra Batra | Ludhiana | Punjab | 141013 | `30.867684` | `75.830799` |
+| 192 | 8998 | Dr. Venus Bansal | Ludhiana | Punjab | 141001 | `30.903489` | `75.828647` |
+| 193 | 8520 | Dr. E Prabhavathi | Hyderabad | Telangana | 500080 | `17.424868` | `78.485153` |
+| 194 | 8586 | Dr. Srilakshmi | Hyderabad | Telangana | 500064 | `17.356206` | `78.458559` |
 
 ---
 
@@ -875,8 +906,8 @@
 | **Pincode** | 201016 |
 | **Phone** | 9818301233 |
 | **Address** | Cloudnine hospital-Gaur city; 5th Avenue Gaur City, Noida Extension, Gaur City 1, Sector 4, Noida, Ghaziabad, Uttar Pradesh 201016 |
-| **Latitude** | `28.628656` |
-| **Longitude** | `77.359901` |
+| **Latitude** | `28.610479` |
+| **Longitude** | `77.425433` |
 
 ### 51. Dr. P.K. Acharya
 
@@ -945,8 +976,8 @@
 | **Pincode** | 141013 |
 | **Phone** | 8619018421 |
 | **Address** | Cloudnine Hospital, Firozpur Road, opp. MBD mall, Ludhiana-141012, Ameritus Hospital, B-28, 200 Feet Road, Passi Nagar, Ludhiana, Punjab 141013 |
-| **Latitude** | `30.909016` |
-| **Longitude** | `75.851601` |
+| **Latitude** | `30.867684` |
+| **Longitude** | `75.830799` |
 
 ### 56. Dr. Suhashni Raina
 
@@ -2460,84 +2491,567 @@
 | **Latitude** | `27.204824` |
 | **Longitude** | `77.961764` |
 
+### 164. Dr. Anjana Sabharwal
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8301 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201014 |
+| **Phone** | 8130449587 |
+| **Address** | Prime Hospital, VPU 20, Ground Floor, Shipra Krishna Vista Plaza, Dr Sushila Naiyar Marg, Ahinsa Khand 1, Indirapuram, Ghaziabad, Uttar Pradesh 201014 |
+| **Latitude** | `28.640989` |
+| **Longitude** | `77.3672` |
+
+### 165. Dr. Anuradha Tyagi
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8908 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201003 |
+| **Phone** | 9582500830 |
+| **Address** | Lotus gynae centre, gate no-3, palm kunj, Plot no 2, Raj Nagar Extension, Ghaziabad, Uttar Pradesh 201003 |
+| **Latitude** | `28.712823` |
+| **Longitude** | `77.377493` |
+
+### 166. Dr. Archana Singh
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8299 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201009 |
+| **Phone** | 9717365166 |
+| **Address** | Dev Mangalam Hospital, Sector 12, Teacher Colony, Pratap Vihar, Ghaziabad, Uttar Pradesh 201009 |
+| **Latitude** | `28.642821` |
+| **Longitude** | `77.436706` |
+
+### 167. Dr. Gunjan Gulati
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 6721 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201002 |
+| **Phone** | 7503647099 |
+| **Address** | Mediwin Hospital 12/73, Block 12, Raj Nagarn Extensation Ghaziyabad |
+| **Latitude** | `28.668351` |
+| **Longitude** | `77.452135` |
+
+### 168. Dr. Harshu Gupta
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 6818 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201001 |
+| **Phone** | 9654224703 |
+| **Address** | Get Well HospitalS-19, Nehru Nagar Ghaziabad, Delhi - 201001 (Shalimar Garden Ext-I.near Dayanand Park) |
+| **Latitude** | `28.66078` |
+| **Longitude** | `77.424217` |
+
+### 169. Dr. Kusum Gupta
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 6715 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201005 |
+| **Phone** | 9971233949 |
+| **Address** | Sneh Maternity Centre, E 38, E Block, Lajpat Nagar, Block E, Rajendra Nagar, Sahibabad, Ghaziabad, Uttar Pradesh 201005 |
+| **Latitude** | `28.684942` |
+| **Longitude** | `77.364137` |
+
+### 170. Dr. Madhuri Verma
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8298 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201010 |
+| **Phone** | 9810500715 |
+| **Address** | Uttam Hospital, E-230, Sector 9-201010 |
+| **Latitude** | `28.649363` |
+| **Longitude** | `77.356201` |
+
+### 171. Dr. Maneesha Agrawal
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9014 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201001 |
+| **Phone** | 9810526040 |
+| **Address** | Manisha Hospital |
+| **Latitude** | `28.66078` |
+| **Longitude** | `77.424217` |
+
+### 172. Dr. Manisha Goyal
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 6792 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201003 |
+| **Phone** | 7827908598 |
+| **Address** | St. Joseph HospitalMeerut Rd, Marium Nagar, Sewa Nagar, Ghaziabad, Uttar Pradesh 201003 |
+| **Latitude** | `28.712823` |
+| **Longitude** | `77.377493` |
+
+### 173. Dr. Neha Poddar
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8677 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201003 |
+| **Phone** | 9711084855 |
+| **Address** | Poddar Nursing Home, Opp. To Old Bus Stand, #J62, J64, Patel Nagar 1, Hapur Raod, Patel Nagar 1, Ghaziabad -201003 |
+| **Latitude** | `28.712823` |
+| **Longitude** | `77.377493` |
+
+### 174. Dr. Rani Ghai
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 7555 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201009 |
+| **Phone** | 9811150960 |
+| **Address** | Dr. Rani Ghai Clinic, B- 22 Sector - 9 , New Vijay Nagar Ghaziabad    Pincode- 201009 |
+| **Latitude** | `28.642821` |
+| **Longitude** | `77.436706` |
+
+### 175. Dr. Rekha Loiwal
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8296 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201001 |
+| **Phone** | 9818126086 |
+| **Address** | Nagar Hospital, B-1, Near By Hindi Bhawan, Lohia Nagar, Lohia Nagar-201001 |
+| **Latitude** | `28.66078` |
+| **Longitude** | `77.424217` |
+
+### 176. Dr. Shikha Mishra
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9127 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201005 |
+| **Phone** | 9899048532 |
+| **Address** | MISHRA'S CLINIC; B, 362, Lajpat Nagar, B Block, Sector 4, Rajendra Nagar, Sahibabad, Ghaziabad, Uttar Pradesh 201005 |
+| **Latitude** | `28.684942` |
+| **Longitude** | `77.364137` |
+
+### 177. Dr. Smita Jain
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 6826 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201014 |
+| **Phone** | 9999816177 |
+| **Address** | S-9, Second Floor, Aditya City Centre, above Kotak Mahindra Bank, Vaibhav Khand, Indirapuram, Ghaziabad, Uttar Pradesh 201014 |
+| **Latitude** | `28.640989` |
+| **Longitude** | `77.3672` |
+
+### 178. Dr. Surabhi Agarwal
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 6786 |
+| **State** | NCR |
+| **City** | Ghaziabad |
+| **Pincode** | 201012 |
+| **Phone** | 9911298402 |
+| **Address** | Ayush Clinic143, Sector 2C, Landmark: opposite to SG impression society, Vashundhra Ghaziabad |
+| **Latitude** | `28.656791` |
+| **Longitude** | `77.365991` |
+
+### 179. Dr. Amita Bansal
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9051 |
+| **State** | NCR |
+| **City** | NOIDA |
+| **Pincode** | 201016 |
+| **Phone** | 9355622308 |
+| **Address** | Cloudnine hospital-Gaur city; 5th Avenue Gaur City, Noida Extension, Gaur City 1, Sector 4, Noida, Uttar Pradesh 201016 |
+| **Latitude** | `28.610479` |
+| **Longitude** | `77.425433` |
+
+### 180. Dr. Mona Verma
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 4405 |
+| **State** | NCR |
+| **City** | NOIDA |
+| **Pincode** | 201016 |
+| **Phone** | 9654901672 |
+| **Address** | Cloud Nine Hospital; 5th Avanue Gaur City,sector-4 noida pin 201016 |
+| **Latitude** | `28.610479` |
+| **Longitude** | `77.425433` |
+
+### 181. Dr. Vandana C Sharma
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9015 |
+| **State** | NCR |
+| **City** | NOIDA |
+| **Pincode** | 201303 |
+| **Phone** | 9818961857 |
+| **Address** | Vandana C Sharma Clinic; D-65, opp. Sai Baba Temple, Sector 40, Noida, Uttar Pradesh 201303 |
+| **Latitude** | `28.554521` |
+| **Longitude** | `77.36052` |
+
+### 182. Dr. Chinmayee Kar
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8644 |
+| **State** | Odisha |
+| **City** | Bhubaneswar |
+| **Pincode** | 751003 |
+| **Phone** | 9439727428 |
+| **Address** | Sum Ultimate, K8, Kalinga Nagar, Ghatikia, BBSR |
+| **Latitude** | `20.278733` |
+| **Longitude** | `85.782473` |
+
+### 183. Dr. Anshu Sharma Arora
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9066 |
+| **State** | Punjab |
+| **City** | Ludhiana |
+| **Pincode** | 141007 |
+| **Phone** | 9780000209 |
+| **Address** | Preet Multtispeciality Hospital; New Kuldeep Nagar,Jodhewal Ludhiana 141007 |
+| **Latitude** | `30.926275` |
+| **Longitude** | `75.880042` |
+
+### 184. Dr. Davinder Kaur
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9060 |
+| **State** | Punjab |
+| **City** | Ludhiana |
+| **Pincode** | 141001 |
+| **Phone** | 9877717595 |
+| **Address** | Doctor's Clinic; I block Market Sarbha Nagar 141001 |
+| **Latitude** | `30.903489` |
+| **Longitude** | `75.828647` |
+
+### 185. Dr. Mandeep Kaur
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9245 |
+| **State** | Punjab |
+| **City** | Ludhiana |
+| **Pincode** | 141002 |
+| **Phone** | 8968169446 |
+| **Address** | B-28/709A, Street Number 1, Near Sidhwan Canal Bridge (Next to KP Motors), Panjab Mata Nagar, Shaheed Bhagat Singh Nagar, Pakhowal Road, Ludhiana, Punjab 141002 |
+| **Latitude** | `30.901513` |
+| **Longitude** | `75.824811` |
+
+### 186. Dr. Priti Gupta
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9069 |
+| **State** | Punjab |
+| **City** | Ludhiana |
+| **Pincode** | 142026 |
+| **Phone** | 9814444154 |
+| **Address** | Sanjivani Hospital; Tehsil Road, Jagraon Ludhiana 142026 |
+| **Latitude** | `30.800854` |
+| **Longitude** | `75.483541` |
+
+### 187. Dr. Ranvir Kaur
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9068 |
+| **State** | Punjab |
+| **City** | Ludhiana |
+| **Pincode** | 142026 |
+| **Phone** | 9465709575 |
+| **Address** | Ranvir Maternity, New Dashmesh Nagar, Behind Ajanta Petrol pump, Jagraon Ludhiana 142026 |
+| **Latitude** | `30.800854` |
+| **Longitude** | `75.483541` |
+
+### 188. Dr. Seema Popli
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8825 |
+| **State** | Punjab |
+| **City** | Ludhiana |
+| **Pincode** | 141001 |
+| **Phone** | 9814680440 |
+| **Address** | Popli Hospital; 3d, Kitchlu Nagar Rd, Near DMC Hospital, Udham Singh Nagar, Tagore Nagar, Ludhiana, Punjab 141001 |
+| **Latitude** | `30.903489` |
+| **Longitude** | `75.828647` |
+
+### 189. Dr. Shailja Mittal
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9071 |
+| **State** | Punjab |
+| **City** | Ludhiana |
+| **Pincode** | 141012 |
+| **Phone** | 9463145010 |
+| **Address** | KG Hospital; Riverdale colony, 5 Near Sua road, Barewal Awana, Ludhiana 141012 |
+| **Latitude** | `30.884448` |
+| **Longitude** | `75.791361` |
+
+### 190. Dr. Shaily Jain
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9057 |
+| **State** | Punjab |
+| **City** | Ludhiana |
+| **Pincode** | 141109 |
+| **Phone** | 9478747100 |
+| **Address** | UVS Hospital; Jagraon Road,opp. Bhagwan Mahavir, Senior Secondary School, Raikot, 141109 |
+| **Latitude** | `30.648132` |
+| **Longitude** | `75.600277` |
+
+### 191. Dr. Shuchitra Batra
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 9164 |
+| **State** | Punjab |
+| **City** | Ludhiana |
+| **Pincode** | 141013 |
+| **Phone** | 8619018421 |
+| **Address** | Ameritus Hospital, B-28, 1339,86A,/PN,200 Feet Road, Passi Nagar, Ludhiana |
+| **Latitude** | `30.867684` |
+| **Longitude** | `75.830799` |
+
+### 192. Dr. Venus Bansal
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8998 |
+| **State** | Punjab |
+| **City** | Ludhiana |
+| **Pincode** | 141001 |
+| **Phone** | 7888324710 |
+| **Address** | Clio Mother & child clinic; 252 A, Ext, Nehru Nagar Extension, Model Town, Civil Lines, Ludhiana-141001, Punjab |
+| **Latitude** | `30.903489` |
+| **Longitude** | `75.828647` |
+
+### 193. Dr. E Prabhavathi
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8520 |
+| **State** | Telangana |
+| **City** | Hyderabad |
+| **Pincode** | 500080 |
+| **Phone** | 9390110097 |
+| **Address** | Eshwar Lakshmi Hospital; Plot No. 9, Gandhi Nagar Road, New Bakaram, Gandhi Nagar, Kavadiguda, Hyderabad, Telangana 500080;; Door No 1-1-727/A, CANARA BANK ROAD, GANDHI NAGAR, HYDERABAD, Hyderabad, Telangana - 500020;; FPAI clinic |
+| **Latitude** | `17.424868` |
+| **Longitude** | `78.485153` |
+
+### 194. Dr. Srilakshmi
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8586 |
+| **State** | Telangana |
+| **City** | Hyderabad |
+| **Pincode** | 500064 |
+| **Phone** | 9000018910 |
+| **Address** | House No 5/12trg, Bahadurpura X Roads, Chandulal Baradari, Hyderabad, Telangana, 500064 |
+| **Latitude** | `17.356206` |
+| **Longitude** | `78.458559` |
+
 ---
 
 ## Geocoding Statistics
 
 | Metric | Value |
 |--------|------:|
-| Total doctors | 163 |
-| Successfully geocoded | 163 (100%) |
+| Total doctors | 194 |
+| Successfully geocoded | 194 (100%) |
 | Not found | 0 |
-| Carried over from previous build | 103 |
-| Removed this build (exclusion list) | 74 |
-| Added this build (August intake) | 60 |
+| Carried over from previous build | 163 |
+| Added this build (referral intake) | 31 |
+
+### Build history
+
+| Build | Removed | Added | Total |
+|-------|--------:|------:|------:|
+| Initial | — | — | 177 |
+| August intake | 74 | 60 | 163 |
+| Referral intake | 0 | 31 | 194 |
 
 ### Coordinate precision
 
-The August additions were geocoded at **pincode-polygon precision**, a step up from the
-city-centroid coordinates used for the carried-over records. Both tiers are present in the
-dataset; distances remain approximate.
+Two tiers coexist. Records from the original build sit on a **city centroid** — a whole city
+collapsed onto one point. Everything added since the August intake is geocoded to its
+**pincode polygon**, which is materially finer. Distances remain approximate either way; see
+the DATA CAVEAT in `src/lib/doctors.js`.
 
 | Tier | Records | Applies to |
 |------|--------:|------------|
-| pincode | 59 | August additions |
-| address (pincode overridden) | 1 | August additions |
-| city centroid | 103 | carried-over records (unchanged) |
+| pincode polygon | 91 | August intake + referral intake |
+| city centroid | 103 | original build |
 
 ### ⚠️ Records where city and pincode disagree
 
-These are geocoded from the **pincode**, which matches the address in each case. The `City`
-field is kept as supplied so it still matches the source database.
+Geocoded from the **pincode**, which matches the address in each case. The `City` field is kept
+as supplied so it still matches the source database.
 
-| SDPID | Doctor | City field | Pincode resolves to | Address agrees with |
-|------:|--------|------------|---------------------|---------------------|
-| 3004 | Dr. Mamata Nayak | Bhubaneswar | Cuttack (753014), ~24 km away | Cuttack |
-| 8266 | Dr. Nisha Goyal | Mohali | Zirakpur (140603) | Zirakpur |
-| 8595 | Dr. Satwant Kaur | Ambala | Shahbad, Kurukshetra (136135) | Shahbad, Kurukshetra |
-| 9108 | Dr. Manjot Walia Kakkar | Ludhiana | Mansuran (142029), ~30 km away | Mansuran |
-| 9208 | Dr. Patwantinder Kaur | Ludhiana | Jagraon (142026), ~37 km away | Jagraon, District Ludhiana |
+| SDPID | Doctor | City field | Pincode resolves to | Batch |
+|------:|--------|------------|---------------------|-------|
+| 3004 | Dr. Mamata Nayak | Bhubaneswar | Cuttack (753014), ~24 km | August |
+| 8266 | Dr. Nisha Goyal | Mohali | Zirakpur (140603) | August |
+| 8595 | Dr. Satwant Kaur | Ambala | Shahbad, Kurukshetra (136135) | August |
+| 9108 | Dr. Manjot Walia Kakkar | Ludhiana | Mansuran (142029), ~30 km | August |
+| 9208 | Dr. Patwantinder Kaur | Ludhiana | Jagraon (142026), ~37 km | August |
+| 9057 | Dr. Shaily Jain | Ludhiana | Raikot Tahsil (141109), ~38 km | referral |
+| 9068 | Dr. Ranvir Kaur | Ludhiana | Jagraon (142026), ~37 km | referral |
+| 9069 | Dr. Priti Gupta | Ludhiana | Jagraon (142026), ~37 km | referral |
 
-### ⚠️ Source data error
+Jagraon and Raikot are tahsils of Ludhiana district, so "Ludhiana" is correct administratively
+even though the clinic sits well outside the city.
 
-**SDPID 8883 — Dr. Apeksha Mittal.** The source pincode `201201` resolves to *Gunnaur, Sambhal*,
-94 km from Ghaziabad, but the address reads *"Bank Colony, Modinagar, Uttar Pradesh 201201"* —
-and Modinagar is `201204` (confirmed by SDPID 9037, same Bank Colony address). The record is
-geocoded to **Modinagar**; the `Pincode` field still carries the source value `201201` rather
-than inventing a correction. Left as-is, this doctor would have been placed 94 km off and would
-also match anyone searching pincode 201201. **Worth confirming with the data owner.**
+### ⚠️ Source data issues
+
+**SDPID 8883 — Dr. Apeksha Mittal (August intake).** Source pincode `201201` resolves to
+*Gunnaur, Sambhal*, 94 km from Ghaziabad, but the address reads *"Bank Colony, Modinagar"* —
+and Modinagar is `201204` (confirmed by SDPID 9037 at the same address). Geocoded to
+**Modinagar**; the `Pincode` field keeps the source value rather than inventing a correction.
+
+### ✅ Reconciled — same clinic, inconsistent records
+
+**Cloudnine, 5th Avenue Gaur City, Sector 4 — SDPIDs 8991, 4405, 9051.** Three doctors at one
+clinic carried two different pincodes and three different coordinates, up to 7.7 km apart:
+
+| SDPID | Batch | Pincode was | Coordinate was | Off true site by |
+|------:|-------|-------------|----------------|-----------------:|
+| 8991 | original | 201016 | `28.628656, 77.359901` | 6.7 km |
+| 4405 | referral | 201016 | `28.627638, 77.438423` | 2.3 km |
+| 9051 | referral | **201009** | `28.642821, 77.436706` | 3.8 km |
+
+The referral file contradicts itself here — 4405 says `201016`, 9051 says `201009` — so "newest
+wins" could not settle it. `201016` takes it 2–1 and is backed by a referral record; `201009`'s
+post offices are Ghaziabad *city* (Vijai Nagar, Arya Nagar, Dasna Gate), a different area.
+9051 was moved to `201016` and its address string updated to match.
+
+No pincode centroid actually landed on the clinic, so all three now use OSM's surveyed
+**Gaur City** point, `28.610479, 77.425433`. One clinic, one coordinate.
+
+**Ameritus Hospital, 200 Feet Road, Ludhiana — SDPIDs 8612, 9164.** Same pincode `141013`, but
+5.0 km apart: 8612 was still on the original city-centroid tier. 8612 now takes the newer
+record's `141013` polygon, `30.867684, 75.830799`, so one pincode yields one coordinate.
+(Ameritus is not in OSM by name, so the polygon is the best available fix.)
+
+These two share telephone `8619018421` — a hospital switchboard, not a duplicated record.
+Both doctors are kept.
+
+**SDPID 9245 / 9105 — same name, different doctors.** Dr. Mandeep Kaur appears in Ludhiana
+(141002, referral) and in Agra (282007, August). Different cities, pincodes and phones.
+`findByName` narrows by city, so pass one when resolving this name.
+
+**Pincode `201012` absent from `src/data/pincodes.json` — upstream GeoNames defect.** GeoNames
+lists a *Kaushambi* post office for 201012 at longitude `79.7992`, roughly 230 km east of where
+it belongs (~`77.32`). `scripts/build-pincodes.mjs` averages a pincode's post offices, so that
+one bad row drags the centroid past the 75 km keep-radius and the pincode is dropped. No
+practical impact: 201012 now has a doctor (SDPID 6786), so `findByLocation` resolves it by
+exact pincode at tier 1 and never reaches the radius fallback.
 
 ### By state
 
 | State | Doctors |
 |-------|--------:|
+| NCR | 48 |
 | WestUP | 47 |
-| NCR | 30 |
 | Karnataka | 29 |
-| Punjab | 19 |
-| Odisha | 11 |
+| Punjab | 29 |
+| Odisha | 12 |
 | Jharkhand | 10 |
 | DL | 8 |
 | CH | 6 |
-| Telangana | 2 |
+| Telangana | 4 |
 | Haryana | 1 |
-| **Total** | **163** |
+| **Total** | **194** |
 
 ### By city
 
 | City | Doctors |
 |------|--------:|
 | Agra | 47 |
+| Ghaziabad | 30 |
 | Bengaluru | 29 |
-| Ludhiana | 17 |
-| Ghaziabad | 15 |
-| Bhubaneswar | 11 |
-| NOIDA | 10 |
+| Ludhiana | 27 |
+| NOIDA | 13 |
+| Bhubaneswar | 12 |
 | Ranchi | 10 |
 | Delhi | 8 |
 | Gurgaon | 5 |
 | Panchkula | 5 |
-| Hyderabad | 2 |
+| Hyderabad | 4 |
 | Zirakpur | 2 |
 | Ambala | 1 |
 | Mohali | 1 |
@@ -2552,5 +3066,12 @@ This file is the source of truth. Regenerate `src/data/doctors.json` from it wit
 node scripts/build-doctors.mjs
 ```
 
-The script asserts an exact record count (currently 163) and fails loudly on a format
-change, so update `EXPECTED` there whenever the roster size changes.
+The script asserts an exact record count (currently 194) and fails loudly on a
+format change, so update `EXPECTED` there whenever the roster size changes.
+
+Then rebuild the radius table, which is defined relative to where the doctors are:
+
+```bash
+curl -O https://download.geonames.org/export/zip/IN.zip && unzip IN.zip IN.txt
+node scripts/build-pincodes.mjs IN.txt
+```

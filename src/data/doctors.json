@@ -546,8 +546,8 @@
     "pincode": "201016",
     "phone": "9818301233",
     "address": "Cloudnine hospital-Gaur city; 5th Avenue Gaur City, Noida Extension, Gaur City 1, Sector 4, Noida, Ghaziabad, Uttar Pradesh 201016",
-    "lat": 28.628656,
-    "lng": 77.359901
+    "lat": 28.610479,
+    "lng": 77.425433
   },
   {
     "sdpid": "6583",
@@ -601,8 +601,8 @@
     "pincode": "141013",
     "phone": "8619018421",
     "address": "Cloudnine Hospital, Firozpur Road, opp. MBD mall, Ludhiana-141012, Ameritus Hospital, B-28, 200 Feet Road, Passi Nagar, Ludhiana, Punjab 141013",
-    "lat": 30.909016,
-    "lng": 75.851601
+    "lat": 30.867684,
+    "lng": 75.830799
   },
   {
     "sdpid": "8812",
@@ -1791,5 +1791,346 @@
     "address": "Rainbow Hospital, Ujala Cygnus Rainbow Hospital, Sikandra, Agra, Uttar Pradesh 282007",
     "lat": 27.204824,
     "lng": 77.961764
+  },
+  {
+    "sdpid": "8301",
+    "name": "Dr. Anjana Sabharwal",
+    "city": "Ghaziabad",
+    "state": "NCR",
+    "pincode": "201014",
+    "phone": "8130449587",
+    "address": "Prime Hospital, VPU 20, Ground Floor, Shipra Krishna Vista Plaza, Dr Sushila Naiyar Marg, Ahinsa Khand 1, Indirapuram, Ghaziabad, Uttar Pradesh 201014",
+    "lat": 28.640989,
+    "lng": 77.3672
+  },
+  {
+    "sdpid": "8908",
+    "name": "Dr. Anuradha Tyagi",
+    "city": "Ghaziabad",
+    "state": "NCR",
+    "pincode": "201003",
+    "phone": "9582500830",
+    "address": "Lotus gynae centre, gate no-3, palm kunj, Plot no 2, Raj Nagar Extension, Ghaziabad, Uttar Pradesh 201003",
+    "lat": 28.712823,
+    "lng": 77.377493
+  },
+  {
+    "sdpid": "8299",
+    "name": "Dr. Archana Singh",
+    "city": "Ghaziabad",
+    "state": "NCR",
+    "pincode": "201009",
+    "phone": "9717365166",
+    "address": "Dev Mangalam Hospital, Sector 12, Teacher Colony, Pratap Vihar, Ghaziabad, Uttar Pradesh 201009",
+    "lat": 28.642821,
+    "lng": 77.436706
+  },
+  {
+    "sdpid": "6721",
+    "name": "Dr. Gunjan Gulati",
+    "city": "Ghaziabad",
+    "state": "NCR",
+    "pincode": "201002",
+    "phone": "7503647099",
+    "address": "Mediwin Hospital 12/73, Block 12, Raj Nagarn Extensation Ghaziyabad",
+    "lat": 28.668351,
+    "lng": 77.452135
+  },
+  {
+    "sdpid": "6818",
+    "name": "Dr. Harshu Gupta",
+    "city": "Ghaziabad",
+    "state": "NCR",
+    "pincode": "201001",
+    "phone": "9654224703",
+    "address": "Get Well HospitalS-19, Nehru Nagar Ghaziabad, Delhi - 201001 (Shalimar Garden Ext-I.near Dayanand Park)",
+    "lat": 28.66078,
+    "lng": 77.424217
+  },
+  {
+    "sdpid": "6715",
+    "name": "Dr. Kusum Gupta",
+    "city": "Ghaziabad",
+    "state": "NCR",
+    "pincode": "201005",
+    "phone": "9971233949",
+    "address": "Sneh Maternity Centre, E 38, E Block, Lajpat Nagar, Block E, Rajendra Nagar, Sahibabad, Ghaziabad, Uttar Pradesh 201005",
+    "lat": 28.684942,
+    "lng": 77.364137
+  },
+  {
+    "sdpid": "8298",
+    "name": "Dr. Madhuri Verma",
+    "city": "Ghaziabad",
+    "state": "NCR",
+    "pincode": "201010",
+    "phone": "9810500715",
+    "address": "Uttam Hospital, E-230, Sector 9-201010",
+    "lat": 28.649363,
+    "lng": 77.356201
+  },
+  {
+    "sdpid": "9014",
+    "name": "Dr. Maneesha Agrawal",
+    "city": "Ghaziabad",
+    "state": "NCR",
+    "pincode": "201001",
+    "phone": "9810526040",
+    "address": "Manisha Hospital",
+    "lat": 28.66078,
+    "lng": 77.424217
+  },
+  {
+    "sdpid": "6792",
+    "name": "Dr. Manisha Goyal",
+    "city": "Ghaziabad",
+    "state": "NCR",
+    "pincode": "201003",
+    "phone": "7827908598",
+    "address": "St. Joseph HospitalMeerut Rd, Marium Nagar, Sewa Nagar, Ghaziabad, Uttar Pradesh 201003",
+    "lat": 28.712823,
+    "lng": 77.377493
+  },
+  {
+    "sdpid": "8677",
+    "name": "Dr. Neha Poddar",
+    "city": "Ghaziabad",
+    "state": "NCR",
+    "pincode": "201003",
+    "phone": "9711084855",
+    "address": "Poddar Nursing Home, Opp. To Old Bus Stand, #J62, J64, Patel Nagar 1, Hapur Raod, Patel Nagar 1, Ghaziabad -201003",
+    "lat": 28.712823,
+    "lng": 77.377493
+  },
+  {
+    "sdpid": "7555",
+    "name": "Dr. Rani Ghai",
+    "city": "Ghaziabad",
+    "state": "NCR",
+    "pincode": "201009",
+    "phone": "9811150960",
+    "address": "Dr. Rani Ghai Clinic, B- 22 Sector - 9 , New Vijay Nagar Ghaziabad    Pincode- 201009",
+    "lat": 28.642821,
+    "lng": 77.436706
+  },
+  {
+    "sdpid": "8296",
+    "name": "Dr. Rekha Loiwal",
+    "city": "Ghaziabad",
+    "state": "NCR",
+    "pincode": "201001",
+    "phone": "9818126086",
+    "address": "Nagar Hospital, B-1, Near By Hindi Bhawan, Lohia Nagar, Lohia Nagar-201001",
+    "lat": 28.66078,
+    "lng": 77.424217
+  },
+  {
+    "sdpid": "9127",
+    "name": "Dr. Shikha Mishra",
+    "city": "Ghaziabad",
+    "state": "NCR",
+    "pincode": "201005",
+    "phone": "9899048532",
+    "address": "MISHRA'S CLINIC; B, 362, Lajpat Nagar, B Block, Sector 4, Rajendra Nagar, Sahibabad, Ghaziabad, Uttar Pradesh 201005",
+    "lat": 28.684942,
+    "lng": 77.364137
+  },
+  {
+    "sdpid": "6826",
+    "name": "Dr. Smita Jain",
+    "city": "Ghaziabad",
+    "state": "NCR",
+    "pincode": "201014",
+    "phone": "9999816177",
+    "address": "S-9, Second Floor, Aditya City Centre, above Kotak Mahindra Bank, Vaibhav Khand, Indirapuram, Ghaziabad, Uttar Pradesh 201014",
+    "lat": 28.640989,
+    "lng": 77.3672
+  },
+  {
+    "sdpid": "6786",
+    "name": "Dr. Surabhi Agarwal",
+    "city": "Ghaziabad",
+    "state": "NCR",
+    "pincode": "201012",
+    "phone": "9911298402",
+    "address": "Ayush Clinic143, Sector 2C, Landmark: opposite to SG impression society, Vashundhra Ghaziabad",
+    "lat": 28.656791,
+    "lng": 77.365991
+  },
+  {
+    "sdpid": "9051",
+    "name": "Dr. Amita Bansal",
+    "city": "NOIDA",
+    "state": "NCR",
+    "pincode": "201016",
+    "phone": "9355622308",
+    "address": "Cloudnine hospital-Gaur city; 5th Avenue Gaur City, Noida Extension, Gaur City 1, Sector 4, Noida, Uttar Pradesh 201016",
+    "lat": 28.610479,
+    "lng": 77.425433
+  },
+  {
+    "sdpid": "4405",
+    "name": "Dr. Mona Verma",
+    "city": "NOIDA",
+    "state": "NCR",
+    "pincode": "201016",
+    "phone": "9654901672",
+    "address": "Cloud Nine Hospital; 5th Avanue Gaur City,sector-4 noida pin 201016",
+    "lat": 28.610479,
+    "lng": 77.425433
+  },
+  {
+    "sdpid": "9015",
+    "name": "Dr. Vandana C Sharma",
+    "city": "NOIDA",
+    "state": "NCR",
+    "pincode": "201303",
+    "phone": "9818961857",
+    "address": "Vandana C Sharma Clinic; D-65, opp. Sai Baba Temple, Sector 40, Noida, Uttar Pradesh 201303",
+    "lat": 28.554521,
+    "lng": 77.36052
+  },
+  {
+    "sdpid": "8644",
+    "name": "Dr. Chinmayee Kar",
+    "city": "Bhubaneswar",
+    "state": "Odisha",
+    "pincode": "751003",
+    "phone": "9439727428",
+    "address": "Sum Ultimate, K8, Kalinga Nagar, Ghatikia, BBSR",
+    "lat": 20.278733,
+    "lng": 85.782473
+  },
+  {
+    "sdpid": "9066",
+    "name": "Dr. Anshu Sharma Arora",
+    "city": "Ludhiana",
+    "state": "Punjab",
+    "pincode": "141007",
+    "phone": "9780000209",
+    "address": "Preet Multtispeciality Hospital; New Kuldeep Nagar,Jodhewal Ludhiana 141007",
+    "lat": 30.926275,
+    "lng": 75.880042
+  },
+  {
+    "sdpid": "9060",
+    "name": "Dr. Davinder Kaur",
+    "city": "Ludhiana",
+    "state": "Punjab",
+    "pincode": "141001",
+    "phone": "9877717595",
+    "address": "Doctor's Clinic; I block Market Sarbha Nagar 141001",
+    "lat": 30.903489,
+    "lng": 75.828647
+  },
+  {
+    "sdpid": "9245",
+    "name": "Dr. Mandeep Kaur",
+    "city": "Ludhiana",
+    "state": "Punjab",
+    "pincode": "141002",
+    "phone": "8968169446",
+    "address": "B-28/709A, Street Number 1, Near Sidhwan Canal Bridge (Next to KP Motors), Panjab Mata Nagar, Shaheed Bhagat Singh Nagar, Pakhowal Road, Ludhiana, Punjab 141002",
+    "lat": 30.901513,
+    "lng": 75.824811
+  },
+  {
+    "sdpid": "9069",
+    "name": "Dr. Priti Gupta",
+    "city": "Ludhiana",
+    "state": "Punjab",
+    "pincode": "142026",
+    "phone": "9814444154",
+    "address": "Sanjivani Hospital; Tehsil Road, Jagraon Ludhiana 142026",
+    "lat": 30.800854,
+    "lng": 75.483541
+  },
+  {
+    "sdpid": "9068",
+    "name": "Dr. Ranvir Kaur",
+    "city": "Ludhiana",
+    "state": "Punjab",
+    "pincode": "142026",
+    "phone": "9465709575",
+    "address": "Ranvir Maternity, New Dashmesh Nagar, Behind Ajanta Petrol pump, Jagraon Ludhiana 142026",
+    "lat": 30.800854,
+    "lng": 75.483541
+  },
+  {
+    "sdpid": "8825",
+    "name": "Dr. Seema Popli",
+    "city": "Ludhiana",
+    "state": "Punjab",
+    "pincode": "141001",
+    "phone": "9814680440",
+    "address": "Popli Hospital; 3d, Kitchlu Nagar Rd, Near DMC Hospital, Udham Singh Nagar, Tagore Nagar, Ludhiana, Punjab 141001",
+    "lat": 30.903489,
+    "lng": 75.828647
+  },
+  {
+    "sdpid": "9071",
+    "name": "Dr. Shailja Mittal",
+    "city": "Ludhiana",
+    "state": "Punjab",
+    "pincode": "141012",
+    "phone": "9463145010",
+    "address": "KG Hospital; Riverdale colony, 5 Near Sua road, Barewal Awana, Ludhiana 141012",
+    "lat": 30.884448,
+    "lng": 75.791361
+  },
+  {
+    "sdpid": "9057",
+    "name": "Dr. Shaily Jain",
+    "city": "Ludhiana",
+    "state": "Punjab",
+    "pincode": "141109",
+    "phone": "9478747100",
+    "address": "UVS Hospital; Jagraon Road,opp. Bhagwan Mahavir, Senior Secondary School, Raikot, 141109",
+    "lat": 30.648132,
+    "lng": 75.600277
+  },
+  {
+    "sdpid": "9164",
+    "name": "Dr. Shuchitra Batra",
+    "city": "Ludhiana",
+    "state": "Punjab",
+    "pincode": "141013",
+    "phone": "8619018421",
+    "address": "Ameritus Hospital, B-28, 1339,86A,/PN,200 Feet Road, Passi Nagar, Ludhiana",
+    "lat": 30.867684,
+    "lng": 75.830799
+  },
+  {
+    "sdpid": "8998",
+    "name": "Dr. Venus Bansal",
+    "city": "Ludhiana",
+    "state": "Punjab",
+    "pincode": "141001",
+    "phone": "7888324710",
+    "address": "Clio Mother & child clinic; 252 A, Ext, Nehru Nagar Extension, Model Town, Civil Lines, Ludhiana-141001, Punjab",
+    "lat": 30.903489,
+    "lng": 75.828647
+  },
+  {
+    "sdpid": "8520",
+    "name": "Dr. E Prabhavathi",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "pincode": "500080",
+    "phone": "9390110097",
+    "address": "Eshwar Lakshmi Hospital; Plot No. 9, Gandhi Nagar Road, New Bakaram, Gandhi Nagar, Kavadiguda, Hyderabad, Telangana 500080;; Door No 1-1-727/A, CANARA BANK ROAD, GANDHI NAGAR, HYDERABAD, Hyderabad, Telangana - 500020;; FPAI clinic",
+    "lat": 17.424868,
+    "lng": 78.485153
+  },
+  {
+    "sdpid": "8586",
+    "name": "Dr. Srilakshmi",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "pincode": "500064",
+    "phone": "9000018910",
+    "address": "House No 5/12trg, Bahadurpura X Roads, Chandulal Baradari, Hyderabad, Telangana, 500064",
+    "lat": 17.356206,
+    "lng": 78.458559
   }
 ]

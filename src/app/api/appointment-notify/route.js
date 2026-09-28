@@ -33,7 +33,6 @@ function makeAppointmentId() {
  *     "city":     "Delhi",             // user's city             (required)
  *     "pincode":  "110009",            // user's pincode          (required)
  *     "mobile":   "9876543210",        // user's mobile number    (required)
- *     "gender":   "Male",              // user's gender           (required)
  *     "drName":   "Dr. Madhu Tyagi",   // doctor to notify        (required)
  *     "drAddress":"..."                // doctor address (optional context)
  *   }
@@ -82,11 +81,10 @@ export async function POST(request) {
   const city = clean(body?.city ?? body?.City);
   const pincode = clean(body?.pincode ?? body?.Pincode);
   const mobile = clean(body?.mobile ?? body?.Mobile ?? body?.mobileNumber);
-  const gender = clean(body?.gender ?? body?.Gender);
   const drName = clean(body?.drName ?? body?.DrName ?? body?.doctor_name);
 
   // --- validate required fields --------------------------------------------
-  const missing = Object.entries({ name, age, city, pincode, mobile, gender, drName })
+  const missing = Object.entries({ name, age, city, pincode, mobile, drName })
     .filter(([, v]) => !v)
     .map(([k]) => k);
   if (missing.length) {
@@ -135,23 +133,23 @@ export async function POST(request) {
     `Patient details:\n` +
     `Appointment ID: ${appointmentId}\n` +
     `Name: ${name},\n` +
-    `Gender: ${gender},\n` +
     `Age: ${age}\n` +
     `Contact: ${mobile}\n` +
     `City & Pincode: ${city} - ${pincode}\n\n` +
     `Please review the details above and confirm the appointment at your earliest convenience. Thank you.`;
 
-  // Template {{1}}..{{6}} — order MUST match the approved "patient_appointment"
-  // template exactly. City & Pincode are a single combined variable ({{6}}):
-  //   {{1}} Appointment ID, {{2}} Name, {{3}} Gender, {{4}} Age,
-  //   {{5}} Contact, {{6}} City - Pincode
+  // Template {{1}}..{{5}} — order MUST match the approved "patient_appointment"
+  // template exactly. Gender is no longer collected, so it is gone from the
+  // template and every variable after Name shifts up by one. City & Pincode
+  // stay a single combined variable (now {{5}}):
+  //   {{1}} Appointment ID, {{2}} Name, {{3}} Age,
+  //   {{4}} Contact, {{5}} City - Pincode
   const bodyValues = [
     appointmentId,           // {{1}}
     name,                    // {{2}}
-    gender,                  // {{3}}
-    age,                     // {{4}}
-    mobile,                  // {{5}}
-    `${city} - ${pincode}`,  // {{6}}
+    age,                     // {{3}}
+    mobile,                  // {{4}}
+    `${city} - ${pincode}`,  // {{5}}
   ];
 
   // --- 3. Zoho: find the Lead by mobile, stamp the AppointmentId -----------

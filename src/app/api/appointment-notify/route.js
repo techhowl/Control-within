@@ -184,6 +184,9 @@ export async function POST(request) {
     interakt = await sendInteraktTemplate({ phone: doctor.phone, bodyValues });
   } catch (err) {
     const configErr = err.message === "interakt_not_configured";
+    // Log the full reason server-side; a 502 here is nearly always a template
+    // mismatch (name / language / {{n}} count) rather than a transport fault.
+    console.error("appointment_interakt_send_failed:", err.message);
     return json(
       {
         success: false,
@@ -191,6 +194,10 @@ export async function POST(request) {
         message: configErr
           ? "Set INTERAKT_API_KEY in .env to enable sending."
           : `Failed to send WhatsApp message: ${err.message}`,
+        // Interakt's own error body, and what we sent it — so a failure is
+        // diagnosable from the response alone instead of needing server logs.
+        interakt_error: err.details ?? null,
+        interakt_sent: err.sent ?? null,
         appointment_id: appointmentId,
         doctor_name: doctor.name,
         doctor_phone: doctor.phone,

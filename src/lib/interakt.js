@@ -78,9 +78,23 @@ export async function sendInteraktTemplate({
 
   const data = await res.json().catch(() => ({}));
   if (!res.ok || data?.result === false) {
-    throw new Error(
+    // Interakt says *why* it refused in the response body — wrong template
+    // name, language mismatch, or the wrong number of {{n}} values for the
+    // approved template (error 132000). Keep that structured on the error
+    // instead of only flattening it into the message, so the route handler
+    // can hand the real reason back to the caller.
+    const err = new Error(
       `interakt_send_failed: ${res.status} ${JSON.stringify(data)}`
     );
+    err.code = "interakt_send_failed";
+    err.httpStatus = res.status;
+    err.details = data;
+    err.sent = {
+      templateName,
+      languageCode,
+      bodyValueCount: Array.isArray(bodyValues) ? bodyValues.length : 0,
+    };
+    throw err;
   }
   return data;
 }

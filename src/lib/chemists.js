@@ -12,8 +12,7 @@ import { haversineKm } from "@/lib/doctors";
  * pincode to a centroid). So "nearest" is pincode-level, not shop-level — every
  * chemist in the same pincode sits at one point. Surface distance as
  * approximate. This dataset covers Agra only, so a visitor far from Agra will
- * still get an Agra chemist back with a large distance_km — callers that only
- * want chemist matches for Agra QR arrivals should gate on distance_km.
+ * get null back (see NEAREST_CHEMIST_RADIUS_KM below), never a far-off Agra shop.
  */
 
 // Only chemists that actually carry coordinates can be ranked by distance.
@@ -22,6 +21,16 @@ const LOCATABLE = (Array.isArray(data) ? data : data.chemists).filter(
 );
 
 const round1 = (n) => Math.round(n * 10) / 10;
+
+// Furthest a chemist may be from the visitor and still count as a match.
+// Beyond this there is no chemist — without the cap, a visitor in Bengaluru
+// got the Agra chemist "nearest" to them, ~1,540 km away. Retune in .env.
+const DEFAULT_RADIUS_KM = 50;
+
+function radiusKm() {
+  const n = Number(process.env.NEAREST_CHEMIST_RADIUS_KM);
+  return Number.isFinite(n) && n > 0 ? n : DEFAULT_RADIUS_KM;
+}
 
 // Chemists sharing a pincode land on one centroid, so dozens sit at exactly
 // 0 km apart. Within ~10 m treat them as the same spot and let completeness
@@ -35,7 +44,8 @@ const quality = (c) =>
 
 /**
  * The single closest chemist to (lat, lng), with `distance_km` attached.
- * Returns null only if no chemist in the dataset has coordinates.
+ * Returns null when the closest one is beyond NEAREST_CHEMIST_RADIUS_KM
+ * (default 50) — i.e. for any visitor outside Agra's coverage.
  *
  * When several chemists sit at effectively the same distance (the common case
  * — see DATA CAVEAT), the most complete record wins instead of whichever came
@@ -60,5 +70,6 @@ export function findNearestChemist(lat, lng) {
       if (km < bestKm) bestKm = km;
     }
   }
-  return best ? { ...best, distance_km: round1(bestKm) } : null;
+  if (!best || bestKm > radiusKm()) return null;
+  return { ...best, distance_km: round1(bestKm) };
 }

@@ -70,8 +70,9 @@ export async function POST(request) {
   }
 
   // Nearest chemist to the same coordinates. Best-effort: a chemist miss must
-  // never block the doctor result (the dataset is Agra-only, so this is null
-  // only if it somehow has no coordinates at all).
+  // never block the doctor result. The dataset is Agra-only, so this is null
+  // for any visitor beyond NEAREST_CHEMIST_RADIUS_KM — the Chemist_* fields
+  // below then stay empty rather than naming a far-off shop.
   const chemist = findNearestChemist(lat, lng);
 
   // --- Journey event (best-effort; analytics must not break the response) ---

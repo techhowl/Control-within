@@ -2132,5 +2132,16 @@
     "address": "House No 5/12trg, Bahadurpura X Roads, Chandulal Baradari, Hyderabad, Telangana, 500064",
     "lat": 17.356206,
     "lng": 78.458559
+  },
+  {
+    "sdpid": "8684",
+    "name": "Dr. Sonal Ranjan",
+    "city": "Ranchi",
+    "state": "Jharkhand",
+    "pincode": "834003",
+    "phone": "9934596605",
+    "address": "Summer Hospital & Research Centre Pvt Ltd, Karma Chowk, Khunti-Chaibasa Rd, Hatia, Ranchi, Jharkhand 834003",
+    "lat": 23.302281,
+    "lng": 85.314241
   }
 ]

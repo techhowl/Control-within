@@ -1,8 +1,8 @@
 # Doctors Geocoded List
 
-> **Total**: 194 doctors  |  **Geocoded**: 194  |  **Not found**: 0
+> **Total**: 195 doctors  |  **Geocoded**: 195  |  **Not found**: 0
 > Source: Nominatim / OpenStreetMap  |  Country filter: India
-> Last update: referral intake — 31 doctors added (163 → 194).
+> Last update: October intake — 1 doctor added (194 → 195).
 
 ---
 
@@ -204,6 +204,7 @@
 | 192 | 8998 | Dr. Venus Bansal | Ludhiana | Punjab | 141001 | `30.903489` | `75.828647` |
 | 193 | 8520 | Dr. E Prabhavathi | Hyderabad | Telangana | 500080 | `17.424868` | `78.485153` |
 | 194 | 8586 | Dr. Srilakshmi | Hyderabad | Telangana | 500064 | `17.356206` | `78.458559` |
+| 195 | 8684 | Dr. Sonal Ranjan | Ranchi | Jharkhand | 834003 | `23.302281` | `85.314241` |
 
 ---
 
@@ -2925,17 +2926,31 @@
 | **Latitude** | `17.356206` |
 | **Longitude** | `78.458559` |
 
+### 195. Dr. Sonal Ranjan
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 8684 |
+| **State** | Jharkhand |
+| **City** | Ranchi |
+| **Pincode** | 834003 |
+| **Phone** | 9934596605 |
+| **Address** | Summer Hospital & Research Centre Pvt Ltd, Karma Chowk, Khunti-Chaibasa Rd, Hatia, Ranchi, Jharkhand 834003 |
+| **Latitude** | `23.302281` |
+| **Longitude** | `85.314241` |
+
 ---
 
 ## Geocoding Statistics
 
 | Metric | Value |
 |--------|------:|
-| Total doctors | 194 |
-| Successfully geocoded | 194 (100%) |
+| Total doctors | 195 |
+| Successfully geocoded | 195 (100%) |
 | Not found | 0 |
-| Carried over from previous build | 163 |
-| Added this build (referral intake) | 31 |
+| Carried over from previous build | 194 |
+| Added this build (October intake) | 1 |
 
 ### Build history
 
@@ -2944,6 +2959,7 @@
 | Initial | — | — | 177 |
 | August intake | 74 | 60 | 163 |
 | Referral intake | 0 | 31 | 194 |
+| October intake | 0 | 1 | 195 |
 
 ### Coordinate precision
 
@@ -2955,6 +2971,7 @@ the DATA CAVEAT in `src/lib/doctors.js`.
 | Tier | Records | Applies to |
 |------|--------:|------------|
 | pincode polygon | 91 | August intake + referral intake |
+| landmark point | 1 | October intake (SDPID 8684) |
 | city centroid | 103 | original build |
 
 ### ⚠️ Records where city and pincode disagree
@@ -2982,6 +2999,15 @@ even though the clinic sits well outside the city.
 *Gunnaur, Sambhal*, 94 km from Ghaziabad, but the address reads *"Bank Colony, Modinagar"* —
 and Modinagar is `201204` (confirmed by SDPID 9037 at the same address). Geocoded to
 **Modinagar**; the `Pincode` field keeps the source value rather than inventing a correction.
+
+**SDPID 8684 — Dr. Sonal Ranjan (October intake).** Source pincode `800007` is *Patna, Bihar*
+(Gulzarbagh / Pahari post offices), but the address reads *"Summer Hospital & Research Centre,
+Karma Chowk, Khunti-Chaibasa Rd, Hatia, Ranchi, Jharkhand"* — and Hatia is `834003`. Unlike
+8883, the pincode **was corrected** to `834003` (address string updated to match): a different
+state's pincode would let `findByLocation`'s exact-pincode tier route Patna (800007) requests
+to a Ranchi clinic. The hospital itself is not in OSM by name; insurer directories place it at
+*Karma Chowk, Singh More, Hatia*, so it uses OSM's **Singh More** point, `23.302281, 85.314241`
+(~1 km from the 834003 centroid).
 
 ### ✅ Reconciled — same clinic, inconsistent records
 
@@ -3030,12 +3056,12 @@ exact pincode at tier 1 and never reaches the radius fallback.
 | Karnataka | 29 |
 | Punjab | 29 |
 | Odisha | 12 |
-| Jharkhand | 10 |
+| Jharkhand | 11 |
 | DL | 8 |
 | CH | 6 |
 | Telangana | 4 |
 | Haryana | 1 |
-| **Total** | **194** |
+| **Total** | **195** |
 
 ### By city
 
@@ -3047,7 +3073,7 @@ exact pincode at tier 1 and never reaches the radius fallback.
 | Ludhiana | 27 |
 | NOIDA | 13 |
 | Bhubaneswar | 12 |
-| Ranchi | 10 |
+| Ranchi | 11 |
 | Delhi | 8 |
 | Gurgaon | 5 |
 | Panchkula | 5 |
@@ -3066,7 +3092,7 @@ This file is the source of truth. Regenerate `src/data/doctors.json` from it wit
 node scripts/build-doctors.mjs
 ```
 
-The script asserts an exact record count (currently 194) and fails loudly on a
+The script asserts an exact record count (currently 195) and fails loudly on a
 format change, so update `EXPECTED` there whenever the roster size changes.
 
 Then rebuild the radius table, which is defined relative to where the doctors are:

@@ -24,6 +24,8 @@
   --font-satoshi: "Lexend", sans-serif;
   --font-clash: "Lexend", sans-serif;
   --font-author: "Lexend", sans-serif;
+  /* Serif used only for the homepage hero headline, per the v2 design. */
+  --font-display: "Fraunces", Georgia, serif;
 
   --shadow-soft: 0 4px 24px rgba(59, 54, 48, 0.07);
   --shadow-hover: 0 16px 48px rgba(59, 54, 48, 0.13);

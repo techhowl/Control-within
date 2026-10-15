@@ -4,461 +4,222 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
-const SLIDES = [
-  {
-    bg: "#ede6d9",
-    accent: "#614c91",
-    bgText: "CONTROL",
-    heading: "Experience Control Within",
-    paragraph:
-      "Long acting reversible contraceptives. With one simple step, you get years of protection and control over your menstrual cycle.",
-    image: "hero_1.png",
-    label: "Control Within",
-    sublabel: "Long-term & reversible",
-    cta: { label: "Find A Doctor Near You", href: "https://wa.me/918452926740", id: "btn_home_finddoctor_hero_banner", cls: "btn-cta" },
-  },
-  {
-    bg: "#d7cfeb",
-    accent: "#614c91",
-    bgText: "IMPLANT",
-    heading: "A Contraceptive That Fits Your Terms And Conditions.",
-    paragraph:
-      "Imagine not having to think about a pill daily, worrying about your partner carrying a condom, or having to commit to a permanent and often regrettable decision. The Contraceptive Implant solves all these problems.",
-    image: "hero_2.png",
-    label: "Contraceptive Implant",
-    sublabel: "Up to 3 years of protection",
-    tags: [
-      "Works for 3 years once inserted — no daily or monthly effort",
-      "Over 99% effective",
-      "Discreet",
-      "Reversible — return to fertility is quick once removed",
-      "No recurring costs",
-    ],
-    cta: { label: "Watch A Video On Contraceptive Implants", href: "#videos", id: "btn_home_implant_watchvideo_banner", cls: "btn-video" },
-  },
-  {
-    bg: "#faf8f5",
-    accent: "#085b5c",
-    bgText: "RELIEF",
-    heading:
-      "Do Heavy and Painful Periods Ruin All Your Plans? Now, You Have The Upper Hand.",
-    paragraph:
-      "Regain control over your body and cycle with the Hormonal IUS — a small T-shaped device placed in the uterus to help alleviate period pains, heavy menstrual bleeding, and more.",
-    image: "hero-3.png",
-    label: "Hormonal IUS",
-    sublabel: "Lighter, calmer periods",
-    tags: [
-      "Helps with heavy menstrual bleeding and endometriosis",
-      "Reduces menstrual blood loss significantly",
-      "Effectively manages period pains",
-      "Dual functionality as a contraceptive",
-      "Fertility returns within weeks, after removal",
-    ],
-    cta: { label: "Watch A Video On Hormonal IUS", href: "#videos", id: "btn_home_ius_watchvideo_banner", cls: "btn-video" },
-  },
-  {
-    bg: "#ede6d9",
-    accent: "#4aa3ac",
-    bgText: "CHOICE",
-    heading:
-      "Be It Periods Or Contraception, You Should Have The Control You Deserve.",
-    paragraph:
-      "Explore long-term hormonal contraceptive solutions that work quietly while you live your life.",
-    image: "hero_4.png",
-    label: "Implant or hIUS",
-    sublabel: "Your choice, your control",
-    cta: { label: "Know More", href: "#methods", id: "btn_home_know_more_banner", cls: "btn-cta" },
-  },
+const POINTS = [
+  "Safe while breastfeeding",
+  "Periods get stable",
+  "Minimal Pain",
+  "Easily Removable",
+  "Long-term relief",
+  "Over 99% effective",
 ];
 
+const DESCRIPTION =
+  "With long acting reversible contraceptives like implants and hIUS, you can get over 99% protection for years, and discreet control over your menstrual cycle.";
+
+const INTERVAL_MS = 3500;
 const EASE = [0.22, 1, 0.36, 1];
 
-const contentVariants = {
-  initial: { y: 36, opacity: 0 },
-  animate: { y: 0, opacity: 1, transition: { duration: 0.5, ease: EASE } },
-  exit: { y: 36, opacity: 0, transition: { duration: 0.35, ease: "easeIn" } },
-};
+// 1x1 transparent GIF: the <img> fallback inside each <picture> below, so a
+// phone only downloads the mobile photo and a desktop only the desktop one.
+const BLANK = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
 
-const bgTextVariants = {
-  initial: { y: 120, opacity: 0 },
-  animate: { y: 0, opacity: 0.08, transition: { duration: 0.7, ease: EASE } },
-  exit: { y: -120, opacity: 0, transition: { duration: 0.5, ease: "easeIn" } },
-};
+const pointAt = (k) => POINTS[((k % POINTS.length) + POINTS.length) % POINTS.length];
 
-// NOTE: Cta is a stable, module-level component. It must NOT be defined inside
-// Hero — a nested component gets a new function identity on every render, which
-// makes React unmount/remount its DOM node. On mobile that remount happened
-// mid-tap and swallowed the first click (the "tap twice" bug).
-function Cta({ slide, className = "" }) {
-  const isExternal = slide.cta.href.startsWith("http");
-  const isWhatsApp = slide.cta.href.includes("wa.me");
+// Desktop: look of a pill by its distance from the highlighted (centre) slot.
+// `x` pushes the outer pills right so the stack fans out off the edge.
+function slotStyle(offset) {
+  const d = Math.abs(offset);
+  if (d === 0) return { opacity: 1, x: "0vw", scale: 1 };
+  if (d === 1) return { opacity: 0.55, x: "5.5vw", scale: 0.94 };
+  return { opacity: 0.2, x: "7vw", scale: 0.9 };
+}
 
-  // If it's a WhatsApp link, render the special popup button
-  if (isWhatsApp) {
-    return (
-      <div
-        onClick={(e) => e.stopPropagation()}
-        onTouchStart={(e) => e.stopPropagation()}
-        onTouchEnd={(e) => e.stopPropagation()}
-        style={{ backgroundColor: slide.accent }}
-        className={`inline-block rounded-full ${className}`}
-      >
-        <WhatsAppButton
-          id={slide.cta.id}
-          className={`relative z-50 flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5 w-full h-full${slide.cta.cls ? ` ${slide.cta.cls}` : ""}`}
-        >
-          {slide.cta.label}
-          <span aria-hidden="true">→</span>
-        </WhatsAppButton>
-      </div>
-    );
-  }
+/**
+ * Desktop: vertical carousel of benefit pills. Keys are absolute (ever-increasing)
+ * slot numbers rather than indexes into POINTS, so a pill always enters at the
+ * bottom and leaves through the top instead of sweeping back across the stack
+ * when the list wraps.
+ */
+function PointsTicker({ active }) {
+  const slots = [];
+  for (let k = active - 2; k <= active + 2; k++) slots.push(k);
 
-  // For all other regular links (videos, learn more, etc.)
   return (
-    <a
-      href={slide.cta.href}
-      id={slide.cta.id}
-      onClick={(e) => e.stopPropagation()}
-      onTouchStart={(e) => e.stopPropagation()}
-      onTouchEnd={(e) => e.stopPropagation()}
-      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className={`relative z-50 inline-flex items-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5 ${slide.cta.cls ? `${slide.cta.cls} ` : ""}${className}`}
-      style={{ backgroundColor: slide.accent }}
-    >
-      {slide.cta.label}
-      <span aria-hidden="true">→</span>
-    </a>
+    <ul aria-hidden="true" className="relative h-[calc(5*var(--pill-step))] w-full">
+      <AnimatePresence initial={false}>
+        {slots.map((k) => {
+          const offset = k - active;
+          return (
+            <motion.li
+              key={k}
+              initial={{ y: "375%", ...slotStyle(3), opacity: 0 }}
+              animate={{ y: `${offset * 125}%`, ...slotStyle(offset) }}
+              exit={{ y: "-375%", opacity: 0 }}
+              transition={{ duration: 0.8, ease: EASE }}
+              className={`absolute left-0 top-1/2 -mt-[calc(var(--pill-h)/2)] flex h-(--pill-h) origin-left items-center whitespace-nowrap rounded-full px-[1.6em] text-accent ${
+                offset === 0 ? "border-2 border-accent font-normal" : "border border-accent/60 font-light"
+              }`}
+            >
+              {pointAt(k)}
+            </motion.li>
+          );
+        })}
+      </AnimatePresence>
+    </ul>
+  );
+}
+
+// Mobile slots: a vertical stack on the left. The highlighted pill is full size
+// and nudged right; the previous/next sit above/below at 76% size, scaled from
+// their left edge. Each step moves everything up (as on desktop). y and x are
+// percentages of the pill's own size, so they scale with it.
+const MOBILE_SLOTS = {
+  "-2": { x: "0%", y: "-230%", scale: 0.76, opacity: 0 },
+  "-1": { x: "0%", y: "-114%", scale: 0.76, opacity: 0.6 },
+  0: { x: "6.4%", y: "0%", scale: 1, opacity: 1 },
+  1: { x: "0%", y: "116%", scale: 0.76, opacity: 0.6 },
+  2: { x: "0%", y: "232%", scale: 0.76, opacity: 0 },
+};
+
+function MobilePointsTicker({ active }) {
+  const slots = [active - 1, active, active + 1];
+
+  return (
+    <ul aria-hidden="true" className="relative h-[calc(var(--u)*7.3)] w-[calc(var(--u)*53.3)]">
+      <AnimatePresence initial={false}>
+        {slots.map((k) => {
+          const offset = k - active;
+          return (
+            <motion.li
+              key={k}
+              initial={MOBILE_SLOTS[2]}
+              animate={MOBILE_SLOTS[offset]}
+              exit={MOBILE_SLOTS[-2]}
+              transition={{ duration: 0.8, ease: EASE }}
+              className={`absolute inset-0 flex origin-left items-center justify-center whitespace-nowrap rounded-full text-[calc(var(--u)*3.2)] text-accent ${
+                offset === 0 ? "border-2 border-accent font-normal" : "border border-accent/70 font-light"
+              }`}
+            >
+              {pointAt(k)}
+            </motion.li>
+          );
+        })}
+      </AnimatePresence>
+    </ul>
   );
 }
 
 export default function Hero() {
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const [isManualOverride, setIsManualOverride] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  
-  // Swipe State
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
-
   const reduce = useReducedMotion();
-  const slide = SLIDES[active];
-  const n = SLIDES.length;
 
-  // Detect Mobile device to stop autoplay
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize(); // Check on mount
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Autoplay functionality
-  useEffect(() => {
-    if (paused || reduce || isManualOverride || isMobile) return;
-    const t = setTimeout(() => setActive((a) => (a + 1) % n), 7000);
-    return () => clearTimeout(t);
-  }, [active, paused, reduce, n, isManualOverride, isMobile]);
-
-  // Arrow Nav Handlers
-  const nextSlide = () => {
-    setActive((a) => (a + 1) % n);
-    setIsManualOverride(true);
-  };
-  
-  const prevSlide = () => {
-    setActive((a) => (a === 0 ? n - 1 : a - 1));
-    setIsManualOverride(true);
-  };
-
-  // Swipe Handlers
-  const onTouchStart = (e) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
-
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
-
-    if (isLeftSwipe) {
-      setActive((a) => (a + 1) % n);
-      setIsManualOverride(true);
-    }
-    if (isRightSwipe) {
-      setActive((a) => (a === 0 ? n - 1 : a - 1));
-      setIsManualOverride(true);
-    }
-  };
-
-  // Click handler for manual slide selection
-  const handleManualSelect = (index) => {
-    setActive(index);
-    setIsManualOverride(true);
-  };
-
-  const isContentHeavy = active === 1 || active === 2;
-  const mobileHeadingSize = isContentHeavy ? "max-md:text-xl" : "max-md:text-4xl";
-  const mobileCardMargin = isContentHeavy ? "max-md:mt-3" : "max-md:mt-8";
+    if (reduce) return;
+    const t = setInterval(() => setActive((a) => a + 1), INTERVAL_MS);
+    return () => clearInterval(t);
+  }, [reduce]);
 
   return (
-    <motion.section
+    <section
       id="hero"
-      aria-roledescription="carousel"
-      aria-label="Hero"
-      initial={{ backgroundColor: SLIDES[0].bg }}
-      animate={{ backgroundColor: slide.bg }}
-      transition={{ duration: 0.8, ease: EASE }}
-      onMouseEnter={() => !isMobile && setPaused(true)}
-      onMouseLeave={() => !isMobile && setPaused(false)}
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={onTouchEnd}
-      // Added `group` here to track desktop hover state for the arrows
-      className="group relative min-h-svh overflow-hidden flex flex-col"
+      aria-label="Long Acting Reversible Contraceptives"
+      // Mobile (as in the design): the photo spans the screen width under the 7.5rem
+      // navbar and everything is laid over it, positioned in --u = 1% of the photo's
+      // width, so the layout scales identically on every phone. The photo always
+      // spans the full width so she stays against the right edge, as designed.
+      className="relative flex flex-col overflow-hidden bg-[#f8e7cf] pt-30 [--u:1vw] md:min-h-svh md:bg-[#d4c5b0] md:pt-0"
     >
-      <AnimatePresence mode="popLayout">
-        <motion.div
-          key={`mbg-${active}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.22 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.7, ease: EASE }}
-          className="pointer-events-none absolute inset-0 md:hidden"
-        >
-          <img
-            src={slide.image}
-            alt=""
-            className="h-full w-full object-cover"
-            draggable={false}
-          />
-        </motion.div>
-      </AnimatePresence>
+      <picture className="contents">
+        <source media="(min-width: 768px)" srcSet="/home/hero/background.webp" />
+        <img
+          src={BLANK}
+          alt=""
+          draggable={false}
+          fetchPriority="high"
+          className="pointer-events-none absolute inset-0 hidden h-full w-full object-cover object-center md:block"
+        />
+      </picture>
 
-      <div
-        className="pointer-events-none absolute inset-0 flex items-center justify-center max-md:items-end max-md:pb-28"
-        style={{ perspective: 1200 }}
-      >
-        <AnimatePresence mode="popLayout">
-          <motion.span
-            key={`txt-${active}`}
-            variants={bgTextVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            className="absolute select-none whitespace-nowrap font-clash text-[24vw] font-bold leading-none tracking-tight md:text-[20vw]"
-            style={{ color: slide.accent }}
-          >
-            {slide.bgText}
-          </motion.span>
-        </AnimatePresence>
+      {/* Mobile photo: 100u × 117u, directly under the navbar. */}
+      <picture className="contents">
+        <source media="(max-width: 767.98px)" srcSet="/home/hero/background-mobile.webp" />
+        <img
+          src={BLANK}
+          alt=""
+          draggable={false}
+          fetchPriority="high"
+          className="pointer-events-none absolute left-1/2 top-30 h-[calc(var(--u)*117.04)] w-[calc(var(--u)*100)] max-w-none -translate-x-1/2 object-cover md:hidden"
+        />
+      </picture>
+      {/* Mobile: blend the photo's top edge into the cream behind the navbar. */}
+      <div className="pointer-events-none absolute inset-x-0 top-30 h-[calc(var(--u)*8)] bg-linear-to-b from-[#f8e7cf] to-transparent md:hidden" />
 
-        <div className="absolute h-40 w-72 translate-y-28 rounded-[50%] bg-white/30 blur-2xl max-md:hidden sm:w-96" />
+      <div className="relative z-10 mx-auto h-[calc(var(--u)*117.04)] w-[calc(var(--u)*100)] md:mx-0 md:flex md:h-auto md:w-auto md:flex-1 md:flex-row md:items-start md:px-[4%] md:pb-24">
+        {/* Mobile: heading centred at the top, points and CTA pinned on the left
+            beside her (positions from the design). Desktop: left column. */}
+        {/* Desktop: the heading's first line ends just above her hair. The photo is
+            object-cover, so her hair top (y 342 of 1080 in the photo) lands at
+            50svh - 0.1833 × max(56.25vw, 100svh); the column's top padding puts the
+            first line 1.75rem above that, but never closer than 1.25rem under the
+            8rem navbar. --f is the heading size. */}
+        <div className="relative flex h-full flex-col items-center px-[calc(var(--u)*3)] pt-[calc(var(--u)*7.5)] text-center md:static md:block md:h-auto md:flex-initial md:px-0 md:pb-0 md:pt-[max(9.25rem,calc(50svh-0.1833*max(56.25vw,100svh)-1.75rem-1.02*var(--f)))] md:text-left md:[--f:clamp(2.25rem,4.9vw,6rem)]">
+          <div className="flex w-full flex-col items-center md:block md:w-auto">
+            <h1 className="font-display text-[calc(var(--u)*7.35)] font-bold leading-[1.02] tracking-[-0.01em] text-accent md:text-(length:--f) md:font-black">
+              Long Acting Reversible <br />
+              Contraceptives
+            </h1>
+            <p className="mt-[calc(var(--u)*2.6)] text-[calc(var(--u)*4.25)] font-light leading-[1.15] text-dark md:mt-[0.6em] md:text-[clamp(1.2rem,2.5vw,3rem)] md:leading-[1.2]">
+              Contraception Designed <br />
+              For Your Peace Of Mind
+            </p>
 
-        <AnimatePresence mode="popLayout">
-          <motion.div
-            key={`img-${active}`}
-            initial={{ rotateY: -90, opacity: 0, scale: 0.9 }}
-            animate={{ rotateY: 0, opacity: 1, scale: 1 }}
-            exit={{ rotateY: 90, opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.7, ease: EASE }}
-            className="relative overflow-hidden rounded-[2.5rem] shadow-hover max-md:hidden md:h-[clamp(220px,40vh,420px)] md:w-[clamp(165px,30vh,320px)]"
-          >
-            <img
-              src={slide.image}
-              alt=""
-              className="h-full w-full object-cover"
-              draggable={false}
-            />
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
-      <div className="relative z-10 flex h-full flex-1 flex-col px-[5%] pb-7 pt-28 max-md:pb-16 md:pt-[clamp(8.5rem,15vh,11rem)] md:pb-[clamp(3.5rem,8vh,7rem)]">
-        
-        <header className="flex items-start justify-between gap-6">
-          <AnimatePresence mode="wait">
-            <motion.h1
-              key={`h-${active}`}
-              variants={contentVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              className={`max-w-xl font-author font-medium leading-[1.05] sm:text-4xl md:text-[clamp(1.75rem,2.6vw,3rem)] ${mobileHeadingSize}`}
-              style={{ color: slide.accent }}
-            >
-              {slide.heading}
-            </motion.h1>
-          </AnimatePresence>
-        </header>
-
-        <div className={`flex flex-1 items-center max-md:items-start my-6 lg:my-0 ${slide.tags ? "md:items-start" : ""}`}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`p-${active}`}
-              variants={contentVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              className={`max-w-sm rounded-3xl bg-white/55 p-6 backdrop-blur-sm max-md:w-full md:max-w-[min(24rem,27vw)] md:mt-6 lg:mt-12 md:block md:self-start md:bg-white/45 lg:p-8 ${mobileCardMargin}`}
-            >
-              <div className="mb-3 md:hidden">
-                <div className="font-author text-xl font-medium" style={{ color: slide.accent }}>
-                  {slide.label}
-                </div>
-                <div className="mt-0.5 text-sm text-dark/60">{slide.sublabel}</div>
-              </div>
-              
-              <p className="text-sm leading-relaxed text-dark/75 sm:text-base">{slide.paragraph}</p>
-              
-              {slide.tags && (
-                <ul className="mt-4 flex flex-col gap-1.5 md:hidden">
-                  {slide.tags.map((t) => (
-                    <li key={t} className="flex items-start gap-2 text-sm leading-snug text-dark/70 sm:text-xs">
-                      <span
-                        className="mt-1.5 h-1 w-1 flex-none rounded-full"
-                        style={{ backgroundColor: slide.accent }}
-                      />
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              )}
-              
-              {(active === 1 || active === 2) && (
-                <a
-                  href="#methods"
-                  onClick={(e) => e.stopPropagation()}
-                  onTouchStart={(e) => e.stopPropagation()}
-                  className="relative z-50 mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide"
-                  style={{ color: slide.accent }}
-                >
-                  Learn more <span aria-hidden="true">→</span>
-                </a>
-              )}
-            </motion.div>
-          </AnimatePresence>
-
-          <div className="flex-1" />
-
-          <div className="hidden flex-col items-end gap-5 lg:gap-7 md:flex">
-            {slide.tags && (
-              <AnimatePresence mode="wait">
-                <motion.ul
-                  key={`tags-${active}`}
-                  variants={contentVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  className="flex max-w-sm md:max-w-[min(24rem,27vw)] flex-col gap-2 lg:gap-2.5 text-[0.85rem] rounded-3xl bg-white/55 p-5 lg:p-8 text-left backdrop-blur-sm md:mt-6 lg:mt-12"
-                >
-                  {slide.tags.map((t) => (
-                    <li key={t} className="flex items-start gap-2.5 text-sm leading-snug text-dark/75">
-                      <span
-                        className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full"
-                        style={{ backgroundColor: slide.accent }}
-                      />
-                      {t}
-                    </li>
-                  ))}
-                </motion.ul>
-              </AnimatePresence>
-            )}
-            <Cta slide={slide} />
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`l-${active}`}
-                variants={contentVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                className="text-right"
-              >
-                <div className="font-author text-3xl lg:text-4xl font-medium" style={{ color: slide.accent }}>
-                  {slide.label}
-                </div>
-                <div className="mt-1 text-sm lg:text-base text-dark/60">{slide.sublabel}</div>
-              </motion.div>
-            </AnimatePresence>
+            <div className="pointer-events-none absolute left-[calc(var(--u)*3.2)] top-[calc(var(--u)*48.1)] md:hidden">
+              <MobilePointsTicker active={active} />
+            </div>
           </div>
+
+          <WhatsAppButton
+            id="btn_home_finddoctor_hero_banner"
+            className="btn-cta absolute left-[calc(var(--u)*5)] top-[calc(var(--u)*75.6)] inline-flex h-[calc(var(--u)*12.6)] w-[calc(var(--u)*30.7)] items-center justify-center rounded-[calc(var(--u)*3.6)] bg-accent-light-1 text-center text-[calc(var(--u)*3.95)] font-normal leading-[1.25] text-white shadow-soft transition-colors hover:bg-accent md:static md:mt-[clamp(1.5rem,3.5vw,3.5rem)] md:h-auto md:w-auto md:rounded-full md:px-[1.6em] md:py-[0.55em] md:leading-normal md:text-[clamp(1rem,1.65vw,2rem)]"
+          >
+            Find A Doctor <br className="md:hidden" />
+            Near You
+          </WhatsAppButton>
         </div>
 
-        <footer className="flex items-end justify-between gap-4 max-md:mt-10 max-md:flex-col max-md:items-center max-md:gap-7 z-10 w-full">
-          {/* Desktop Slide Selector Tabs */}
-          <div className="flex gap-3 sm:gap-3 max-md:hidden" role="tablist" aria-label="Choose slide">
-            {SLIDES.map((s, i) => (
-              <button
-                key={i}
-                type="button"
-                role="tab"
-                aria-selected={i === active}
-                aria-label={s.label}
-                onClick={() => handleManualSelect(i)}
-                className={`relative overflow-hidden rounded-xl lg:rounded-2xl transition-all duration-300 md:h-20 md:w-16 lg:h-30 lg:w-26 ${
-                  i === active ? "scale-105" : "opacity-60 hover:opacity-100"
-                }`}
-                style={
-                  i === active
-                    ? { boxShadow: `0 0 0 2px white, 0 0 0 4px ${s.accent}` }
-                    : undefined
-                }
-              >
-                <img src={s.image} alt="" className="h-full w-full object-cover" draggable={false} />
-              </button>
-            ))}
-          </div>
-
-          <Cta slide={slide} className="md:hidden" />
-
-          {/* Mobile Dot Nav */}
-          <div className="flex items-center gap-2 md:hidden" role="tablist" aria-label="Choose slide">
-            {SLIDES.map((s, i) => (
-              <button
-                key={i}
-                type="button"
-                role="tab"
-                aria-selected={i === active}
-                aria-label={s.label}
-                onClick={() => handleManualSelect(i)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  i === active ? "w-6" : "w-2 opacity-40"
-                }`}
-                style={{ backgroundColor: slide.accent }}
-              />
-            ))}
-          </div>
-        </footer>
+        {/* Desktop: rotating benefit pills on the right */}
+        <div className="pointer-events-none absolute right-0 top-1/2 hidden w-[33vw] -translate-y-[45%] text-[clamp(1rem,1.75vw,2.15rem)] [--pill-h:2.35em] [--pill-step:calc(var(--pill-h)*1.25)] md:block">
+          <PointsTicker active={active} />
+        </div>
       </div>
 
-      {/* Desktop Hover Arrows - Left */}
-      <button
-        onClick={(e) => { e.stopPropagation(); prevSlide(); }}
-        aria-label="Previous slide"
-        className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/60 shadow-sm backdrop-blur-md opacity-70 group-hover:opacity-90 transition-all duration-300 hover:scale-105 hover:opacity-100 hover:bg-white/60"
-        style={{ color: slide.accent }}
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M15 18l-6-6 6-6" />
-        </svg>
-      </button>
+      {/* Screen-reader version of the rotating points. */}
+      <ul className="sr-only">
+        {POINTS.map((p) => (
+          <li key={p}>{p}</li>
+        ))}
+      </ul>
 
-      {/* Desktop Hover Arrows - Right */}
-      <button
-        onClick={(e) => { e.stopPropagation(); nextSlide(); }}
-        aria-label="Next slide"
-        className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-50 h-12 w-12 items-center justify-center rounded-full bg-white/60 shadow-sm backdrop-blur-md opacity-70 group-hover:opacity-90 transition-all duration-300 hover:scale-105 hover:opacity-100 hover:bg-white/60"
-        style={{ color: slide.accent }}
+      {/* Desktop: static description strip */}
+      <p
+        className="relative z-10 hidden px-[2%] text-center leading-snug text-accent md:mb-[1.2vw] md:block md:py-[0.85em] md:text-sm lg:whitespace-nowrap lg:text-[1.22vw]"
+        style={{ backgroundImage: "url(/home/hero/bottom-strip.png)", backgroundSize: "100% 100%" }}
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M9 18l6-6-6-6" />
-        </svg>
-      </button>
+        {DESCRIPTION}
+      </p>
 
-    </motion.section>
+      {/* Mobile: the description scrolls like the top ticker */}
+      <div
+        className="relative z-10 -mt-[calc(var(--u)*3.7)] overflow-hidden md:hidden"
+        style={{ backgroundImage: "url(/home/hero/bottom-strip.png)", backgroundSize: "100% 100%" }}
+      >
+        <div className="flex w-max animate-marquee whitespace-nowrap py-[calc(var(--u)*1.8)] text-[calc(var(--u)*3.2)] text-accent will-change-transform motion-reduce:animate-none">
+          <span className="px-8">{DESCRIPTION}</span>
+          <span className="px-8" aria-hidden="true">
+            {DESCRIPTION}
+          </span>
+        </div>
+      </div>
+    </section>
   );
 }

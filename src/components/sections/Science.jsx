@@ -261,7 +261,7 @@ export default function SplitProcessScreen() {
   const [hovered, setHovered] = useState(null);
 
   return (
-    <section className="w-full bg-bg py-16">
+    <section className="w-full bg-bg pb-16 pt-6 md:pt-8">
       <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
 
         {/* Section headline */}

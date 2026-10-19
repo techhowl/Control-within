@@ -120,7 +120,7 @@ export default function IsThisForYou() {
   return (
     <section
       id="for-you"
-      className="bg-gradient-to-b from-accent-light-2 to-bg py-8 md:py-15"
+      className="bg-gradient-to-b from-accent-light-2 to-bg pb-6 pt-8 md:pb-8 md:pt-15"
     >
       <div className="mx-auto max-w-310 px-[5%]">
         <Reveal className="mx-auto max-w-2xl text-center">

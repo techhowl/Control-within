@@ -17,9 +17,9 @@ export default function Home() {
     <>
       <Hero />
       {/* Folds 2–3. Clipped so their ribbons can cross between the two folds but
-          never spill into the hero or the certifications; on desktop the bottom
-          edge fades so a ribbon tail that reaches it trails off instead of being cut. */}
-      <div className="overflow-clip lg:[mask-image:linear-gradient(to_bottom,black_calc(100%-3rem),transparent)]">
+          never spill into the hero or the certifications (the folds' padding is
+          sized so every ribbon fits inside). */}
+      <div className="overflow-clip">
         {/* id="videos" is the scroll target DoctorLocator uses after a lead submit. */}
         <ProductSlate
           id="videos"

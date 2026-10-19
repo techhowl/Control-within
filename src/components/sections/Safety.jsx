@@ -6,7 +6,7 @@ export default function Safety() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section className="bg-bg px-[5%] py-12">
+    <section className="bg-bg px-[5%] pb-12 pt-4">
       <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-dark/10 bg-surface shadow-soft">
         <button
           type="button"

@@ -140,7 +140,7 @@ export default function Hero() {
         />
       </picture>
 
-      {/* Mobile photo: 100u × 117u, directly under the navbar. */}
+      {/* Mobile photo: 100u × 118.68u (1151×1366), directly under the navbar. */}
       <picture className="contents">
         <source media="(max-width: 767.98px)" srcSet="/home/hero/background-mobile.webp" />
         <img
@@ -148,21 +148,21 @@ export default function Hero() {
           alt=""
           draggable={false}
           fetchPriority="high"
-          className="pointer-events-none absolute left-1/2 top-30 h-[calc(var(--u)*117.04)] w-[calc(var(--u)*100)] max-w-none -translate-x-1/2 object-cover md:hidden"
+          className="pointer-events-none absolute left-1/2 top-30 h-[calc(var(--u)*118.68)] w-[calc(var(--u)*100)] max-w-none -translate-x-1/2 object-cover md:hidden"
         />
       </picture>
       {/* Mobile: blend the photo's top edge into the cream behind the navbar. */}
       <div className="pointer-events-none absolute inset-x-0 top-30 h-[calc(var(--u)*8)] bg-linear-to-b from-[#f8e7cf] to-transparent md:hidden" />
 
-      <div className="relative z-10 mx-auto h-[calc(var(--u)*117.04)] w-[calc(var(--u)*100)] md:mx-0 md:flex md:h-auto md:w-auto md:flex-1 md:flex-row md:items-start md:px-[4%] md:pb-24">
+      <div className="relative z-10 mx-auto h-[calc(var(--u)*118.68)] w-[calc(var(--u)*100)] md:mx-0 md:flex md:h-auto md:w-auto md:flex-1 md:flex-row md:items-start md:px-[4%] md:pb-24">
         {/* Mobile: heading centred at the top, points and CTA pinned on the left
             beside her (positions from the design). Desktop: left column. */}
         {/* Desktop: the heading's first line ends just above her hair. The photo is
-            object-cover, so her hair top (y 342 of 1080 in the photo) lands at
-            50svh - 0.1833 × max(56.25vw, 100svh); the column's top padding puts the
+            object-cover, so her hair top (30.9% down the 16:9 photo) lands at
+            50svh - 0.1908 × max(56.28vw, 100svh); the column's top padding puts the
             first line 1.75rem above that, but never closer than 1.25rem under the
             8rem navbar. --f is the heading size. */}
-        <div className="relative flex h-full flex-col items-center px-[calc(var(--u)*3)] pt-[calc(var(--u)*7.5)] text-center md:static md:block md:h-auto md:flex-initial md:px-0 md:pb-0 md:pt-[max(9.25rem,calc(50svh-0.1833*max(56.25vw,100svh)-1.75rem-1.02*var(--f)))] md:text-left md:[--f:clamp(2.25rem,4.9vw,6rem)]">
+        <div className="relative flex h-full flex-col items-center px-[calc(var(--u)*3)] pt-[calc(var(--u)*7.5)] text-center md:static md:block md:h-auto md:flex-initial md:px-0 md:pb-0 md:pt-[max(9.25rem,calc(50svh-0.1908*max(56.28vw,100svh)-1.75rem-1.02*var(--f)))] md:text-left md:[--f:clamp(1.875rem,min(4.2vw,7.5svh),5.25rem)]">
           <div className="flex w-full flex-col items-center md:block md:w-auto">
             <h1 className="font-display text-[calc(var(--u)*7.35)] font-bold leading-[1.02] tracking-[-0.01em] text-accent md:text-(length:--f) md:font-black">
               Long Acting Reversible <br />

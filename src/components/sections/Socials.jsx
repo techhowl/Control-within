@@ -52,7 +52,7 @@ export default function Socials() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-bg py-20 md:py-28">
+    <section className="relative overflow-hidden bg-bg pb-6 pt-12 md:pb-8 md:pt-14">
       {/* Faint dot-matrix overlay */}
       <div
         aria-hidden="true"
@@ -87,7 +87,7 @@ export default function Socials() {
       </div>
 
       {/* Cover-flow carousel */}
-      <div className="relative mx-auto mt-14 flex h-100 max-w-5xl items-center justify-center sm:h-110">
+      <div className="relative mx-auto mt-6 flex h-100 max-w-5xl items-center justify-center sm:h-110">
         {cards.map((card, i) => {
           const offset = i - active;
           const abs = Math.abs(offset);

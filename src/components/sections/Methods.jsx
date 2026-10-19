@@ -132,7 +132,7 @@ function MethodCard({ m }) {
             <span className="text-xs font-medium uppercase tracking-wide text-white/80">
               {m.productLabel}
             </span>
-            <h3 className="font-clash text-xl md:text-2xl font-semibold text-white">
+            <h3 className="font-clash text-xl font-semibold text-white md:min-h-[3lh] md:text-2xl lg:min-h-[2lh]">
               {m.headline}
               {/* Mobile simple arrow indicator appended strictly inline */}
               <span className="inline-block md:hidden align-middle ml-2">

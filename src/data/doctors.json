@@ -2143,5 +2143,60 @@
     "address": "Summer Hospital & Research Centre Pvt Ltd, Karma Chowk, Khunti-Chaibasa Rd, Hatia, Ranchi, Jharkhand 834003",
     "lat": 23.302281,
     "lng": 85.314241
+  },
+  {
+    "sdpid": "90001",
+    "name": "Dr. Suchitra",
+    "city": "Delhi",
+    "state": "DL",
+    "pincode": "110022",
+    "phone": "9899381708",
+    "address": "FPA India New Delhi (RHFPC), FPAI Bhawan, Plot No. 10, Sector IV, R K Puram, New Delhi, Delhi 110022",
+    "lat": 28.55702,
+    "lng": 77.174531
+  },
+  {
+    "sdpid": "90002",
+    "name": "Mr. K Srinivas",
+    "city": "Khunti",
+    "state": "Jharkhand",
+    "pincode": "835210",
+    "phone": "9798445095",
+    "address": "FPA India Murhu Project (RHFPC), Dak Banglow Road No. 3, Near Rajasthan Bhavan, Khunti, Jharkhand 835210",
+    "lat": 23.077096,
+    "lng": 85.280046
+  },
+  {
+    "sdpid": "90003",
+    "name": "Ms. Rekha",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "pincode": "560027",
+    "phone": "9731453420",
+    "address": "FPA India Bangalore (RHFPC), 1st Floor, BBMP Maternity Home, Vinayaka Nagar, Wilson Garden, Bengaluru, Karnataka 560027",
+    "lat": 12.949129,
+    "lng": 77.596784
+  },
+  {
+    "sdpid": "90004",
+    "name": "Ms. Nirmila",
+    "city": "Agra",
+    "state": "WestUP",
+    "pincode": "282010",
+    "phone": "8209994303",
+    "address": "FPA India Agra Branch (RHFPC), 2 HIG, Friends Colony, New Shahganj, Agra, Uttar Pradesh 282010",
+    "lat": 27.177336,
+    "lng": 77.989297
+  },
+  {
+    "sdpid": "90005",
+    "name": "Dr. Prabhavi",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "pincode": "500082",
+    "phone": "9398625647",
+    "address": "FPA India Hyderabad Branch (RHFPC), 6-3-883/F, Adjacent Topaz Building, Punjagutta Officers Colony Lane, Punjagutta, Hyderabad, Telangana 500082",
+    "lat": 17.426722,
+    "lng": 78.45247
   }
 ]

@@ -1,8 +1,8 @@
 # Doctors Geocoded List
 
-> **Total**: 195 doctors  |  **Geocoded**: 195  |  **Not found**: 0
+> **Total**: 200 doctors  |  **Geocoded**: 200  |  **Not found**: 0
 > Source: Nominatim / OpenStreetMap  |  Country filter: India
-> Last update: October intake — 1 doctor added (194 → 195).
+> Last update: FPA India centres — 5 added (195 → 200).
 
 ---
 
@@ -205,6 +205,11 @@
 | 193 | 8520 | Dr. E Prabhavathi | Hyderabad | Telangana | 500080 | `17.424868` | `78.485153` |
 | 194 | 8586 | Dr. Srilakshmi | Hyderabad | Telangana | 500064 | `17.356206` | `78.458559` |
 | 195 | 8684 | Dr. Sonal Ranjan | Ranchi | Jharkhand | 834003 | `23.302281` | `85.314241` |
+| 196 | 90001 | Dr. Suchitra | Delhi | DL | 110022 | `28.557020` | `77.174531` |
+| 197 | 90002 | Mr. K Srinivas | Khunti | Jharkhand | 835210 | `23.077096` | `85.280046` |
+| 198 | 90003 | Ms. Rekha | Bengaluru | Karnataka | 560027 | `12.949129` | `77.596784` |
+| 199 | 90004 | Ms. Nirmila | Agra | WestUP | 282010 | `27.177336` | `77.989297` |
+| 200 | 90005 | Dr. Prabhavi | Hyderabad | Telangana | 500082 | `17.426722` | `78.452470` |
 
 ---
 
@@ -2940,17 +2945,88 @@
 | **Latitude** | `23.302281` |
 | **Longitude** | `85.314241` |
 
+### 196. Dr. Suchitra
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 90001 |
+| **State** | DL |
+| **City** | Delhi |
+| **Pincode** | 110022 |
+| **Phone** | 9899381708 |
+| **Alt Contact** | Mr. Satish Kumar — 9810418343 |
+| **Address** | FPA India New Delhi (RHFPC), FPAI Bhawan, Plot No. 10, Sector IV, R K Puram, New Delhi, Delhi 110022 |
+| **Latitude** | `28.557020` |
+| **Longitude** | `77.174531` |
+
+### 197. Mr. K Srinivas
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 90002 |
+| **State** | Jharkhand |
+| **City** | Khunti |
+| **Pincode** | 835210 |
+| **Phone** | 9798445095 |
+| **Address** | FPA India Murhu Project (RHFPC), Dak Banglow Road No. 3, Near Rajasthan Bhavan, Khunti, Jharkhand 835210 |
+| **Latitude** | `23.077096` |
+| **Longitude** | `85.280046` |
+
+### 198. Ms. Rekha
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 90003 |
+| **State** | Karnataka |
+| **City** | Bengaluru |
+| **Pincode** | 560027 |
+| **Phone** | 9731453420 |
+| **Address** | FPA India Bangalore (RHFPC), 1st Floor, BBMP Maternity Home, Vinayaka Nagar, Wilson Garden, Bengaluru, Karnataka 560027 |
+| **Latitude** | `12.949129` |
+| **Longitude** | `77.596784` |
+
+### 199. Ms. Nirmila
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 90004 |
+| **State** | WestUP |
+| **City** | Agra |
+| **Pincode** | 282010 |
+| **Phone** | 8209994303 |
+| **Address** | FPA India Agra Branch (RHFPC), 2 HIG, Friends Colony, New Shahganj, Agra, Uttar Pradesh 282010 |
+| **Latitude** | `27.177336` |
+| **Longitude** | `77.989297` |
+
+### 200. Dr. Prabhavi
+
+| Field | Value |
+|-------|-------|
+| **Status** | ✅ Geocoded |
+| **SDPID** | 90005 |
+| **State** | Telangana |
+| **City** | Hyderabad |
+| **Pincode** | 500082 |
+| **Phone** | 9398625647 |
+| **Address** | FPA India Hyderabad Branch (RHFPC), 6-3-883/F, Adjacent Topaz Building, Punjagutta Officers Colony Lane, Punjagutta, Hyderabad, Telangana 500082 |
+| **Latitude** | `17.426722` |
+| **Longitude** | `78.452470` |
+
 ---
 
 ## Geocoding Statistics
 
 | Metric | Value |
 |--------|------:|
-| Total doctors | 195 |
-| Successfully geocoded | 195 (100%) |
+| Total doctors | 200 |
+| Successfully geocoded | 200 (100%) |
 | Not found | 0 |
-| Carried over from previous build | 194 |
-| Added this build (October intake) | 1 |
+| Carried over from previous build | 195 |
+| Added this build (FPA India centres) | 5 |
 
 ### Build history
 
@@ -2960,6 +3036,7 @@
 | August intake | 74 | 60 | 163 |
 | Referral intake | 0 | 31 | 194 |
 | October intake | 0 | 1 | 195 |
+| FPA India centres | 0 | 5 | 200 |
 
 ### Coordinate precision
 
@@ -2971,7 +3048,8 @@ the DATA CAVEAT in `src/lib/doctors.js`.
 | Tier | Records | Applies to |
 |------|--------:|------------|
 | pincode polygon | 91 | August intake + referral intake |
-| landmark point | 1 | October intake (SDPID 8684) |
+| landmark point | 3 | October intake (SDPID 8684); FPA India (90001, 90003) |
+| locality point | 3 | FPA India (90002, 90004, 90005) |
 | city centroid | 103 | original build |
 
 ### ⚠️ Records where city and pincode disagree
@@ -3008,6 +3086,27 @@ state's pincode would let `findByLocation`'s exact-pincode tier route Patna (800
 to a Ranchi clinic. The hospital itself is not in OSM by name; insurer directories place it at
 *Karma Chowk, Singh More, Hatia*, so it uses OSM's **Singh More** point, `23.302281, 85.314241`
 (~1 km from the 834003 centroid).
+
+**SDPIDs 90001–90005 — FPA India centres (RHFPC).** Supplied as a contact list with no
+SDPIDs, so they were assigned here from a dedicated 900xx block, well clear of the real range
+(3004–9245) so a future registry SDPID cannot collide with one. Replace them if FPA India's
+real SDPIDs turn up. Each centre is one record named after its contact person, with the
+centre name leading the address; the Delhi centre's second contact (Mr. Satish Kumar) is kept
+as `Alt Contact` above, which the build ignores. Coordinates, from OSM:
+
+| SDPID | Centre | Point | Precision |
+|------:|--------|-------|-----------|
+| 90001 | New Delhi | *Munirka / Family Planning Association of India* bus stop, Palam Marg (110022) | landmark |
+| 90002 | Murhu Project | Khunti town (835210); Dak Banglow Road is not in OSM | locality |
+| 90003 | Bangalore | *BBMP Maternity Hospital*, 9th Cross, Wilson Garden (560027) | landmark (the building) |
+| 90004 | Agra | Shahganj (282010); Friends Colony is not in OSM | locality |
+| 90005 | Hyderabad | Punjagutta Junction (500082); Officers Colony Lane is not in OSM | locality |
+
+Names to watch: *Ms. Nirmila* is spelt as supplied (possibly "Nirmala"; Agra already has
+Dr. Nirmala Yadav, 8097). *Dr. Prabhavi* is a separate record from Dr. E Prabhavathi (8520),
+whose address also mentions an FPAI clinic, so they may be the same person; she has a
+different phone and address. `findByName` narrows by city, and city is a required field in
+appointment-notify, so each name resolves to the right record.
 
 ### ✅ Reconciled — same clinic, inconsistent records
 
@@ -3052,34 +3151,35 @@ exact pincode at tier 1 and never reaches the radius fallback.
 | State | Doctors |
 |-------|--------:|
 | NCR | 48 |
-| WestUP | 47 |
-| Karnataka | 29 |
+| WestUP | 48 |
+| Karnataka | 30 |
 | Punjab | 29 |
+| Jharkhand | 12 |
 | Odisha | 12 |
-| Jharkhand | 11 |
-| DL | 8 |
+| DL | 9 |
 | CH | 6 |
-| Telangana | 4 |
+| Telangana | 5 |
 | Haryana | 1 |
-| **Total** | **195** |
+| **Total** | **200** |
 
 ### By city
 
 | City | Doctors |
 |------|--------:|
-| Agra | 47 |
+| Agra | 48 |
+| Bengaluru | 30 |
 | Ghaziabad | 30 |
-| Bengaluru | 29 |
 | Ludhiana | 27 |
 | NOIDA | 13 |
 | Bhubaneswar | 12 |
 | Ranchi | 11 |
-| Delhi | 8 |
+| Delhi | 9 |
 | Gurgaon | 5 |
+| Hyderabad | 5 |
 | Panchkula | 5 |
-| Hyderabad | 4 |
 | Zirakpur | 2 |
 | Ambala | 1 |
+| Khunti | 1 |
 | Mohali | 1 |
 
 ---
@@ -3092,7 +3192,7 @@ This file is the source of truth. Regenerate `src/data/doctors.json` from it wit
 node scripts/build-doctors.mjs
 ```
 
-The script asserts an exact record count (currently 195) and fails loudly on a
+The script asserts an exact record count (currently 200) and fails loudly on a
 format change, so update `EXPECTED` there whenever the roster size changes.
 
 Then rebuild the radius table, which is defined relative to where the doctors are:

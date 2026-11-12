@@ -24,13 +24,13 @@ const reel = (id, { av1, hevc }) => ({
 const VIDEOS = [
   {
     id: "divya-vora",
-    name: "Divya Vora",
+    name: "Dr. Divya Vora",
     instagram: "https://www.instagram.com/reel/Db8KHhMsGHc/",
     ...reel("divya-vora", { av1: "av01.0.08M.08", hevc: "hvc1.1.6.L120.90" }),
   },
   {
     id: "mitali",
-    name: "Mitali",
+    name: "Dr. Mitali",
     instagram: "https://www.instagram.com/reel/DctIgnftMIG/",
     ...reel("mitali", { av1: "av01.0.09M.08", hevc: "hvc1.1.6.L123.90" }),
   },

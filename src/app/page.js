@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import DoctorLocator from "@/components/DoctorLocator";
 import Hero from "@/components/sections/Hero";
+import FeatureProduct from "@/components/sections/FeatureProduct";
 import ProductSlate from "@/components/sections/ProductSlate";
 import Trust from "@/components/sections/Trust";
 import Methods from "@/components/sections/Methods";
@@ -25,6 +26,7 @@ export default function Home() {
           id="videos"
           slug="implant"
           title="The Contraceptive Implant"
+          subtitle="Everything you need to know, in one short video"
           tags={[
             "Works for 3 years once inserted - no daily or monthly effort",
             "Over 99% effective",
@@ -39,11 +41,14 @@ export default function Home() {
           cover="/video_cover_implant.jpg"
           // Mobile order from the design: Discreet, Works for 3 years, Reversible, Over 99%, No recurring costs.
           mobileOrder={[2, 0, 3, 1, 4]}
+          reverse
+          first
         />
         <ProductSlate
           id="ius-video"
           slug="ius"
           title="The Hormonal IUS"
+          subtitle="Everything you need to know, in one short video"
           tags={[
             "Helps with heavy menstrual bleeding and endometriosis",
             "Reduces menstrual blood loss significantly",
@@ -56,9 +61,10 @@ export default function Home() {
             hi: "https://www.youtube.com/embed/0wcKta-bj0s",
           }}
           cover="/video_cover_IUS.jpg"
-          reverse
+          dark
         />
       </div>
+      <FeatureProduct />
       <Trust />
       <Methods />
       <Influencers />

@@ -6,7 +6,6 @@ import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 const POINTS = [
   "Safe while breastfeeding",
-  "Periods get stable",
   "Minimal Pain",
   "Easily Removable",
   "Long-term relief",

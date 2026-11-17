@@ -2,8 +2,9 @@ import data from "@/data/chemists_agra.json";
 import { haversineKm } from "@/lib/doctors";
 
 /**
- * Nearest-chemist lookup over the Agra retail-chemist list
- * (src/data/chemists_agra.json). Server-only, no dependencies. Mirrors
+ * Nearest-chemist lookup over the retail-chemist list in
+ * src/data/chemists_agra.json — Agra (UP) plus the Karnataka activation list
+ * (Bengaluru, Mysuru, Hassan, Kolar; see meta.sources for id ranges). Server-only, no dependencies. Mirrors
  * src/lib/doctors.js so the locator flow can attach a chemist to the same
  * record it already attaches a doctor to.
  *
@@ -11,8 +12,9 @@ import { haversineKm } from "@/lib/doctors";
  * area* (Mappls gives pincode+eLoc but not rooftop coords; OSM resolved each
  * pincode to a centroid). So "nearest" is pincode-level, not shop-level — every
  * chemist in the same pincode sits at one point. Surface distance as
- * approximate. This dataset covers Agra only, so a visitor far from Agra will
- * get null back (see NEAREST_CHEMIST_RADIUS_KM below), never a far-off Agra shop.
+ * approximate. This dataset covers Agra and Karnataka only, so a visitor far
+ * from both will get null back (see NEAREST_CHEMIST_RADIUS_KM below), never a
+ * far-off shop.
  */
 
 // Only chemists that actually carry coordinates can be ranked by distance.
@@ -24,7 +26,8 @@ const round1 = (n) => Math.round(n * 10) / 10;
 
 // Furthest a chemist may be from the visitor and still count as a match.
 // Beyond this there is no chemist — without the cap, a visitor in Bengaluru
-// got the Agra chemist "nearest" to them, ~1,540 km away. Retune in .env.
+// got the Agra chemist "nearest" to them, ~1,540 km away (before the Karnataka
+// list was added). Retune in .env.
 const DEFAULT_RADIUS_KM = 50;
 
 function radiusKm() {
@@ -45,7 +48,7 @@ const quality = (c) =>
 /**
  * The single closest chemist to (lat, lng), with `distance_km` attached.
  * Returns null when the closest one is beyond NEAREST_CHEMIST_RADIUS_KM
- * (default 50) — i.e. for any visitor outside Agra's coverage.
+ * (default 50) — i.e. for any visitor outside Agra / Karnataka coverage.
  *
  * When several chemists sit at effectively the same distance (the common case
  * — see DATA CAVEAT), the most complete record wins instead of whichever came

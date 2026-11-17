@@ -39,7 +39,7 @@ export async function POST(request) {
   const { src, city } = body ?? {};
   // utm_source distinguishes a chemist QR ("chemist") from a clinic QR
   // ("clinic"). Stored for attribution; the chemist lookup itself runs
-  // regardless so the record always carries the nearest Agra chemist.
+  // regardless so the record always carries the nearest chemist.
   const utmSource = typeof body?.utm_source === "string" ? body.utm_source : null;
   let lat = Number(body?.lat);
   let lng = Number(body?.lng);
@@ -70,7 +70,8 @@ export async function POST(request) {
   }
 
   // Nearest chemist to the same coordinates. Best-effort: a chemist miss must
-  // never block the doctor result. The dataset is Agra-only, so this is null
+  // never block the doctor result. The dataset covers Agra and Karnataka
+  // (Bengaluru, Mysuru, Hassan, Kolar) only, so this is null
   // for any visitor beyond NEAREST_CHEMIST_RADIUS_KM — the Chemist_* fields
   // below then stay empty rather than naming a far-off shop.
   const chemist = findNearestChemist(lat, lng);
@@ -134,7 +135,7 @@ export async function POST(request) {
     User_Address_Coordinates_Longitude: round6(lng),
     // UTM source of the QR scan ("chemist" | "clinic"), for attribution.
     UTM_Source: utmSource,
-    // --- Nearest chemist to the same coordinates (Agra retail-chemist list) ---
+    // --- Nearest chemist to the same coordinates (Agra + Karnataka retail-chemist list) ---
     Chemist_Name: chemist?.name ?? null,
     Chemist_Area: chemist?.area ?? null,
     Chemist_Address: chemist?.address ?? null,

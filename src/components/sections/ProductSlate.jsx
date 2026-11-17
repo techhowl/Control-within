@@ -15,8 +15,11 @@ const Play = () => (
 );
 
 // Ribbon placement from the design, as fractions of the video width (--cw on
-// desktop, 70vw on mobile). "top" tucks behind the video; "bottom" and "mobile"
-// loop over its lower corner. Each desktop ribbon was drawn for one video side
+// desktop, 70vw on mobile). "top" tucks behind the video; "bottom" loops over its
+// lower corner. "mobile" is drawn for the lower corner too, but the mobile fold
+// puts the video above the points, so it is flipped vertically to loop over the
+// video's upper corner instead (its tail rising towards the heading, clear of the
+// language switch); `top` is that mirrored position. Each desktop ribbon was drawn for one video side
 // (`side`); when a fold puts its video on the other side the ribbon is flipped
 // horizontally and its x position mirrored, so each fold keeps its own colour.
 // Each ribbon also carries its image's pixel size: the <img> needs real
@@ -27,13 +30,13 @@ const RIBBONS = {
     side: "right",
     top: { size: [388, 572], left: 40.7, width: 44.7, y: -0.381 },
     bottom: { size: [310, 536], left: 72.1, width: 35.7, y: 0.247 },
-    mobile: "left-[76.3%] top-[10.4vw] w-[38.9%]",
+    mobile: "left-[76.3%] top-[-20.67vw] w-[38.9%]",
   },
   ius: {
     side: "left",
     top: { size: [389, 571], left: 27.7, width: 44.9, y: -0.383 },
     bottom: { size: [323, 534], left: -7.8, width: 37.3, y: 0.239 },
-    mobile: "left-[-12.1%] top-[10.4vw] w-[38.9%]",
+    mobile: "left-[-12.1%] top-[-20.67vw] w-[38.9%]",
   },
 };
 
@@ -78,6 +81,11 @@ const BULLET = {
  * (last fold: room below, since the next section clips it). The first fold's
  * bottom padding also grows so the next fold's top ribbon never reaches its panel.
  * The heading block (heading + subtitle) is ~4.75rem tall in those sums.
+ *
+ * Mobile (below lg): heading, then the language switch and the video, then the
+ * panel of bullets, which starts behind the video's lower half (20.5vw). The
+ * video's top margin leaves room for the flipped ribbon, which rises 20.67vw
+ * above the video, so it never touches the subtitle.
  */
 export default function ProductSlate({
   id,
@@ -103,10 +111,10 @@ export default function ProductSlate({
     <section
       id={id}
       aria-labelledby={`${slug}-slate-title`}
-      className={`relative overflow-x-clip lg:scroll-mt-32 lg:[--cw:min(45vw,70rem)] ${
+      className={`relative overflow-x-clip pb-10 lg:scroll-mt-32 lg:[--cw:min(45vw,70rem)] ${
         first
-          ? "pb-[calc(10vw+2.25rem)] lg:pb-[max(clamp(2rem,3vw,3.5rem),calc(var(--cw)*0.301-3.5rem-clamp(2rem,3vw,3.5rem)-clamp(2rem,3.5vw,4rem)))]"
-          : "pb-[calc(13vw+2.25rem)] lg:pb-[max(clamp(2rem,3vw,3.5rem),calc(var(--cw)*0.2175+0.5rem))]"
+          ? "lg:pb-[max(clamp(2rem,3vw,3.5rem),calc(var(--cw)*0.301-3.5rem-clamp(2rem,3vw,3.5rem)-clamp(2rem,3.5vw,4rem)))]"
+          : "lg:pb-[max(clamp(2rem,3vw,3.5rem),calc(var(--cw)*0.2175+0.5rem))]"
       }`}
     >
       <Reveal
@@ -122,10 +130,11 @@ export default function ProductSlate({
         {subtitle && <p className="mt-2 text-sm text-muted md:text-lg">{subtitle}</p>}
       </Reveal>
 
-      {/* Stage: panel + video. Mobile stacks them; desktop positions them absolutely. */}
-      <div className="relative mx-[4.5%] mt-6 lg:mx-0 lg:mt-[clamp(2rem,3.5vw,4rem)]">
+      {/* Stage: panel + video. Mobile stacks them, video first (flex order);
+          desktop positions the video absolutely over the panel. */}
+      <div className="relative mx-[4.5%] mt-6 flex flex-col lg:mx-0 lg:mt-[clamp(2rem,3.5vw,4rem)] lg:block">
         <div
-          className={`rounded-2xl px-[3.5vw] pb-[calc(23.5vw+3.25rem)] pt-[4.5vw] lg:flex lg:min-h-[calc(var(--cw)*0.7225)] lg:items-center lg:py-[calc(var(--cw)*0.06)] ${
+          className={`mt-[-20.5vw] rounded-2xl px-[3.5vw] pb-[calc(4.5vw+0.5rem)] pt-[calc(20.5vw+1.5rem)] lg:mt-0 lg:flex lg:min-h-[calc(var(--cw)*0.7225)] lg:items-center lg:py-[calc(var(--cw)*0.06)] ${
             dark ? "bg-accent" : "bg-accent-light-1"
           } ${
             reverse
@@ -158,7 +167,7 @@ export default function ProductSlate({
         </div>
 
         <div
-          className={`relative z-10 mx-auto mt-[-20.5vw] flex w-[70vw] flex-col items-center lg:absolute lg:top-[calc(var(--cw)*0.08)] lg:mt-0 lg:w-(--cw) ${
+          className={`relative z-10 order-first mx-auto mt-[calc(20.67vw-1rem)] flex w-[70vw] flex-col items-center lg:absolute lg:top-[calc(var(--cw)*0.08)] lg:order-0 lg:mt-0 lg:w-(--cw) ${
             reverse ? "lg:left-[3.5vw]" : "lg:right-[3.6vw]"
           }`}
         >
@@ -240,7 +249,7 @@ export default function ProductSlate({
             alt=""
             draggable={false}
             loading="lazy"
-            className={`pointer-events-none absolute z-20 lg:hidden ${ribbon.mobile}`}
+            className={`pointer-events-none absolute z-20 -scale-y-100 lg:hidden ${ribbon.mobile}`}
           />
         </div>
       </div>
